@@ -22,7 +22,12 @@
       background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo img { height: 40px; width: auto; display: block; }.nav-logo img { height: 40px; width: auto; display: block; }
     .nav-links { display: flex; gap: 28px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
