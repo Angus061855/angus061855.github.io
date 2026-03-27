@@ -22,23 +22,32 @@
       position: relative;
       isolation: isolate;
     }
-    body::before,
+    body::before {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: -1;
+  background-image: url('IMG_6337.JPG');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.75);
+  animation: fabricDrift 25s ease-in-out infinite alternate;
+}
+
 body::after {
   display: none;
 }
-    @keyframes velvetFlow {
-      0%   { transform: scale(1)    translate(0%,    0%);   }
-      25%  { transform: scale(1.04) translate(-1.5%, 2%);   }
-      50%  { transform: scale(1.02) translate(2%,   -1.5%); }
-      75%  { transform: scale(1.05) translate(-1%,  -2%);   }
-      100% { transform: scale(1.03) translate(1.5%,  1%);   }
-    }
-    @keyframes velvetGold {
-      0%   { transform: scale(1)    translate(0%,  0%)  rotate(0deg);   }
-      30%  { transform: scale(1.06) translate(2%, -3%)  rotate(1deg);   }
-      60%  { transform: scale(1.03) translate(-2%, 2%)  rotate(-0.5deg);}
-      100% { transform: scale(1.05) translate(1%, -1%)  rotate(0.8deg); }
-    }
+
+@keyframes fabricDrift {
+  0%   { transform: scale(1.05) translate(0%,    0%);   }
+  20%  { transform: scale(1.08) translate(-2%,   1.5%); }
+  40%  { transform: scale(1.06) translate(1.5%,  -2%);  }
+  60%  { transform: scale(1.09) translate(-1%,   2.5%); }
+  80%  { transform: scale(1.07) translate(2%,    -1%);  }
+  100% { transform: scale(1.05) translate(-1.5%, 1%);   }
+}
 
     /* 絲絨紋理疊加層 */
     .velvet-texture {
@@ -497,8 +506,6 @@ body::after {
 </head>
 <body>
 
-<!-- 絲絨紋理層 -->
-<canvas id="velvet-bg"></canvas>
 
 <!-- 浮動 LINE 按鈕 -->
 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="float-line">
