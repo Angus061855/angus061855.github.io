@@ -22,23 +22,9 @@
       position: relative;
       isolation: isolate;
     }
-    body::before {
-  body::before,
+    body::before,
 body::after {
   display: none;
-}
-
-body::after {
-  display: none;
-}
-
-@keyframes fabricDrift {
-  0%   { transform: scale(1.05) translate(0%,    0%);   }
-  20%  { transform: scale(1.08) translate(-2%,   1.5%); }
-  40%  { transform: scale(1.06) translate(1.5%,  -2%);  }
-  60%  { transform: scale(1.09) translate(-1%,   2.5%); }
-  80%  { transform: scale(1.07) translate(2%,    -1%);  }
-  100% { transform: scale(1.05) translate(-1.5%, 1%);   }
 }
 
     /* 絲絨紋理疊加層 */
