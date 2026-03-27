@@ -23,17 +23,9 @@
       isolation: isolate;
     }
     body::before {
-  content: '';
-  position: fixed;
-  inset: -10%;
-  width: 120%;
-  height: 120%;
-  z-index: -1;
-  background-image: url('IMG_6337.JPG');
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.75);
-  animation: fabricDrift 25s ease-in-out infinite alternate;
+  body::before,
+body::after {
+  display: none;
 }
 
 body::after {
@@ -505,6 +497,7 @@ body::after {
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
+  <canvas id="velvet-bg"></canvas>
 
 
 <!-- 浮動 LINE 按鈕 -->
@@ -1329,7 +1322,6 @@ body::after {
 
 </script>
 
-</script>
 </body>
 </html>
 
