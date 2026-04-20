@@ -132,7 +132,8 @@
       document.getElementById('meta').textContent = post.date;
       document.getElementById('title').textContent = post.title;
       document.getElementById('summary').textContent = post.summary || '';
-      document.getElementById('body').textContent = post.body || '';
+      const bodyEl = document.getElementById('body'); const paragraphs = (post.body || '').split('
+').filter(l => l.trim()); bodyEl.innerHTML = paragraphs.map(p => `<p style="margin-bottom:1.4em">${p}</p>`).join('');
 
       if (post.cover) {
         const img = document.getElementById('cover');
