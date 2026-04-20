@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>部落格｜AS娛樂</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #0a0a0a; --border: #2a2a2a; --text: #f0f0f0; --muted: #888; --accent: #c8a96e; }
@@ -12,10 +12,12 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 40px; background: rgba(10,10,10,0.85);
+      padding: 14px 40px; background: rgba(10,10,10,0.85);
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
     .back-btn { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
     .back-btn:hover { color: var(--accent); }
     .wrap { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
@@ -43,8 +45,11 @@
 </head>
 <body>
 <nav>
-  <a href="https://as-ent-tw.com/#hero" class="nav-logo">AS娛樂</a>
-  <a href="index.html#blog" class="back-btn">← 返回首頁</a>
+  <a href="https://as-ent-tw.com/#hero" class="nav-logo">
+    <img src="logo.png" alt="AS娛樂"/>
+    <span>AS娛樂</span>
+  </a>
+  <a href="https://as-ent-tw.com/#blog" class="back-btn">← 返回首頁</a>
 </nav>
 <div class="wrap">
   <h1>所有文章</h1>
