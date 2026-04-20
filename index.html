@@ -742,7 +742,7 @@ body::after {
   </div>
 
   <!-- 隱藏的 4 題 -->
-  <div id="faq-more" style="display:none;">
+  <div id="faq-more" style="display:none; flex-direction:column; gap:12px;">
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">
         <span>工作會不會被強迫做不想做的事</span><span class="faq-plus">+</span>
@@ -1436,7 +1436,7 @@ function toggleMoreFaq() {
   const more = document.getElementById('faq-more');
   const btn = document.getElementById('faq-toggle-btn');
   if (more.style.display === 'none') {
-    more.style.display = 'block';
+    more.style.display = 'flex';
     btn.textContent = '收起 ↑';
   } else {
     more.style.display = 'none';
