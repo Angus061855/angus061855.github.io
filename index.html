@@ -9,14 +9,14 @@
   <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北酒店公關招募諮詢完全免費。"/>
   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://angus061855.github.io/"/>
+  <link rel="canonical" href="https://as-ent-tw.com/"/>
 
   <!-- Open Graph -->
   <meta property="og:title" content="AS娛樂｜八大最誠實經紀 大頭"/>
   <meta property="og:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://angus061855.github.io/"/>
-  <meta property="og:image" content="https://angus061855.github.io/og-image.jpg"/>
+  <meta property="og:url" content="https://as-ent-tw.com/"/>
+  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1140,30 +1140,38 @@ body::after {
   observer.observe(heroSection);
 
   async function loadBlog() {
-    const grid = document.getElementById('blog-grid');
-    try {
-      const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts');
-      const posts = await res.json();
-      if (!posts.length) {
-        grid.innerHTML = '<p class="blog-loading">目前還沒有文章　敬請期待</p>';
-        return;
-      }
-      grid.innerHTML = posts.map(post => `
-        <a class="blog-card" href="/post.html?slug=${post.slug}">
-          ${post.cover
-            ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}"/>`
-            : `<div class="blog-card-cover-placeholder">✍️</div>`}
-          <div class="blog-card-body">
-            <div class="blog-card-date">${post.date}</div>
-            <div class="blog-card-title">${post.title}</div>
-            <div class="blog-card-summary">${post.summary || ''}</div>
-          </div>
-        </a>
-      `).join('');
-    } catch(e) {
-      grid.innerHTML = '<p class="blog-loading">文章載入失敗　請稍後再試</p>';
+  const grid = document.getElementById('blog-grid');
+  try {
+    const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts');
+    const posts = await res.json();
+    if (!posts.length) {
+      grid.innerHTML = '<p class="blog-loading">目前還沒有文章　敬請期待</p>';
+      return;
     }
+    const shown = posts.slice(0, 3);
+    grid.innerHTML = shown.map(post => `
+      <a class="blog-card" href="/post.html?slug=${post.slug}">
+        ${post.cover
+          ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}"/>`
+          : `<div class="blog-card-cover-placeholder">✍️</div>`}
+        <div class="blog-card-body">
+          <div class="blog-card-date">${post.date}</div>
+          <div class="blog-card-title">${post.title}</div>
+          <div class="blog-card-summary">${post.summary || ''}</div>
+        </div>
+      </a>
+    `).join('');
+    if (posts.length > 3) {
+      grid.insertAdjacentHTML('afterend', `
+        <div style="text-align:center;margin-top:32px;">
+          <a href="/blog.html" style="color:var(--accent);border:1px solid var(--accent);padding:12px 32px;border-radius:999px;text-decoration:none;font-size:0.95rem;">觀看更多文章 →</a>
+        </div>
+      `);
+    }
+  } catch(e) {
+    grid.innerHTML = '<p class="blog-loading">文章載入失敗　請稍後再試</p>';
   }
+}
   loadBlog();
 
   function toggleFaq(btn) {
