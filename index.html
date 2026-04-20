@@ -310,16 +310,16 @@
     }
     .blog-card-cover-placeholder {
   width: 100%; height: 160px;
-  background: linear-gradient(135deg, #1a1208, #2a1e10, #1a1208);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05), rgba(255,255,255,0.02));
   background-size: 200% 200%;
   animation: shimmerBg 6s ease infinite;
   display: flex; align-items: center; justify-content: center;
 }
 .blog-card-cover-placeholder::after {
   content: '';
-  width: 80px; height: 80px;
+  width: 60px; height: 60px;
   background: url('/LOGO 白色.png') center/contain no-repeat;
-  opacity: 0.35;
+  opacity: 0.15;
 }
 @keyframes shimmerBg {
   0%   { background-position: 0% 50%; }
