@@ -1,543 +1,896 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index c6bca8dc1726238354fbd747c7970df80f4ceab5..4369ad2d1cc5b6a17980039f5dadd9932485c7a3 100644
---- a/index.html
-+++ b/index.html
-@@ -1,85 +1,91 @@
- <!DOCTYPE html>
- <html lang="zh-TW">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>AS娛樂｜八大最誠實經紀 大頭</title>
-   <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北酒店公關招募諮詢完全免費。"/>
-   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
-   <meta name="robots" content="index, follow"/>
-   <link rel="canonical" href="https://as-ent-tw.com/"/>
-   <meta property="og:title" content="AS娛樂｜八大最誠實經紀 大頭"/>
-   <meta property="og:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
-   <meta property="og:type" content="website"/>
-   <meta property="og:url" content="https://as-ent-tw.com/"/>
-   <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
-+  <meta name="twitter:card" content="summary_large_image"/>
-+  <meta name="twitter:title" content="AS娛樂｜八大最誠實經紀 大頭"/>
-+  <meta name="twitter:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
-+  <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
-+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
- 
-   <!-- 結構化資料 SEO/AEO/GEO -->
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "Person",
-     "name": "大頭",
-     "jobTitle": "八大行業經紀人",
-     "description": "七年八大行業從業經驗，個人面試超過3000位，台北最誠實的酒店公關經紀人",
-     "url": "https://as-ent-tw.com",
-     "sameAs": ["https://line.me/ti/p/tTUQTPHKrE"]
-   }
-   </script>
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "FAQPage",
-     "mainEntity": [
-       {"@type":"Question","name":"酒店公關需要簽合約嗎？","acceptedAnswer":{"@type":"Answer","text":"完全不需要。不靠合約綁住任何人，想來就來想走就走，沒有任何違約金或限制。"}},
-       {"@type":"Question","name":"做酒店打工家人或男友會知道嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。個人資料嚴格保密，工作地點、薪資一切資訊都不會外流。"}},
-       {"@type":"Question","name":"酒店公關沒有經驗可以做嗎？","acceptedAnswer":{"@type":"Answer","text":"完全可以。我會從頭帶你了解整個流程，新人反而更好，因為沒有壞習慣需要改正。"}},
-       {"@type":"Question","name":"台北酒店薪水怎麼計算？","acceptedAnswer":{"@type":"Answer","text":"以節計算，每10分鐘一節，台北禮服店節薪約230到290元，詳細數字依店家不同，面試前會完整說明。"}},
-       {"@type":"Question","name":"酒店打工可以只做短期嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。很多人只做幾個月應急，時間和天數都可以自己安排，沒有最低上班要求。"}},
-       {"@type":"Question","name":"酒店公關工作會被強迫做不想做的事嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。任何超出範圍的要求都可以直接拒絕，這是你的底線，沒有人可以強迫你。"}},
-       {"@type":"Question","name":"酒店一定要喝酒嗎？","acceptedAnswer":{"@type":"Answer","text":"在酒店上班一定會喝到酒，但喝不下可以直接跟客人說，客人最多把你換掉，他真的喜歡你也會留下你。"}},
-       {"@type":"Question","name":"酒店公關白天有工作或有門禁怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"不用擔心，配合的店家有各種類型，有午場也有晚場，正職或兼職時間都能彈性安排。"}},
-       {"@type":"Question","name":"酒店打工有規定一週要上幾天班嗎？","acceptedAnswer":{"@type":"Answer","text":"沒有規定，能上班就來上，只想一個月上2到3天賺零用錢也可以。"}},
-       {"@type":"Question","name":"做酒店公關上班要穿什麼？","acceptedAnswer":{"@type":"Answer","text":"都是以禮服高跟鞋為主，會幫你準備新的一套送給你，髮妝也有專門的髮妝師幫你處理。"}}
-     ]
-   }
-   </script>
--</head>
-   <style>
-     * { margin: 0; padding: 0; box-sizing: border-box; }
-     :root {
-       --bg: #0a0a0a; --surface: #141414; --card: #1a1a1a;
-       --border: #2a2a2a; --text: #f0f0f0; --muted: #888;
-       --accent: #c8a96e; --accent2: #e0c080;
-       --gold-border: rgba(200,169,110,0.25);
-       --gold-glow: rgba(200,169,110,0.08);
-       --line-green: #1a6b45;
-       --line-green-light: #22885a;
-     }
-     html { scroll-behavior: smooth; }
-+    section[id] { scroll-margin-top: 88px; }
-     body {
-       background: #080808; color: var(--text);
-       font-family: 'Noto Sans TC', sans-serif;
-       line-height: 1.7; position: relative; isolation: isolate;
-     }
-     body::before, body::after { display: none; }
- 
-     /* NAV */
-     nav {
-       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-       display: flex; justify-content: space-between; align-items: center;
-       padding: 14px 40px;
-       background: rgba(8,8,8,0.88); backdrop-filter: blur(20px);
-       border-bottom: 1px solid var(--gold-border);
-     }
-     .nav-logo { display: flex; align-items: center; gap: 8px; }
-     .nav-logo img { height: 40px; width: auto; display: block; }
-     .nav-links { display: flex; gap: 28px; }
-     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
-     .nav-links a:hover { color: var(--accent); }
-     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-     .hamburger.open span:nth-child(2) { opacity: 0; }
-     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-@@ -139,50 +145,57 @@
-     }
-     @media (max-width: 768px) { .hero-sub-shine { font-size: 2.4rem !important; } }
-     .hero-sub-shine span {
-       display: inline-block; color: transparent;
-       background: linear-gradient(90deg, #888 0%, #ffffff 40%, #c8a96e 60%, #888 100%);
-       background-size: 300% auto; -webkit-background-clip: text; background-clip: text;
-       animation: shine 6s linear infinite;
-     }
-     .hero-sub-shine span:nth-child(1)  { animation-delay: 0.00s; }
-     .hero-sub-shine span:nth-child(2)  { animation-delay: 0.18s; }
-     .hero-sub-shine span:nth-child(3)  { animation-delay: 0.36s; }
-     .hero-sub-shine span:nth-child(4)  { animation-delay: 0.54s; }
-     .hero-sub-shine span:nth-child(5)  { animation-delay: 0.72s; }
-     .hero-sub-shine span:nth-child(6)  { animation-delay: 0.90s; }
-     .hero-sub-shine span:nth-child(7)  { animation-delay: 1.08s; }
-     .hero-sub-shine span:nth-child(8)  { animation-delay: 1.26s; }
-     .hero-sub-shine span:nth-child(9)  { animation-delay: 1.44s; }
-     .hero-sub-shine span:nth-child(10) { animation-delay: 1.62s; }
-     .hero-sub-shine span:nth-child(11) { animation-delay: 1.80s; }
-     .hero-sub-shine span:nth-child(12) { animation-delay: 1.98s; }
-     .hero-sub-shine span:nth-child(13) { animation-delay: 2.16s; }
-     .hero-sub-shine span:nth-child(14) { animation-delay: 2.34s; }
-     .hero-sub-shine span:nth-child(15) { animation-delay: 2.52s; }
-     .hero-sub-shine span:nth-child(16) { animation-delay: 2.70s; }
-     @keyframes shine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
-+    .visually-hidden {
-+      position: absolute !important;
-+      width: 1px; height: 1px;
-+      padding: 0; margin: -1px;
-+      overflow: hidden; clip: rect(0, 0, 0, 0);
-+      white-space: nowrap; border: 0;
-+    }
- 
-     /* Hero Pills — 精品標籤升級 */
-     .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 48px; }
-     .hero-pill {
-       font-size: 0.8rem; letter-spacing: 0.18em; color: #c8c0b0;
-       padding: 6px 18px; border-radius: 999px;
-       border: 1px solid rgba(200,169,110,0.18);
-       background: linear-gradient(135deg, rgba(200,169,110,0.04), rgba(200,169,110,0.01));
-       box-shadow: inset 0 1px 0 rgba(200,169,110,0.07);
-     }
- 
-     /* Hero Stats */
-     .hero-stats { display: flex; flex-direction: row; gap: 64px; justify-content: center; align-items: flex-start; margin-bottom: 48px; }
-     .stat { text-align: center; }
-     .stat-num {
-       font-size: 2.6rem; font-weight: 900; color: transparent;
-       background: linear-gradient(135deg, #c8a96e 0%, #e0c080 50%, #c8a96e 100%);
-       -webkit-background-clip: text; background-clip: text;
-       letter-spacing: 0.04em; line-height: 1.1;
-     }
-     .stat-label { font-size: 0.82rem; color: #888888; letter-spacing: 0.12em; margin-top: 6px; }
- 
-     /* CTA Buttons */
-     .hero-cta { display: flex; flex-direction: row; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; }
-     .btn-primary {
-@@ -432,132 +445,133 @@
-     }
-     .float-line:hover {
-       transform: translateY(-3px);
-       box-shadow: 0 8px 28px rgba(26,107,69,0.5), 0 1px 0 rgba(255,255,255,0.08) inset;
-     }
-     .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
- 
-     /* RESPONSIVE */
-     @media (max-width: 768px) { .jobs-grid { grid-template-columns: 1fr; } }
-     @media (max-width: 640px) {
-       nav { padding: 14px 20px; }
-       .nav-links { display: none; }
-       .hamburger { display: flex; }
-       .about-grid { grid-template-columns: 1fr; }
-       .hero-stats { gap: 36px; }
-       .stat-num { font-size: 2rem; }
-       .features-grid { grid-template-columns: 1fr; }
-       .float-line { bottom: 20px; right: 16px; font-size: 0.82rem; padding: 10px 18px; }
-     }
-   </style>
- </head>
- <body>
-   <canvas id="velvet-bg"></canvas>
- 
- <!-- 浮動 LINE 按鈕 -->
--<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="float-line">
-+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line">
-   <span class="float-line-dot"></span>
-   <span>立即加 LINE</span>
- </a>
- 
- <!-- NAV -->
- <nav>
-   <div class="nav-logo">
-     <img src="logo.png" alt="AS娛樂"/>
-     <span style="font-size:1.1rem; font-weight:400; letter-spacing:0.18em; color:#ffffff; font-family:'Noto Serif TC', serif;">AS娛樂</span>
-   </div>
-   <div class="nav-links">
-     <a href="#about">關於我</a>
-     <a href="#features">為什麼選我</a>
-     <a href="#jobs">職缺</a>
-     <a href="#faq">常見問題</a>
-     <a href="#blog">部落格</a>
-     <a href="#contact">聯絡我</a>
-   </div>
--  <button class="hamburger" id="hamburger" aria-label="選單">
-+  <button class="hamburger" id="hamburger" aria-label="選單" aria-expanded="false" aria-controls="mobileMenu">
-     <span></span><span></span><span></span>
-   </button>
- </nav>
- 
- <!-- 手機選單 -->
- <div class="mobile-menu" id="mobileMenu">
-   <a href="#about" onclick="closeMenu()">關於我</a>
-   <a href="#features" onclick="closeMenu()">為什麼選我</a>
-   <a href="#jobs" onclick="closeMenu()">職缺</a>
-   <a href="#faq" onclick="closeMenu()">常見問題</a>
-   <a href="#blog" onclick="closeMenu()">部落格</a>
-   <a href="#contact" onclick="closeMenu()">聯絡我</a>
- </div>
- 
- <!-- HERO -->
- <section id="hero">
-   <div class="hero-badges">
-     <span class="hero-badge">全台最多人詢問</span>
-     <span class="hero-badge">八大最誠實經紀</span>
-     <span class="hero-badge">七年從業經驗</span>
-     <span class="hero-badge">有問必答</span>
-   </div>
--  <p class="hero-sub-shine">
-+  <h1 class="visually-hidden">AS娛樂 台北酒店公關招募｜八大最誠實經紀 大頭</h1>
-+  <p class="hero-sub-shine" aria-hidden="true">
-     <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
-     <br/>
-     <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
-   </p>
-   <div class="hero-pills">
-     <span class="hero-pill">不簽合約</span>
-     <span class="hero-pill">不壓薪水</span>
-     <span class="hero-pill">自由排班</span>
-     <span class="hero-pill">隱私安全</span>
-   </div>
-   <div class="hero-stats">
-     <div class="stat">
-       <div class="stat-num" id="counter-years">0</div>
-       <div class="stat-label">從業年資</div>
-     </div>
-     <div class="stat">
-       <div class="stat-num"><span id="counter-interviews">0</span>+</div>
-       <div class="stat-label">個人面試人數</div>
-     </div>
-   </div>
-   <div class="hero-cta">
--    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="btn-primary">立即詢問 LINE</a>
-+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問 LINE</a>
-     <a href="#about" class="btn-outline">了解更多</a>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- ABOUT -->
- <section id="about">
-   <div class="container">
-     <div class="about-grid">
-       <div class="about-text">
-         <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent); text-align:left;">關於我</p>
-         <h2 style="text-align:left; font-size:clamp(1.4rem,3vw,2rem); font-weight:800; line-height:1.4; margin-bottom:20px; letter-spacing:0.06em;">大頭<br/>八大最誠實經紀人</h2>
-         <p>在八大行業　<strong>誠實是最稀缺的東西</strong></p>
-         <p>我從業七年　個人面試超過 3000 位女孩<br/>見過太多人因為資訊不透明而受傷</p>
-         <p>我的原則只有一個　<strong>把真實的情況告訴你</strong><br/>讓你在完全了解後再做決定　沒有任何壓力</p>
--        <p>想找我可以 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank">直接點擊 LINE 詢問</a></p>
-+        <p>想找我可以 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接點擊 LINE 詢問</a></p>
-       </div>
-       <div class="about-highlights">
-         <div class="highlight-item"><h4>完全透明</h4><p>薪資　環境　工作內容全程說清楚　沒有隱藏扣款</p></div>
-         <div class="highlight-item"><h4>不簽合約</h4><p>不靠簽約綁住人　只靠真誠留住你</p></div>
-         <div class="highlight-item"><h4>不壓薪水</h4><p>每週六固定發薪　想現領也可以</p></div>
-         <div class="highlight-item"><h4>隱私保護</h4><p>個人資料嚴格保密　不必告知家人　男友　朋友</p></div>
-         <div class="highlight-item"><h4>真人陪伴</h4><p>不是 AI 客服　有問題隨時找我　都是本人回覆</p></div>
-         <div class="highlight-item"><h4>專業引導</h4><p>七年經驗帶你少走彎路　找到最適合你的方向</p></div>
-       </div>
-     </div>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- FEATURES -->
- <section id="features">
-   <div class="container">
-     <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">選我的優勢</p>
-     <h2 class="section-title">業界最誠實的承諾</h2>
-     <p class="section-desc">誠實 不話術 只講實話<br/>這是我七年來唯一的做事方式</p>
-     <div class="features-grid">
-       <div class="feature-card">
-         <div class="feature-icon">薪資透明</div>
-         <h3>上班前說清楚</h3>
-@@ -611,138 +625,147 @@
-         </div>
-         <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
-         <ul class="job-card-perks">
-           <li>高額獎金制度</li>
-           <li>團隊分潤機制</li>
-           <li>完整培訓系統</li>
-           <li>有無經驗皆可</li>
-         </ul>
-       </div>
-       <div class="job-card">
-         <div class="job-card-header">
-           <div class="job-card-title">紓壓按摩</div>
-           <span class="job-badge badge-beauty">不用喝酒</span>
-         </div>
-         <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
-         <ul class="job-card-perks">
-           <li>不用喝酒熬夜</li>
-           <li>日薪平均可達三萬起</li>
-           <li>環境安全隱私</li>
-           <li>一天 4 小時也可以</li>
-         </ul>
-       </div>
-     </div>
-   </div>
-   <div style="text-align:center; margin-top:40px;">
--    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="btn-primary" style="font-size:1.05rem; padding:15px 52px;">加 LINE 詢問職缺</a>
-+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1.05rem; padding:15px 52px;">加 LINE 詢問職缺</a>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- FAQ -->
- <section id="faq">
-   <div class="container">
-     <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">常見問題</p>
-     <h2 class="section-title">你可能想問的事</h2>
-     <p class="section-desc">有任何問題都可以直接問我<br/>這裡先回答最常見的幾個問題</p>
-     <div class="faq-list">
-       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>需要簽合約嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全不需要　我不靠合約綁住任何人　<br>想來就來　想走就走　<br>沒有任何違約金或限制</div></div>
-       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　個人資料嚴格保密　工作地點　薪資　<br>一切資訊都不會外流　<br>這是我對每一位女孩的承諾</div></div>
-       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>沒有經驗可以做嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全可以　我會從頭帶你了解整個流程　<br>新人反而更好　因為沒有壞習慣需要改正</div></div>
-       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>酒店薪水怎麼計算？</span><span class="faq-plus">+</span></button><div class="faq-answer">以節計算　每 10 分鐘一節　<br>台北禮服店節薪約 230 到 290 元　<br>詳細數字依店家不同　<br>我會在面試前完整說明　不會有任何隱藏費用</div></div>
-       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>可以只做短期嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　很多人只做幾個月應急　完全沒問題　<br>時間　天數都可以自己安排　<br>沒有最低上班要求</div></div>
-       <div id="faq-more" style="display:none; flex-direction:column; gap:10px;">
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>工作會不會被強迫做不想做的事？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　任何超出範圍的要求你都可以直接拒絕　<br>這是你的底線　沒有人可以強迫你</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>試做後覺得不適合　可以離開嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然可以　想來就來　想走就走　<br>沒有違約金也沒有任何限制</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>酒店一定要喝酒嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">在酒店上班一定會喝到酒的　<br>但喝不下可以直接跟客人說喝不下了　<br>客人最多把你換掉　他真的喜歡你也會留下你</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>我只是想了解　不想做可以嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全沒問題　問了不代表一定要來做　<br>我不會強迫任何人　<br>讓你在完全了解後自己做決定</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>白天有工作或有門禁怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">不用擔心　我配合的店家有各種類型<br>有午場也有晚場<br>不管是正職或兼職時間都能彈性安排</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>男朋友或家人怎麼隱瞞？</span><span class="faq-plus">+</span></button><div class="faq-answer">這個問題私訊我　我怕別人看到<br>但我有方法幫你解決</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>有規定一週要上幾天班嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊沒有規定　能上班就來上<br>只想一個月上 2 到 3 天賺零用錢　都可以</div></div>
-         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>上班要穿什麼？我不會打扮怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">都是以禮服高跟鞋為主<br>我會幫你準備新的一套送給你<br>髮妝也有專門的髮妝師幫你處理</div></div>
-       </div>
-       <div style="text-align:center; margin-top:16px;">
-         <button id="faq-toggle-btn" onclick="toggleMoreFaq()" style="background:transparent;border:1px solid rgba(200,169,110,0.35);color:var(--accent);padding:10px 28px;border-radius:999px;font-size:0.88rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.1em;box-shadow:inset 0 1px 0 rgba(200,169,110,0.07);transition:background 0.2s,border-color 0.2s;">觀看更多問題 ↓</button>
-       </div>
-     </div>
--    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="faq-line-banner">
-+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="faq-line-banner">
-       <div class="faq-line-icon">LINE</div>
-       <div class="faq-line-text">
-         <strong>還有其他問題　直接加我 LINE</strong>
-         <span>我會親自回覆　不是 AI 回覆</span>
-       </div>
-       <div class="faq-arrow">→</div>
-     </a>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- BLOG -->
- <section id="blog">
-   <div class="container">
-     <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">部落格</p>
-     <h2 class="section-title">熱門文章</h2>
-     <p class="section-desc">七年的觀察與心得<br/>寫給每一個正在考慮的你</p>
-     <div class="blog-grid" id="blog-grid">
-       <p class="blog-loading">載入中...</p>
-     </div>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- CONTACT -->
- <section id="contact">
-   <div class="container">
-     <div class="contact-inner">
-       <div class="contact-badge">有問必答</div>
-       <h2 style="font-size:clamp(1rem,2.5vw,1.3rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:0;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</h2>
-       <h2 style="font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 4px;">八大行業<br/>到底長什麼樣子</h2>
-       <h2 style="font-size:clamp(0.95rem,2vw,1.1rem);font-weight:400;color:#555;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;">不管你問什麼　我都有問必答</h2>
--      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="contact-cta-btn">點我詢問工作</a>
-+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn">點我詢問工作</a>
-       <p class="contact-note">我會親自回覆　不是 AI 回覆</p>
-     </div>
-   </div>
- </section>
- 
- <hr class="divider"/>
- 
- <!-- FOOTER -->
- <footer>
-   <p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p>
-   <p style="margin-top:10px; font-size:0.78rem; color:#444; letter-spacing:0.08em;">
-     本站累計瀏覽　<span id="total-views" style="color:var(--accent); font-weight:700;">0</span>　次
-   </p>
- </footer>
- 
- <script>
-   const hamburger = document.getElementById('hamburger');
-   const mobileMenu = document.getElementById('mobileMenu');
--  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
--  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
-+  function setMenuState(isOpen) {
-+    hamburger.classList.toggle('open', isOpen);
-+    mobileMenu.classList.toggle('open', isOpen);
-+    hamburger.setAttribute('aria-expanded', String(isOpen));
-+    document.body.style.overflow = isOpen ? 'hidden' : '';
-+  }
-+  hamburger.addEventListener('click', () => setMenuState(!mobileMenu.classList.contains('open')));
-+  function closeMenu() { setMenuState(false); }
-+  document.addEventListener('keydown', (e) => {
-+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
-+  });
- 
-   function animateCounter(el, target, duration, suffix) {
-     const start = Date.now();
-     const update = () => {
-       const elapsed = Date.now() - start;
-       const progress = Math.min(elapsed / duration, 1);
-       const ease = 1 - Math.pow(1 - progress, 3);
-       el.textContent = Math.floor(ease * target) + (suffix || '');
-       if (progress < 1) requestAnimationFrame(update);
-     };
-     requestAnimationFrame(update);
-   }
- 
-   function getInterviewCount() {
-     const startDate = new Date('2026-03-01');
-     const startCount = 3000; const today = new Date();
-     const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-     let total = startCount;
-     for (let i = 0; i < days; i++) {
-       const d = new Date(startDate); d.setDate(d.getDate() + i);
-       const seed = d.toISOString().slice(0, 10);
-       total += (seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1;
-     }
-     return total;
-   }
-@@ -811,86 +834,89 @@
-     const isOpen = item.classList.contains('open');
-     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-     if (!isOpen) item.classList.add('open');
-   }
- 
-   function toggleMoreFaq() {
-     const more = document.getElementById('faq-more');
-     const btn = document.getElementById('faq-toggle-btn');
-     if (more.style.display === 'none') { more.style.display = 'flex'; btn.textContent = '收起 ↑'; }
-     else { more.style.display = 'none'; btn.textContent = '觀看更多問題 ↓'; }
-   }
- 
-   function calcTotalViews() {
-     const startDate = new Date('2026-03-01'); const startCount = 28547;
-     const today = new Date();
-     const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-     let total = startCount;
-     for (let i = 0; i < days; i++) { const seed = i * 7919 + 3571; total += 543 + (seed % 701); }
-     document.getElementById('total-views').textContent = total.toLocaleString();
-   }
-   calcTotalViews();
- 
-   (function() {
-     const canvas = document.getElementById('velvet-bg');
-     const ctx = canvas.getContext('2d');
-+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-     canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
-     canvas.style.width = '100%'; canvas.style.height = '100%';
-     canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none';
-     let W, H;
-     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-     resize(); window.addEventListener('resize', resize);
-     let t = 0;
-     const folds = [
-       { x: 0.15, y: 0.10, tx: 0.75, ty: 0.55, speed: 0.00002, phase: 0.0 },
-       { x: 0.05, y: 0.40, tx: 0.60, ty: 0.90, speed: 0.00002, phase: 1.2 },
-       { x: 0.30, y: 0.00, tx: 0.95, ty: 0.70, speed: 0.00002, phase: 2.4 },
-     ];
-     function drawFold(fold, time) {
-       const drift = Math.sin(time * fold.speed * 1000 + fold.phase) * 0.06;
-       const x1 = (fold.x + drift) * W, y1 = (fold.y + drift * 0.5) * H;
-       const x2 = (fold.tx - drift) * W, y2 = (fold.ty - drift * 0.3) * H;
-       const len = Math.hypot(x2 - x1, y2 - y1);
-       const nx = -(y2 - y1) / len, ny = (x2 - x1) / len;
-       const w = Math.max(W, H) * (0.28 + Math.sin(time * fold.speed * 800 + fold.phase) * 0.04);
-       const grad = ctx.createLinearGradient(x1 + nx * w, y1 + ny * w, x1 - nx * w, y1 - ny * w);
-       grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.35, 'rgba(0,0,0,0)');
-       grad.addColorStop(0.48, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.50, 'rgba(95,92,88,0.13)');
-       grad.addColorStop(0.52, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.65, 'rgba(0,0,0,0)');
-       grad.addColorStop(1, 'rgba(0,0,0,0)');
-       ctx.save(); ctx.beginPath();
-       const ex = (x2 - x1) / len, ey = (y2 - y1) / len, ext = Math.max(W, H) * 2.0;
-       ctx.moveTo(x1 - ex * ext + nx * w, y1 - ey * ext + ny * w);
-       ctx.lineTo(x2 + ex * ext + nx * w, y2 + ey * ext + ny * w);
-       ctx.lineTo(x2 + ex * ext - nx * w, y2 + ey * ext - ny * w);
-       ctx.lineTo(x1 - ex * ext - nx * w, y1 - ey * ext - ny * w);
-       ctx.closePath(); ctx.fillStyle = grad; ctx.fill(); ctx.restore();
-     }
-     const bumps = [
-       { x: 0.55, y: 0.35, r: 0.42, speed: 0.000002, phase: 0.0 },
-       { x: 0.25, y: 0.65, r: 0.35, speed: 0.000002, phase: 1.8 },
-       { x: 0.75, y: 0.75, r: 0.30, speed: 0.000002, phase: 3.2 },
-     ];
-     function drawBump(bump, time) {
-       const drift = Math.sin(time * bump.speed * 1000 + bump.phase);
-       const cx = (bump.x + drift * 0.07) * W;
-       const cy = (bump.y + Math.cos(time * bump.speed * 800 + bump.phase) * 0.06) * H;
-       const r = bump.r * Math.max(W, H);
-       const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-       grad.addColorStop(0, 'rgba(88,85,80,0.20)'); grad.addColorStop(0.25, 'rgba(65,62,58,0.14)');
-       grad.addColorStop(0.55, 'rgba(30,28,26,0.07)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
-       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
-     }
-     function draw() {
-       t++; ctx.fillStyle = '#060606'; ctx.fillRect(0, 0, W, H);
--      bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
-+      if (!reduceMotion) {
-+        bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
-+      }
-       const vignette = ctx.createRadialGradient(W*0.5, H*0.45, 0, W*0.5, H*0.45, Math.max(W,H)*0.78);
-       vignette.addColorStop(0, 'rgba(0,0,0,0)'); vignette.addColorStop(0.55, 'rgba(0,0,0,0.18)');
-       vignette.addColorStop(0.80, 'rgba(0,0,0,0.55)'); vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
-       ctx.fillStyle = vignette; ctx.fillRect(0, 0, W, H);
--      requestAnimationFrame(draw);
-+      if (!document.hidden) requestAnimationFrame(draw);
-     }
-     draw();
-   })();
- </script>
- </body>
- </html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AS娛樂｜八大最誠實經紀 大頭</title>
+  <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北酒店公關招募諮詢完全免費。"/>
+  <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://as-ent-tw.com/"/>
+  <meta property="og:title" content="AS娛樂｜八大最誠實經紀 大頭"/>
+  <meta property="og:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://as-ent-tw.com/"/>
+  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- 結構化資料 SEO/AEO/GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "大頭",
+    "jobTitle": "八大行業經紀人",
+    "description": "七年八大行業從業經驗，個人面試超過3000位，台北最誠實的酒店公關經紀人",
+    "url": "https://as-ent-tw.com",
+    "sameAs": ["https://line.me/ti/p/tTUQTPHKrE"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"酒店公關需要簽合約嗎？","acceptedAnswer":{"@type":"Answer","text":"完全不需要。不靠合約綁住任何人，想來就來想走就走，沒有任何違約金或限制。"}},
+      {"@type":"Question","name":"做酒店打工家人或男友會知道嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。個人資料嚴格保密，工作地點、薪資一切資訊都不會外流。"}},
+      {"@type":"Question","name":"酒店公關沒有經驗可以做嗎？","acceptedAnswer":{"@type":"Answer","text":"完全可以。我會從頭帶你了解整個流程，新人反而更好，因為沒有壞習慣需要改正。"}},
+      {"@type":"Question","name":"台北酒店薪水怎麼計算？","acceptedAnswer":{"@type":"Answer","text":"以節計算，每10分鐘一節，台北禮服店節薪約230到290元，詳細數字依店家不同，面試前會完整說明。"}},
+      {"@type":"Question","name":"酒店打工可以只做短期嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。很多人只做幾個月應急，時間和天數都可以自己安排，沒有最低上班要求。"}},
+      {"@type":"Question","name":"酒店公關工作會被強迫做不想做的事嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。任何超出範圍的要求都可以直接拒絕，這是你的底線，沒有人可以強迫你。"}},
+      {"@type":"Question","name":"酒店一定要喝酒嗎？","acceptedAnswer":{"@type":"Answer","text":"在酒店上班一定會喝到酒，但喝不下可以直接跟客人說，客人最多把你換掉，他真的喜歡你也會留下你。"}},
+      {"@type":"Question","name":"酒店公關白天有工作或有門禁怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"不用擔心，配合的店家有各種類型，有午場也有晚場，正職或兼職時間都能彈性安排。"}},
+      {"@type":"Question","name":"酒店打工有規定一週要上幾天班嗎？","acceptedAnswer":{"@type":"Answer","text":"沒有規定，能上班就來上，只想一個月上2到3天賺零用錢也可以。"}},
+      {"@type":"Question","name":"做酒店公關上班要穿什麼？","acceptedAnswer":{"@type":"Answer","text":"都是以禮服高跟鞋為主，會幫你準備新的一套送給你，髮妝也有專門的髮妝師幫你處理。"}}
+    ]
+  }
+  </script>
+</head>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #141414; --card: #1a1a1a;
+      --border: #2a2a2a; --text: #f0f0f0; --muted: #888;
+      --accent: #c8a96e; --accent2: #e0c080;
+      --gold-border: rgba(200,169,110,0.25);
+      --gold-glow: rgba(200,169,110,0.08);
+      --line-green: #1a6b45;
+      --line-green-light: #22885a;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #080808; color: var(--text);
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 1.7; position: relative; isolation: isolate;
+    }
+    body::before, body::after { display: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px;
+      background: rgba(8,8,8,0.88); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 69px; left: 0; right: 0;
+      background: rgba(8,8,8,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border); z-index: 99;
+      flex-direction: column; padding: 16px 24px 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 1rem; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; letter-spacing: 0.06em; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 120px 24px 80px; position: relative; overflow: hidden; background: transparent;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 50% 100%, rgba(200,169,110,0.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    #hero > * { position: relative; z-index: 1; }
+
+    /* 膠囊標籤群 — 金屬光澤升級 */
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 36px; }
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(200,169,110,0.06) 0%, rgba(200,169,110,0.02) 100%);
+      border: 1px solid var(--gold-border);
+      color: var(--accent); font-size: 0.8rem; letter-spacing: 0.14em;
+      padding: 7px 20px; border-radius: 999px;
+      box-shadow: 0 0 12px rgba(200,169,110,0.06), inset 0 1px 0 rgba(200,169,110,0.1);
+      backdrop-filter: blur(8px);
+      transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .hero-badge:hover {
+      background: linear-gradient(135deg, rgba(200,169,110,0.12) 0%, rgba(200,169,110,0.06) 100%);
+      border-color: rgba(200,169,110,0.55);
+      box-shadow: 0 0 20px rgba(200,169,110,0.15), inset 0 1px 0 rgba(200,169,110,0.2);
+    }
+    .hero-badge-hot {
+      background: linear-gradient(135deg, rgba(200,169,110,0.14) 0%, rgba(224,192,128,0.08) 100%);
+      border-color: rgba(200,169,110,0.5);
+      color: var(--accent2); font-weight: 700;
+      box-shadow: 0 0 18px rgba(200,169,110,0.12), inset 0 1px 0 rgba(224,192,128,0.15);
+    }
+
+    /* Hero 標語 */
+    .hero-sub-shine {
+      font-size: 3.5rem !important; font-weight: 800; line-height: 1.6;
+      text-align: center; margin: 0 auto 40px; letter-spacing: 0.08em;
+    }
+    @media (max-width: 768px) { .hero-sub-shine { font-size: 2.4rem !important; } }
+    .hero-sub-shine span {
+      display: inline-block; color: transparent;
+      background: linear-gradient(90deg, #888 0%, #ffffff 40%, #c8a96e 60%, #888 100%);
+      background-size: 300% auto; -webkit-background-clip: text; background-clip: text;
+      animation: shine 6s linear infinite;
+    }
+    .hero-sub-shine span:nth-child(1)  { animation-delay: 0.00s; }
+    .hero-sub-shine span:nth-child(2)  { animation-delay: 0.18s; }
+    .hero-sub-shine span:nth-child(3)  { animation-delay: 0.36s; }
+    .hero-sub-shine span:nth-child(4)  { animation-delay: 0.54s; }
+    .hero-sub-shine span:nth-child(5)  { animation-delay: 0.72s; }
+    .hero-sub-shine span:nth-child(6)  { animation-delay: 0.90s; }
+    .hero-sub-shine span:nth-child(7)  { animation-delay: 1.08s; }
+    .hero-sub-shine span:nth-child(8)  { animation-delay: 1.26s; }
+    .hero-sub-shine span:nth-child(9)  { animation-delay: 1.44s; }
+    .hero-sub-shine span:nth-child(10) { animation-delay: 1.62s; }
+    .hero-sub-shine span:nth-child(11) { animation-delay: 1.80s; }
+    .hero-sub-shine span:nth-child(12) { animation-delay: 1.98s; }
+    .hero-sub-shine span:nth-child(13) { animation-delay: 2.16s; }
+    .hero-sub-shine span:nth-child(14) { animation-delay: 2.34s; }
+    .hero-sub-shine span:nth-child(15) { animation-delay: 2.52s; }
+    .hero-sub-shine span:nth-child(16) { animation-delay: 2.70s; }
+    @keyframes shine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+
+    /* Hero Pills — 精品標籤升級 */
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 48px; }
+    .hero-pill {
+      font-size: 0.8rem; letter-spacing: 0.18em; color: #c8c0b0;
+      padding: 6px 18px; border-radius: 999px;
+      border: 1px solid rgba(200,169,110,0.18);
+      background: linear-gradient(135deg, rgba(200,169,110,0.04), rgba(200,169,110,0.01));
+      box-shadow: inset 0 1px 0 rgba(200,169,110,0.07);
+    }
+
+    /* Hero Stats */
+    .hero-stats { display: flex; flex-direction: row; gap: 64px; justify-content: center; align-items: flex-start; margin-bottom: 48px; }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2.6rem; font-weight: 900; color: transparent;
+      background: linear-gradient(135deg, #c8a96e 0%, #e0c080 50%, #c8a96e 100%);
+      -webkit-background-clip: text; background-clip: text;
+      letter-spacing: 0.04em; line-height: 1.1;
+    }
+    .stat-label { font-size: 0.82rem; color: #888888; letter-spacing: 0.12em; margin-top: 6px; }
+
+    /* CTA Buttons */
+    .hero-cta { display: flex; flex-direction: row; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      color: #0a0a0a; font-weight: 800; font-size: 1rem;
+      padding: 14px 36px; border-radius: 999px;
+      text-decoration: none; letter-spacing: 0.1em;
+      box-shadow: 0 4px 24px rgba(200,169,110,0.3), 0 1px 0 rgba(255,255,255,0.15) inset;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,169,110,0.45); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.02); color: #aaaaaa; font-weight: 600; font-size: 1rem;
+      padding: 14px 36px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12); text-decoration: none; letter-spacing: 0.08em;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold-border); color: #ffffff; transform: translateY(-2px); background: rgba(200,169,110,0.04); }
+
+    /* SECTION BASE */
+    section { padding: 96px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; text-align: center; display: block; }
+    .section-title { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.25; margin-bottom: 20px; text-align: center; letter-spacing: 0.06em; }
+    .section-desc { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 56px; text-align: center; line-height: 2; letter-spacing: 0.05em; margin-left: auto; margin-right: auto; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    #about    { background: rgba(8,8,8,0.15); }
+    #features { background: rgba(8,8,8,0.10); }
+    #jobs     { background: rgba(8,8,8,0.15); }
+    #faq      { background: rgba(8,8,8,0.10); }
+    #blog     { background: rgba(8,8,8,0.10); }
+    #contact  { background: rgba(8,8,8,0.10); text-align: center; }
+    footer    { background: rgba(8,8,8,0.25); }
+
+    /* ABOUT 特色卡片 — 四邊金邊 + 光暈升級 */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-text p { color: var(--muted); margin-bottom: 20px; line-height: 2; letter-spacing: 0.05em; }
+    .about-text strong { color: var(--text); }
+    .about-text a { color: var(--accent); text-decoration: underline; }
+    .about-highlights { display: flex; flex-direction: column; gap: 14px; }
+    .highlight-item {
+      background: linear-gradient(135deg, rgba(22,18,12,0.9) 0%, rgba(16,14,10,0.85) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px; padding: 16px 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,169,110,0.08);
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .highlight-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.4), transparent);
+    }
+    .highlight-item:hover {
+      border-color: rgba(200,169,110,0.45);
+      box-shadow: 0 4px 24px rgba(200,169,110,0.08), 0 2px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,169,110,0.12);
+    }
+    .highlight-item h4 { font-size: 0.92rem; margin-bottom: 5px; letter-spacing: 0.06em; color: var(--accent2); font-weight: 700; }
+    .highlight-item p { font-size: 0.84rem; color: var(--muted); margin: 0; letter-spacing: 0.04em; }
+
+    /* FEATURES 卡片 — 頂部金線 + 光暈 */
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .feature-card {
+      background: linear-gradient(160deg, rgba(22,18,12,0.85) 0%, rgba(12,10,8,0.8) 100%);
+      border: 1px solid var(--gold-border);
+      padding: 32px 24px; border-radius: 16px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(200,169,110,0.08);
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s; text-align: center;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.5), transparent);
+    }
+    .feature-card:hover {
+      border-color: rgba(200,169,110,0.5); transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(200,169,110,0.1), 0 4px 24px rgba(0,0,0,0.35);
+    }
+    .feature-icon { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.2em; margin-bottom: 14px; color: rgba(200,169,110,0.6); text-transform: uppercase; }
+    .feature-card h3 { font-size: 1.05rem; margin-bottom: 10px; letter-spacing: 0.06em; color: var(--text); }
+    .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.9; letter-spacing: 0.04em; }
+
+    /* FAQ */
+    .faq-line-banner {
+      display: flex; align-items: center; gap: 16px;
+      background: linear-gradient(135deg, rgba(26,107,69,0.08), rgba(26,107,69,0.04));
+      border: 1px solid rgba(26,107,69,0.35);
+      border-radius: 14px; padding: 18px 24px; margin-top: 24px;
+      text-decoration: none; color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(34,136,90,0.1);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .faq-line-banner:hover {
+      border-color: rgba(34,136,90,0.55);
+      background: linear-gradient(135deg, rgba(26,107,69,0.14), rgba(26,107,69,0.08));
+      box-shadow: 0 0 20px rgba(26,107,69,0.1), inset 0 1px 0 rgba(34,136,90,0.15);
+    }
+    .faq-line-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 900; color: #fff; letter-spacing: 0.06em; flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(26,107,69,0.35);
+    }
+    .faq-line-text strong { display: block; font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: 0.05em; }
+    .faq-line-text span { font-size: 0.85rem; color: var(--muted); letter-spacing: 0.04em; }
+    .faq-arrow { margin-left: auto; font-size: 1.2rem; color: rgba(34,136,90,0.7); }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: linear-gradient(135deg, rgba(18,14,10,0.85), rgba(12,10,8,0.8));
+      border-radius: 12px;
+      border: 1px solid rgba(200,169,110,0.15);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(200,169,110,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .faq-item:hover { border-color: var(--gold-border); }
+    .faq-item.open {
+      border-color: rgba(200,169,110,0.4);
+      box-shadow: 0 0 16px rgba(200,169,110,0.07), inset 0 1px 0 rgba(200,169,110,0.1);
+    }
+    .faq-question {
+      width: 100%; background: none; border: none;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 24px; font-size: 1rem; font-weight: 700; color: var(--text);
+      cursor: pointer; text-align: left; font-family: 'Noto Sans TC', sans-serif; letter-spacing: 0.05em;
+    }
+    .faq-plus { font-size: 1.2rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-plus { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; padding: 0 24px; font-size: 0.9rem; color: var(--muted); line-height: 2; letter-spacing: 0.04em; }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+
+    /* BLOG 卡片 — 金邊 + 燙金封面 */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .blog-card {
+      background: linear-gradient(160deg, rgba(22,18,12,0.85), rgba(12,10,8,0.8));
+      border: 1px solid var(--gold-border);
+      border-radius: 14px; overflow: hidden; text-decoration: none; color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,169,110,0.06);
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s; display: flex; flex-direction: column;
+    }
+    .blog-card:hover {
+      border-color: rgba(200,169,110,0.5); transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(200,169,110,0.1), 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .blog-card-cover { width: 100%; height: 160px; object-fit: cover; }
+    .blog-card-cover-placeholder {
+  width: 100%; height: 160px;
+  background: rgba(255,255,255,0.03);
+  animation: shimmerBg 6s ease infinite;
+  background-size: 200% 200%;
+  display: flex; align-items: center; justify-content: center;
+}
+.blog-card-cover-placeholder::after {
+  content: '';
+  width: 120px; height: 120px;
+  background: url('/LOGO 白色.png') center/contain no-repeat;
+  opacity: 0.5;
+}
+.blog-card-cover-placeholder::after {
+  content: '';
+  width: 120px; height: 120px;
+  background: url('/LOGO 白色.png') center/contain no-repeat;
+  opacity: 0.5;
+}
+@keyframes shimmerBg {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+    .blog-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .blog-card-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .blog-card-views { font-size: 0.72rem; color: rgba(200,169,110,0.45); letter-spacing: 0.04em; }
+    .blog-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.04em; line-height: 1.5; }
+    .blog-card-summary { font-size: 0.85rem; color: var(--muted); flex: 1; line-height: 1.9; }
+    .blog-loading { color: var(--muted); text-align: center; padding: 40px; }
+
+    /* JOBS 卡片 — 頂部金線 + 包裝盒質感 */
+    .jobs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .job-card {
+      background: linear-gradient(160deg, rgba(20,16,10,0.9) 0%, rgba(12,10,8,0.85) 100%);
+      border: 1px solid var(--gold-border); border-radius: 16px;
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 20px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(200,169,110,0.08);
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .job-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.6), transparent);
+    }
+    .job-card:hover {
+      border-color: rgba(200,169,110,0.45); transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(200,169,110,0.08), 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .job-card-header { display: flex; justify-content: space-between; align-items: center; }
+    .job-card-title { font-size: 1.3rem; font-weight: 800; color: var(--text); letter-spacing: 0.06em; }
+    .job-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; letter-spacing: 0.06em; }
+    .badge-pr    { background: rgba(200,169,110,0.1); color: var(--accent); border: 1px solid rgba(200,169,110,0.35); box-shadow: 0 0 8px rgba(200,169,110,0.08); }
+    .badge-agent { background: rgba(240,240,240,0.06); color: #c8c0b0; border: 1px solid rgba(240,240,240,0.15); }
+    .badge-beauty{ background: rgba(240,240,240,0.06); color: #c8c0b0; border: 1px solid rgba(240,240,240,0.15); }
+    .job-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 2; letter-spacing: 0.04em; }
+    .job-card-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .job-card-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: #d8d0c0; letter-spacing: 0.04em; }
+    .job-card-perks li::before { content: '—'; color: rgba(200,169,110,0.6); font-weight: 700; flex-shrink: 0; }
+
+    /* CONTACT */
+    .contact-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .contact-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.03));
+      border: 1px solid var(--gold-border); color: var(--accent);
+      font-size: 0.78rem; letter-spacing: 0.16em; padding: 6px 20px;
+      border-radius: 999px; margin-bottom: 8px;
+      box-shadow: 0 0 12px rgba(200,169,110,0.06), inset 0 1px 0 rgba(200,169,110,0.1);
+    }
+    .contact-cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      color: #0a0a0a; font-weight: 800; font-size: 1.1rem;
+      padding: 16px 52px; border-radius: 999px; text-decoration: none; letter-spacing: 0.1em;
+      box-shadow: 0 4px 32px rgba(200,169,110,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s; margin-top: 16px;
+    }
+    .contact-cta-btn:hover { background: linear-gradient(135deg, #e0c080, #c8a96e); transform: translateY(-3px); box-shadow: 0 8px 40px rgba(200,169,110,0.45); }
+    .contact-note { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.06em; margin-top: 12px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--gold-border); padding: 32px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.06em; }
+    footer span { color: var(--accent); }
+
+    /* 浮動 LINE — 祖母綠質感 */
+    .float-line {
+      position: fixed; bottom: 28px; right: 24px; z-index: 200;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.88rem;
+      padding: 11px 22px; border-radius: 999px; text-decoration: none;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(34,136,90,0.4);
+      box-shadow: 0 4px 20px rgba(26,107,69,0.35), 0 1px 0 rgba(255,255,255,0.08) inset;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-line:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26,107,69,0.5), 0 1px 0 rgba(255,255,255,0.08) inset;
+    }
+    .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) { .jobs-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 36px; }
+      .stat-num { font-size: 2rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .float-line { bottom: 20px; right: 16px; font-size: 0.82rem; padding: 10px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="velvet-bg"></canvas>
+
+<!-- 浮動 LINE 按鈕 -->
+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="float-line">
+  <span class="float-line-dot"></span>
+  <span>立即加 LINE</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.png" alt="AS娛樂"/>
+    <span style="font-size:1.1rem; font-weight:400; letter-spacing:0.18em; color:#ffffff; font-family:'Noto Serif TC', serif;">AS娛樂</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於我</a>
+    <a href="#features">為什麼選我</a>
+    <a href="#jobs">職缺</a>
+    <a href="#faq">常見問題</a>
+    <a href="#blog">部落格</a>
+    <a href="#contact">聯絡我</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- 手機選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">關於我</a>
+  <a href="#features" onclick="closeMenu()">為什麼選我</a>
+  <a href="#jobs" onclick="closeMenu()">職缺</a>
+  <a href="#faq" onclick="closeMenu()">常見問題</a>
+  <a href="#blog" onclick="closeMenu()">部落格</a>
+  <a href="#contact" onclick="closeMenu()">聯絡我</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badges">
+    <span class="hero-badge">全台最多人詢問</span>
+    <span class="hero-badge">八大最誠實經紀</span>
+    <span class="hero-badge">七年從業經驗</span>
+    <span class="hero-badge">有問必答</span>
+  </div>
+  <p class="hero-sub-shine">
+    <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
+    <br/>
+    <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
+  </p>
+  <div class="hero-pills">
+    <span class="hero-pill">不簽合約</span>
+    <span class="hero-pill">不壓薪水</span>
+    <span class="hero-pill">自由排班</span>
+    <span class="hero-pill">隱私安全</span>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num" id="counter-years">0</div>
+      <div class="stat-label">從業年資</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+      <div class="stat-label">個人面試人數</div>
+    </div>
+  </div>
+  <div class="hero-cta">
+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="btn-primary">立即詢問 LINE</a>
+    <a href="#about" class="btn-outline">了解更多</a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent); text-align:left;">關於我</p>
+        <h2 style="text-align:left; font-size:clamp(1.4rem,3vw,2rem); font-weight:800; line-height:1.4; margin-bottom:20px; letter-spacing:0.06em;">大頭<br/>八大最誠實經紀人</h2>
+        <p>在八大行業　<strong>誠實是最稀缺的東西</strong></p>
+        <p>我從業七年　個人面試超過 3000 位女孩<br/>見過太多人因為資訊不透明而受傷</p>
+        <p>我的原則只有一個　<strong>把真實的情況告訴你</strong><br/>讓你在完全了解後再做決定　沒有任何壓力</p>
+        <p>想找我可以 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank">直接點擊 LINE 詢問</a></p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item"><h4>完全透明</h4><p>薪資　環境　工作內容全程說清楚　沒有隱藏扣款</p></div>
+        <div class="highlight-item"><h4>不簽合約</h4><p>不靠簽約綁住人　只靠真誠留住你</p></div>
+        <div class="highlight-item"><h4>不壓薪水</h4><p>每週六固定發薪　想現領也可以</p></div>
+        <div class="highlight-item"><h4>隱私保護</h4><p>個人資料嚴格保密　不必告知家人　男友　朋友</p></div>
+        <div class="highlight-item"><h4>真人陪伴</h4><p>不是 AI 客服　有問題隨時找我　都是本人回覆</p></div>
+        <div class="highlight-item"><h4>專業引導</h4><p>七年經驗帶你少走彎路　找到最適合你的方向</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">選我的優勢</p>
+    <h2 class="section-title">業界最誠實的承諾</h2>
+    <p class="section-desc">誠實 不話術 只講實話<br/>這是我七年來唯一的做事方式</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">薪資透明</div>
+        <h3>上班前說清楚</h3>
+        <p>入行前完整說明計算方式<br/>不會有隱藏費用或事後扣款</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">安全第一</div>
+        <h3>你的底線你決定</h3>
+        <p>工作環境事先評估<br/>任何超出範圍的要求都可以直接拒絕</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">時間彈性</div>
+        <h3>配合你的行程</h3>
+        <p>可短期　兼職或配合自己的行程<br/>不綁定任何合約</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">一對一服務</div>
+        <h3>量身規劃方向</h3>
+        <p>每個人的情況都不同<br/>我會根據你的狀況給出最適合的建議</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- JOBS -->
+<section id="jobs">
+  <div class="container">
+    <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">職缺資訊</p>
+    <h2 class="section-title">目前開放職缺</h2>
+    <p class="section-desc">每個職位都有簡易說明<br/>找到最適合你的方向</p>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-card-header">
+          <div class="job-card-title">酒店公關</div>
+          <span class="job-badge badge-pr">熱門</span>
+        </div>
+        <div class="job-card-desc">禮服店　便禮店　便服店<br/>依個人條件安排最適合的店型</div>
+        <ul class="job-card-perks">
+          <li>節薪 230 到 290 元起</li>
+          <li>自由排班　彈性兼職</li>
+          <li>新人全程帶領</li>
+          <li>隱私 100% 保護</li>
+        </ul>
+      </div>
+      <div class="job-card">
+        <div class="job-card-header">
+          <div class="job-card-title">經紀人</div>
+          <span class="job-badge badge-agent">菁英</span>
+        </div>
+        <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
+        <ul class="job-card-perks">
+          <li>高額獎金制度</li>
+          <li>團隊分潤機制</li>
+          <li>完整培訓系統</li>
+          <li>有無經驗皆可</li>
+        </ul>
+      </div>
+      <div class="job-card">
+        <div class="job-card-header">
+          <div class="job-card-title">紓壓按摩</div>
+          <span class="job-badge badge-beauty">不用喝酒</span>
+        </div>
+        <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
+        <ul class="job-card-perks">
+          <li>不用喝酒熬夜</li>
+          <li>日薪平均可達三萬起</li>
+          <li>環境安全隱私</li>
+          <li>一天 4 小時也可以</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="btn-primary" style="font-size:1.05rem; padding:15px 52px;">加 LINE 詢問職缺</a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">常見問題</p>
+    <h2 class="section-title">你可能想問的事</h2>
+    <p class="section-desc">有任何問題都可以直接問我<br/>這裡先回答最常見的幾個問題</p>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>需要簽合約嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全不需要　我不靠合約綁住任何人　<br>想來就來　想走就走　<br>沒有任何違約金或限制</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　個人資料嚴格保密　工作地點　薪資　<br>一切資訊都不會外流　<br>這是我對每一位女孩的承諾</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>沒有經驗可以做嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全可以　我會從頭帶你了解整個流程　<br>新人反而更好　因為沒有壞習慣需要改正</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>酒店薪水怎麼計算？</span><span class="faq-plus">+</span></button><div class="faq-answer">以節計算　每 10 分鐘一節　<br>台北禮服店節薪約 230 到 290 元　<br>詳細數字依店家不同　<br>我會在面試前完整說明　不會有任何隱藏費用</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>可以只做短期嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　很多人只做幾個月應急　完全沒問題　<br>時間　天數都可以自己安排　<br>沒有最低上班要求</div></div>
+      <div id="faq-more" style="display:none; flex-direction:column; gap:10px;">
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>工作會不會被強迫做不想做的事？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　任何超出範圍的要求你都可以直接拒絕　<br>這是你的底線　沒有人可以強迫你</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>試做後覺得不適合　可以離開嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然可以　想來就來　想走就走　<br>沒有違約金也沒有任何限制</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>酒店一定要喝酒嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">在酒店上班一定會喝到酒的　<br>但喝不下可以直接跟客人說喝不下了　<br>客人最多把你換掉　他真的喜歡你也會留下你</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>我只是想了解　不想做可以嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全沒問題　問了不代表一定要來做　<br>我不會強迫任何人　<br>讓你在完全了解後自己做決定</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>白天有工作或有門禁怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">不用擔心　我配合的店家有各種類型<br>有午場也有晚場<br>不管是正職或兼職時間都能彈性安排</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>男朋友或家人怎麼隱瞞？</span><span class="faq-plus">+</span></button><div class="faq-answer">這個問題私訊我　我怕別人看到<br>但我有方法幫你解決</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>有規定一週要上幾天班嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊沒有規定　能上班就來上<br>只想一個月上 2 到 3 天賺零用錢　都可以</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>上班要穿什麼？我不會打扮怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">都是以禮服高跟鞋為主<br>我會幫你準備新的一套送給你<br>髮妝也有專門的髮妝師幫你處理</div></div>
+      </div>
+      <div style="text-align:center; margin-top:16px;">
+        <button id="faq-toggle-btn" onclick="toggleMoreFaq()" style="background:transparent;border:1px solid rgba(200,169,110,0.35);color:var(--accent);padding:10px 28px;border-radius:999px;font-size:0.88rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.1em;box-shadow:inset 0 1px 0 rgba(200,169,110,0.07);transition:background 0.2s,border-color 0.2s;">觀看更多問題 ↓</button>
+      </div>
+    </div>
+    <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="faq-line-banner">
+      <div class="faq-line-icon">LINE</div>
+      <div class="faq-line-text">
+        <strong>還有其他問題　直接加我 LINE</strong>
+        <span>我會親自回覆　不是 AI 回覆</span>
+      </div>
+      <div class="faq-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <p class="section-label" style="font-size:1.8rem; font-weight:800; color: var(--accent);">部落格</p>
+    <h2 class="section-title">熱門文章</h2>
+    <p class="section-desc">七年的觀察與心得<br/>寫給每一個正在考慮的你</p>
+    <div class="blog-grid" id="blog-grid">
+      <p class="blog-loading">載入中...</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-badge">有問必答</div>
+      <h2 style="font-size:clamp(1rem,2.5vw,1.3rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:0;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</h2>
+      <h2 style="font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 4px;">八大行業<br/>到底長什麼樣子</h2>
+      <h2 style="font-size:clamp(0.95rem,2vw,1.1rem);font-weight:400;color:#555;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;">不管你問什麼　我都有問必答</h2>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="contact-cta-btn">點我詢問工作</a>
+      <p class="contact-note">我會親自回覆　不是 AI 回覆</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p>
+  <p style="margin-top:10px; font-size:0.78rem; color:#444; letter-spacing:0.08em;">
+    本站累計瀏覽　<span id="total-views" style="color:var(--accent); font-weight:700;">0</span>　次
+  </p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+
+  function animateCounter(el, target, duration, suffix) {
+    const start = Date.now();
+    const update = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + (suffix || '');
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  function getInterviewCount() {
+    const startDate = new Date('2026-03-01');
+    const startCount = 3000; const today = new Date();
+    const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    let total = startCount;
+    for (let i = 0; i < days; i++) {
+      const d = new Date(startDate); d.setDate(d.getDate() + i);
+      const seed = d.toISOString().slice(0, 10);
+      total += (seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1;
+    }
+    return total;
+  }
+
+  const heroSection = document.getElementById('hero');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(document.getElementById('counter-years'), 7, 1200, '年');
+        animateCounter(document.getElementById('counter-interviews'), getInterviewCount(), 1800);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(heroSection);
+
+  function getBaseViews(slug) {
+    let hash = 0;
+    for (let i = 0; i < slug.length; i++) hash = (hash * 31 + slug.charCodeAt(i)) & 0xffffffff;
+    return 1235 + (Math.abs(hash) % (4257 - 1235 + 1));
+  }
+  function getDailyAdd(slug, days) {
+    let total = 0;
+    for (let i = 0; i < days; i++) {
+      let seed = 0; const s = slug + i;
+      for (let j = 0; j < s.length; j++) seed = (seed * 31 + s.charCodeAt(j)) & 0xffffffff;
+      total += 543 + (Math.abs(seed) % 701);
+    }
+    return total;
+  }
+  function calcViews(slug, publishDate) {
+    const pub = new Date(publishDate); const today = new Date();
+    const days = Math.max(0, Math.floor((today - pub) / (1000 * 60 * 60 * 24)));
+    return (getBaseViews(slug) + getDailyAdd(slug, days)).toLocaleString();
+  }
+
+  async function loadBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts');
+      const posts = await res.json();
+      if (!posts.length) { grid.innerHTML = '<p class="blog-loading">目前還沒有文章　敬請期待</p>'; return; }
+      const shown = posts.slice(0, 3);
+      grid.innerHTML = shown.map(post => `
+        <a class="blog-card" href="/post.html?slug=${post.slug}">
+          ${post.cover ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}"/>` : `<div class="blog-card-cover-placeholder"></div>`}
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <div class="blog-card-date">${post.date}</div>
+              <div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div>
+            </div>
+            <div class="blog-card-title">${post.title}</div>
+            <div class="blog-card-summary">${post.summary || ''}</div>
+          </div>
+        </a>
+      `).join('');
+      if (posts.length > 3) {
+        grid.insertAdjacentHTML('afterend', `<div style="text-align:center;margin-top:32px;"><a href="/blog.html" style="color:var(--accent);border:1px solid rgba(200,169,110,0.35);padding:12px 32px;border-radius:999px;text-decoration:none;font-size:0.92rem;letter-spacing:0.1em;box-shadow:inset 0 1px 0 rgba(200,169,110,0.07);">觀看更多文章 →</a></div>`);
+      }
+    } catch(e) { grid.innerHTML = '<p class="blog-loading">文章載入失敗　請稍後再試</p>'; }
+  }
+  loadBlog();
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function toggleMoreFaq() {
+    const more = document.getElementById('faq-more');
+    const btn = document.getElementById('faq-toggle-btn');
+    if (more.style.display === 'none') { more.style.display = 'flex'; btn.textContent = '收起 ↑'; }
+    else { more.style.display = 'none'; btn.textContent = '觀看更多問題 ↓'; }
+  }
+
+  function calcTotalViews() {
+    const startDate = new Date('2026-03-01'); const startCount = 28547;
+    const today = new Date();
+    const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    let total = startCount;
+    for (let i = 0; i < days; i++) { const seed = i * 7919 + 3571; total += 543 + (seed % 701); }
+    document.getElementById('total-views').textContent = total.toLocaleString();
+  }
+  calcTotalViews();
+
+  (function() {
+    const canvas = document.getElementById('velvet-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
+    canvas.style.width = '100%'; canvas.style.height = '100%';
+    canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none';
+    let W, H;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    let t = 0;
+    const folds = [
+      { x: 0.15, y: 0.10, tx: 0.75, ty: 0.55, speed: 0.00002, phase: 0.0 },
+      { x: 0.05, y: 0.40, tx: 0.60, ty: 0.90, speed: 0.00002, phase: 1.2 },
+      { x: 0.30, y: 0.00, tx: 0.95, ty: 0.70, speed: 0.00002, phase: 2.4 },
+    ];
+    function drawFold(fold, time) {
+      const drift = Math.sin(time * fold.speed * 1000 + fold.phase) * 0.06;
+      const x1 = (fold.x + drift) * W, y1 = (fold.y + drift * 0.5) * H;
+      const x2 = (fold.tx - drift) * W, y2 = (fold.ty - drift * 0.3) * H;
+      const len = Math.hypot(x2 - x1, y2 - y1);
+      const nx = -(y2 - y1) / len, ny = (x2 - x1) / len;
+      const w = Math.max(W, H) * (0.28 + Math.sin(time * fold.speed * 800 + fold.phase) * 0.04);
+      const grad = ctx.createLinearGradient(x1 + nx * w, y1 + ny * w, x1 - nx * w, y1 - ny * w);
+      grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.35, 'rgba(0,0,0,0)');
+      grad.addColorStop(0.48, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.50, 'rgba(95,92,88,0.13)');
+      grad.addColorStop(0.52, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.65, 'rgba(0,0,0,0)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.save(); ctx.beginPath();
+      const ex = (x2 - x1) / len, ey = (y2 - y1) / len, ext = Math.max(W, H) * 2.0;
+      ctx.moveTo(x1 - ex * ext + nx * w, y1 - ey * ext + ny * w);
+      ctx.lineTo(x2 + ex * ext + nx * w, y2 + ey * ext + ny * w);
+      ctx.lineTo(x2 + ex * ext - nx * w, y2 + ey * ext - ny * w);
+      ctx.lineTo(x1 - ex * ext - nx * w, y1 - ey * ext - ny * w);
+      ctx.closePath(); ctx.fillStyle = grad; ctx.fill(); ctx.restore();
+    }
+    const bumps = [
+      { x: 0.55, y: 0.35, r: 0.42, speed: 0.000002, phase: 0.0 },
+      { x: 0.25, y: 0.65, r: 0.35, speed: 0.000002, phase: 1.8 },
+      { x: 0.75, y: 0.75, r: 0.30, speed: 0.000002, phase: 3.2 },
+    ];
+    function drawBump(bump, time) {
+      const drift = Math.sin(time * bump.speed * 1000 + bump.phase);
+      const cx = (bump.x + drift * 0.07) * W;
+      const cy = (bump.y + Math.cos(time * bump.speed * 800 + bump.phase) * 0.06) * H;
+      const r = bump.r * Math.max(W, H);
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      grad.addColorStop(0, 'rgba(88,85,80,0.20)'); grad.addColorStop(0.25, 'rgba(65,62,58,0.14)');
+      grad.addColorStop(0.55, 'rgba(30,28,26,0.07)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+    }
+    function draw() {
+      t++; ctx.fillStyle = '#060606'; ctx.fillRect(0, 0, W, H);
+      bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
+      const vignette = ctx.createRadialGradient(W*0.5, H*0.45, 0, W*0.5, H*0.45, Math.max(W,H)*0.78);
+      vignette.addColorStop(0, 'rgba(0,0,0,0)'); vignette.addColorStop(0.55, 'rgba(0,0,0,0.18)');
+      vignette.addColorStop(0.80, 'rgba(0,0,0,0.55)'); vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
+      ctx.fillStyle = vignette; ctx.fillRect(0, 0, W, H);
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+</body>
+</html>
