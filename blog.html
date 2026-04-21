@@ -1,290 +1,255 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/blog.html b/blog.html
-index f1cad12f6010ebe442ed2c592b0a5b14ceb1a4be..82d791c3c4fa46f6d0b40e9e1041fefaf7769be8 100644
---- a/blog.html
-+++ b/blog.html
-@@ -1,48 +1,64 @@
- <!DOCTYPE html>
- <html lang="zh-TW">
-+<head>
- <script type="application/ld+json">
- {
-   "@context": "https://schema.org",
-   "@type": "Blog",
-   "name": "AS娛樂｜大頭的部落格",
-   "description": "七年八大行業經驗，分享最真實的酒店公關入行知識",
-   "url": "https://as-ent-tw.com/blog.html",
-   "author": {
-     "@type": "Person",
-     "name": "大頭",
-     "jobTitle": "八大行業經紀人",
-     "url": "https://as-ent-tw.com"
-   }
- }
- </script>
--<head>
-+
-   <meta charset="UTF-8"/>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
--  <title>部落格｜AS娛樂</title>
-+  <title>酒店公關部落格｜AS娛樂 大頭</title>
-+  <meta name="author" content="AS娛樂 大頭"/>
-+  <meta name="theme-color" content="#0a0a0a"/>
-   <meta name="description" content="AS娛樂大頭的部落格，七年八大行業經驗，分享最真實的酒店公關入行知識。"/>
-   <link rel="canonical" href="https://as-ent-tw.com/blog.html"/>
-+  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/blog.html"/>
-+  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/blog.html"/>
-+  <meta property="og:title" content="酒店公關部落格｜AS娛樂 大頭"/>
-+  <meta property="og:description" content="七年八大行業經驗，分享最真實的酒店公關入行知識與面試建議。"/>
-+  <meta property="og:type" content="website"/>
-+  <meta property="og:url" content="https://as-ent-tw.com/blog.html"/>
-+  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
-+  <meta name="twitter:card" content="summary_large_image"/>
-+  <meta name="twitter:title" content="酒店公關部落格｜AS娛樂 大頭"/>
-+  <meta name="twitter:description" content="七年八大行業經驗，分享最真實的酒店公關入行知識與面試建議。"/>
-+  <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
-+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
-   <style>
-     * { margin: 0; padding: 0; box-sizing: border-box; }
-     :root {
-       --bg: #0a0a0a; --border: #2a2a2a; --text: #f0f0f0; --muted: #888;
-       --accent: #c8a96e; --accent2: #e0c080; --surface: #141414;
-       --gold-border: rgba(200,169,110,0.25);
-       --line-green: #1a6b45; --line-green-light: #22885a;
-     }
-     body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
- 
-     nav {
-       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-       display: flex; justify-content: space-between; align-items: center;
-       padding: 14px 40px; background: rgba(8,8,8,0.88);
-       backdrop-filter: blur(16px); border-bottom: 1px solid var(--gold-border);
-     }
-     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-     .nav-logo img { height: 40px; width: auto; display: block; }
-     .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
-     .back-btn { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
-     .back-btn:hover { color: var(--accent); }
- 
-     .wrap { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
-     .page-title {
-@@ -97,159 +113,205 @@
-       display: inline-flex; align-items: center; gap: 8px;
-       background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
-       color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.88rem;
-       padding: 11px 22px; border-radius: 999px; text-decoration: none;
-       letter-spacing: 0.08em;
-       border: 1px solid rgba(34,136,90,0.4);
-       box-shadow: 0 4px 20px rgba(26,107,69,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
-       transition: transform 0.2s, box-shadow 0.2s;
-     }
-     .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.5); }
-     .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
- 
-     footer { border-top: 1px solid var(--gold-border); padding: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; background: rgba(8,8,8,0.25); }
-     footer span { color: var(--accent); }
- 
-     @media (max-width: 640px) {
-       nav { padding: 14px 20px; }
-       .wrap { padding: 100px 20px 60px; }
-       .float-line { bottom: 20px; right: 16px; font-size: 0.82rem; padding: 10px 18px; }
-     }
-   </style>
- </head>
- <body>
-   <canvas id="velvet-bg"></canvas>
- 
--<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="float-line">
-+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line">
-   <span class="float-line-dot"></span>
-   <span>立即加 LINE</span>
- </a>
- 
- <nav>
-   <a href="https://as-ent-tw.com" class="nav-logo">
-     <img src="/logo.png" alt="AS娛樂"/>
-     <span>AS娛樂</span>
-   </a>
-   <a href="https://as-ent-tw.com" class="back-btn">← 返回主頁</a>
- </nav>
- 
- <div class="wrap">
-   <h1 class="page-title">所有文章</h1>
-   <p class="page-desc">七年的觀察與心得　寫給每一個正在考慮的你</p>
-   <div class="blog-grid" id="blog-grid">
-     <p class="blog-loading">載入中...</p>
-   </div>
- </div>
- 
- <footer><p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p></footer>
- 
- <script>
-+  const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
-+  const FALLBACK_POSTS = [
-+    {
-+      slug: 'hotel-pr-job-guide',
-+      title: '酒店公關是什麼？新手入門完整指南',
-+      summary: '從工作內容、排班方式到常見誤解，一次帶你看懂。',
-+      date: '2026-01-12',
-+      cover: ''
-+    },
-+    {
-+      slug: 'salary-and-risk',
-+      title: '薪資、風險與保護：面試前你一定要知道',
-+      summary: '談薪水之前，先知道哪些資訊一定要問清楚。',
-+      date: '2026-01-26',
-+      cover: ''
-+    },
-+    {
-+      slug: 'part-time-and-privacy',
-+      title: '兼職與隱私：如何安全安排你的時間',
-+      summary: '給有正職、學生或有門禁需求的你，實際可行的建議。',
-+      date: '2026-02-08',
-+      cover: ''
-+    }
-+  ];
-+
-   function getBaseViews(slug) {
-     let hash = 0;
-     for (let i = 0; i < slug.length; i++) hash = (hash * 31 + slug.charCodeAt(i)) & 0xffffffff;
-     return 1235 + (Math.abs(hash) % (4257 - 1235 + 1));
-   }
-   function getDailyAdd(slug, days) {
-     let total = 0;
-     for (let i = 0; i < days; i++) {
-       let seed = 0; const s = slug + i;
-       for (let j = 0; j < s.length; j++) seed = (seed * 31 + s.charCodeAt(j)) & 0xffffffff;
-       total += 543 + (Math.abs(seed) % 701);
-     }
-     return total;
-   }
-   function calcViews(slug, publishDate) {
-     const pub = new Date(publishDate); const today = new Date();
-     const days = Math.max(0, Math.floor((today - pub) / (1000 * 60 * 60 * 24)));
-     return (getBaseViews(slug) + getDailyAdd(slug, days)).toLocaleString();
-   }
- 
-   async function loadBlog() {
-     const grid = document.getElementById('blog-grid');
--    try {
--      const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts');
--      const posts = await res.json();
--      if (!posts.length) { grid.innerHTML = '<p class="blog-loading">目前還沒有文章</p>'; return; }
-+    const renderPosts = (posts) => {
-       grid.innerHTML = posts.map(post => `
-         <a class="blog-card" href="/post.html?slug=${post.slug}">
-           ${post.cover
--            ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}"/>`
-+            ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}" loading="lazy" decoding="async"/>`
-             : `<div class="blog-card-cover-placeholder"></div>`}
-           <div class="blog-card-body">
-             <div class="blog-card-meta">
-               <div class="blog-card-date">${post.date}</div>
-               <div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div>
-             </div>
-             <div class="blog-card-title">${post.title}</div>
-             <div class="blog-card-summary">${post.summary || ''}</div>
-           </div>
-         </a>
-       `).join('');
-+    };
-+
-+    try {
-+      const controller = new AbortController();
-+      const timeout = setTimeout(() => controller.abort(), 4500);
-+      const res = await fetch(`${WORKER}/posts`, { signal: controller.signal });
-+      clearTimeout(timeout);
-+      if (!res.ok) throw new Error('bad response');
-+      const posts = await res.json();
-+      if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
-+      renderPosts(posts);
-     } catch(e) {
--      grid.innerHTML = '<p class="blog-loading">載入失敗　請稍後再試</p>';
-+      renderPosts(FALLBACK_POSTS);
-     }
-   }
-   loadBlog();
- 
-   // 流動絲絨背景
-   (function() {
-     const canvas = document.getElementById('velvet-bg');
-     const ctx = canvas.getContext('2d');
-+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-     canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
-     canvas.style.width = '100%'; canvas.style.height = '100%';
-     canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none';
-     let W, H;
-     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-     resize(); window.addEventListener('resize', resize);
-     let t = 0;
-     const folds = [
-       { x: 0.15, y: 0.10, tx: 0.75, ty: 0.55, speed: 0.00002, phase: 0.0 },
-       { x: 0.05, y: 0.40, tx: 0.60, ty: 0.90, speed: 0.00002, phase: 1.2 },
-       { x: 0.30, y: 0.00, tx: 0.95, ty: 0.70, speed: 0.00002, phase: 2.4 },
-     ];
-     function drawFold(fold, time) {
-       const drift = Math.sin(time * fold.speed * 1000 + fold.phase) * 0.06;
-       const x1 = (fold.x + drift) * W, y1 = (fold.y + drift * 0.5) * H;
-       const x2 = (fold.tx - drift) * W, y2 = (fold.ty - drift * 0.3) * H;
-       const len = Math.hypot(x2 - x1, y2 - y1);
-       const nx = -(y2 - y1) / len, ny = (x2 - x1) / len;
-       const w = Math.max(W, H) * (0.28 + Math.sin(time * fold.speed * 800 + fold.phase) * 0.04);
-       const grad = ctx.createLinearGradient(x1 + nx * w, y1 + ny * w, x1 - nx * w, y1 - ny * w);
-       grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.35, 'rgba(0,0,0,0)');
-       grad.addColorStop(0.48, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.50, 'rgba(95,92,88,0.13)');
-       grad.addColorStop(0.52, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.65, 'rgba(0,0,0,0)');
-       grad.addColorStop(1, 'rgba(0,0,0,0)');
-       ctx.save(); ctx.beginPath();
-       const ex = (x2-x1)/len, ey = (y2-y1)/len, ext = Math.max(W,H)*2.0;
-       ctx.moveTo(x1-ex*ext+nx*w, y1-ey*ext+ny*w); ctx.lineTo(x2+ex*ext+nx*w, y2+ey*ext+ny*w);
-       ctx.lineTo(x2+ex*ext-nx*w, y2+ey*ext-ny*w); ctx.lineTo(x1-ex*ext-nx*w, y1-ey*ext-ny*w);
-       ctx.closePath(); ctx.fillStyle = grad; ctx.fill(); ctx.restore();
-     }
-     const bumps = [
-       { x: 0.55, y: 0.35, r: 0.42, speed: 0.000002, phase: 0.0 },
-       { x: 0.25, y: 0.65, r: 0.35, speed: 0.000002, phase: 1.8 },
-       { x: 0.75, y: 0.75, r: 0.30, speed: 0.000002, phase: 3.2 },
-     ];
-     function drawBump(bump, time) {
-       const drift = Math.sin(time * bump.speed * 1000 + bump.phase);
-       const cx = (bump.x + drift * 0.07) * W;
-       const cy = (bump.y + Math.cos(time * bump.speed * 800 + bump.phase) * 0.06) * H;
-       const r = bump.r * Math.max(W, H);
-       const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-       grad.addColorStop(0, 'rgba(88,85,80,0.20)'); grad.addColorStop(0.25, 'rgba(65,62,58,0.14)');
-       grad.addColorStop(0.55, 'rgba(30,28,26,0.07)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
-       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
-     }
-     function draw() {
-       t++; ctx.fillStyle = '#060606'; ctx.fillRect(0, 0, W, H);
--      bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
-+      if (!reduceMotion) {
-+        bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
-+      }
-       const vignette = ctx.createRadialGradient(W*0.5, H*0.45, 0, W*0.5, H*0.45, Math.max(W,H)*0.78);
-       vignette.addColorStop(0, 'rgba(0,0,0,0)'); vignette.addColorStop(0.55, 'rgba(0,0,0,0.18)');
-       vignette.addColorStop(0.80, 'rgba(0,0,0,0.55)'); vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
-       ctx.fillStyle = vignette; ctx.fillRect(0, 0, W, H);
--      requestAnimationFrame(draw);
-+      if (!document.hidden) requestAnimationFrame(draw);
-     }
-     draw();
-   })();
- </script>
-+<script type="application/ld+json">
-+{
-+  "@context": "https://schema.org",
-+  "@type": "BreadcrumbList",
-+  "itemListElement": [
-+    {"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},
-+    {"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"}
-+  ]
-+}
-+</script>
- </body>
- </html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="zh-TW">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "AS娛樂｜大頭的部落格",
+  "description": "七年八大行業經驗，分享最真實的酒店公關入行知識",
+  "url": "https://as-ent-tw.com/blog.html",
+  "author": {
+    "@type": "Person",
+    "name": "大頭",
+    "jobTitle": "八大行業經紀人",
+    "url": "https://as-ent-tw.com"
+  }
+}
+</script>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>部落格｜AS娛樂</title>
+  <meta name="description" content="AS娛樂大頭的部落格，七年八大行業經驗，分享最真實的酒店公關入行知識。"/>
+  <link rel="canonical" href="https://as-ent-tw.com/blog.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --border: #2a2a2a; --text: #f0f0f0; --muted: #888;
+      --accent: #c8a96e; --accent2: #e0c080; --surface: #141414;
+      --gold-border: rgba(200,169,110,0.25);
+      --line-green: #1a6b45; --line-green-light: #22885a;
+    }
+    body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px; background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
+    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
+    .page-title {
+      font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-align: center;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .page-desc { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 48px; letter-spacing: 0.05em; line-height: 2; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .blog-card {
+      background: linear-gradient(160deg, rgba(22,18,12,0.85), rgba(12,10,8,0.8));
+      border: 1px solid var(--gold-border);
+      border-radius: 14px; overflow: hidden; text-decoration: none; color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(200,169,110,0.06);
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .blog-card:hover {
+      border-color: rgba(200,169,110,0.5); transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(200,169,110,0.1), 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .blog-card-cover-placeholder {
+  width: 100%; height: 160px;
+  background: rgba(255,255,255,0.03);
+  animation: shimmerBg 6s ease infinite;
+  background-size: 200% 200%;
+  display: flex; align-items: center; justify-content: center;
+}
+.blog-card-cover-placeholder::after {
+  content: '';
+  width: 120px; height: 120px;
+  background: url('/LOGO 白色.png') center/contain no-repeat;
+  opacity: 0.5;
+}
+@keyframes shimmerBg {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+    .blog-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .blog-card-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .blog-card-views { font-size: 0.72rem; color: rgba(200,169,110,0.45); letter-spacing: 0.04em; }
+    .blog-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; line-height: 1.5; word-break: keep-all; }
+    .blog-card-summary { font-size: 0.85rem; color: var(--muted); flex: 1; line-height: 1.9; word-break: keep-all; }
+    .blog-loading { color: var(--muted); text-align: center; padding: 40px; grid-column: 1/-1; }
+
+    /* 浮動 LINE — 祖母綠 */
+    .float-line {
+      position: fixed; bottom: 28px; right: 24px; z-index: 200;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.88rem;
+      padding: 11px 22px; border-radius: 999px; text-decoration: none;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(34,136,90,0.4);
+      box-shadow: 0 4px 20px rgba(26,107,69,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.5); }
+    .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+
+    footer { border-top: 1px solid var(--gold-border); padding: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; background: rgba(8,8,8,0.25); }
+    footer span { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .wrap { padding: 100px 20px 60px; }
+      .float-line { bottom: 20px; right: 16px; font-size: 0.82rem; padding: 10px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="velvet-bg"></canvas>
+
+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" class="float-line">
+  <span class="float-line-dot"></span>
+  <span>立即加 LINE</span>
+</a>
+
+<nav>
+  <a href="https://as-ent-tw.com" class="nav-logo">
+    <img src="/logo.png" alt="AS娛樂"/>
+    <span>AS娛樂</span>
+  </a>
+  <a href="https://as-ent-tw.com" class="back-btn">← 返回主頁</a>
+</nav>
+
+<div class="wrap">
+  <h1 class="page-title">所有文章</h1>
+  <p class="page-desc">七年的觀察與心得　寫給每一個正在考慮的你</p>
+  <div class="blog-grid" id="blog-grid">
+    <p class="blog-loading">載入中...</p>
+  </div>
+</div>
+
+<footer><p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p></footer>
+
+<script>
+  function getBaseViews(slug) {
+    let hash = 0;
+    for (let i = 0; i < slug.length; i++) hash = (hash * 31 + slug.charCodeAt(i)) & 0xffffffff;
+    return 1235 + (Math.abs(hash) % (4257 - 1235 + 1));
+  }
+  function getDailyAdd(slug, days) {
+    let total = 0;
+    for (let i = 0; i < days; i++) {
+      let seed = 0; const s = slug + i;
+      for (let j = 0; j < s.length; j++) seed = (seed * 31 + s.charCodeAt(j)) & 0xffffffff;
+      total += 543 + (Math.abs(seed) % 701);
+    }
+    return total;
+  }
+  function calcViews(slug, publishDate) {
+    const pub = new Date(publishDate); const today = new Date();
+    const days = Math.max(0, Math.floor((today - pub) / (1000 * 60 * 60 * 24)));
+    return (getBaseViews(slug) + getDailyAdd(slug, days)).toLocaleString();
+  }
+
+  async function loadBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts');
+      const posts = await res.json();
+      if (!posts.length) { grid.innerHTML = '<p class="blog-loading">目前還沒有文章</p>'; return; }
+      grid.innerHTML = posts.map(post => `
+        <a class="blog-card" href="/post.html?slug=${post.slug}">
+          ${post.cover
+            ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}"/>`
+            : `<div class="blog-card-cover-placeholder"></div>`}
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <div class="blog-card-date">${post.date}</div>
+              <div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div>
+            </div>
+            <div class="blog-card-title">${post.title}</div>
+            <div class="blog-card-summary">${post.summary || ''}</div>
+          </div>
+        </a>
+      `).join('');
+    } catch(e) {
+      grid.innerHTML = '<p class="blog-loading">載入失敗　請稍後再試</p>';
+    }
+  }
+  loadBlog();
+
+  // 流動絲絨背景
+  (function() {
+    const canvas = document.getElementById('velvet-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
+    canvas.style.width = '100%'; canvas.style.height = '100%';
+    canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none';
+    let W, H;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    let t = 0;
+    const folds = [
+      { x: 0.15, y: 0.10, tx: 0.75, ty: 0.55, speed: 0.00002, phase: 0.0 },
+      { x: 0.05, y: 0.40, tx: 0.60, ty: 0.90, speed: 0.00002, phase: 1.2 },
+      { x: 0.30, y: 0.00, tx: 0.95, ty: 0.70, speed: 0.00002, phase: 2.4 },
+    ];
+    function drawFold(fold, time) {
+      const drift = Math.sin(time * fold.speed * 1000 + fold.phase) * 0.06;
+      const x1 = (fold.x + drift) * W, y1 = (fold.y + drift * 0.5) * H;
+      const x2 = (fold.tx - drift) * W, y2 = (fold.ty - drift * 0.3) * H;
+      const len = Math.hypot(x2 - x1, y2 - y1);
+      const nx = -(y2 - y1) / len, ny = (x2 - x1) / len;
+      const w = Math.max(W, H) * (0.28 + Math.sin(time * fold.speed * 800 + fold.phase) * 0.04);
+      const grad = ctx.createLinearGradient(x1 + nx * w, y1 + ny * w, x1 - nx * w, y1 - ny * w);
+      grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.35, 'rgba(0,0,0,0)');
+      grad.addColorStop(0.48, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.50, 'rgba(95,92,88,0.13)');
+      grad.addColorStop(0.52, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.65, 'rgba(0,0,0,0)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.save(); ctx.beginPath();
+      const ex = (x2-x1)/len, ey = (y2-y1)/len, ext = Math.max(W,H)*2.0;
+      ctx.moveTo(x1-ex*ext+nx*w, y1-ey*ext+ny*w); ctx.lineTo(x2+ex*ext+nx*w, y2+ey*ext+ny*w);
+      ctx.lineTo(x2+ex*ext-nx*w, y2+ey*ext-ny*w); ctx.lineTo(x1-ex*ext-nx*w, y1-ey*ext-ny*w);
+      ctx.closePath(); ctx.fillStyle = grad; ctx.fill(); ctx.restore();
+    }
+    const bumps = [
+      { x: 0.55, y: 0.35, r: 0.42, speed: 0.000002, phase: 0.0 },
+      { x: 0.25, y: 0.65, r: 0.35, speed: 0.000002, phase: 1.8 },
+      { x: 0.75, y: 0.75, r: 0.30, speed: 0.000002, phase: 3.2 },
+    ];
+    function drawBump(bump, time) {
+      const drift = Math.sin(time * bump.speed * 1000 + bump.phase);
+      const cx = (bump.x + drift * 0.07) * W;
+      const cy = (bump.y + Math.cos(time * bump.speed * 800 + bump.phase) * 0.06) * H;
+      const r = bump.r * Math.max(W, H);
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      grad.addColorStop(0, 'rgba(88,85,80,0.20)'); grad.addColorStop(0.25, 'rgba(65,62,58,0.14)');
+      grad.addColorStop(0.55, 'rgba(30,28,26,0.07)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+    }
+    function draw() {
+      t++; ctx.fillStyle = '#060606'; ctx.fillRect(0, 0, W, H);
+      bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
+      const vignette = ctx.createRadialGradient(W*0.5, H*0.45, 0, W*0.5, H*0.45, Math.max(W,H)*0.78);
+      vignette.addColorStop(0, 'rgba(0,0,0,0)'); vignette.addColorStop(0.55, 'rgba(0,0,0,0.18)');
+      vignette.addColorStop(0.80, 'rgba(0,0,0,0.55)'); vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
+      ctx.fillStyle = vignette; ctx.fillRect(0, 0, W, H);
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+</body>
+</html>
