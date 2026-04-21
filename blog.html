@@ -211,19 +211,25 @@
   };
 
   async function loadBlog() {
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 4500);
-      const res = await fetch(`${WORKER}/posts`, { signal: controller.signal });
-      clearTimeout(timeout);
-      if (!res.ok) throw new Error('bad response');
-      const posts = await res.json();
-      if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
-      renderPosts(posts);
-    } catch(e) {
-      renderPosts(FALLBACK_POSTS);
-    }
+  const grid = document.getElementById('blog-grid');
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch(`${WORKER}/posts`, {
+      signal: controller.signal,
+      mode: 'cors',   // ← 加這行
+      cache: 'no-cache'  // ← 加這行，避免快取舊的壞資料
+    });
+    clearTimeout(timeout);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const posts = await res.json();
+    if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
+    renderPosts(posts);
+  } catch(e) {
+    console.error('Blog load error:', e); // ← 方便 debug
+    renderPosts(FALLBACK_POSTS);
   }
+}
   loadBlog();
 
   (function() {
