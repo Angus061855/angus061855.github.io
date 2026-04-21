@@ -182,6 +182,36 @@
       const post = await res.json();
 
       document.title = `${post.title} | AS娛樂`;
+      
+      // 動態注入文章結構化資料
+const schema = document.createElement('script');
+schema.type = 'application/ld+json';
+schema.text = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.summary || '',
+  "datePublished": post.date,
+  "author": {
+    "@type": "Person",
+    "name": "大頭",
+    "jobTitle": "八大行業經紀人",
+    "url": "https://as-ent-tw.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AS娛樂",
+    "url": "https://as-ent-tw.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://as-ent-tw.com/post.html?slug=${slug}`
+  }
+});
+document.head.appendChild(schema);
+
+// 動態更新 meta description
+document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
       document.getElementById('meta').textContent = post.date;
       document.getElementById('views').textContent = calcViews(slug, post.date);
       document.getElementById('title').textContent = post.title;
