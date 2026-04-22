@@ -546,16 +546,6 @@
     .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .back-to-top:hover { border-color: rgba(200,169,110,0.5); background: rgba(30,24,14,0.95); }
 
-    /* 自訂游標 */
-    * { cursor: default; }
-    a, button, [onclick] { cursor: pointer; }
-    .custom-cursor {
-      position: fixed; width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(200,169,110,0.7); pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%); transition: transform 0.1s, background 0.2s, width 0.2s, height 0.2s;
-    }
-    .custom-cursor.on-gold { width: 14px; height: 14px; background: rgba(224,192,128,0.9); box-shadow: 0 0 8px rgba(200,169,110,0.5); }
-
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .jobs-grid { grid-template-columns: 1fr; }
@@ -589,7 +579,6 @@
 </a>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
-<div class="custom-cursor" id="customCursor"></div>
 
 <nav id="mainNav">
   <div class="nav-logo">
@@ -659,8 +648,8 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text fade-up">
-        <p class="section-label" style="font-size:1.6rem; font-weight:700; color:var(--accent); text-align:left; letter-spacing:0.06em;">關於我</p>
-        <h2 style="text-align:left; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; line-height:1.4; margin-bottom:20px; letter-spacing:0.06em; font-family:'Noto Serif TC',serif;">大頭<br/>八大最誠實經紀人</h2>
+        <p class="section-label" style="font-size:1.6rem; font-weight:700; color:var(--accent); text-align:center; letter-spacing:0.06em;">關於我</p>
+        <h2 style="text-align:center; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; line-height:1.4; margin-bottom:20px; letter-spacing:0.06em; font-family:'Noto Serif TC',serif;">大頭<br/>八大最誠實經紀人</h2>
         <p>在八大行業　<strong>誠實是最稀缺的東西</strong></p>
         <p>我從業七年　個人面試超過 3000 位女孩<br/>見過太多人因為資訊不透明而受傷</p>
         <p>我的原則只有一個　<strong>把真實的情況告訴你</strong><br/>讓你在完全了解後再做決定　沒有任何壓力</p>
@@ -820,7 +809,7 @@
     backToTop.classList.toggle('visible', y > 400);
     // 往下滑縮小浮動按鈕
     if (y > lastScrollY + 10) floatLine.classList.add('compact');
-    else if (y < lastScrollY - 10) floatLine.classList.remove('compact');
+    else floatLine.classList.remove('compact');
     lastScrollY = y;
     // Hero 視差
     const hero = document.getElementById('hero');
@@ -853,19 +842,6 @@
     });
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-  // 自訂游標
-  const cursor = document.getElementById('customCursor');
-  const goldEls = () => document.querySelectorAll('a, button, .feature-card, .job-card, .blog-card, .faq-question, .hero-badge');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest('a, button, .feature-card, .job-card, .blog-card, .faq-question, .hero-badge')) {
-      cursor.classList.add('on-gold');
-    } else { cursor.classList.remove('on-gold'); }
-  });
 
   // 計數器
   function animateCounter(el, target, duration, suffix) {
