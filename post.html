@@ -23,76 +23,104 @@
   <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/post.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #0a0a0a; --surface: #141414;
-      --border: #2a2a2a; --text: #f0f0f0;
+      --bg: #0a0a0a; --surface: #111111;
+      --border: #242424; --text: #f0f0f0;
       --muted: #888; --accent: #c8a96e; --accent2: #e0c080;
       --line-green: #1a6b45; --line-green-light: #22885a;
+      --radius-btn: 4px; --radius-card: 6px;
     }
     body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
+
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 40px; background: rgba(10,10,10,0.88);
-      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.12);
+      padding: 14px 40px; background: rgba(6,6,6,0.96);
+      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15);
     }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
     .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
-    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; transition: color 0.2s; }
     .back-btn:hover { color: var(--accent); }
 
     .wrap { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
-    .meta { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; }
-    .views { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; color: rgba(200,169,110,0.5); }
+    .meta { display: flex; align-items: center; gap: 16px; font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; }
+    .views { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; color: rgba(200,169,110,0.45); }
 
     .title {
-      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: var(--accent);
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--accent);
       line-height: 1.45; margin-bottom: 16px;
-      word-break: keep-all; overflow-wrap: break-word; letter-spacing: 0.02em;
+      word-break: keep-all; overflow-wrap: break-word;
+      letter-spacing: 0.02em;
+      font-family: 'Noto Serif TC', serif;
     }
     .summary {
       font-size: 1rem; color: var(--muted);
       padding-bottom: 2rem; margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border); line-height: 2;
+      border-bottom: 1px solid rgba(200,169,110,0.12); line-height: 2;
       word-break: keep-all; overflow-wrap: break-word;
     }
-    .cover { width: 100%; border-radius: 12px; margin-bottom: 2rem; object-fit: cover; max-height: 400px; display: none; }
-    .body { font-size: 1rem; line-height: 2; color: #ccc; }
-    .body p { margin-bottom: 1.5em; word-break: keep-all; overflow-wrap: break-word; }
+    .cover { width: 100%; border-radius: var(--radius-card); margin-bottom: 2rem; object-fit: cover; max-height: 400px; display: none; }
+
+    .body { font-size: 1rem; line-height: 2.1; color: #c8c8c8; }
+    .body p { margin-bottom: 1.6em; word-break: keep-all; overflow-wrap: break-word; }
     .body h2 {
-      font-size: 1.2rem; font-weight: 800; color: var(--accent);
-      margin: 2.4em 0 0.8em; letter-spacing: 0.04em;
-      padding-bottom: 0.4em; border-bottom: 1px solid rgba(200,169,110,0.2);
+      font-size: 1.15rem; font-weight: 700; color: var(--accent);
+      margin: 2.6em 0 0.8em; letter-spacing: 0.04em;
+      padding-bottom: 0.4em;
+      border-bottom: 1px solid rgba(200,169,110,0.15);
       word-break: keep-all; overflow-wrap: break-word;
+      font-family: 'Noto Serif TC', serif;
     }
-    .body .list-item { padding-left: 1.2em; margin-bottom: 0.8em; color: #ccc; word-break: keep-all; overflow-wrap: break-word; }
+    .body .list-item { padding-left: 1.2em; margin-bottom: 0.8em; color: #c8c8c8; word-break: keep-all; overflow-wrap: break-word; }
+
     .state { text-align: center; padding: 4rem; color: var(--muted); font-size: 1rem; }
     .error { color: #e05555; }
+
+    /* 文章底部 LINE 橫幅 */
+    .post-cta {
+      margin-top: 3rem; padding: 24px;
+      border: 1px solid rgba(26,107,69,0.3);
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, rgba(26,107,69,0.07), rgba(26,107,69,0.03));
+      text-align: center;
+    }
+    .post-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.05em; line-height: 1.8; }
+    .post-cta a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+      padding: 10px 28px; border-radius: var(--radius-btn); text-decoration: none;
+      letter-spacing: 0.08em; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(26,107,69,0.25);
+    }
+    .post-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,107,69,0.35); }
 
     .float-line {
       position: fixed; bottom: 28px; right: 24px; z-index: 200;
       display: inline-flex; align-items: center; gap: 8px;
       background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
-      color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.88rem;
-      padding: 11px 22px; border-radius: 999px; text-decoration: none;
-      letter-spacing: 0.08em; border: 1px solid rgba(34,136,90,0.4);
-      box-shadow: 0 4px 20px rgba(26,107,69,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.85rem;
+      padding: 10px 20px; border-radius: var(--radius-btn); text-decoration: none;
+      letter-spacing: 0.08em; border: 1px solid rgba(34,136,90,0.35);
+      box-shadow: 0 4px 20px rgba(26,107,69,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.5); }
+    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.45); }
     .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
 
-    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer { background: var(--surface); border-top: 1px solid rgba(200,169,110,0.1); padding: 24px; text-align: center; color: #555; font-size: 0.82rem; }
     footer span { color: var(--accent); }
 
     @media (max-width: 640px) {
       nav { padding: 14px 20px; }
       .wrap { padding: 100px 20px 60px; }
-      .float-line { bottom: 20px; right: 16px; font-size: 0.82rem; padding: 10px 18px; }
+      .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
     }
   </style>
 </head>
@@ -123,6 +151,10 @@
     <p class="summary" id="summary"></p>
     <img class="cover" id="cover" alt="封面"/>
     <div class="body" id="body"></div>
+    <div class="post-cta">
+      <p>看完有問題嗎？或是想進一步了解？<br/>直接加我 LINE，我都會親自回覆。</p>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費諮詢</a>
+    </div>
   </div>
   <div class="state error" id="error" style="display:none">
     找不到這篇文章<br/>
@@ -137,25 +169,9 @@
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
 
-  function getBaseViews(slug) {
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) hash = (hash * 31 + slug.charCodeAt(i)) & 0xffffffff;
-    return 1235 + (Math.abs(hash) % (4257 - 1235 + 1));
-  }
-  function getDailyAdd(slug, days) {
-    let total = 0;
-    for (let i = 0; i < days; i++) {
-      let seed = 0; const s = slug + i;
-      for (let j = 0; j < s.length; j++) seed = (seed * 31 + s.charCodeAt(j)) & 0xffffffff;
-      total += 543 + (Math.abs(seed) % 701);
-    }
-    return total;
-  }
-  function calcViews(slug, publishDate) {
-    const pub = new Date(publishDate); const today = new Date();
-    const days = Math.max(0, Math.floor((today - pub) / (1000 * 60 * 60 * 24)));
-    return (getBaseViews(slug) + getDailyAdd(slug, days)).toLocaleString();
-  }
+  function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
+  function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
+  function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
 
   async function loadPost() {
     const slug = new URLSearchParams(window.location.search).get('slug');
@@ -171,27 +187,23 @@
       document.title = `${post.title}｜AS娛樂 大頭`;
       const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
 
-      // 動態注入文章結構化資料
       const schema = document.createElement('script');
       schema.type = 'application/ld+json';
       schema.text = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": post.title,
-        "description": post.summary || '',
-        "datePublished": post.date,
-        "author": { "@type": "Person", "name": "大頭", "jobTitle": "八大行業經紀人", "url": "https://as-ent-tw.com" },
-        "publisher": { "@type": "Organization", "name": "AS娛樂", "url": "https://as-ent-tw.com" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl }
+        "@context":"https://schema.org","@type":"Article",
+        "headline":post.title,"description":post.summary||'',
+        "datePublished":post.date,
+        "author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"},
+        "publisher":{"@type":"Organization","name":"AS娛樂","url":"https://as-ent-tw.com"},
+        "mainEntityOfPage":{"@type":"WebPage","@id":postUrl}
       });
       document.head.appendChild(schema);
 
       const breadcrumb = document.createElement('script');
       breadcrumb.type = 'application/ld+json';
       breadcrumb.text = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
+        "@context":"https://schema.org","@type":"BreadcrumbList",
+        "itemListElement":[
           {"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},
           {"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"},
           {"@type":"ListItem","position":3,"name":post.title,"item":postUrl}
@@ -199,7 +211,6 @@
       });
       document.head.appendChild(breadcrumb);
 
-      // 動態更新 meta
       document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
       document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
       document.querySelector('meta[property="og:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
@@ -219,22 +230,15 @@
       for (const line of lines) {
         const t = line.trim();
         if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
-        if (t.match(/^\d+\./)) {
-          html += `<p class="list-item">${t}</p>`;
-        } else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) {
-          html += `<h2>${t}</h2>`;
-        } else {
-          html += `<p>${t}</p>`;
-        }
+        if (t.match(/^\d+\./)) { html += `<p class="list-item">${t}</p>`; }
+        else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${t}</h2>`; }
+        else { html += `<p>${t}</p>`; }
       }
       bodyEl.innerHTML = html;
 
       if (post.cover) {
         const img = document.getElementById('cover');
-        img.src = post.cover;
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.style.display = 'block';
+        img.src = post.cover; img.loading = 'lazy'; img.decoding = 'async'; img.style.display = 'block';
       }
 
       document.getElementById('loading').style.display = 'none';
@@ -253,60 +257,44 @@
     const canvas = document.getElementById('velvet-bg');
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
-    canvas.style.width = '100%'; canvas.style.height = '100%';
-    canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none';
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
     let W, H;
     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
     resize(); window.addEventListener('resize', resize);
     let t = 0;
-    const folds = [
-      { x: 0.15, y: 0.10, tx: 0.75, ty: 0.55, speed: 0.00002, phase: 0.0 },
-      { x: 0.05, y: 0.40, tx: 0.60, ty: 0.90, speed: 0.00002, phase: 1.2 },
-      { x: 0.30, y: 0.00, tx: 0.95, ty: 0.70, speed: 0.00002, phase: 2.4 },
-    ];
-    function drawFold(fold, time) {
-      const drift = Math.sin(time * fold.speed * 1000 + fold.phase) * 0.06;
-      const x1 = (fold.x + drift) * W, y1 = (fold.y + drift * 0.5) * H;
-      const x2 = (fold.tx - drift) * W, y2 = (fold.ty - drift * 0.3) * H;
-      const len = Math.hypot(x2 - x1, y2 - y1);
-      const nx = -(y2 - y1) / len, ny = (x2 - x1) / len;
-      const w = Math.max(W, H) * (0.28 + Math.sin(time * fold.speed * 800 + fold.phase) * 0.04);
-      const grad = ctx.createLinearGradient(x1 + nx * w, y1 + ny * w, x1 - nx * w, y1 - ny * w);
-      grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.35, 'rgba(0,0,0,0)');
-      grad.addColorStop(0.48, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.50, 'rgba(95,92,88,0.13)');
-      grad.addColorStop(0.52, 'rgba(72,70,68,0.08)'); grad.addColorStop(0.65, 'rgba(0,0,0,0)');
-      grad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.save(); ctx.beginPath();
-      const ex = (x2-x1)/len, ey = (y2-y1)/len, ext = Math.max(W,H)*2.0;
-      ctx.moveTo(x1-ex*ext+nx*w, y1-ey*ext+ny*w); ctx.lineTo(x2+ex*ext+nx*w, y2+ey*ext+ny*w);
-      ctx.lineTo(x2+ex*ext-nx*w, y2+ey*ext-ny*w); ctx.lineTo(x1-ex*ext-nx*w, y1-ey*ext-ny*w);
-      ctx.closePath(); ctx.fillStyle = grad; ctx.fill(); ctx.restore();
+    const folds = [{x:0.15,y:0.10,tx:0.75,ty:0.55,speed:0.00002,phase:0.0},{x:0.05,y:0.40,tx:0.60,ty:0.90,speed:0.00002,phase:1.2},{x:0.30,y:0.00,tx:0.95,ty:0.70,speed:0.00002,phase:2.4}];
+    function drawFold(f, time) {
+      const drift=Math.sin(time*f.speed*1000+f.phase)*0.06;
+      const x1=(f.x+drift)*W,y1=(f.y+drift*0.5)*H,x2=(f.tx-drift)*W,y2=(f.ty-drift*0.3)*H;
+      const len=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/len,ny=(x2-x1)/len;
+      const w=Math.max(W,H)*(0.28+Math.sin(time*f.speed*800+f.phase)*0.04);
+      const grad=ctx.createLinearGradient(x1+nx*w,y1+ny*w,x1-nx*w,y1-ny*w);
+      grad.addColorStop(0,'rgba(0,0,0,0)');grad.addColorStop(0.35,'rgba(0,0,0,0)');
+      grad.addColorStop(0.48,'rgba(72,70,68,0.08)');grad.addColorStop(0.50,'rgba(95,92,88,0.13)');
+      grad.addColorStop(0.52,'rgba(72,70,68,0.08)');grad.addColorStop(0.65,'rgba(0,0,0,0)');
+      grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.save();ctx.beginPath();
+      const ex=(x2-x1)/len,ey=(y2-y1)/len,ext=Math.max(W,H)*2;
+      ctx.moveTo(x1-ex*ext+nx*w,y1-ey*ext+ny*w);ctx.lineTo(x2+ex*ext+nx*w,y2+ey*ext+ny*w);
+      ctx.lineTo(x2+ex*ext-nx*w,y2+ey*ext-ny*w);ctx.lineTo(x1-ex*ext-nx*w,y1-ey*ext-ny*w);
+      ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.restore();
     }
-    const bumps = [
-      { x: 0.55, y: 0.35, r: 0.42, speed: 0.000002, phase: 0.0 },
-      { x: 0.25, y: 0.65, r: 0.35, speed: 0.000002, phase: 1.8 },
-      { x: 0.75, y: 0.75, r: 0.30, speed: 0.000002, phase: 3.2 },
-    ];
-    function drawBump(bump, time) {
-      const drift = Math.sin(time * bump.speed * 1000 + bump.phase);
-      const cx = (bump.x + drift * 0.07) * W;
-      const cy = (bump.y + Math.cos(time * bump.speed * 800 + bump.phase) * 0.06) * H;
-      const r = bump.r * Math.max(W, H);
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      grad.addColorStop(0, 'rgba(88,85,80,0.20)'); grad.addColorStop(0.25, 'rgba(65,62,58,0.14)');
-      grad.addColorStop(0.55, 'rgba(30,28,26,0.07)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+    const bumps = [{x:0.55,y:0.35,r:0.42,speed:0.000002,phase:0.0},{x:0.25,y:0.65,r:0.35,speed:0.000002,phase:1.8},{x:0.75,y:0.75,r:0.30,speed:0.000002,phase:3.2}];
+    function drawBump(b, time) {
+      const drift=Math.sin(time*b.speed*1000+b.phase);
+      const cx=(b.x+drift*0.07)*W,cy=(b.y+Math.cos(time*b.speed*800+b.phase)*0.06)*H,r=b.r*Math.max(W,H);
+      const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      grad.addColorStop(0,'rgba(88,85,80,0.20)');grad.addColorStop(0.25,'rgba(65,62,58,0.14)');
+      grad.addColorStop(0.55,'rgba(30,28,26,0.07)');grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
     }
     function draw() {
-      t++; ctx.fillStyle = '#060606'; ctx.fillRect(0, 0, W, H);
-      if (!reduceMotion) {
-        bumps.forEach(b => drawBump(b, t)); folds.forEach(f => drawFold(f, t));
-      }
-      const vignette = ctx.createRadialGradient(W*0.5, H*0.45, 0, W*0.5, H*0.45, Math.max(W,H)*0.78);
-      vignette.addColorStop(0, 'rgba(0,0,0,0)'); vignette.addColorStop(0.55, 'rgba(0,0,0,0.18)');
-      vignette.addColorStop(0.80, 'rgba(0,0,0,0.55)'); vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
-      ctx.fillStyle = vignette; ctx.fillRect(0, 0, W, H);
+      t++;ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
+      if (!reduceMotion) { bumps.forEach(b=>drawBump(b,t)); folds.forEach(f=>drawFold(f,t)); }
+      const v=ctx.createRadialGradient(W*0.5,H*0.45,0,W*0.5,H*0.45,Math.max(W,H)*0.78);
+      v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(0.55,'rgba(0,0,0,0.18)');
+      v.addColorStop(0.80,'rgba(0,0,0,0.55)');v.addColorStop(1,'rgba(0,0,0,0.85)');
+      ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
       if (!document.hidden) requestAnimationFrame(draw);
     }
     draw();
