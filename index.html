@@ -568,6 +568,82 @@
   </style>
 </head>
 <body>
+
+<!-- 入場動畫 -->
+<div id="intro-overlay" style="position:fixed;inset:0;z-index:9999;background:#080808;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;">
+  <canvas id="intro-particles" style="position:absolute;inset:0;pointer-events:none;"></canvas>
+  <div id="intro-glow" style="position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(ellipse,rgba(200,169,110,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%) scale(0);pointer-events:none;transition:transform 0.9s ease;"></div>
+  <div class="intro-line-h" id="iLineTop" style="position:absolute;top:56px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,0.8),transparent);width:0%;left:50%;transform:translateX(-50%);transition:width 0.65s cubic-bezier(0.4,0,0.2,1);"></div>
+  <div class="intro-line-h" id="iLineBottom" style="position:absolute;bottom:56px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,0.8),transparent);width:0%;left:50%;transform:translateX(-50%);transition:width 0.65s cubic-bezier(0.4,0,0.2,1);"></div>
+  <div id="iLineLeft" style="position:absolute;left:56px;width:1px;background:linear-gradient(180deg,transparent,rgba(200,169,110,0.8),transparent);height:0%;top:50%;transform:translateY(-50%);transition:height 0.65s cubic-bezier(0.4,0,0.2,1);"></div>
+  <div id="iLineRight" style="position:absolute;right:56px;width:1px;background:linear-gradient(180deg,transparent,rgba(200,169,110,0.8),transparent);height:0%;top:50%;transform:translateY(-50%);transition:height 0.65s cubic-bezier(0.4,0,0.2,1);"></div>
+  <div style="position:absolute;top:54px;left:54px;width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.95);box-shadow:0 0 8px rgba(200,169,110,0.7);opacity:0;transition:opacity 0.3s;" class="intro-dot"></div>
+  <div style="position:absolute;top:54px;right:54px;width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.95);box-shadow:0 0 8px rgba(200,169,110,0.7);opacity:0;transition:opacity 0.3s;" class="intro-dot"></div>
+  <div style="position:absolute;bottom:54px;left:54px;width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.95);box-shadow:0 0 8px rgba(200,169,110,0.7);opacity:0;transition:opacity 0.3s;" class="intro-dot"></div>
+  <div style="position:absolute;bottom:54px;right:54px;width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.95);box-shadow:0 0 8px rgba(200,169,110,0.7);opacity:0;transition:opacity 0.3s;" class="intro-dot"></div>
+  <div id="intro-badge" style="font-family:'Noto Serif TC',serif;font-size:11px;letter-spacing:0.45em;color:rgba(200,169,110,0.6);opacity:0;margin-bottom:18px;text-align:center;transition:opacity 0.65s ease,transform 0.65s ease;transform:translateY(10px);">AS 娛 樂 &nbsp;·&nbsp; 大 頭</div>
+  <div id="intro-title" style="font-family:'Noto Serif TC',serif;font-size:44px;font-weight:700;color:#f0f0f0;opacity:0;letter-spacing:0.08em;text-align:center;line-height:1.35;margin-bottom:10px;transition:opacity 0.75s ease,transform 0.75s ease;transform:translateY(18px);">八大<span style="background:linear-gradient(135deg,#c8a96e 0%,#f0d898 50%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">最誠實</span><br/>的經紀人</div>
+  <div id="intro-divider" style="width:0px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,169,110,0.7),transparent);margin:16px auto;transition:width 0.7s ease;"></div>
+  <div id="intro-tag1" style="font-size:12px;letter-spacing:0.3em;color:rgba(160,140,110,0.7);opacity:0;text-align:center;font-family:'Noto Sans TC',sans-serif;margin-bottom:6px;transition:opacity 0.6s ease,transform 0.6s ease;transform:translateY(8px);">誠實 &nbsp;·&nbsp; 不話術 &nbsp;·&nbsp; 只講實話</div>
+  <div id="intro-tag2" style="font-size:11px;letter-spacing:0.22em;color:rgba(120,110,90,0.55);opacity:0;text-align:center;font-family:'Noto Sans TC',sans-serif;transition:opacity 0.6s ease,transform 0.6s ease;transform:translateY(8px);">七年經驗 &nbsp;·&nbsp; 3000+ 面試</div>
+  <div id="intro-fade" style="position:absolute;inset:0;background:#080808;opacity:0;pointer-events:none;transition:opacity 0.9s ease;"></div>
+</div>
+
+<script>
+(function(){
+  function easeOut(t){return 1-Math.pow(1-t,3);}
+  function fadeIn(el,delay,dy){
+    setTimeout(()=>{
+      el.style.opacity='1';
+      el.style.transform=dy?'translateY(0)':'';
+    },delay);
+  }
+  let pRaf=null;
+  function startParticles(){
+    const canvas=document.getElementById('intro-particles');
+    const ctx=canvas.getContext('2d');
+    canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+    const pts=Array.from({length:32},()=>({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+      r:Math.random()*1.2+0.3, vx:(Math.random()-.5)*0.2,
+      vy:-Math.random()*0.35-0.08, a:Math.random()*0.4+0.05,
+      phase:Math.random()*Math.PI*2,
+    }));
+    let t=0;
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height); t+=0.015;
+      pts.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.y<-8){p.y=canvas.height+4;p.x=Math.random()*canvas.width;}
+        const a=p.a*Math.abs(Math.sin(t+p.phase));
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(200,169,110,${a})`; ctx.fill();
+      });
+      pRaf=requestAnimationFrame(draw);
+    }
+    draw();
+  }
+  startParticles();
+  setTimeout(()=>{ document.getElementById('iLineTop').style.width='100%'; document.getElementById('iLineBottom').style.width='100%'; },150);
+  setTimeout(()=>{ document.getElementById('iLineLeft').style.height='100%'; document.getElementById('iLineRight').style.height='100%'; },420);
+  setTimeout(()=>{ document.querySelectorAll('.intro-dot').forEach(d=>d.style.opacity='1'); },820);
+  setTimeout(()=>{ document.getElementById('intro-glow').style.transform='translate(-50%,-50%) scale(1)'; },900);
+  fadeIn(document.getElementById('intro-badge'),1050,true);
+  fadeIn(document.getElementById('intro-title'),1380,true);
+  setTimeout(()=>{ document.getElementById('intro-divider').style.width='100px'; },1820);
+  fadeIn(document.getElementById('intro-tag1'),2050,true);
+  fadeIn(document.getElementById('intro-tag2'),2280,true);
+  setTimeout(()=>{
+    document.getElementById('intro-fade').style.opacity='1';
+  },3000);
+  setTimeout(()=>{
+    if(pRaf) cancelAnimationFrame(pRaf);
+    const o=document.getElementById('intro-overlay');
+    if(o) o.remove();
+  },4000);
+})();
+
+</script>
   <canvas id="velvet-bg"></canvas>
 
 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line" id="floatLine">
