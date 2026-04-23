@@ -876,38 +876,8 @@
       <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">真實心得</p>
       <h2 class="section-title fade-up" style="transition-delay:0.05s">她們說的話</h2>
       <p class="section-desc fade-up" style="transition-delay:0.1s">全部匿名　只是想讓你知道<br/>有人跟你一樣曾經猶豫過</p>
-      <div class="reviews-grid fade-up" style="transition-delay:0.15s">
-        <div class="review-card">
-          <p class="review-text">一開始只是想問問看　沒想到大頭真的把所有事情都說清楚了　連我不好意思問的問題他都直接回答　最後我自己決定要來做　完全沒有被催</p>
-          <div class="review-meta">
-            <div class="review-avatar">小</div>
-            <div>
-              <div class="review-name">小 A　台北　23 歲</div>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <p class="review-text">之前找過別的經紀　被要求簽合約嚇到了　後來找到大頭　他說不用簽任何東西　我還以為在騙我　結果真的沒有　薪水也準時</p>
-          <div class="review-meta">
-            <div class="review-avatar">林</div>
-            <div>
-              <div class="review-name">林小姐　新北　26 歲</div>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <p class="review-text">我只做了兩個月應急　大頭完全沒有催我繼續做　要離開的時候也很順利　就是說一聲就好　真的跟他說的一樣　想走就走</p>
-          <div class="review-meta">
-            <div class="review-avatar">陳</div>
-            <div>
-              <div class="review-name">陳小姐　桃園　21 歲</div>
-              <div class="review-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="reviews-grid fade-up" style="transition-delay:0.15s" id="reviews-grid"></div>
+
     </div>
   </section>
 
@@ -1239,6 +1209,42 @@
     document.getElementById('total-views').textContent = total.toLocaleString();
   }
   calcTotalViews();
+
+  /* ── 4. 隨機心得 ── */
+(function() {
+  const ALL_REVIEWS = [
+    { avatar:'小', name:'小 A', loc:'台北', age:23, text:'一開始只是想問問看　沒想到大頭真的把所有事情都說清楚了　連我不好意思問的問題他都直接回答　最後我自己決定要來做　完全沒有被催' },
+    { avatar:'林', name:'林小姐', loc:'新北', age:26, text:'之前找過別的經紀　被要求簽合約嚇到了　後來找到大頭　他說不用簽任何東西　我還以為在騙我　結果真的沒有　薪水也準時' },
+    { avatar:'陳', name:'陳小姐', loc:'桃園', age:21, text:'我只做了兩個月應急　大頭完全沒有催我繼續做　要離開的時候也很順利　就是說一聲就好　真的跟他說的一樣　想走就走' },
+    { avatar:'王', name:'王小姐', loc:'台中', age:24, text:'問了很多問題　大頭每一題都回答　沒有一次叫我不用擔心然後跳過　這種感覺很不一樣　讓我覺得他真的在乎我有沒有搞清楚' },
+    { avatar:'張', name:'張小姐', loc:'高雄', age:22, text:'本來以為會被一直催　結果完全沒有　說不做就不做　他還說沒關係有問題再來找他　這種態度真的很少見' },
+    { avatar:'李', name:'李小姐', loc:'新竹', age:25, text:'薪水真的週六就到帳　我還特別去截圖存起來　因為之前聽說很多人被壓薪水　跟大頭合作完全沒有這個問題' },
+    { avatar:'吳', name:'吳小姐', loc:'台北', age:20, text:'第一次去面試前緊張到不行　大頭說有問題就傳訊息給他　結果我傳了七八個問題他都一一回答　當下就覺得這個人可以信任' },
+    { avatar:'黃', name:'黃小姐', loc:'桃園', age:27, text:'做了四個月　中間請假了很多次　大頭從來沒有說什麼　就是說好好休息　這種自由感是我當初最在意的事情' },
+    { avatar:'蔡', name:'蔡小姐', loc:'台南', age:23, text:'我問過他一個很敏感的問題　本來以為他會敷衍我　結果他直接說了真實情況　連不好的地方也沒有隱瞞　那一刻我就決定信任他了' },
+  ];
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  const picked = shuffle(ALL_REVIEWS).slice(0, 3);
+  document.getElementById('reviews-grid').innerHTML = picked.map(r => `
+    <div class="review-card">
+      <p class="review-text">${r.text}</p>
+      <div class="review-meta">
+        <div class="review-avatar">${r.avatar}</div>
+        <div>
+          <div class="review-name">${r.name}　${r.loc}　${r.age} 歲</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+})();
 
   /* ── 10. 互動測驗 ── */
   const quizAnswers = [];
