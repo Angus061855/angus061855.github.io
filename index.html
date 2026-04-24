@@ -238,8 +238,7 @@
     /* SECTION BASE */
     section { padding: 96px 24px; }
     .container { max-width: 900px; margin: 0 auto; }
-    .section-label { font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; text-align: center; display: inline-block; font-family: 'Noto Serif TC', serif; background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03)); border: 1px solid rgba(200,169,110,0.28); padding: 5px 20px; border-radius: 4px; box-shadow: 0 0 18px rgba(200,169,110,0.1), inset 0 1px 0 rgba(200,169,110,0.12); }
-    .section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.25; margin-bottom: 20px; text-align: center; letter-spacing: 0.06em; font-family: 'Noto Serif TC', serif; }
+    .section-label { font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin: 0 auto 14px; text-align: center; display: block; width: fit-content; font-family: 'Noto Serif TC', serif; background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03)); border: 1px solid rgba(200,169,110,0.28); padding: 5px 20px; border-radius: 4px; box-shadow: 0 0 18px rgba(200,169,110,0.1), inset 0 1px 0 rgba(200,169,110,0.12); }
     #about .section-label { font-size: clamp(1.4rem,3vw,1.8rem) !important; }
     #features .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); }
     #jobs .section-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
@@ -707,7 +706,7 @@
     </div>
     <div class="hero-cta fade-up" style="transition-delay:0.4s">
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
-      <a href="#about" class="btn-outline">了解更多</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-outline">了解更多</a>
     </div>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
@@ -1032,17 +1031,16 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-badge fade-up">有問必答</div>
-        <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
-        <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 4px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
-        <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
-        <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s">點我詢問工作</a>
-        <p class="contact-note fade-up" style="transition-delay:0.25s">我會親自回覆　不是 AI 回覆</p>
-      </div>
+  <div class="container">
+    <p class="section-label fade-up">有問必答</p>
+    <h2 class="section-title fade-up" style="transition-delay:0.05s;font-size:clamp(2rem,5vw,3rem);">八大行業<br/>到底長什麼樣子</h2>
+    <p class="section-desc fade-up" style="transition-delay:0.1s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
+    <div style="text-align:center;" class="fade-up" style="transition-delay:0.15s;">
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn">點我詢問工作</a>
+      <p class="contact-note" style="margin-top:12px;">我會親自回覆　不是 AI 回覆</p>
     </div>
-  </section>
+  </div>
+</section>
 
   <hr class="divider"/>
 
