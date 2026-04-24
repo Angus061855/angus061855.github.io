@@ -238,7 +238,7 @@
     /* SECTION BASE */
     section { padding: 96px 24px; }
     .container { max-width: 900px; margin: 0 auto; }
-    .section-label { font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; text-align: center; display: block; font-family: 'Noto Serif TC', serif; }
+    .section-label { font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; text-align: center; display: inline-block; font-family: 'Noto Serif TC', serif; background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03)); border: 1px solid rgba(200,169,110,0.28); padding: 5px 20px; border-radius: 4px; box-shadow: 0 0 18px rgba(200,169,110,0.1), inset 0 1px 0 rgba(200,169,110,0.12); }
     .section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.25; margin-bottom: 20px; text-align: center; letter-spacing: 0.06em; font-family: 'Noto Serif TC', serif; }
     #about .section-label { font-size: clamp(1.4rem,3vw,1.8rem) !important; }
     #features .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); }
@@ -253,7 +253,7 @@
     @keyframes diamondPulse { 0%,100%{color:rgba(200,169,110,0.2);} 50%{color:rgba(200,169,110,0.7);text-shadow:0 0 8px rgba(200,169,110,0.4);} }
 
     /* Section 背景 */
-    #about    { background: rgba(10,8,6,0.5); }
+    #about    { background: rgba(10,8,6,0.12); }
     #features { background: rgba(8,8,8,0.2); }
     #process  { background: rgba(10,8,6,0.5); }
     #compare  { background: rgba(8,8,8,0.2); }
@@ -262,7 +262,7 @@
     #quiz     { background: rgba(10,8,6,0.5); }
     #faq      { background: rgba(8,8,8,0.2); }
     #blog     { background: rgba(10,8,6,0.5); }
-    #contact  { background: rgba(8,8,8,0.2); text-align: center; }
+    #contact  { background: rgba(8,8,8,0.2); text-align: center; position: relative; } #contact::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(200,169,110,0.07) 0%, transparent 65%); pointer-events: none; z-index: 0; } #contact .container { position: relative; z-index: 1; }
     footer    { background: rgba(6,6,6,0.6); }
 
     /* ABOUT */
@@ -414,7 +414,7 @@
     .blog-card:hover { border-color: rgba(200,169,110,0.45); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(200,169,110,0.09), 0 4px 20px rgba(0,0,0,0.35); }
     .blog-card:active { transform: scale(0.98); }
     .blog-card-cover { width: 100%; height: 160px; object-fit: cover; }
-    .blog-card-cover-placeholder { width: 100%; height: 160px; position: relative; background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, rgba(14,11,8,0.95) 100%); display: flex; align-items: center; justify-content: center; }
+    background: linear-gradient(180deg, rgba(38,28,16,0.65) 0%, rgba(28,20,12,0.7) 100%); display: flex; align-items: center; justify-content: center; }
     .blog-card-cover-placeholder::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(0deg, rgba(200,169,110,0.06) 0%, transparent 100%); }
     .blog-card-cover-placeholder::after { content: ''; width: 90px; height: 90px; background: url('/LOGO 白色.png') center/contain no-repeat; opacity: 0.35; }
     .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
@@ -915,61 +915,7 @@
 
   <hr class="divider"/>
 
-  <!-- 10. 互動測驗 -->
-  <section id="quiz">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">適合測驗</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">你適合做這行嗎</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">三個問題　30 秒知道答案<br/>沒有標準答案　只是幫你想清楚</p>
-      <div class="quiz-wrap fade-up" style="transition-delay:0.15s">
-        <div class="quiz-progress" id="quizProgress">
-          <div class="quiz-progress-dot" id="qd0"></div>
-          <div class="quiz-progress-dot" id="qd1"></div>
-          <div class="quiz-progress-dot" id="qd2"></div>
-        </div>
-        <!-- Q1 -->
-        <div class="quiz-step active" id="qs0">
-          <p class="quiz-q">你現在最主要的考量是什麼？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(0,0)">💰　需要快速增加收入</button>
-            <button class="quiz-opt" onclick="quizNext(0,1)">🕐　想要時間更彈性自由</button>
-            <button class="quiz-opt" onclick="quizNext(0,2)">🤔　只是好奇想了解看看</button>
-          </div>
-        </div>
-        <!-- Q2 -->
-        <div class="quiz-step" id="qs1">
-          <p class="quiz-q">你對這個行業最擔心的是什麼？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(1,0)">🔒　隱私問題　怕被認識的人知道</button>
-            <button class="quiz-opt" onclick="quizNext(1,1)">📋　合約問題　怕被綁住走不了</button>
-            <button class="quiz-opt" onclick="quizNext(1,2)">❓　完全不了解　不知道從哪裡問起</button>
-          </div>
-        </div>
-        <!-- Q3 -->
-        <div class="quiz-step" id="qs2">
-          <p class="quiz-q">你希望怎麼開始？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(2,0)">💬　先問問題　了解清楚再說</button>
-            <button class="quiz-opt" onclick="quizNext(2,1)">👀　先看看資訊　自己研究一下</button>
-            <button class="quiz-opt" onclick="quizNext(2,2)">⚡　直接了解　有興趣就快速行動</button>
-          </div>
-        </div>
-        <!-- 結果 -->
-        <div class="quiz-step" id="qs-result">
-          <div class="quiz-result" id="quizResultBox">
-            <div class="quiz-result-emoji" id="quizEmoji">✨</div>
-            <div class="quiz-result-title" id="quizTitle"></div>
-            <div class="quiz-result-desc" id="quizDesc"></div>
-            <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;margin:0 auto;">加 LINE 問大頭</a>
-            <br/>
-            <button class="quiz-restart" onclick="quizRestart()">重新測驗</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
+  
 
   <!-- FAQ -->
   <section id="faq">
@@ -1022,6 +968,62 @@
       <p class="section-desc fade-up" style="transition-delay:0.1s">七年的觀察與心得<br/>寫給每一個正在考慮的你</p>
       <div class="blog-grid fade-up" style="transition-delay:0.15s" id="blog-grid">
         <p class="blog-loading">載入中...</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- 10. 互動測驗 -->
+  <section id="quiz">
+    <div class="container">
+      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">適合測驗</p>
+      <h2 class="section-title fade-up" style="transition-delay:0.05s">你適合做這行嗎</h2>
+      <p class="section-desc fade-up" style="transition-delay:0.1s">三個問題　30 秒知道答案<br/>沒有標準答案　只是幫你想清楚</p>
+      <div class="quiz-wrap fade-up" style="transition-delay:0.15s">
+        <div class="quiz-progress" id="quizProgress">
+          <div class="quiz-progress-dot" id="qd0"></div>
+          <div class="quiz-progress-dot" id="qd1"></div>
+          <div class="quiz-progress-dot" id="qd2"></div>
+        </div>
+        <!-- Q1 -->
+        <div class="quiz-step active" id="qs0">
+          <p class="quiz-q">你現在最主要的考量是什麼？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(0,0)">💰　需要快速增加收入</button>
+            <button class="quiz-opt" onclick="quizNext(0,1)">🕐　想要時間更彈性自由</button>
+            <button class="quiz-opt" onclick="quizNext(0,2)">🤔　只是好奇想了解看看</button>
+          </div>
+        </div>
+        <!-- Q2 -->
+        <div class="quiz-step" id="qs1">
+          <p class="quiz-q">你對這個行業最擔心的是什麼？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(1,0)">🔒　隱私問題　怕被認識的人知道</button>
+            <button class="quiz-opt" onclick="quizNext(1,1)">📋　合約問題　怕被綁住走不了</button>
+            <button class="quiz-opt" onclick="quizNext(1,2)">❓　完全不了解　不知道從哪裡問起</button>
+          </div>
+        </div>
+        <!-- Q3 -->
+        <div class="quiz-step" id="qs2">
+          <p class="quiz-q">你希望怎麼開始？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(2,0)">💬　先問問題　了解清楚再說</button>
+            <button class="quiz-opt" onclick="quizNext(2,1)">👀　先看看資訊　自己研究一下</button>
+            <button class="quiz-opt" onclick="quizNext(2,2)">⚡　直接了解　有興趣就快速行動</button>
+          </div>
+        </div>
+        <!-- 結果 -->
+        <div class="quiz-step" id="qs-result">
+          <div class="quiz-result" id="quizResultBox">
+            <div class="quiz-result-emoji" id="quizEmoji">✨</div>
+            <div class="quiz-result-title" id="quizTitle"></div>
+            <div class="quiz-result-desc" id="quizDesc"></div>
+            <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;margin:0 auto;">加 LINE 問大頭</a>
+            <br/>
+            <button class="quiz-restart" onclick="quizRestart()">重新測驗</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
