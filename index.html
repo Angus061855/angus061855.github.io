@@ -239,20 +239,25 @@
     section { padding: 96px 24px; }
     .container { max-width: 900px; margin: 0 auto; }
     .section-label {
-      font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent);
-      text-transform: uppercase; margin: 0 auto 14px; text-align: center;
-      display: table; /* 用 table 讓寬度收縮又能置中 */
-      font-family: 'Noto Serif TC', serif;
-      background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03));
-      border: 1px solid rgba(200,169,110,0.28);
-      padding: 5px 20px; border-radius: 4px;
-      box-shadow: 0 0 18px rgba(200,169,110,0.1), inset 0 1px 0 rgba(200,169,110,0.12);
-    }
-    #about .section-label { font-size: clamp(1.4rem,3vw,1.8rem) !important; }
-    #features .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); }
-    #jobs .section-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
-    #faq .section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
-    #blog .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent);
+  text-transform: uppercase; margin: 0 auto 14px;
+  text-align: center; display: block;
+  font-family: 'Noto Serif TC', serif;
+  background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03));
+  border: 1px solid rgba(200,169,110,0.28);
+  padding: 5px 20px; border-radius: 4px;
+  box-shadow: 0 0 18px rgba(200,169,110,0.1), inset 0 1px 0 rgba(200,169,110,0.12);
+  width: fit-content;
+  /* 置中關鍵 */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 14px;
+}
+   #about .section-label { font-size: clamp(1.4rem,3vw,1.8rem) !important; }
+   #features .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); text-align: center; }
+   #jobs .section-title { font-size: clamp(1.9rem, 4.5vw, 2.8rem); text-align: center; }
+   #faq .section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); text-align: center; }
+   #blog .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); text-align: center; }
     .section-desc { color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 56px; text-align: center; line-height: 2.2; letter-spacing: 0.05em; margin-left: auto; margin-right: auto; }
 
     /* 分隔線 */
@@ -1041,7 +1046,7 @@
   <!-- CONTACT -->
   <section id="contact">
   <div class="container">
-    <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;">有問必答</p>
+    <p class="section-label fade-up" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
     <h2 class="section-title fade-up" style="transition-delay:0.05s;font-size:clamp(2rem,5vw,3rem);">八大行業<br/>到底長什麼樣子</h2>
     <p class="section-desc fade-up" style="transition-delay:0.1s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
     <div style="text-align:center;" class="fade-up" style="transition-delay:0.15s;">
