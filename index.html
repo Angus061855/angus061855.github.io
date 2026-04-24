@@ -370,6 +370,8 @@
 .compare-card.us .compare-list li { color: #d0c8b8; }
 .compare-card.them .compare-list li { color: #c09090; }
 .compare-list li span:first-child { display: inline-block; width: 1.2em; flex-shrink: 0; }
+.compare-card.us .compare-list li::before { content: '✓'; color: var(--accent); font-family: sans-serif; flex-shrink: 0; }
+.compare-card.them .compare-list li::before { content: '✗'; color: #c04040; font-family: sans-serif; flex-shrink: 0; }
 @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
 
 
@@ -628,7 +630,7 @@
       <div style="font-size:2rem;margin-bottom:12px;">⏳</div>
       <h3>等一下<br/>你還沒問我任何問題</h3>
       <p>問了不代表你要來做<br>但如果你不問<br>你永遠不會知道答案</p>
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">好　我來問一個問題</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">我問一個問題</a>
       <button class="exit-modal-skip" onclick="closeExit()">我再想想</button>
     </div>
   </div>
