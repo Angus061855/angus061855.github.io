@@ -262,7 +262,16 @@
     #quiz     { background: rgba(10,8,6,0.5); }
     #faq      { background: rgba(8,8,8,0.2); }
     #blog     { background: rgba(10,8,6,0.5); }
-    #contact  { background: rgba(8,8,8,0.2); text-align: center; }
+    #contact  { background: rgba(8,8,8,0.2); text-align: center; position: relative; overflow: hidden; }
+#contact::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+#contact .container { position: relative; z-index: 1; }
     footer    { background: rgba(6,6,6,0.6); }
 
     /* ABOUT */
@@ -382,7 +391,7 @@
       border: 1px solid var(--gold-border); border-radius: var(--radius-card);
       padding: 22px 20px; position: relative; overflow: hidden;
     }
-    .review-card::before { content: '"'; position: absolute; top: -8px; left: 14px; font-size: 5rem; color: rgba(200,169,110,0.06); font-family: serif; line-height: 1; pointer-events: none; }
+    .review-card::before { content: ''; }
     .review-text { font-size: 0.88rem; color: #c0b8a8; line-height: 2; letter-spacing: 0.04em; margin-bottom: 16px; position: relative; z-index: 1; }
     .review-meta { display: flex; align-items: center; gap: 10px; }
     .review-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, rgba(200,169,110,0.2), rgba(200,169,110,0.05)); border: 1px solid rgba(200,169,110,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--accent); font-weight: 700; flex-shrink: 0; }
@@ -417,7 +426,7 @@
     .blog-card-cover { width: 100%; height: 160px; object-fit: cover; }
     .blog-card-cover-placeholder { width: 100%; height: 160px; position: relative; background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, rgba(14,11,8,0.95) 100%); display: flex; align-items: center; justify-content: center; }
     .blog-card-cover-placeholder::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(0deg, rgba(200,169,110,0.06) 0%, transparent 100%); }
-    .blog-card-cover-placeholder::after { content: ''; width: 90px; height: 90px; background: url('/LOGO 白色.png') center/contain no-repeat; opacity: 0.35; }
+    .blog-card-cover-placeholder::after { content: ''; width: 120px; height: 120px; background: url('/LOGO 白色.png') center/contain no-repeat; opacity: 0.18; }
     .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
     .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .blog-card-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
@@ -999,17 +1008,17 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-badge fade-up">有問必答</div>
-        <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
-        <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 4px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
-        <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
-        <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s">點我詢問工作</a>
-        <p class="contact-note fade-up" style="transition-delay:0.25s">我會親自回覆　不是 AI 回覆</p>
-      </div>
+  <div class="container">
+    <div class="contact-inner">
+      <p class="section-label fade-up" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
+      <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
+      <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
+      <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s;">點我詢問工作</a>
+      <p class="contact-note fade-up" style="transition-delay:0.25s;">我會親自回覆　不是 AI 回覆</p>
     </div>
-  </section>
+  </div>
+</section>
 
   <hr class="divider"/>
 
@@ -1175,8 +1184,17 @@
   function toggleMoreFaq() {
     const more = document.getElementById('faq-more');
     const btn = document.getElementById('faq-toggle-btn');
-    if (more.style.display === 'none') { more.style.display = 'flex'; btn.textContent = '收起 ↑'; }
-    else { more.style.display = 'none'; btn.textContent = '觀看更多問題 ↓'; }
+    if (more.style.display === 'none') {
+      more.style.display = 'flex';
+      more.style.opacity = '0';
+      more.style.transition = 'opacity 0.5s ease';
+      requestAnimationFrame(() => { more.style.opacity = '1'; });
+      btn.textContent = '收起 ↑';
+    } else {
+      more.style.opacity = '0';
+      setTimeout(() => { more.style.display = 'none'; }, 500);
+      btn.textContent = '觀看更多問題 ↓';
+    }
   }
 
   /* ── 總瀏覽數 ── */
