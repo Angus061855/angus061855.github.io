@@ -1142,7 +1142,7 @@
       const fixed = FIXED_SLUGS.map(slug => posts.find(p => p.slug === slug)).filter(Boolean);
       const shown = fixed.length === 3 ? fixed : posts.slice(0, 3);
       grid.innerHTML = shown.map(post => `
-        <a class="blog-card" href="/post.html?slug=${post.slug}">
+        <a class="blog-card" href="/post/${post.slug}">
           ${post.cover
             ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}" loading="lazy" decoding="async"/>`
             : `<div class="blog-card-cover-placeholder"></div>`}
