@@ -83,6 +83,7 @@
     .nav-links { display: flex; gap: 28px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent2); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -98,6 +99,7 @@
     .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 1rem; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; letter-spacing: 0.06em; }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--accent); }
+    .mobile-menu a.active { color: var(--accent2); }
 
     /* HERO */
     #hero {
@@ -618,9 +620,9 @@
       .hamburger { display: flex; }
       #hero { min-height: auto; padding: 100px 18px 54px; }
       .about-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 16px; }
-      .stat-num { font-size: 2.25rem; }
-      .stat { padding: 13px 16px; flex: 1; max-width: 142px; }
+      .hero-stats { gap: 10px; width: 100%; max-width: 340px; }
+      .stat-num { font-size: 2rem; white-space: nowrap; }
+      .stat { padding: 13px 10px; flex: 1 1 0; min-width: 0; max-width: none; }
       .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .back-to-top { bottom: 76px; left: 16px; }
@@ -1105,12 +1107,27 @@
   const mainNav = document.getElementById('mainNav');
   const backToTop = document.getElementById('backToTop');
   const mobileLineBar = document.querySelector('.mobile-line-bar');
+  const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu a[href^="#"]'));
+  const navSectionIds = ['about', 'features', 'jobs', 'faq', 'contact'];
+  function updateActiveNav() {
+    const current = navSectionIds.reduce((activeId, id) => {
+      const section = document.getElementById(id);
+      if (!section) return activeId;
+      return section.offsetTop <= window.scrollY + 140 ? id : activeId;
+    }, '');
+    navAnchors.forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.toggle('active', current && href === '#' + current);
+    });
+  }
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     mainNav.classList.toggle('scrolled', y > 60);
     backToTop.classList.toggle('visible', y > 400);
     if (mobileLineBar) mobileLineBar.classList.toggle('visible', y > Math.min(520, window.innerHeight * 0.65));
+    updateActiveNav();
   });
+  updateActiveNav();
 
   /* ── 漢堡選單 ── */
   const hamburger = document.getElementById('hamburger');
