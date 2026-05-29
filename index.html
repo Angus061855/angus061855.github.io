@@ -148,19 +148,6 @@
     @keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.4);opacity:0.7;} }
     .hero-social-proof strong { color: var(--accent2); }
 
-    .hero-offer {
-      color: #d8d0c0;
-      font-size: clamp(0.95rem, 2.2vw, 1.12rem);
-      line-height: 2;
-      letter-spacing: 0.12em;
-      margin: -22px auto 30px;
-      max-width: 720px;
-    }
-    .hero-offer strong {
-      color: var(--accent2);
-      font-weight: 800;
-    }
-
     /* Hero Shine */
     .hero-sub-shine {
       font-family: 'Noto Serif TC', serif;
@@ -491,24 +478,6 @@
     .job-card-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ccc8c0; letter-spacing: 0.04em; }
     .job-card-perks li::before { content: '—'; color: rgba(200,169,110,0.5); font-weight: 700; flex-shrink: 0; }
 
-    .service-areas {
-      max-width: 760px;
-      margin: 36px auto 0;
-      padding: 18px 20px;
-      border: 1px solid rgba(200,169,110,0.14);
-      border-radius: var(--radius-card);
-      background: rgba(10,8,6,0.45);
-      text-align: center;
-      color: #89837a;
-      font-size: 0.86rem;
-      line-height: 2;
-      letter-spacing: 0.08em;
-    }
-    .service-areas strong {
-      color: rgba(200,169,110,0.82);
-      font-weight: 700;
-    }
-
     /* 10. 互動測驗 */
     #quiz { text-align: center; }
     .quiz-wrap { max-width: 600px; margin: 0 auto; }
@@ -620,6 +589,7 @@
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      #hero { min-height: auto; padding: 100px 18px 54px; }
       .about-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 16px; }
       .stat-num { font-size: 2.6rem; }
@@ -629,11 +599,9 @@
       .stay-toast { bottom: 76px; right: 16px; max-width: calc(100vw - 32px); }
       .hero-pills { max-width: 300px; }
       .hero-badges { max-width: 320px; }
-      #hero { min-height: auto; padding: 100px 18px 54px; }
       .hero-badges .hero-badge:nth-child(n+3) { display: none; }
       .hero-social-proof { margin-bottom: 14px; }
       .hero-sub-shine { margin-bottom: 22px; }
-      .hero-offer { margin: -8px auto 22px; font-size: 0.88rem; letter-spacing: 0.08em; }
       .hero-pills { margin-bottom: 28px; }
       .hero-stats { margin-bottom: 28px; }
       .hero-cta { margin-bottom: 28px; }
@@ -724,10 +692,6 @@
       <br/>
       <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
     </p>
-    <p class="hero-offer fade-up" style="transition-delay:0.15s">
-      <strong>台北酒店公關招募諮詢</strong><br/>
-      不簽合約　不壓薪水　自由排班　先了解也可以
-    </p>
     <div class="hero-pills fade-up" style="transition-delay:0.2s">
       <span class="hero-pill">不簽合約</span>
       <span class="hero-pill">不壓薪水</span>
@@ -745,8 +709,8 @@
       </div>
     </div>
     <div class="hero-cta fade-up" style="transition-delay:0.4s">
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">先匿名問問看</a>
-      <a href="#process" class="btn-outline">了解流程</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-outline">了解更多</a>
     </div>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
@@ -947,11 +911,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:36px;" class="fade-up">
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">詢問我適合哪一種店</a>
-    </div>
-    <div class="service-areas fade-up">
-      <strong>服務地區</strong><br/>
-      台北酒店公關　林森北路酒店　新北酒店　桃園酒店　新竹酒店　台中酒店　台南酒店　高雄酒店皆可諮詢
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">加 LINE 詢問職缺</a>
     </div>
   </section>
 
@@ -977,7 +937,7 @@
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>白天有工作或有門禁怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">不用擔心　我配合的店家有各種類型<br>有午場也有晚場<br>不管是正職或兼職時間都能彈性安排</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>有規定一週要上幾天班嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊沒有規定　能上班就來上<br>只想一個月上 2 到 3 天賺零用錢　都可以</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>上班要穿什麼？我不會打扮怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">都是以禮服高跟鞋為主<br>我會幫你準備新的一套送給你<br>髮妝也有專門的髮妝師幫你處理</div></div>
-          <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>隱私怎麼保護？</span><span class="faq-plus">+</span></button><div class="faq-answer">你的個人資料　工作地點　薪資資訊都會嚴格保密<br>不會外流　也不會提供給無關的人<br>如果你有特殊狀況　可以私訊我　我會依照你的情況給建議</div></div>
+          <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　個人資料嚴格保密　工作地點　薪資　<br>一切資訊都不會外流　<br>這是我對每一位女孩的承諾</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>營業時間是幾點？</span><span class="faq-plus">+</span></button><div class="faq-answer">有午場也有晚場　最早下午 1:00 營業<br>任選 6 小時起就可以上班<br>不管是上午有課還是白天有正職　都可以安排</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>一天收入大概多少？</span><span class="faq-plus">+</span></button><div class="faq-answer">正常情況下大概 6,000 到 8,000 元<br>上的比較好一天破萬都可以<br>收入完全看你的時間投入和狀態</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>第一次去要做什麼準備？</span><span class="faq-plus">+</span></button><div class="faq-answer">帶雙證件來即可<br>不會壓著你的證件不給你<br>只需要證明你有年滿 18 歲並且有台灣國民身份</div></div>
@@ -990,7 +950,7 @@
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="faq-line-banner fade-up" style="transition-delay:0.2s">
         <div class="faq-line-icon">LINE</div>
         <div class="faq-line-text">
-          <strong>還有其他問題　直接加我 LINE</strong>
+          <strong>還有其他問題　直接加我詢問</strong>
           <span>我會親自回覆　不是 AI 回覆</span>
         </div>
         <div class="faq-arrow">→</div>
@@ -1083,7 +1043,7 @@
       <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
       <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
       <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s;">先問問題　不用急著決定</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s;">點我詢問工作</a>
       <p class="contact-note fade-up" style="transition-delay:0.25s;">我會親自回覆　不是 AI 回覆</p>
     </div>
   </div>
