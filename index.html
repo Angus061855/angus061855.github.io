@@ -240,45 +240,6 @@
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
 
-    .hero-job-shortcuts {
-      position: absolute;
-      top: 92px;
-      right: 32px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border: 1px solid rgba(200,169,110,0.18);
-      border-radius: var(--radius-card);
-      background: rgba(8,8,8,0.58);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.22);
-    }
-    .hero-job-shortcuts span {
-      color: #7f776b;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      white-space: nowrap;
-    }
-    .hero-job-shortcuts a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 5px 9px;
-      border: 1px solid rgba(200,169,110,0.2);
-      border-radius: var(--radius-btn);
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-      white-space: nowrap;
-    }
-    .hero-job-shortcuts a:hover {
-      color: var(--accent2);
-      border-color: rgba(200,169,110,0.42);
-      background: rgba(200,169,110,0.06);
-    }
-
     /* 1. 向下箭頭 */
     .hero-scroll-arrow {
       display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -661,17 +622,6 @@
       .hero-pills { margin-bottom: 28px; }
       .hero-stats { margin-bottom: 28px; }
       .hero-cta { margin-bottom: 28px; }
-      .hero-job-shortcuts {
-        position: static;
-        order: 8;
-        margin-top: -8px;
-        justify-content: center;
-        padding: 7px 8px;
-        width: min(100%, 300px);
-      }
-      .hero-job-shortcuts span { font-size: 0.68rem; }
-      .hero-job-shortcuts a { font-size: 0.74rem; padding: 4px 8px; }
-      .hero-scroll-arrow { display: none; }
       .faq-question { font-size: 0.9rem; padding: 18px 18px; min-height: 60px; line-height: 1.55; }
       .faq-question span:first-child { max-width: calc(100% - 32px); }
       .faq-answer { font-size: 0.88rem; line-height: 2.15; }
@@ -756,11 +706,6 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-job-shortcuts" aria-label="職缺快速連結">
-      <span>職缺</span>
-      <a href="#jobs">酒店</a>
-      <a href="#jobs">美容師</a>
-    </div>
     <h1 class="visually-hidden">AS娛樂 台北酒店公關招募｜八大最誠實經紀 大頭</h1>
     <div class="hero-badges fade-up">
       <span class="hero-badge">全台最多人詢問</span>
@@ -1394,9 +1339,6 @@
       document.getElementById('quizTitle').textContent = r.title;
       document.getElementById('quizDesc').innerHTML = r.desc;
       document.getElementById('qs-result').classList.add('active');
-    }
-    if (window.matchMedia('(max-width: 640px)').matches) {
-      requestAnimationFrame(() => document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' }));
     }
   }
   function quizRestart() {
