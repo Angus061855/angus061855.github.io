@@ -218,11 +218,17 @@
       padding: 14px 36px; border-radius: var(--radius-btn);
       text-decoration: none; letter-spacing: 0.12em;
       box-shadow: 0 4px 24px rgba(200,169,110,0.25), 0 1px 0 rgba(255,255,255,0.2) inset;
-      transition: transform 0.15s, box-shadow 0.2s; position: relative; overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s; position: relative; overflow: hidden;
     }
     .btn-primary::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
     .btn-primary:hover::after { left: 160%; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,169,110,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,169,110,0.4); filter: brightness(1.06); }
+    .btn-primary:focus-visible,
+    .btn-outline:focus-visible,
+    .contact-cta-btn:focus-visible {
+      outline: 2px solid rgba(224,192,128,0.75);
+      outline-offset: 3px;
+    }
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
       background: transparent; color: #aaaaaa; font-weight: 700; font-size: 0.95rem;
@@ -231,6 +237,20 @@
       transition: border-color 0.2s, color 0.2s, transform 0.15s;
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
+
+    .desktop-trust-note {
+      max-width: 620px;
+      margin: -20px auto 34px;
+      color: #8e8678;
+      font-size: 0.92rem;
+      line-height: 2.1;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    .desktop-trust-note strong {
+      color: var(--accent2);
+      font-weight: 700;
+    }
 
     /* 1. 向下箭頭 */
     .hero-scroll-arrow {
@@ -434,12 +454,12 @@
     .blog-card-cover-placeholder { width: 100%; height: 160px; position: relative; background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, rgba(14,11,8,0.95) 100%); display: flex; align-items: center; justify-content: center; }
     .blog-card-cover-placeholder::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(0deg, rgba(200,169,110,0.06) 0%, transparent 100%); }
     .blog-card-cover-placeholder::after { content: ''; width: 120px; height: 120px; background: url('/LOGO 白色.png') center/contain no-repeat; opacity: 0.18; }
-    .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; min-height: 178px; }
     .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .blog-card-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
     .blog-card-views { font-size: 0.7rem; color: rgba(200,169,110,0.4); letter-spacing: 0.04em; }
-    .blog-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.55; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .blog-card-summary { font-size: 0.82rem; color: var(--muted); line-height: 1.85; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.55; min-height: 2.95em; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-card-summary { font-size: 0.82rem; color: var(--muted); line-height: 1.85; min-height: 3.7em; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .blog-loading { color: var(--muted); text-align: center; padding: 40px; }
 
     /* 8. 部落格 fallback 靜態卡片 */
@@ -511,10 +531,10 @@
         /* CONTACT */
     .contact-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .contact-badge { display: inline-block; background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(200,169,110,0.02)); border: 1px solid var(--gold-border); color: var(--accent); font-size: 0.75rem; letter-spacing: 0.18em; padding: 5px 18px; border-radius: var(--radius-pill); margin-bottom: 8px; font-family: 'Noto Serif TC', serif; }
-    .contact-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #c8a96e, #e0c080); color: #0a0a0a; font-weight: 900; font-size: 1.05rem; padding: 16px 52px; border-radius: var(--radius-btn); text-decoration: none; letter-spacing: 0.12em; box-shadow: 0 4px 32px rgba(200,169,110,0.28), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.15s, box-shadow 0.2s; margin-top: 16px; position: relative; overflow: hidden; }
+    .contact-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #c8a96e, #e0c080); color: #0a0a0a; font-weight: 900; font-size: 1.05rem; padding: 16px 52px; border-radius: var(--radius-btn); text-decoration: none; letter-spacing: 0.12em; box-shadow: 0 4px 32px rgba(200,169,110,0.28), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.15s, box-shadow 0.2s, filter 0.2s; margin-top: 16px; position: relative; overflow: hidden; }
     .contact-cta-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
     .contact-cta-btn:hover::after { left: 160%; }
-    .contact-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(200,169,110,0.42); }
+    .contact-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(200,169,110,0.42); filter: brightness(1.06); }
     .contact-sub { font-size: clamp(1rem,2.5vw,1.2rem); font-weight:400; color:#888; letter-spacing:0.12em; line-height:2.2; text-align:center; margin-bottom:0; }
     .contact-note { font-size: 0.8rem; color: #555; letter-spacing: 0.06em; margin-top: 12px; }
 
@@ -541,6 +561,13 @@
         text-decoration: none; color: #fff; font-weight: 900; font-size: 1rem;
         letter-spacing: 0.1em; border-top: 1px solid rgba(255,255,255,0.1);
         box-shadow: 0 -4px 20px rgba(26,107,69,0.3);
+        opacity: 0; transform: translateY(100%);
+        pointer-events: none;
+        transition: opacity 0.28s ease, transform 0.28s ease;
+      }
+      .mobile-line-bar.visible {
+        opacity: 1; transform: translateY(0);
+        pointer-events: auto;
       }
       .mobile-line-bar-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.8); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
       /* 手機版底部留空，不被通欄蓋住 */
@@ -592,8 +619,9 @@
       #hero { min-height: auto; padding: 100px 18px 54px; }
       .about-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 16px; }
-      .stat-num { font-size: 2.6rem; }
-      .stat { padding: 16px 20px; }
+      .stat-num { font-size: 2.25rem; }
+      .stat { padding: 13px 16px; flex: 1; max-width: 142px; }
+      .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .back-to-top { bottom: 76px; left: 16px; }
       .stay-toast { bottom: 76px; right: 16px; max-width: calc(100vw - 32px); }
@@ -605,8 +633,13 @@
       .hero-pills { margin-bottom: 28px; }
       .hero-stats { margin-bottom: 28px; }
       .hero-cta { margin-bottom: 28px; }
-      .faq-question { font-size: 0.88rem; padding: 16px 18px; }
+      .desktop-trust-note { display: none; }
+      .faq-question { font-size: 0.9rem; padding: 18px 18px; min-height: 60px; line-height: 1.55; }
       .faq-question span:first-child { max-width: calc(100% - 32px); }
+      .faq-answer { font-size: 0.88rem; line-height: 2.15; }
+      .blog-card-body { min-height: 168px; }
+      .blog-card-title { min-height: 3.1em; }
+      .blog-card-summary { min-height: 3.7em; }
     }
     @media (max-width: 360px) { .features-grid { grid-template-columns: 1fr; } }
   </style>
@@ -712,6 +745,9 @@
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-outline">了解更多</a>
     </div>
+    <p class="desktop-trust-note fade-up" style="transition-delay:0.45s">
+      <strong>我是大頭</strong>　問問題不代表你要來做　我只會先把真實情況說清楚
+    </p>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
       <span>向下探索</span>
@@ -1068,10 +1104,12 @@
   /* ── Nav + scroll ── */
   const mainNav = document.getElementById('mainNav');
   const backToTop = document.getElementById('backToTop');
+  const mobileLineBar = document.querySelector('.mobile-line-bar');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     mainNav.classList.toggle('scrolled', y > 60);
     backToTop.classList.toggle('visible', y > 400);
+    if (mobileLineBar) mobileLineBar.classList.toggle('visible', y > Math.min(520, window.innerHeight * 0.65));
   });
 
   /* ── 漢堡選單 ── */
