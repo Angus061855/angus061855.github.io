@@ -720,7 +720,7 @@
         padding: 14px;
       }
       .consult-actions { grid-template-columns: 1fr; }
-      .consult-toggle { height: 46px; min-width: 108px; }
+      .consult-toggle { height: 44px; min-width: 108px; padding: 0 18px; }
     }
 
     /* 回到頂部 */
@@ -771,7 +771,14 @@
       .stat { padding: 13px 10px; flex: 1 1 0; min-width: 0; max-width: none; }
       .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .back-to-top { bottom: 76px; left: 16px; }
+      .back-to-top {
+        bottom: 18px;
+        left: 16px;
+        width: 44px;
+        height: 44px;
+        transform: translateY(0);
+      }
+      .back-to-top.visible { transform: translateY(0); }
       .stay-toast { bottom: 76px; right: 16px; max-width: calc(100vw - 32px); }
       .hero-pills { max-width: 300px; }
       .hero-badges { max-width: 320px; }
