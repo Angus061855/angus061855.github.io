@@ -79,6 +79,22 @@
       font-family: 'Noto Serif TC', serif;
     }
     .body .list-item { padding-left: 1.2em; margin-bottom: 0.8em; color: #c8c8c8; word-break: keep-all; overflow-wrap: break-word; }
+    .body a {
+      color: var(--accent2);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+    .body a:hover { color: #ffffff; }
+    .body .related-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent2);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(224,192,128,0.55);
+      line-height: 1.6;
+    }
 
     .state { text-align: center; padding: 4rem; color: var(--muted); font-size: 1rem; }
     .error { color: #e05555; }
@@ -173,6 +189,46 @@
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
 
+  const INTERNAL_LINKS = {
+    '了解目前職缺': 'https://as-ent-tw.com/#jobs',
+    '了解目前職缺：': 'https://as-ent-tw.com/#jobs',
+    '先看常見問題': 'https://as-ent-tw.com/#faq',
+    '先看常見問題：': 'https://as-ent-tw.com/#faq',
+    '看更多八大文章': 'https://as-ent-tw.com/blog.html',
+    '看更多八大文章：': 'https://as-ent-tw.com/blog.html',
+    '直接聯絡諮詢': 'https://as-ent-tw.com/#contact',
+    '直接聯絡諮詢：': 'https://as-ent-tw.com/#contact'
+  };
+
+  function escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function linkifyText(text) {
+    const trimmed = text.trim();
+    const normalized = trimmed.replace(/[：:]\s*$/, '');
+    if (INTERNAL_LINKS[trimmed] || INTERNAL_LINKS[normalized]) {
+      const url = INTERNAL_LINKS[trimmed] || INTERNAL_LINKS[normalized];
+      return `<a class="related-link" href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(normalized)}</a>`;
+    }
+
+    const labelUrl = trimmed.match(/^(.+?)[：:]\s*(https?:\/\/\S+)$/);
+    if (labelUrl) {
+      const label = labelUrl[1].trim();
+      const url = labelUrl[2].trim();
+      return `<a class="related-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    }
+
+    return escapeHtml(text).replace(/https?:\/\/[^\s，。)）]+/g, (url) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
+  }
+
   async function loadPost() {
     const slug = new URLSearchParams(window.location.search).get('slug');
     if (!slug) { showError(); return; }
@@ -230,9 +286,11 @@
       for (const line of lines) {
         const t = line.trim();
         if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
-        if (t.match(/^\d+\./)) { html += `<p class="list-item">${t}</p>`; }
-        else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${t}</h2>`; }
-        else { html += `<p>${t}</p>`; }
+        const linked = linkifyText(t);
+        if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
+        else if (INTERNAL_LINKS[t] || INTERNAL_LINKS[t.replace(/[：:]\s*$/, '')]) { html += `<p>${linked}</p>`; }
+        else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${linked}</h2>`; }
+        else { html += `<p>${linked}</p>`; }
       }
       bodyEl.innerHTML = html;
 
