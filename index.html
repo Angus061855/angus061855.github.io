@@ -7,7 +7,7 @@
   <title>AS娛樂｜八大最誠實經紀 大頭</title>
   <meta name="author" content="AS娛樂 大頭"/>
   <meta name="theme-color" content="#080808"/>
-  <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北、新北、桃園、台中、高雄酒店公關招募諮詢完全免費。"/>
+  <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北、新北、桃園、台中、高雄酒店公關招募諮詢。"/>
   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,新北酒店,桃園酒店,台中酒店,高雄酒店,台南酒店,酒店打工,兼職,酒店經紀人推薦"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://as-ent-tw.com/"/>
@@ -277,16 +277,44 @@
     #quiz     { background: rgba(10,8,6,0.5); }
     #faq      { background: rgba(8,8,8,0.2); }
     #blog     { background: rgba(10,8,6,0.5); }
-    #contact  { background: rgba(8,8,8,0.2); text-align: center; position: relative; overflow: hidden; }
-#contact::before {
-  content: '';
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 65%);
-  pointer-events: none; z-index: 0;
-}
-#contact .container { position: relative; z-index: 1; }
+    #contact  {
+      background:
+        linear-gradient(180deg, rgba(8,8,8,0.1) 0%, rgba(12,9,5,0.62) 42%, rgba(5,5,5,0.92) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 118px;
+      padding-bottom: 118px;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 34%, rgba(224,192,128,0.13) 0%, rgba(200,169,110,0.05) 28%, transparent 62%),
+        linear-gradient(90deg, transparent 0%, rgba(200,169,110,0.08) 50%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #contact::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 54%;
+      width: min(760px, calc(100vw - 48px));
+      height: min(480px, 56vw);
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(200,169,110,0.13);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.025), rgba(200,169,110,0.035) 45%, rgba(0,0,0,0.02)),
+        radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.11), transparent 62%);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #contact .container { position: relative; z-index: 1; }
     footer    { background: rgba(6,6,6,0.6); }
 
     /* ABOUT */
@@ -518,14 +546,86 @@
     .quiz-restart:hover { border-color: rgba(200,169,110,0.6); background: rgba(200,169,110,0.05); }
 
         /* CONTACT */
-    .contact-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .contact-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .contact-inner::before,
+    .contact-inner::after {
+      content: '';
+      width: min(300px, 56vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.42), transparent);
+      display: block;
+    }
+    .contact-inner::before { margin-bottom: 8px; }
+    .contact-inner::after { margin-top: 10px; }
     .contact-badge { display: inline-block; background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(200,169,110,0.02)); border: 1px solid var(--gold-border); color: var(--accent); font-size: 0.75rem; letter-spacing: 0.18em; padding: 5px 18px; border-radius: var(--radius-pill); margin-bottom: 8px; font-family: 'Noto Serif TC', serif; }
-    .contact-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #c8a96e, #e0c080); color: #0a0a0a; font-weight: 900; font-size: 1.05rem; padding: 16px 52px; border-radius: var(--radius-btn); text-decoration: none; letter-spacing: 0.12em; box-shadow: 0 4px 32px rgba(200,169,110,0.28), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.15s, box-shadow 0.2s, filter 0.2s; margin-top: 16px; position: relative; overflow: hidden; }
-    .contact-cta-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
+    .contact-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: min(320px, 100%);
+      background: linear-gradient(135deg, #b89455 0%, #e4c276 42%, #f2d994 58%, #b89455 100%);
+      color: #0a0a0a;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 16px 52px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      letter-spacing: 0.14em;
+      box-shadow:
+        0 12px 44px rgba(200,169,110,0.24),
+        0 0 0 1px rgba(255,255,255,0.08) inset,
+        inset 0 1px 0 rgba(255,255,255,0.32);
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+      margin-top: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border: 1px solid rgba(8,8,8,0.18);
+      pointer-events: none;
+    }
+    .contact-cta-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
     .contact-cta-btn:hover::after { left: 160%; }
-    .contact-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(200,169,110,0.42); filter: brightness(1.06); }
-    .contact-sub { font-size: clamp(1rem,2.5vw,1.2rem); font-weight:400; color:#888; letter-spacing:0.12em; line-height:2.2; text-align:center; margin-bottom:0; }
-    .contact-note { font-size: 0.8rem; color: #555; letter-spacing: 0.06em; margin-top: 12px; }
+    .contact-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 56px rgba(200,169,110,0.36),
+        0 0 0 1px rgba(255,255,255,0.1) inset,
+        inset 0 1px 0 rgba(255,255,255,0.32);
+      filter: brightness(1.06);
+    }
+    .contact-sub {
+      font-size: clamp(1rem,2.5vw,1.24rem);
+      font-weight:400;
+      color: #9c9488;
+      letter-spacing:0.14em;
+      line-height:2.25;
+      text-align:center;
+      margin-bottom:0;
+      text-shadow: 0 0 24px rgba(0,0,0,0.55);
+    }
+    .contact-note { font-size: 0.8rem; color: #6d655c; letter-spacing: 0.08em; margin-top: 8px; }
+    .contact-label-lux {
+      color: var(--accent2);
+      text-shadow: 0 0 22px rgba(200,169,110,0.24);
+      margin-bottom: 2px;
+    }
+    .contact-title-lux {
+      position: relative;
+      filter: drop-shadow(0 18px 42px rgba(0,0,0,0.42));
+    }
 
     /* FOOTER */
     footer { border-top: 1px solid rgba(200,169,110,0.12); padding: 40px 24px 32px; text-align: center; color: #555; font-size: 0.82rem; letter-spacing: 0.06em; }
@@ -788,6 +888,26 @@
       .hero-pills { margin-bottom: 28px; }
       .hero-stats { margin-bottom: 28px; }
       .hero-cta { margin-bottom: 28px; }
+      #contact {
+        padding-top: 90px;
+        padding-bottom: 92px;
+      }
+      #contact::after {
+        width: calc(100vw - 28px);
+        height: 520px;
+      }
+      .contact-inner {
+        gap: 14px;
+      }
+      .contact-sub {
+        letter-spacing: 0.1em;
+        line-height: 2.1;
+      }
+      .contact-cta-btn {
+        min-width: 230px;
+        padding: 15px 34px;
+        font-size: 1rem;
+      }
       .faq-question { font-size: 0.9rem; padding: 18px 18px; min-height: 60px; line-height: 1.55; }
       .faq-question span:first-child { max-width: calc(100% - 32px); }
       .faq-answer { font-size: 0.88rem; line-height: 2.15; }
@@ -1055,12 +1175,12 @@
     <div class="container">
       <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">合作流程</p>
       <h2 class="section-title fade-up" style="transition-delay:0.05s">四步驟　從詢問到上班</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">全程我帶著你走<br/>每一步都清楚說明　沒有任何隱藏</p>
+      <p class="section-desc fade-up" style="transition-delay:0.1s">全程我帶著你走<br/>每一步都清楚說明　沒有任何隱瞞</p>
       <div class="process-steps fade-up" style="transition-delay:0.15s">
         <div class="process-step">
           <div class="process-num">1</div>
           <h4>加 LINE 詢問</h4>
-          <p>問任何問題<br/>免費、無壓力<br/>問了不代表要做</p>
+          <p>問任何問題<br/>有問必答 無壓力<br/>問了不代表要做</p>
         </div>
         <div class="process-step">
           <div class="process-num">2</div>
@@ -1070,12 +1190,12 @@
         <div class="process-step">
           <div class="process-num">3</div>
           <h4>你自己決定</h4>
-          <p>沒有催促<br/>想做再做<br/>不想做沒關係</p>
+          <p>不會催促<br/>想做再做<br/>不想做沒關係</p>
         </div>
         <div class="process-step">
           <div class="process-num">4</div>
           <h4>全程陪伴</h4>
-          <p>面試到上班<br/>有問題隨時找我<br/>不是簽完就不管</p>
+          <p>面試到上班<br/>有問題隨時找我<br/>不是上班後就不管</p>
         </div>
       </div>
     </div>
@@ -1095,25 +1215,25 @@
           <div class="compare-title">誠實經紀人</div>
           <ul class="compare-list">
             <li>不簽任何合約　想離職隨時可以離職</li>
-            <li>薪水週六準時入帳　不壓薪水 想現領也可以</li>
-            <li>上班前完整說明　沒有隱藏扣款費用</li>
-            <li>本人親自回覆　不是助理或 AI 回覆</li>
-            <li>個資嚴格保密　不外流出去</li>
-            <li>問了不代表要做　無任何壓力</li>
-            <li>七年口碑　個人運作 靠真實評價累積</li>
+            <li>薪水週六準時入帳 不壓薪水 想現領也可以</li>
+            <li>上班前完整說明 沒有隱藏扣款費用</li>
+            <li>本人親自回覆 不是助理或 AI 回覆</li>
+            <li>個資嚴格保密 不會外流出去</li>
+            <li>不會跟你產生任何感情因素 或是情勒你</li>
+            <li>七年口碑 個人運作 靠真實評價累積</li>
           </ul>
         </div>
         <div class="compare-card them">
           <span class="compare-tag">其他經紀人</span>
           <div class="compare-title">常見狀況</div>
           <ul class="compare-list">
-            <li>要求簽合約　離開要賠違約金</li>
+            <li>要求簽合約 離開要賠違約金</li>
             <li>以各種理由壓薪水拖延發放</li>
             <li>上班後才發現有不合理扣款項目</li>
             <li>助理或群組統一回覆</li>
-            <li>個資可能流向你的家人、朋友、男友</li>
-            <li>用話術製造緊迫感催你決定</li>
-            <li>與你發生感情關係 非常失職的行為</li>
+            <li>個資可能外洩給你的家人、朋友、男友</li>
+            <li>拍影片、限時動態露出你的樣貌</li>
+            <li>與你發生感情、身體關係 非常失職的行為</li>
           </ul>
         </div>
       </div>
@@ -1136,29 +1256,47 @@
   <hr class="divider"/>
 
   <!-- JOBS -->
-  <section id="jobs">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">職缺資訊</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">目前開放職缺</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">每個職位都有簡易說明<br/>找到最適合你的方向</p>
-      <div class="jobs-grid">
-        <div class="job-card featured fade-up" style="transition-delay:0.0s">
-          <div class="job-card-header"><div class="job-card-title">酒店公關</div><span class="job-badge badge-pr">熱門</span></div>
-          <div class="job-card-desc">禮服店　便禮店　便服店<br/>依個人條件安排最適合的店型</div>
-          <ul class="job-card-perks"><li>節薪 230 到 290 元起</li><li>自由排班　彈性兼職</li><li>新人全程帶領</li><li>隱私 100% 保護</li></ul>
-        </div>
-        <div class="job-card fade-up" style="transition-delay:0.1s">
-          <div class="job-card-header"><div class="job-card-title">經紀人</div><span class="job-badge badge-agent">菁英</span></div>
-          <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
-          <ul class="job-card-perks"><li>高額獎金制度</li><li>團隊分潤機制</li><li>完整培訓系統</li><li>有無經驗皆可</li></ul>
-        </div>
-        <div class="job-card fade-up" style="transition-delay:0.2s">
-          <div class="job-card-header"><div class="job-card-title">紓壓按摩</div><span class="job-badge badge-beauty">薪資最高</span></div>
-          <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
-          <ul class="job-card-perks"><li>不用喝酒熬夜</li><li>日薪平均可達三萬起</li><li>環境安全隱私</li><li>只上 4 小時也可以</li></ul>
-        </div>
-      </div>
+  <div class="jobs-grid">
+  <div class="job-card featured fade-up" style="transition-delay:0.0s">
+    <div class="job-card-header">
+      <div class="job-card-title">酒店公關</div>
+      <span class="job-badge badge-pr">熱門</span>
     </div>
+    <div class="job-card-desc">禮服店　便禮店　便服店<br/>依個人條件安排最適合的店型</div>
+    <ul class="job-card-perks">
+      <li>節薪 230 到 290 元起</li>
+      <li>自由排班　彈性兼職</li>
+      <li>新人全程帶領</li>
+      <li>隱私 100% 保護</li>
+    </ul>
+  </div>
+  <div class="job-card fade-up" style="transition-delay:0.1s">
+    <div class="job-card-header">
+      <div class="job-card-title">紓壓按摩</div>
+      <span class="job-badge badge-beauty">薪資最高</span>
+    </div>
+    <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
+    <ul class="job-card-perks">
+      <li>不用喝酒熬夜</li>
+      <li>日薪平均可達三萬起</li>
+      <li>環境安全隱私</li>
+      <li>只上 4 小時也可以</li>
+    </ul>
+  </div>
+  <div class="job-card fade-up" style="transition-delay:0.2s">
+    <div class="job-card-header">
+      <div class="job-card-title">經紀人</div>
+      <span class="job-badge badge-agent">菁英</span>
+    </div>
+    <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
+    <ul class="job-card-perks">
+      <li>高額獎金制度</li>
+      <li>團隊分潤機制</li>
+      <li>完整培訓系統</li>
+      <li>有無經驗皆可</li>
+    </ul>
+  </div>
+</div>
     <div style="text-align:center;margin-top:36px;" class="fade-up">
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">加 LINE 詢問職缺</a>
     </div>
@@ -1174,7 +1312,7 @@
       <p class="section-desc fade-up" style="transition-delay:0.1s">有任何問題都可以直接問我<br/>這裡先回答最常見的幾個問題</p>
       <div class="faq-list fade-up" style="transition-delay:0.15s">
         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>需要簽合約嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全不需要　我不靠合約綁住任何人　<br>想來就來　想走就走　<br>沒有任何違約金或限制</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>薪水會被壓著嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　每週六固定發薪　想現領也可以　<br>我不靠壓薪水留人　只靠誠實留住你</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>薪水會被壓著不給嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　每週六固定發薪　想現領也可以　<br>我不靠壓薪水留人　只靠誠實留住你</div></div>
         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>酒店薪水怎麼計算？</span><span class="faq-plus">+</span></button><div class="faq-answer">以節計算　每 10 分鐘一節　<br>台北禮服店節薪約 230 到 290 元　<br>詳細數字依店家不同　<br>我會在面試前完整說明　不會有任何隱藏費用</div></div>
         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>沒有經驗可以做嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全可以　我會從頭帶你了解整個流程　<br>新人反而更好　因為沒有壞習慣需要改正</div></div>
         <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>可以只做短期嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　很多人只做幾個月應急　完全沒問題　<br>時間　天數都可以自己安排　<br>沒有最低上班要求</div></div>
@@ -1188,7 +1326,7 @@
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>上班要穿什麼？我不會打扮怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">都是以禮服高跟鞋為主<br>我會幫你準備新的一套送給你<br>髮妝也有專門的髮妝師幫你處理</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　個人資料嚴格保密　工作地點　薪資　<br>一切資訊都不會外流　<br>這是我對每一位女孩的承諾</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>營業時間是幾點？</span><span class="faq-plus">+</span></button><div class="faq-answer">有午場也有晚場　最早下午 1:00 營業<br>任選 6 小時起就可以上班<br>不管是上午有課還是白天有正職　都可以安排</div></div>
-          <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>一天收入大概多少？</span><span class="faq-plus">+</span></button><div class="faq-answer">正常情況下大概 6,000 到 8,000 元<br>上的比較好一天破萬都可以<br>收入完全看你的時間投入和狀態</div></div>
+          <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>一天收入大概多少？</span><span class="faq-plus">+</span></button><div class="faq-answer">正常情況下大概 6,000 到 8,000 元<br>上的比較好一天破萬都可以<br>這是保守估計 我不會畫餅給你吃<br>收入完全看你的時間投入和狀態</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>第一次去要做什麼準備？</span><span class="faq-plus">+</span></button><div class="faq-answer">帶雙證件來即可<br>不會壓著你的證件不給你<br>只需要證明你有年滿 18 歲並且有台灣國民身份</div></div>
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>請假方便嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然　八大行業的優勢就是自由<br>婚喪喜慶　月經來　甚至是你今天不想上班<br>都可以直接跟我請假　沒有任何限制</div></div>
         </div>
@@ -1227,9 +1365,9 @@
   <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <p class="section-label fade-up" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
+      <p class="section-label contact-label-lux fade-up" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
       <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
-      <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
+      <h2 class="contact-title-lux fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
       <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s;">點我詢問工作</a>
       <p class="contact-note fade-up" style="transition-delay:0.25s;">我會親自回覆　不是 AI 回覆</p>
