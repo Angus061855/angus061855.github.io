@@ -540,6 +540,157 @@
     .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.45); }
     .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; flex-shrink: 0; }
 
+    /* 右下角諮詢入口 */
+    .consult-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 28px;
+      z-index: 420;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .consult-panel {
+      width: min(360px, calc(100vw - 32px));
+      max-height: min(620px, calc(100vh - 110px));
+      overflow: auto;
+      background: linear-gradient(160deg, rgba(18,14,9,0.98), rgba(8,7,6,0.98));
+      border: 1px solid rgba(200,169,110,0.28);
+      border-radius: 12px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(200,169,110,0.08);
+      padding: 16px;
+      opacity: 0;
+      transform: translateY(14px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .consult-widget.open .consult-panel {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .consult-panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .consult-panel-title {
+      color: var(--accent2);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.5;
+    }
+    .consult-panel-sub {
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      margin-top: 3px;
+    }
+    .consult-close {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .consult-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .consult-action {
+      min-height: 52px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(200,169,110,0.22);
+      background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.02));
+      color: #e8dcc8;
+      text-decoration: none;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .consult-action:hover {
+      border-color: rgba(200,169,110,0.48);
+      background: linear-gradient(135deg, rgba(200,169,110,0.14), rgba(200,169,110,0.06));
+      transform: translateY(-1px);
+    }
+    .consult-action.line {
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      border-color: rgba(34,136,90,0.45);
+      color: #fff;
+    }
+    .consult-quiz {
+      display: none;
+      border-top: 1px solid rgba(200,169,110,0.14);
+      padding-top: 14px;
+    }
+    .consult-quiz.active { display: block; }
+    .consult-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 118px;
+      height: 48px;
+      padding: 0 20px;
+      border: 1px solid rgba(200,169,110,0.35);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(20,16,10,0.96), rgba(10,8,6,0.96));
+      color: var(--accent2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(200,169,110,0.1);
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .consult-toggle-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf7d;
+      box-shadow: 0 0 10px rgba(76,175,125,0.65);
+    }
+    .consult-panel .quiz-progress { margin-bottom: 16px; }
+    .consult-panel .quiz-q {
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .consult-panel .quiz-options { gap: 8px; }
+    .consult-panel .quiz-opt {
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+    .consult-panel .quiz-result {
+      padding: 22px 18px;
+    }
+    .consult-panel .quiz-result-title {
+      font-size: 1.05rem;
+    }
+    .consult-panel .quiz-result-desc {
+      font-size: 0.86rem;
+      margin-bottom: 18px;
+    }
+
     /* 9. 手機版底部通欄 LINE */
     .mobile-line-bar { display: none; }
     @media (max-width: 640px) {
@@ -560,8 +711,16 @@
       }
       .mobile-line-bar-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.8); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
       /* 手機版底部留空，不被通欄蓋住 */
-      body { padding-bottom: 60px; }
+      body { padding-bottom: 0; }
       .float-line { display: none; }
+      .consult-widget { right: 16px; bottom: 18px; }
+      .consult-panel {
+        width: calc(100vw - 32px);
+        max-height: calc(100vh - 92px);
+        padding: 14px;
+      }
+      .consult-actions { grid-template-columns: 1fr; }
+      .consult-toggle { height: 46px; min-width: 108px; }
     }
 
     /* 回到頂部 */
@@ -663,16 +822,68 @@
 
   <canvas id="velvet-bg"></canvas>
 
-  <!-- 9. 手機版底部通欄 -->
-  <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="mobile-line-bar">
-    <span class="mobile-line-bar-dot"></span>
-    <span>免費諮詢　立即加 LINE</span>
-  </a>
-
-  <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line" id="floatLine">
-    <span class="float-line-dot"></span>
-    <span class="float-line-text">立即詢問</span>
-  </a>
+  <div class="consult-widget" id="consultWidget">
+    <div class="consult-panel" id="consultPanel">
+      <div class="consult-panel-head">
+        <div>
+          <div class="consult-panel-title">先問問</div>
+          <div class="consult-panel-sub">可以直接加 LINE，也可以先做 30 秒適合測驗。</div>
+        </div>
+        <button class="consult-close" type="button" onclick="toggleConsult(false)" aria-label="關閉">×</button>
+      </div>
+      <div class="consult-actions">
+        <a class="consult-action line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接加 LINE</a>
+        <button class="consult-action" type="button" onclick="openConsultQuiz()">先做適合測驗</button>
+      </div>
+      <div class="consult-quiz" id="consultQuiz">
+        <div class="quiz-progress" id="quizProgress">
+          <div class="quiz-progress-dot" id="qd0"></div>
+          <div class="quiz-progress-dot" id="qd1"></div>
+          <div class="quiz-progress-dot" id="qd2"></div>
+        </div>
+        <div class="quiz-step active" id="qs0">
+          <p class="quiz-q">你現在最主要的考量是什麼？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(0,0)">1. 需要快速增加收入</button>
+            <button class="quiz-opt" onclick="quizNext(0,1)">2. 想要時間更彈性自由</button>
+            <button class="quiz-opt" onclick="quizNext(0,2)">3. 只是好奇想了解看看</button>
+            <button class="quiz-opt" onclick="quizNext(0,3)">4. 其他</button>
+          </div>
+        </div>
+        <div class="quiz-step" id="qs1">
+          <p class="quiz-q">你對八大行業最擔心的是什麼？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(1,0)">1. 隱私問題　怕被認識的人知道</button>
+            <button class="quiz-opt" onclick="quizNext(1,1)">2. 合約問題　怕被綁住走不了</button>
+            <button class="quiz-opt" onclick="quizNext(1,2)">3. 完全不了解　不知道從哪裡問起</button>
+            <button class="quiz-opt" onclick="quizNext(1,3)">4. 其他</button>
+          </div>
+        </div>
+        <div class="quiz-step" id="qs2">
+          <p class="quiz-q">你希望怎麼開始？</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="quizNext(2,0)">1. 先問問題　了解清楚再說</button>
+            <button class="quiz-opt" onclick="quizNext(2,1)">2. 先看看資訊　自己研究一下</button>
+            <button class="quiz-opt" onclick="quizNext(2,2)">3. 直接了解　有興趣就快速行動</button>
+            <button class="quiz-opt" onclick="quizNext(2,3)">4. 其他</button>
+          </div>
+        </div>
+        <div class="quiz-step" id="qs-result">
+          <div class="quiz-result" id="quizResultBox">
+            <div class="quiz-result-title" id="quizTitle"></div>
+            <div class="quiz-result-desc" id="quizDesc"></div>
+            <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;margin:0 auto;">加 LINE 問大頭</a>
+            <br/>
+            <button class="quiz-restart" onclick="quizRestart()">重新測驗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="consult-toggle" type="button" onclick="toggleConsult()" aria-expanded="false" aria-controls="consultPanel">
+      <span class="consult-toggle-dot"></span>
+      <span>先問問</span>
+    </button>
+  </div>
 
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
 
@@ -1005,67 +1216,6 @@
 
   <hr class="divider"/>
 
-<!-- 10. 互動測驗 -->
-  <section id="quiz">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">適合測驗</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">你適合做這行嗎</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">三個問題　30 秒知道答案<br/>沒有標準答案　只是幫你想清楚</p>
-      <div class="quiz-wrap fade-up" style="transition-delay:0.15s">
-        <div class="quiz-progress" id="quizProgress">
-          <div class="quiz-progress-dot" id="qd0"></div>
-          <div class="quiz-progress-dot" id="qd1"></div>
-          <div class="quiz-progress-dot" id="qd2"></div>
-        </div>
-        <!-- Q1 -->
-<div class="quiz-step active" id="qs0">
-  <p class="quiz-q">你現在最主要的考量是什麼？</p>
-  <div class="quiz-options">
-    <button class="quiz-opt" onclick="quizNext(0,0)">1. 需要快速增加收入</button>
-    <button class="quiz-opt" onclick="quizNext(0,1)">2. 想要時間更彈性自由</button>
-    <button class="quiz-opt" onclick="quizNext(0,2)">3. 只是好奇想了解看看</button>
-    <button class="quiz-opt" onclick="quizNext(0,3)">4. 其他</button>
-  </div>
-</div>
-
-<!-- Q2 -->
-<div class="quiz-step" id="qs1">
-  <p class="quiz-q">你對八大行業最擔心的是什麼？</p>
-  <div class="quiz-options">
-    <button class="quiz-opt" onclick="quizNext(1,0)">1. 隱私問題　怕被認識的人知道</button>
-    <button class="quiz-opt" onclick="quizNext(1,1)">2. 合約問題　怕被綁住走不了</button>
-    <button class="quiz-opt" onclick="quizNext(1,2)">3. 完全不了解　不知道從哪裡問起</button>
-    <button class="quiz-opt" onclick="quizNext(1,3)">4. 其他</button>
-  </div>
-</div>
-
-<!-- Q3 -->
-<div class="quiz-step" id="qs2">
-  <p class="quiz-q">你希望怎麼開始？</p>
-  <div class="quiz-options">
-    <button class="quiz-opt" onclick="quizNext(2,0)">1. 先問問題　了解清楚再說</button>
-    <button class="quiz-opt" onclick="quizNext(2,1)">2. 先看看資訊　自己研究一下</button>
-    <button class="quiz-opt" onclick="quizNext(2,2)">3. 直接了解　有興趣就快速行動</button>
-    <button class="quiz-opt" onclick="quizNext(2,3)">4. 其他</button>
-  </div>
-</div>
-
-        <!-- 結果 -->
-        <div class="quiz-step" id="qs-result">
-          <div class="quiz-result" id="quizResultBox">
-            <div class="quiz-result-title" id="quizTitle"></div>
-            <div class="quiz-result-desc" id="quizDesc"></div>
-            <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;margin:0 auto;">加 LINE 問大頭</a>
-            <br/>
-            <button class="quiz-restart" onclick="quizRestart()">重新測驗</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
   <!-- CONTACT -->
   <section id="contact">
   <div class="container">
@@ -1122,6 +1272,21 @@
   });
   updateActiveNav();
 
+  /* ── 右下角諮詢入口 ── */
+  const consultWidget = document.getElementById('consultWidget');
+  const consultToggle = document.querySelector('.consult-toggle');
+  const consultQuiz = document.getElementById('consultQuiz');
+  function toggleConsult(force) {
+    const isOpen = typeof force === 'boolean' ? force : !consultWidget.classList.contains('open');
+    consultWidget.classList.toggle('open', isOpen);
+    if (consultToggle) consultToggle.setAttribute('aria-expanded', String(isOpen));
+  }
+  function openConsultQuiz() {
+    consultQuiz.classList.add('active');
+    quizRestart();
+    toggleConsult(true);
+  }
+
   /* ── 漢堡選單 ── */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -1133,9 +1298,13 @@
   }
   hamburger.addEventListener('click', () => setMenuState(!mobileMenu.classList.contains('open')));
   function closeMenu() { setMenuState(false); }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+    if (e.key === 'Escape' && consultWidget.classList.contains('open')) toggleConsult(false);
+  });
   document.addEventListener('click', e => {
     if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+    if (consultWidget.classList.contains('open') && !consultWidget.contains(e.target)) toggleConsult(false);
   });
 
   /* ── 滾入動畫 ── */
