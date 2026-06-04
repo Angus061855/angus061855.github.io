@@ -8,7 +8,10 @@ function toggleMobileMenu() {
   const menu = document.querySelector('.mobile-menu');
   const btn = document.querySelector('.mobile-menu-btn');
   const isOpen = menu && menu.classList.toggle('open');
-  if (btn) btn.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  if (btn) {
+    btn.classList.toggle('open', Boolean(isOpen));
+    btn.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  }
 }
 
 function initIncomeCalculator() {
