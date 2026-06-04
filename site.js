@@ -151,6 +151,9 @@ function calculateIncome() {
 
 function initIncomeTool() {
   if (!document.getElementById('income-monthly')) return;
+  document.querySelectorAll('[data-income-mode]').forEach(btn => {
+    btn.addEventListener('click', () => setIncomeMode(btn.dataset.incomeMode || 'club'));
+  });
   ['income-days', 'income-hours', 'income-rate'].forEach(id => {
     const input = document.getElementById(id);
     if (!input) return;
