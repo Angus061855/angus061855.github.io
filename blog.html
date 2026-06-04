@@ -71,6 +71,7 @@
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .page-desc { text-align: center; color: var(--muted); font-size: 0.92rem; margin-bottom: 48px; letter-spacing: 0.05em; line-height: 2; }
+    .blog-hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:-22px 0 42px; }
 
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
     .blog-card {
@@ -143,6 +144,8 @@
       nav { padding: 14px 20px; }
       .wrap { padding: 100px 20px 60px; }
       .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
+      .blog-hero-actions { display:grid; grid-template-columns:1fr; gap:10px; margin:-18px 0 34px; }
+      .blog-hero-actions .btn-primary, .blog-hero-actions .btn-outline { width:100%; }
       .final-contact-section { min-height:76vh; padding:64px 0 124px; }
       .final-contact-actions { width:100%; margin-bottom:42px; }
       .final-contact-actions .btn-primary, .final-contact-actions .btn-outline { width:min(100%,280px); }
@@ -187,6 +190,10 @@
 <div class="wrap">
   <h1 class="page-title">所有文章</h1>
   <p class="page-desc">七年的觀察與心得　寫給每一個正在考慮的你</p>
+  <div class="hero-cta blog-hero-actions">
+    <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
+    <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+  </div>
   <div class="blog-grid" id="blog-grid">
     <p class="blog-loading">載入中...</p>
   </div>

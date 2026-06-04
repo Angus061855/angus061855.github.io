@@ -160,6 +160,7 @@ nav {
 .topic-item:focus,
 .topic-item:active {
   display: flex;
+  align-items:center;
   justify-content: space-between;
   gap: 14px;
   padding: 14px 0;
@@ -177,18 +178,40 @@ nav {
   letter-spacing: .06em;
 }
 .topic-item span {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-height:28px;
+  padding:0 10px;
+  border:1px solid rgba(200,169,110,.28);
+  border-radius:var(--radius-pill);
   color: var(--accent2);
+  background:rgba(200,169,110,.07);
   white-space: nowrap;
-  font-size: .86rem;
+  word-break:keep-all;
+  font-size: .78rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  align-self:center;
 }
 
 @media (max-width: 640px) {
   .nav-logo img { height: 40px; }
   .topic-item {
-    display: grid;
-    gap: 6px;
+    display:flex;
+    align-items:center;
+    gap:10px;
   }
-  .topic-item span { white-space: normal; }
+  .topic-item strong {
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .topic-item span {
+    flex:0 0 auto;
+    white-space:nowrap;
+    word-break:keep-all;
+  }
 }
 
 .btn-primary,
@@ -663,7 +686,23 @@ input[type="range"] { width:100%; accent-color:var(--accent); }
 .category-tabs a { color:var(--muted); text-decoration:none; border:1px solid rgba(200,169,110,.18); border-radius:var(--radius-pill); padding:8px 14px; font-size:.86rem; letter-spacing:.08em; }
 .category-tabs a:hover { color:var(--accent2); border-color:var(--gold-border); }
 .article-card { text-decoration:none; display:block; min-height:100%; }
-.article-meta { color:var(--accent); font-size:.78rem; letter-spacing:.12em; margin-bottom:10px; }
+.article-meta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:28px;
+  padding:0 10px;
+  border:1px solid rgba(200,169,110,.28);
+  border-radius:var(--radius-pill);
+  color:var(--accent);
+  background:rgba(200,169,110,.07);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.1em;
+  margin-bottom:12px;
+  width:max-content;
+  max-width:100%;
+}
 
 .contact-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:24px; }
 .contact-method {
@@ -1436,6 +1475,7 @@ footer {
     font-size:.72rem;
   }
   .knowledge-category-grid .tool-coming-soon {
+    grid-column:1 / -1;
     min-height:168px;
     padding:20px 12px;
     display:flex;
