@@ -169,14 +169,20 @@
       font-family: 'Noto Serif TC', serif;
       font-size: 3.5rem !important; font-weight: 700; line-height: 1.5;
       text-align: center; margin: 0 auto 40px; letter-spacing: 0.06em;
+      color: transparent;
+      background: linear-gradient(105deg, #c8a96e 0%, #f0d898 34%, #f5f5f5 52%, #8f8f8f 74%, #c8a96e 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 34px rgba(200,169,110,0.14);
+      animation: shine 8s linear infinite;
     }
     @media (max-width: 768px) { .hero-sub-shine { font-size: 2.4rem !important; } }
     .hero-sub-shine span {
-      display: inline-block; color: transparent;
-      background: linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);
-      background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
-      text-shadow: 0 0 28px rgba(200,169,110,0.12);
-      animation: shine 7s linear infinite;
+      display: inline-block;
+      color: inherit;
+      background: none;
+      animation: none;
     }
     .hero-sub-shine span:nth-child(1)  { animation-delay: 0.00s; }
     .hero-sub-shine span:nth-child(2)  { animation-delay: 0.18s; }
@@ -877,7 +883,7 @@
       <a href="blog.html">部落格</a>
       <a href="contact.html">聯絡我</a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="選單" aria-expanded="false" aria-controls="mobileMenu">
+    <button class="hamburger mobile-menu-btn" id="hamburger" aria-label="選單" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -960,68 +966,6 @@
 
   <hr class="divider"/>
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">選我的優勢</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">業界最誠實的承諾</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">誠實 不話術 只講實話<br/>這是我七年來唯一的做事方式</p>
-      <div class="features-grid">
-        <div class="feature-card fade-up" style="transition-delay:0.0s"><div class="feature-icon">不簽合約</div><h3>想來就來想走就走</h3><p>不靠簽約綁住人<br>只靠真誠留住你</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.05s"><div class="feature-icon">不壓薪水</div><h3>每週六固定發薪</h3><p>固定時間入帳<br>想現領也可以</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.1s"><div class="feature-icon">時間彈性</div><h3>配合你的行程</h3><p>可短期　兼職<br>不綁定任何合約</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.15s"><div class="feature-icon">隱私保護</div><h3>個資嚴格保密</h3><p>不必告知家人　男友<br>這是對你的承諾</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.2s"><div class="feature-icon">安全第一</div><h3>你的底線你決定</h3><p>任何超出範圍的要求<br>都可以直接拒絕</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.25s"><div class="feature-icon">薪資透明</div><h3>上班前說清楚</h3><p>完整說明計算方式<br>不會有事後扣款</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.3s"><div class="feature-icon">一對一服務</div><h3>量身規劃方向</h3><p>每個人狀況不同<br>我會給出最適合的建議</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.35s"><div class="feature-icon">真人陪伴</div><h3>都是本人回覆</h3><p>不是 AI 客服<br>有問題隨時找我</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.4s"><div class="feature-icon">專業引導</div><h3>七年帶你少走彎路</h3><p>面試到上班全程引導<br>找到最適合你的方向</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.45s"><div class="feature-icon">真誠對待</div><h3>不用話術面對你</h3><p>想問什麼直接問<br>有話直說 不用擔心</p></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- 5. 對比區塊 -->
-  <section id="compare">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">為什麼選我</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">跟其他經紀人<br/>有什麼不同</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">不是說別人壞話<br/>只是讓你看清楚差別在哪裡</p>
-      <div class="compare-grid fade-up" style="transition-delay:0.15s">
-        <div class="compare-card us">
-          <span class="compare-tag">大頭 · AS娛樂</span>
-          <div class="compare-title">誠實經紀人</div>
-          <ul class="compare-list">
-            <li>不簽任何合約　想離職隨時可以離職</li>
-            <li>薪水週六準時入帳　不壓薪水 想現領也可以</li>
-            <li>上班前完整說明　沒有隱藏扣款費用</li>
-            <li>本人親自回覆　不是助理或 AI 回覆</li>
-            <li>個資嚴格保密　不外流出去</li>
-            <li>問了不代表要做　無任何壓力</li>
-            <li>七年口碑　個人運作 靠真實評價累積</li>
-          </ul>
-        </div>
-        <div class="compare-card them">
-          <span class="compare-tag">其他經紀人</span>
-          <div class="compare-title">常見狀況</div>
-          <ul class="compare-list">
-            <li>要求簽合約　離開要賠違約金</li>
-            <li>以各種理由壓薪水拖延發放</li>
-            <li>上班後才發現有不合理扣款項目</li>
-            <li>助理或群組統一回覆</li>
-            <li>個資可能流向你的家人　朋友　男友</li>
-            <li>用話術製造緊迫感催你決定</li>
-            <li>與你發生感情關係 非常失職的行為</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
   <!-- JOBS -->
   <section id="jobs">
     <div class="container">
@@ -1048,19 +992,6 @@
     </div>
     <div style="text-align:center;margin-top:36px;" class="fade-up">
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">立即詢問</a>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- 4. 匿名心得 -->
-  <section id="reviews">
-    <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">真實心得</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">她們說的話</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">全部匿名　不像其他經紀<br/>會拍小姐照片　個資上傳</p>
-      <div class="reviews-grid fade-up" style="transition-delay:0.15s" id="reviews-grid"></div>
-
     </div>
   </section>
 
@@ -1104,6 +1035,19 @@
         </div>
         <div class="faq-arrow">→</div>
       </a>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- 4. 匿名心得 -->
+  <section id="reviews">
+    <div class="container">
+      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">真實心得</p>
+      <h2 class="section-title fade-up" style="transition-delay:0.05s">她們說的話</h2>
+      <p class="section-desc fade-up" style="transition-delay:0.1s">全部匿名　不像其他經紀<br/>會拍小姐照片　個資上傳</p>
+      <div class="reviews-grid fade-up" style="transition-delay:0.15s" id="reviews-grid"></div>
+
     </div>
   </section>
 
@@ -1161,7 +1105,7 @@
   const backToTop = document.getElementById('backToTop');
   const mobileLineBar = document.querySelector('.mobile-line-bar');
   const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu a[href^="#"]'));
-  const navSectionIds = ['about', 'features', 'jobs', 'faq', 'contact'];
+  const navSectionIds = ['about', 'jobs', 'faq', 'reviews', 'contact'];
   function updateActiveNav() {
     const current = navSectionIds.reduce((activeId, id) => {
       const section = document.getElementById(id);

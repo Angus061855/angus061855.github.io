@@ -111,9 +111,11 @@ function calculateIncome() {
   const days = Number(document.getElementById('income-days')?.value || 0);
   const hours = Number(document.getElementById('income-hours')?.value || 0);
   const rate = Number(document.getElementById('income-rate')?.value || 0);
-  const result = document.getElementById('income-result');
+  const dailyEl = document.getElementById('income-daily');
+  const weeklyEl = document.getElementById('income-weekly');
+  const monthlyEl = document.getElementById('income-monthly');
   const note = document.getElementById('income-note');
-  if (!result || !note) return;
+  if (!dailyEl || !weeklyEl || !monthlyEl || !note) return;
   const daysValue = document.getElementById('income-days-value');
   const hoursValue = document.getElementById('income-hours-value');
   const rateValue = document.getElementById('income-rate-value');
@@ -122,21 +124,33 @@ function calculateIncome() {
   if (rateValue) rateValue.textContent = `${rate} 元`;
   const monthlyDays = days * 4;
   if (incomeMode === 'beauty') {
-    const base = monthlyDays * hours * rate;
-    const tipLow = monthlyDays * (hours / 3) * 10000;
-    const tipHigh = monthlyDays * (hours / 3) * 15000;
-    result.textContent = `約 ${formatMoney(base + tipLow)} - ${formatMoney(base + tipHigh)} 元`;
+    const dailyBase = hours * rate;
+    const dailyTipLow = (hours / 3) * 10000;
+    const dailyTipHigh = (hours / 3) * 15000;
+    const dailyLow = dailyBase + dailyTipLow;
+    const dailyHigh = dailyBase + dailyTipHigh;
+    const weeklyLow = dailyLow * days;
+    const weeklyHigh = dailyHigh * days;
+    const monthlyLow = weeklyLow * 4;
+    const monthlyHigh = weeklyHigh * 4;
+    dailyEl.textContent = `約 ${formatMoney(dailyLow)} - ${formatMoney(dailyHigh)} 元`;
+    weeklyEl.textContent = `約 ${formatMoney(weeklyLow)} - ${formatMoney(weeklyHigh)} 元`;
+    monthlyEl.textContent = `約 ${formatMoney(monthlyLow)} - ${formatMoney(monthlyHigh)} 元`;
     note.textContent = '美容師以一台為計量單位（時薪）　小費約每 3 小時 10000 到 15000 元';
     return;
   }
   const sectionsPerDay = hours * 6;
-  const monthly = monthlyDays * sectionsPerDay * rate;
-  result.textContent = `約 ${formatMoney(monthly)} 元`;
+  const daily = sectionsPerDay * rate;
+  const weekly = daily * days;
+  const monthly = weekly * 4;
+  dailyEl.textContent = `約 ${formatMoney(daily)} 元`;
+  weeklyEl.textContent = `約 ${formatMoney(weekly)} 元`;
+  monthlyEl.textContent = `約 ${formatMoney(monthly)} 元`;
   note.textContent = '酒店以 10 分鐘一節計算　節薪依你選擇的數字試算';
 }
 
 function initIncomeTool() {
-  if (!document.getElementById('income-result')) return;
+  if (!document.getElementById('income-monthly')) return;
   calculateIncome();
 }
 
@@ -152,9 +166,13 @@ function nextContactQuiz(step, ans = 0) {
   contactQuizAnswers[step] = ans;
   const current = document.querySelector(`[data-contact-quiz-step="${step}"]`);
   const next = document.querySelector(`[data-contact-quiz-step="${step + 1}"]`);
+  const currentDot = document.getElementById(`contact-qdot-${step}`);
+  if (currentDot) currentDot.classList.add('done');
   if (current) current.classList.remove('active');
   if (next) {
     next.classList.add('active');
+    const nextDot = document.getElementById(`contact-qdot-${step + 1}`);
+    if (nextDot) nextDot.classList.add('active');
     return;
   }
   const result = document.getElementById('contact-quiz-result');
@@ -171,6 +189,10 @@ function restartContactQuiz() {
   document.querySelectorAll('[data-contact-quiz-step]').forEach(step => step.classList.remove('active'));
   const first = document.querySelector('[data-contact-quiz-step="0"]');
   if (first) first.classList.add('active');
+  document.querySelectorAll('.quiz-progress-dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === 0);
+    dot.classList.remove('done');
+  });
   const result = document.getElementById('contact-quiz-result');
   if (result) result.classList.remove('show');
 }
