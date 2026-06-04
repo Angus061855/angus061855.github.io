@@ -1,67 +1,225 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>部落格｜AS娛樂 大頭</title>
-  <meta name="description" content="AS娛樂部落格：酒店上班、酒店兼職、酒店薪水、八大經紀、試做、隱私與新人求職文章。" />
-  <meta name="keywords" content="酒店上班,酒店兼職,酒店薪水,酒店試做,八大經紀,八大行業是什麼" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
+  <meta name="author" content="AS娛樂 大頭"/>
+  <meta name="theme-color" content="#0a0a0a"/>
+  <meta name="description" content="AS娛樂大頭的部落格，七年八大行業經驗，分享最真實的酒店公關入行知識。"/>
+  <link rel="canonical" href="https://as-ent-tw.com/blog.html"/>
+  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/blog.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/blog.html"/>
+  <meta property="og:title" content="酒店公關部落格｜AS娛樂 大頭"/>
+  <meta property="og:description" content="七年八大行業經驗，分享最真實的酒店公關入行知識與面試建議。"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://as-ent-tw.com/blog.html"/>
+  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="酒店公關部落格｜AS娛樂 大頭"/>
+  <meta name="twitter:description" content="七年八大行業經驗，分享最真實的酒店公關入行知識與面試建議。"/>
+  <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"AS娛樂｜大頭的部落格","description":"七年八大行業經驗，分享最真實的酒店公關入行知識","url":"https://as-ent-tw.com/blog.html","author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"}]}</script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --border: #242424; --text: #f0f0f0; --muted: #888;
+      --accent: #c8a96e; --accent2: #e0c080; --surface: #111111;
+      --gold-border: rgba(200,169,110,0.22);
+      --line-green: #1a6b45; --line-green-light: #22885a;
+      --radius-btn: 4px; --radius-card: 6px;
+    }
+    body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px; background: rgba(6,6,6,0.96);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
+    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
+    .page-title {
+      font-size: 2rem; font-weight: 700; margin-bottom: 8px; text-align: center;
+      font-family: 'Noto Serif TC', serif;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .page-desc { text-align: center; color: var(--muted); font-size: 0.92rem; margin-bottom: 48px; letter-spacing: 0.05em; line-height: 2; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .blog-card {
+      background: linear-gradient(160deg, rgba(16,13,8,0.9), rgba(10,8,6,0.85));
+      border: 1px solid var(--gold-border); border-radius: var(--radius-card);
+      overflow: hidden; text-decoration: none; color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(200,169,110,0.05);
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .blog-card:hover { border-color: rgba(200,169,110,0.45); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(200,169,110,0.09), 0 4px 20px rgba(0,0,0,0.35); }
+    .blog-card-cover { width: 100%; height: 160px; object-fit: cover; }
+    .blog-card-cover-placeholder {
+      width: 100%; height: 160px;
+      background: rgba(255,255,255,0.025);
+      background-size: 200% 200%; animation: shimmerBg 7s ease infinite;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .blog-card-cover-placeholder::after {
+      content: ''; width: 110px; height: 110px;
+      background: url('logo.png') center/contain no-repeat; opacity: 0.45;
+    }
+    @keyframes shimmerBg { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .blog-card-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    .blog-card-views { font-size: 0.7rem; color: rgba(200,169,110,0.4); letter-spacing: 0.04em; }
+    .blog-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.55; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-card-summary { font-size: 0.82rem; color: var(--muted); line-height: 1.85; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-loading { color: var(--muted); text-align: center; padding: 40px; grid-column: 1/-1; }
+
+    .float-line {
+      position: fixed; bottom: 28px; right: 24px; z-index: 200;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, rgba(20,16,10,0.96), rgba(10,8,6,0.96));
+      color: var(--accent2); font-weight: 900; font-size: 0.92rem;
+      padding: 12px 20px; border-radius: 999px; text-decoration: none;
+      letter-spacing: 0.1em; border: 1px solid rgba(200,169,110,0.35);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(200,169,110,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(200,169,110,0.18); }
+    .float-line-dot { width: 8px; height: 8px; background: #4caf7d; box-shadow: 0 0 10px rgba(76,175,125,0.65); border-radius: 50%; }
+
+    footer { border-top: 1px solid rgba(200,169,110,0.1); padding: 28px 24px; text-align: center; color: #555; font-size: 0.82rem; background: rgba(6,6,6,0.6); }
+    footer span { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .wrap { padding: 100px 20px 60px; }
+      .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html"><img src="logo.png" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>部落格</span></span></a>
-    <div class="nav-links"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">瞭解更多</a><a href="knowledge.html">八大知識+</a><a class="active" href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
-    <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-menu"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">瞭解更多</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+  <canvas id="velvet-bg"></canvas>
 
-  <main>
-    <section class="hero compact">
-      <div class="container">
-        <div class="hero-badges"><span class="hero-badge">七年觀察</span><span class="hero-badge">新人必看</span><span class="hero-badge">真話整理</span></div>
-        <h1 class="hero-title">熱門文章</h1>
-        <p class="hero-lead">寫給每一個正在考慮的你。先看懂，再決定要不要問我。</p>
-      </div>
-    </section>
-    <section class="section">
-      <div class="wide-container">
-        <div class="grid-3">
-          <a class="card article-card" href="post.html?slug=post-1"><div class="article-meta">薪資篇 · 2026-03-15</div><h3>酒店公關一天真的能賺多少？老實說給你聽</h3><p>很多人問我這個問題，我決定直接把數字告訴你，不誇大也不縮小。</p><span class="mini-link">閱讀文章 →</span></a>
-          <a class="card article-card" href="post.html?slug=post-2"><div class="article-meta">隱私篇 · 2026-03-22</div><h3>做酒店會被認識的人發現嗎？隱私問題完整解答</h3><p>這是我被問最多次的問題，今天一次說清楚。</p><span class="mini-link">閱讀文章 →</span></a>
-          <a class="card article-card" href="post.html?slug=post-3"><div class="article-meta">經紀篇 · 2026-04-01</div><h3>為什麼我不要求簽合約？一個經紀人的真心話</h3><p>合約對誰有利？我來告訴你背後的邏輯。</p><span class="mini-link">閱讀文章 →</span></a>
-          <a class="card article-card" href="post.html?slug=agency-choice"><div class="article-meta">面試前必看</div><h3>經紀公司都一樣嗎？分辨好壞其實很簡單</h3><p>看對方願不願意講清楚風險，而不是只聽漂亮話。</p><span class="mini-link">閱讀文章 →</span></a>
-          <a class="card article-card" href="post.html?slug=section-rate"><div class="article-meta">薪資篇</div><h3>酒店節薪怎麼算？10 分鐘一節代表什麼</h3><p>節薪、節數、上檯率和扣款，全部都要放在一起看。</p><span class="mini-link">閱讀文章 →</span></a>
-          <a class="card article-card" href="post.html?slug=privacy"><div class="article-meta">安全與隱私篇</div><h3>怎麼保護隱私？怕被家人男友知道要先問什麼</h3><p>越敏感的問題，越應該在面試前問清楚。</p><span class="mini-link">閱讀文章 →</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line">
+  <span class="float-line-dot"></span>
+  <span>立即詢問</span>
+</a>
 
-  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>更多文章會陸續新增，包含節薪、試做、術語與安全隱私。</p></footer>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AS娛樂" style="height:56px;"/>
+  </a>
+  <a href="index.html" class="back-btn">← 返回主頁</a>
+</nav>
 
-  <div class="consult-widget">
-    <div class="consult-panel">
-      <div class="consult-panel-head">
-        <div>
-          <div class="consult-panel-title">立即了解工作</div>
-          <div class="consult-panel-sub">有問題可以直接加 LINE，我會親自回覆。</div>
-        </div>
-        <button class="consult-close" type="button" onclick="toggleConsult(false)" aria-label="關閉">×</button>
-      </div>
-      <div class="consult-actions">
-        <a class="consult-action line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接加 LINE</a>
-        <a class="consult-action" href="contact.html">聯絡方式</a>
-      </div>
-    </div>
-    <button class="consult-toggle" type="button" onclick="toggleConsult()" aria-expanded="false">
-      <span class="consult-toggle-dot"></span>
-      <span>立即詢問</span>
-    </button>
+<div class="wrap">
+  <h1 class="page-title">所有文章</h1>
+  <p class="page-desc">七年的觀察與心得　寫給每一個正在考慮的你</p>
+  <div class="blog-grid" id="blog-grid">
+    <p class="blog-loading">載入中...</p>
   </div>
-  <script src="site.js"></script>
+</div>
+
+<footer><p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p></footer>
+
+<script>
+  const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
+  const FALLBACK_POSTS = [
+    { slug: 'hotel-pr-job-guide', title: '酒店公關是什麼？新手入門完整指南', summary: '從工作內容、排班方式到常見誤解，一次帶你看懂。', date: '2026-01-12', cover: '' },
+    { slug: 'salary-and-risk', title: '薪資、風險與保護：面試前你一定要知道', summary: '談薪水之前，先知道哪些資訊一定要問清楚。', date: '2026-01-26', cover: '' },
+    { slug: 'part-time-and-privacy', title: '兼職與隱私：如何安全安排你的時間', summary: '給有正職、學生或有門禁需求的你，實際可行的建議。', date: '2026-02-08', cover: '' }
+  ];
+  function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
+  function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
+  function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
+
+  const renderPosts = (posts) => {
+    const grid = document.getElementById('blog-grid');
+    grid.innerHTML = posts.map(post => `
+      <a class="blog-card" href="post.html?slug=${post.slug}">
+        ${post.cover ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
+        <div class="blog-card-body">
+          <div class="blog-card-meta"><div class="blog-card-date">${post.date}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
+          <div class="blog-card-title">${post.title}</div>
+          <div class="blog-card-summary">${post.summary || ''}</div>
+        </div>
+      </a>
+    `).join('');
+  };
+
+  async function loadBlog() {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 4500);
+      const res = await fetch(`${WORKER}/posts`, { signal: controller.signal, cache: 'no-cache' });
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error();
+      const posts = await res.json();
+      if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
+      renderPosts(posts);
+    } catch(e) { renderPosts(FALLBACK_POSTS); }
+  }
+  loadBlog();
+
+  (function() {
+    const canvas = document.getElementById('velvet-bg');
+    const ctx = canvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+    let W, H;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    let t = 0;
+    const folds = [{x:0.15,y:0.10,tx:0.75,ty:0.55,speed:0.00002,phase:0.0},{x:0.05,y:0.40,tx:0.60,ty:0.90,speed:0.00002,phase:1.2},{x:0.30,y:0.00,tx:0.95,ty:0.70,speed:0.00002,phase:2.4}];
+    function drawFold(f, time) {
+      const drift=Math.sin(time*f.speed*1000+f.phase)*0.06;
+      const x1=(f.x+drift)*W,y1=(f.y+drift*0.5)*H,x2=(f.tx-drift)*W,y2=(f.ty-drift*0.3)*H;
+      const len=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/len,ny=(x2-x1)/len;
+      const w=Math.max(W,H)*(0.28+Math.sin(time*f.speed*800+f.phase)*0.04);
+      const grad=ctx.createLinearGradient(x1+nx*w,y1+ny*w,x1-nx*w,y1-ny*w);
+      grad.addColorStop(0,'rgba(0,0,0,0)');grad.addColorStop(0.35,'rgba(0,0,0,0)');
+      grad.addColorStop(0.48,'rgba(72,70,68,0.08)');grad.addColorStop(0.50,'rgba(95,92,88,0.13)');
+      grad.addColorStop(0.52,'rgba(72,70,68,0.08)');grad.addColorStop(0.65,'rgba(0,0,0,0)');
+      grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.save();ctx.beginPath();
+      const ex=(x2-x1)/len,ey=(y2-y1)/len,ext=Math.max(W,H)*2;
+      ctx.moveTo(x1-ex*ext+nx*w,y1-ey*ext+ny*w);ctx.lineTo(x2+ex*ext+nx*w,y2+ey*ext+ny*w);
+      ctx.lineTo(x2+ex*ext-nx*w,y2+ey*ext-ny*w);ctx.lineTo(x1-ex*ext-nx*w,y1-ey*ext-ny*w);
+      ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.restore();
+    }
+    const bumps = [{x:0.55,y:0.35,r:0.42,speed:0.000002,phase:0.0},{x:0.25,y:0.65,r:0.35,speed:0.000002,phase:1.8},{x:0.75,y:0.75,r:0.30,speed:0.000002,phase:3.2}];
+    function drawBump(b, time) {
+      const drift=Math.sin(time*b.speed*1000+b.phase);
+      const cx=(b.x+drift*0.07)*W,cy=(b.y+Math.cos(time*b.speed*800+b.phase)*0.06)*H,r=b.r*Math.max(W,H);
+      const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      grad.addColorStop(0,'rgba(88,85,80,0.20)');grad.addColorStop(0.25,'rgba(65,62,58,0.14)');
+      grad.addColorStop(0.55,'rgba(30,28,26,0.07)');grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+    }
+    function draw() {
+      t++;ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
+      if (!reduceMotion) { bumps.forEach(b=>drawBump(b,t)); folds.forEach(f=>drawFold(f,t)); }
+      const v=ctx.createRadialGradient(W*0.5,H*0.45,0,W*0.5,H*0.45,Math.max(W,H)*0.78);
+      v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(0.55,'rgba(0,0,0,0.18)');
+      v.addColorStop(0.80,'rgba(0,0,0,0.55)');v.addColorStop(1,'rgba(0,0,0,0.85)');
+      ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
+      if (!document.hidden) requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
 </body>
 </html>

@@ -511,6 +511,37 @@ footer {
 }
 .footer-slogan { color:rgba(200,169,110,.42); font-family:'Noto Serif TC',serif; letter-spacing:.18em; margin-bottom:12px; }
 
+.site-line-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 320;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 118px;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid rgba(200,169,110,.35);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(20,16,10,.96), rgba(10,8,6,.96));
+  color: var(--accent2);
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,.4), 0 0 20px rgba(200,169,110,.1);
+  font-size: .92rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+.site-line-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf7d;
+  box-shadow: 0 0 10px rgba(76,175,125,.65);
+  flex: 0 0 auto;
+}
+
 .consult-widget {
   position: fixed;
   right: 24px;
@@ -638,6 +669,7 @@ footer {
   .hero { padding:64px 0 44px; min-height:auto; }
   .hero-title { font-size:clamp(2.15rem, 10vw, 3.35rem); line-height:1.28; letter-spacing:.04em; }
   .section { padding:58px 0; }
+  .site-line-float { right:16px; bottom:18px; height:44px; min-width:108px; padding:0 18px; }
   .consult-widget { right:16px; bottom:18px; }
   .consult-panel { width:calc(100vw - 32px); padding:14px; }
   .consult-actions { grid-template-columns:1fr; }

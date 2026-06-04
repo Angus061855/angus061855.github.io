@@ -1,117 +1,514 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>文章｜AS娛樂 大頭</title>
-  <meta name="description" content="AS娛樂大頭八大求職文章，整理酒店薪水、試做、節薪、經紀公司選擇、隱私與新人注意事項。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>酒店公關文章｜AS娛樂 大頭</title>
+  <meta name="author" content="AS娛樂 大頭"/>
+  <meta name="theme-color" content="#0a0a0a"/>
+  <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北酒店公關招募諮詢完全免費。"/>
+  <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://as-ent-tw.com/post.html"/>
+  <meta property="og:title" content="酒店公關文章｜AS娛樂 大頭"/>
+  <meta property="og:description" content="酒店公關入行知識、薪資、面試流程與工作建議。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://as-ent-tw.com/post.html"/>
+  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="酒店公關文章｜AS娛樂 大頭"/>
+  <meta name="twitter:description" content="酒店公關入行知識、薪資、面試流程與工作建議。"/>
+  <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/post.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/post.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
-    .article { max-width: 780px; margin: 0 auto; }
-    .article h1 { font-family:'Noto Serif TC',serif; font-size:clamp(2rem,6vw,3.6rem); line-height:1.25; letter-spacing:.04em; margin-bottom:18px; }
-    .article p { color:var(--soft); line-height:2.15; letter-spacing:.04em; margin-bottom:18px; }
-    .article h2 { font-family:'Noto Serif TC',serif; color:var(--accent2); font-size:1.45rem; margin:34px 0 12px; }
-    .article ul { color:var(--soft); padding-left:20px; line-height:2.1; margin-bottom:20px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #111111;
+      --border: #242424; --text: #f0f0f0;
+      --muted: #888; --accent: #c8a96e; --accent2: #e0c080;
+      --line-green: #1a6b45; --line-green-light: #22885a;
+      --radius-btn: 4px; --radius-card: 6px;
+    }
+    body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px; background: rgba(6,6,6,0.96);
+      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
+    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    .wrap { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
+    .meta { display: flex; align-items: center; gap: 16px; font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; }
+    .views { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; color: rgba(200,169,110,0.45); }
+
+    .title {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--accent);
+      line-height: 1.45; margin-bottom: 16px;
+      word-break: keep-all; overflow-wrap: break-word;
+      letter-spacing: 0.02em;
+      font-family: 'Noto Serif TC', serif;
+    }
+    .summary {
+      font-size: 1rem; color: var(--muted);
+      padding-bottom: 2rem; margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(200,169,110,0.12); line-height: 2;
+      word-break: keep-all; overflow-wrap: break-word;
+    }
+    .cover { width: 100%; border-radius: var(--radius-card); margin-bottom: 2rem; object-fit: cover; max-height: 400px; display: none; }
+
+    .body { font-size: 1rem; line-height: 2.1; color: #c8c8c8; }
+    .body p { margin-bottom: 1.6em; word-break: keep-all; overflow-wrap: break-word; }
+    .body h2 {
+      font-size: 1.15rem; font-weight: 700; color: var(--accent);
+      margin: 2.6em 0 0.8em; letter-spacing: 0.04em;
+      padding-bottom: 0.4em;
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+      word-break: keep-all; overflow-wrap: break-word;
+      font-family: 'Noto Serif TC', serif;
+    }
+    .body .list-item { padding-left: 1.2em; margin-bottom: 0.8em; color: #c8c8c8; word-break: keep-all; overflow-wrap: break-word; }
+    .body a {
+      color: var(--accent2);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+    .body a:hover { color: #ffffff; }
+    .body .related-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent2);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(224,192,128,0.55);
+      line-height: 1.6;
+    }
+
+    .state { text-align: center; padding: 4rem; color: var(--muted); font-size: 1rem; }
+    .error { color: #e05555; }
+
+    /* 文章底部 LINE 橫幅 */
+    .post-cta {
+      margin-top: 3rem; padding: 24px;
+      border: 1px solid rgba(26,107,69,0.3);
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, rgba(26,107,69,0.07), rgba(26,107,69,0.03));
+      text-align: center;
+    }
+    .post-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.05em; line-height: 1.8; }
+    .post-cta a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+      padding: 10px 28px; border-radius: var(--radius-btn); text-decoration: none;
+      letter-spacing: 0.08em; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(26,107,69,0.25);
+    }
+    .post-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,107,69,0.35); }
+
+    .float-line {
+      position: fixed; bottom: 28px; right: 24px; z-index: 200;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, rgba(20,16,10,0.96), rgba(10,8,6,0.96));
+      color: var(--accent2); font-weight: 900; font-size: 0.92rem;
+      padding: 12px 20px; border-radius: 999px; text-decoration: none;
+      letter-spacing: 0.1em; border: 1px solid rgba(200,169,110,0.35);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(200,169,110,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(200,169,110,0.18); }
+    .float-line-dot { width: 8px; height: 8px; background: #4caf7d; box-shadow: 0 0 10px rgba(76,175,125,0.65); border-radius: 50%; }
+
+    footer { background: var(--surface); border-top: 1px solid rgba(200,169,110,0.1); padding: 24px; text-align: center; color: #555; font-size: 0.82rem; }
+    footer span { color: var(--accent); }
+
     @media (max-width: 640px) {
-      .article h1 { font-size:clamp(1.7rem,9vw,2.4rem); line-height:1.38; letter-spacing:.025em; }
-      .article p, .article ul { line-height:1.9; letter-spacing:.02em; font-size:.95rem; }
-      .article h2 { font-size:1.25rem; line-height:1.5; }
+      nav { padding: 14px 20px; }
+      .wrap { padding: 100px 20px 60px; }
+      .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html"><img src="logo.png" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>文章</span></span></a>
-    <div class="nav-links"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">瞭解更多</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
-    <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-menu"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">瞭解更多</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+<canvas id="velvet-bg"></canvas>
 
-  <main>
-    <section class="section">
-      <article class="article">
-        <div class="article-meta" id="articleMeta">AS娛樂 · 八大知識+</div>
-        <h1 id="articleTitle">酒店公關一天真的能賺多少？老實說給你聽</h1>
-        <div id="articleBody"></div>
-        <div class="contact-row"><a class="btn-primary" href="contact.html">看完還想問我</a><a class="btn-outline" href="blog.html">回文章列表</a></div>
-      </article>
-    </section>
-  </main>
+<a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line">
+  <span class="float-line-dot"></span>
+  <span>立即詢問</span>
+</a>
 
-  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>文章內容為一般資訊整理，實際情況仍需依個人條件與店型確認。</p></footer>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="AS娛樂" style="height:56px;"/>
+  </a>
+  <a href="blog.html" class="back-btn">← 返回部落格</a>
+</nav>
 
-  <div class="consult-widget">
-    <div class="consult-panel">
-      <div class="consult-panel-head">
-        <div>
-          <div class="consult-panel-title">立即了解工作</div>
-          <div class="consult-panel-sub">有問題可以直接加 LINE，我會親自回覆。</div>
-        </div>
-        <button class="consult-close" type="button" onclick="toggleConsult(false)" aria-label="關閉">×</button>
-      </div>
-      <div class="consult-actions">
-        <a class="consult-action line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接加 LINE</a>
-        <a class="consult-action" href="contact.html">聯絡方式</a>
-      </div>
+<div class="wrap">
+  <div class="state" id="loading">載入中...</div>
+  <div id="content" style="display:none">
+    <div class="meta">
+      <span id="meta"></span>
+      <span class="views"><span id="views">0</span> 次瀏覽</span>
     </div>
-    <button class="consult-toggle" type="button" onclick="toggleConsult()" aria-expanded="false">
-      <span class="consult-toggle-dot"></span>
-      <span>立即詢問</span>
-    </button>
+    <h1 class="title" id="title"></h1>
+    <p class="summary" id="summary"></p>
+    <img class="cover" id="cover" alt="封面"/>
+    <div class="body" id="body"></div>
+    <div class="post-cta">
+      <p>看完有問題嗎？或是想進一步了解？<br/>直接加我 LINE，我都會親自回覆。</p>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費諮詢</a>
+    </div>
   </div>
-  <script src="site.js"></script>
-  <script>
-    const articles = {
-      'post-1': {
-        meta: '薪資篇 · 2026-03-15',
-        title: '酒店公關一天真的能賺多少？老實說給你聽',
-        body: ['很多人第一句就問收入，這很正常。只是我會先說清楚：收入不是只看節薪，也不是誰講最高就代表最好。', '你要一起看店型、上班時段、上檯率、客群、請假、扣款和發薪規則。正常情況下，有人一天幾千，也有人狀態好時更高，但這都不能當成保證。', '真正該問的是：薪水怎麼算？什麼時候領？有沒有扣款？如果不適合能不能離開？這些問清楚，比聽漂亮數字更重要。']
-      },
-      'post-2': {
-        meta: '隱私篇 · 2026-03-22',
-        title: '做酒店會被認識的人發現嗎？隱私問題完整解答',
-        body: ['隱私是很多人最在意的事，而且你擔心是合理的。', '你應該先問：資料誰會看到？工作地點能不能避開熟人區？照片會不會被使用？證件會不會被壓？聯絡方式會不會外流？', '沒有確認前，不要交出過多個資，也不要把證件正本留在別人手上。真正負責任的經紀，會先保護你的資訊，而不是叫你不用想太多。']
-      },
-      'post-3': {
-        meta: '經紀篇 · 2026-04-01',
-        title: '為什麼我不要求簽合約？一個經紀人的真心話',
-        body: ['我不靠合約綁住任何人。你適合、你願意、你覺得放心，才有可能做得長久。', '如果一開始就用違約金、限制、壓薪水來留人，這不是合作，是控制。八大工作本來就需要更多透明和安全感。', '所以我會先說清楚風險、薪資、流程和離開方式。問了不代表你要來做，試了不適合也可以離開。']
-      },
-      'agency-choice': {
-        meta: '面試前必看',
-        title: '經紀公司都一樣嗎？分辨好壞其實很簡單',
-        body: ['經紀公司不會都一樣。差別不在誰說得最大聲，而在誰願意把難聽的話先講清楚。', '你可以觀察幾件事：有沒有講合約？有沒有講扣款？有沒有講不適合怎麼離開？有沒有避談隱私？有沒有一直催你快點決定？', '好的經紀不應該讓你越問越怕，而是讓你越問越清楚。']
-      },
-      'section-rate': {
-        meta: '薪資篇',
-        title: '酒店節薪怎麼算？10 分鐘一節代表什麼',
-        body: ['節薪通常是用時間切成一節來看，常見說法是 10 分鐘一節。節薪乘上實際節數，才會接近當天收入。', '但你不能只看節薪。因為實際收入還會受到上檯時間、空檯、時段、客群、店型和規則影響。', '面試前請務必問：節薪多少？怎麼計節？什麼時候發？有沒有扣款？現領能不能安排？']
-      },
-      'first-trial': {
-        meta: '新人篇',
-        title: '第一次試做要準備什麼？',
-        body: ['第一次試做不用裝懂，你本來就可以問清楚。', '建議先確認工作時間、穿著、妝髮、薪資算法、是否喝酒、請假方式、如果不適合怎麼離開。', '帶證件是為了確認年齡與身份，但不要讓任何人壓著你的證件不還。']
-      },
-      'terms': {
-        meta: '術語篇',
-        title: '八大術語入門：檯、框、卡、空檯、下檔',
-        body: ['剛接觸八大時，聽不懂術語很正常。不要因為聽不懂就不好意思問。', '檯通常和上檯、陪客互動有關；空檯可以理解成沒有上到檯的時間；下檔常和停止配合、離開安排有關。不同店家用法可能不同。', '真正重要的是：任何你聽不懂的詞，都要請對方用白話講一次。']
-      },
-      'privacy': {
-        meta: '安全與隱私篇',
-        title: '怎麼保護隱私？怕被家人男友知道要先問什麼',
-        body: ['如果你擔心家人、男友或朋友知道，這不是小題大作，是很現實的問題。', '你應該先問：會不會曝光照片？資料誰會看到？工作區域能不能安排？聯絡時會不會留下紀錄？是否會通知任何第三方？', '負責任的諮詢會把隱私當成第一優先，而不是一句「不用擔心」帶過。']
+  <div class="state error" id="error" style="display:none">
+    找不到這篇文章<br/>
+    <a href="blog.html" style="color:var(--accent);margin-top:12px;display:inline-block;">← 返回部落格</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p>
+</footer>
+
+<script>
+  const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
+  const LOCAL_POSTS = {
+    'agency-choice': {
+      title: '經紀公司都一樣嗎？分辨好壞其實很簡單',
+      date: '2026-06-04',
+      summary: '不要只看誰講得好聽，要看對方願不願意講清楚合約、薪資、離職和隱私。',
+      body: `先講結論：經紀公司不會都一樣。
+
+真正重要的不是對方包裝得多漂亮，而是他敢不敢把不舒服、容易有爭議的地方先講清楚。
+
+你可以先問這幾件事：
+1. 需不需要簽合約
+2. 會不會壓薪水或壓證件
+3. 不適合能不能直接不做
+4. 薪資怎麼算、何時領、會扣什麼
+5. 照片、證件、個資會不會被上傳或外流
+
+只會一直說高薪、輕鬆、保證賺的人，通常最需要小心。
+
+好的經紀不是替你做決定，而是把資訊講清楚，讓你自己決定。`
+    },
+    'section-rate': {
+      title: '酒店節薪怎麼算？10 分鐘一節代表什麼',
+      date: '2026-06-04',
+      summary: '節薪、節數、上檯率、扣款和發薪時間要一起看，才接近真實收入。',
+      body: `很多人第一次聽到節薪會很混亂。
+
+簡單說，一節通常是用固定時間計算，例如 10 分鐘一節。實際收入會看節薪金額、上檯時間、上檯率、店型規則和是否有扣款。
+
+你要問清楚：
+1. 一節是幾分鐘
+2. 一節多少錢
+3. 空檯有沒有錢
+4. 發薪是日領、週領還是月領
+5. 有沒有清潔費、置裝費、遲到扣款或其他規則
+
+我不會亂保證收入，因為每個人的狀態、時段、店型和上檯率都會影響結果。
+
+真正負責任的說法，是先把算法講明白，再依你的狀況評估。`
+    },
+    'first-trial': {
+      title: '第一次試做要準備什麼？',
+      date: '2026-06-04',
+      summary: '證件、穿著、妝髮、時間、薪資和離開方式，試做前先確認。',
+      body: `第一次試做不用硬裝熟，該問的先問清楚就好。
+
+建議你先確認：
+1. 需要帶什麼證件
+2. 穿著、妝髮需不需要準備
+3. 試做時間多長
+4. 試做有沒有薪水，什麼時候領
+5. 不適合能不能直接離開
+6. 交通與回家方式是否安全
+
+如果對方連試做規則都講不清楚，或一直催你到現場再說，那就先不要急。
+
+你有自由決定的權利，試做只是了解，不代表一定要做。`
+    },
+    'terms': {
+      title: '八大術語入門：檯、框、卡、空檯、下檔',
+      date: '2026-06-04',
+      summary: '先看懂基本詞，面試時比較不會被話術帶著走。',
+      body: `聽不懂術語很正常，沒有人一開始就懂。
+
+常見詞大概可以先這樣理解：
+1. 檯：在包廂或場內互動的工作單位
+2. 框：某些店型的計算或安排方式
+3. 卡：與安排、排班、現場狀況有關的說法
+4. 空檯：沒有上檯或等待中的時間
+5. 下檔：離開當前安排或結束某段工作
+
+不同店型用法可能不完全一樣，所以不要只背名詞。
+
+最重要的是面試時直接問：這個詞在你們店裡怎麼算、跟薪水有什麼關係。`
+    },
+    'privacy': {
+      title: '怎麼保護隱私？怕被家人男友知道要先問什麼',
+      date: '2026-06-04',
+      summary: '個資、照片、工作地點、聯絡方式和證件，都是面試前就該問的事。',
+      body: `隱私不是小事，尤其你還在考慮階段。
+
+你可以先問：
+1. 會不會拍照
+2. 照片會不會上傳或轉傳
+3. 證件怎麼保管，會不會留下影本
+4. 聯絡方式會不會給其他人
+5. 工作地點會不會被公開
+6. 如果遇到認識的人怎麼處理
+
+我這邊真實心得全部匿名，不會像其他經紀把小姐照片、個資拿去當宣傳。
+
+你來問問題，不代表你要來做；先保護好自己，再決定下一步。`
+    },
+    'post-3': {
+      title: '為什麼我不要求簽合約？一個經紀人的真心話',
+      date: '2026-06-04',
+      summary: '合約、違約金、壓薪水和壓證件，這些問題要在一開始就講清楚。',
+      body: `我不要求簽合約，原因很簡單：這份工作本來就應該由你自己決定適不適合。
+
+如果一開始就用合約、違約金或人情壓力綁住你，那就不是照顧，是控制。
+
+你要先問清楚：
+1. 有沒有合約
+2. 有沒有違約金
+3. 能不能自由離開
+4. 會不會壓薪水
+5. 會不會壓證件
+
+真正能長期合作的關係，靠的是信任，不是綁約。
+
+先了解，再決定；只有你說了算。`
+    }
+  };
+
+  function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
+  function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
+  function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
+
+  const INTERNAL_LINKS = {
+    '了解目前職缺': 'https://as-ent-tw.com/#jobs',
+    '了解目前職缺：': 'https://as-ent-tw.com/#jobs',
+    '先看常見問題': 'https://as-ent-tw.com/#faq',
+    '先看常見問題：': 'https://as-ent-tw.com/#faq',
+    '看更多八大文章': 'https://as-ent-tw.com/blog.html',
+    '看更多八大文章：': 'https://as-ent-tw.com/blog.html',
+    '直接聯絡諮詢': 'https://as-ent-tw.com/#contact',
+    '直接聯絡諮詢：': 'https://as-ent-tw.com/#contact'
+  };
+
+  function escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function linkifyText(text) {
+    const trimmed = text.trim();
+    const normalized = trimmed.replace(/[：:]\s*$/, '');
+    if (INTERNAL_LINKS[trimmed] || INTERNAL_LINKS[normalized]) {
+      const url = INTERNAL_LINKS[trimmed] || INTERNAL_LINKS[normalized];
+      return `<a class="related-link" href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(normalized)}</a>`;
+    }
+
+    const labelUrl = trimmed.match(/^(.+?)[：:]\s*(https?:\/\/\S+)$/);
+    if (labelUrl) {
+      const label = labelUrl[1].trim();
+      const url = labelUrl[2].trim();
+      return `<a class="related-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    }
+
+    return escapeHtml(text).replace(/https?:\/\/[^\s，。)）]+/g, (url) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
+  }
+
+  function renderLocalPost(post, slug) {
+    document.title = `${post.title}｜AS娛樂 大頭`;
+    const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
+
+    document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
+    document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary || post.title);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary || post.title);
+
+    document.getElementById('meta').textContent = post.date;
+    document.getElementById('views').textContent = calcViews(slug, post.date);
+    document.getElementById('title').textContent = post.title;
+    document.getElementById('summary').textContent = post.summary || '';
+
+    const bodyEl = document.getElementById('body');
+    const lines = (post.body || '').split('\n');
+    let html = '';
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
+      const linked = linkifyText(t);
+      if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
+      else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${linked}</h2>`; }
+      else { html += `<p>${linked}</p>`; }
+    }
+    bodyEl.innerHTML = html;
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+
+  async function loadPost() {
+    const slug = new URLSearchParams(window.location.search).get('slug');
+    if (!slug) { showError(); return; }
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 4500);
+      const res = await fetch(`${WORKER}/posts/${slug}`, { signal: controller.signal });
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error();
+      const post = await res.json();
+
+      document.title = `${post.title}｜AS娛樂 大頭`;
+      const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
+
+      const schema = document.createElement('script');
+      schema.type = 'application/ld+json';
+      schema.text = JSON.stringify({
+        "@context":"https://schema.org","@type":"Article",
+        "headline":post.title,"description":post.summary||'',
+        "datePublished":post.date,
+        "author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"},
+        "publisher":{"@type":"Organization","name":"AS娛樂","url":"https://as-ent-tw.com"},
+        "mainEntityOfPage":{"@type":"WebPage","@id":postUrl}
+      });
+      document.head.appendChild(schema);
+
+      const breadcrumb = document.createElement('script');
+      breadcrumb.type = 'application/ld+json';
+      breadcrumb.text = JSON.stringify({
+        "@context":"https://schema.org","@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},
+          {"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"},
+          {"@type":"ListItem","position":3,"name":post.title,"item":postUrl}
+        ]
+      });
+      document.head.appendChild(breadcrumb);
+
+      document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
+      document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary || post.title);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary || post.title);
+
+      document.getElementById('meta').textContent = post.date;
+      document.getElementById('views').textContent = calcViews(slug, post.date);
+      document.getElementById('title').textContent = post.title;
+      document.getElementById('summary').textContent = post.summary || '';
+
+      const bodyEl = document.getElementById('body');
+      const lines = (post.body || '').split('\n');
+      let html = '';
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
+        const linked = linkifyText(t);
+        if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
+        else if (INTERNAL_LINKS[t] || INTERNAL_LINKS[t.replace(/[：:]\s*$/, '')]) { html += `<p>${linked}</p>`; }
+        else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${linked}</h2>`; }
+        else { html += `<p>${linked}</p>`; }
       }
-    };
-    const slug = new URLSearchParams(location.search).get('slug') || 'post-1';
-    const article = articles[slug] || articles['post-1'];
-    document.getElementById('articleMeta').textContent = article.meta;
-    document.getElementById('articleTitle').textContent = article.title;
-    document.title = article.title + '｜AS娛樂 大頭';
-    document.getElementById('articleBody').innerHTML = article.body.map((p, i) => i === 1 ? `<h2>先把重點講清楚</h2><p>${p}</p>` : `<p>${p}</p>`).join('');
-  </script>
+      bodyEl.innerHTML = html;
+
+      if (post.cover) {
+        const img = document.getElementById('cover');
+        img.src = post.cover; img.loading = 'lazy'; img.decoding = 'async'; img.style.display = 'block';
+      }
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    } catch {
+      if (LOCAL_POSTS[slug]) {
+        renderLocalPost(LOCAL_POSTS[slug], slug);
+        return;
+      }
+      showError();
+    }
+  }
+
+  function showError() {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+  }
+
+  loadPost();
+
+  (function() {
+    const canvas = document.getElementById('velvet-bg');
+    const ctx = canvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+    let W, H;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    let t = 0;
+    const folds = [{x:0.15,y:0.10,tx:0.75,ty:0.55,speed:0.00002,phase:0.0},{x:0.05,y:0.40,tx:0.60,ty:0.90,speed:0.00002,phase:1.2},{x:0.30,y:0.00,tx:0.95,ty:0.70,speed:0.00002,phase:2.4}];
+    function drawFold(f, time) {
+      const drift=Math.sin(time*f.speed*1000+f.phase)*0.06;
+      const x1=(f.x+drift)*W,y1=(f.y+drift*0.5)*H,x2=(f.tx-drift)*W,y2=(f.ty-drift*0.3)*H;
+      const len=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/len,ny=(x2-x1)/len;
+      const w=Math.max(W,H)*(0.28+Math.sin(time*f.speed*800+f.phase)*0.04);
+      const grad=ctx.createLinearGradient(x1+nx*w,y1+ny*w,x1-nx*w,y1-ny*w);
+      grad.addColorStop(0,'rgba(0,0,0,0)');grad.addColorStop(0.35,'rgba(0,0,0,0)');
+      grad.addColorStop(0.48,'rgba(72,70,68,0.08)');grad.addColorStop(0.50,'rgba(95,92,88,0.13)');
+      grad.addColorStop(0.52,'rgba(72,70,68,0.08)');grad.addColorStop(0.65,'rgba(0,0,0,0)');
+      grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.save();ctx.beginPath();
+      const ex=(x2-x1)/len,ey=(y2-y1)/len,ext=Math.max(W,H)*2;
+      ctx.moveTo(x1-ex*ext+nx*w,y1-ey*ext+ny*w);ctx.lineTo(x2+ex*ext+nx*w,y2+ey*ext+ny*w);
+      ctx.lineTo(x2+ex*ext-nx*w,y2+ey*ext-ny*w);ctx.lineTo(x1-ex*ext-nx*w,y1-ey*ext-ny*w);
+      ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.restore();
+    }
+    const bumps = [{x:0.55,y:0.35,r:0.42,speed:0.000002,phase:0.0},{x:0.25,y:0.65,r:0.35,speed:0.000002,phase:1.8},{x:0.75,y:0.75,r:0.30,speed:0.000002,phase:3.2}];
+    function drawBump(b, time) {
+      const drift=Math.sin(time*b.speed*1000+b.phase);
+      const cx=(b.x+drift*0.07)*W,cy=(b.y+Math.cos(time*b.speed*800+b.phase)*0.06)*H,r=b.r*Math.max(W,H);
+      const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+      grad.addColorStop(0,'rgba(88,85,80,0.20)');grad.addColorStop(0.25,'rgba(65,62,58,0.14)');
+      grad.addColorStop(0.55,'rgba(30,28,26,0.07)');grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+    }
+    function draw() {
+      t++;ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
+      if (!reduceMotion) { bumps.forEach(b=>drawBump(b,t)); folds.forEach(f=>drawFold(f,t)); }
+      const v=ctx.createRadialGradient(W*0.5,H*0.45,0,W*0.5,H*0.45,Math.max(W,H)*0.78);
+      v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(0.55,'rgba(0,0,0,0.18)');
+      v.addColorStop(0.80,'rgba(0,0,0,0.55)');v.addColorStop(1,'rgba(0,0,0,0.85)');
+      ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
+      if (!document.hidden) requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
 </body>
 </html>
