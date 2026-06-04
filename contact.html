@@ -65,7 +65,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="income-tool">
       <div class="wide-container">
         <span class="section-label">你可以直接問</span>
         <h2 class="section-title">不知道怎麼開口<br>就複製這些問題</h2>
@@ -93,19 +93,20 @@
           <div class="tool-fields range-fields">
             <div class="tool-field range-field"><label for="income-days">每週天數 <output id="income-days-value">3 天</output></label><input id="income-days" type="range" min="1" max="7" step="1" value="3" oninput="calculateIncome()"></div>
             <div class="tool-field range-field"><label for="income-hours">每天時數 <output id="income-hours-value">6 小時</output></label><input id="income-hours" type="range" min="1" max="12" step="1" value="6" oninput="calculateIncome()"></div>
-            <div class="tool-field range-field"><label for="income-rate" id="income-rate-label">節薪 <output id="income-rate-value">260 元</output></label><input id="income-rate" type="range" min="230" max="290" step="10" value="260" oninput="calculateIncome()"></div>
+            <div class="tool-field range-field"><label for="income-rate" id="income-rate-label">節薪（10分鐘） <output id="income-rate-value">260 元</output></label><input id="income-rate" type="range" min="230" max="290" step="10" value="260" oninput="calculateIncome()"></div>
           </div>
           <div class="income-result income-result-grid">
             <div class="income-result-card"><span>日薪</span><strong id="income-daily">約 0 元</strong></div>
             <div class="income-result-card"><span>週薪</span><strong id="income-weekly">約 0 元</strong></div>
             <div class="income-result-card"><span>月薪</span><strong id="income-monthly">約 0 元</strong></div>
             <p id="income-note">酒店以 10 分鐘一節計算　節薪依你選擇的數字試算</p>
+            <p class="income-warning-note">每家店都有清潔費稅金等東西要扣<br>各家店不同　詳細可詢問我</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="fit-quiz">
       <div class="container">
         <span class="section-label">適合測驗</span>
         <h2 class="section-title">先做 30 秒測驗<br>再決定要不要問我</h2>

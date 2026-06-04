@@ -160,7 +160,10 @@ nav {
   padding: 14px 0;
   border-bottom: 1px solid rgba(200,169,110,.12);
   color: var(--soft);
+  text-decoration:none;
 }
+.topic-item strong,
+.topic-item span { text-decoration:none; }
 .topic-item:last-child { border-bottom: 0; }
 .topic-item strong {
   color: var(--text);
@@ -394,6 +397,22 @@ nav {
 }
 .mini-link { color:var(--accent); text-decoration:none; font-size:.86rem; letter-spacing:.08em; display:inline-block; margin-top:14px; }
 .mini-link:hover { color:var(--accent2); }
+.tool-coming-soon {
+  text-align:center;
+  border-color:rgba(150,150,150,.26);
+  background:linear-gradient(160deg,rgba(78,78,78,.18),rgba(10,8,6,.9));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.tool-coming-soon::before {
+  background:linear-gradient(90deg,transparent,rgba(180,180,180,.42),transparent);
+}
+.tool-coming-soon .article-meta,
+.tool-coming-soon .mini-link {
+  color:#aaa;
+}
+.tool-coming-soon h3 {
+  color:#d8d4cc;
+}
 
 .timeline { position:relative; max-width:680px; margin:0 auto; display:grid; gap:14px; }
 .timeline::before {
@@ -517,6 +536,16 @@ nav {
   background: linear-gradient(160deg, rgba(42, 5, 5, .86), rgba(10, 8, 6, .9));
   padding: 26px 24px;
   box-shadow: 0 0 26px rgba(180, 30, 30, .08), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.job-tool-actions {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:30px 0 4px;
+}
+.job-tool-actions .btn-outline {
+  min-width:150px;
 }
 .warning-card h3 {
   color: #ff6b63;
@@ -922,6 +951,14 @@ footer {
   line-height:1.8;
   margin-top:8px;
 }
+.income-warning-note {
+  border:1px solid rgba(220,70,70,.34);
+  border-radius:var(--radius-btn);
+  background:rgba(100,10,10,.12);
+  color:#ff6b63!important;
+  padding:12px 14px;
+  font-weight:900;
+}
 .quiz-panel {
   max-width:680px;
   margin:0 auto;
@@ -1321,6 +1358,22 @@ footer {
   .knowledge-category-grid .card {
     padding:16px 12px;
   }
+  .about-feature-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .about-feature-grid .card {
+    min-height:150px;
+    padding:18px 12px;
+    text-align:center;
+  }
+  .about-feature-grid .card h3 {
+    font-size:.98rem;
+  }
+  .about-feature-grid .card p {
+    font-size:.82rem;
+    line-height:1.75;
+    letter-spacing:.015em;
+  }
   .knowledge-category-grid .card h3 {
     font-size:.92rem;
     line-height:1.45;
@@ -1334,6 +1387,36 @@ footer {
   }
   .knowledge-category-grid .mini-link {
     font-size:.72rem;
+  }
+  .knowledge-category-grid .tool-coming-soon {
+    min-height:168px;
+    padding:20px 12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+  .knowledge-category-grid .tool-coming-soon h3 {
+    font-size:1.04rem;
+    line-height:1.45;
+  }
+  .knowledge-category-grid .tool-coming-soon p {
+    display:block;
+    font-size:.76rem;
+    line-height:1.75;
+    letter-spacing:.01em;
+    margin-top:4px;
+  }
+  .job-tool-actions {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:24px 0 6px;
+  }
+  .job-tool-actions .btn-outline {
+    min-width:0;
+    width:100%;
   }
   .card {
     padding:20px 18px;

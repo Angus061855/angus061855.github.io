@@ -99,7 +99,7 @@ function setIncomeMode(mode) {
   }
   if (hours) hours.value = mode === 'beauty' ? 4 : 6;
   if (days) days.value = 3;
-  if (label) label.firstChild.textContent = mode === 'beauty' ? '一台（時薪） ' : '節薪 ';
+  if (label) label.firstChild.textContent = mode === 'beauty' ? '台費 ' : '節薪（10分鐘） ';
   calculateIncome();
 }
 
@@ -136,7 +136,7 @@ function calculateIncome() {
     dailyEl.textContent = `約 ${formatMoney(dailyLow)} - ${formatMoney(dailyHigh)} 元`;
     weeklyEl.textContent = `約 ${formatMoney(weeklyLow)} - ${formatMoney(weeklyHigh)} 元`;
     monthlyEl.textContent = `約 ${formatMoney(monthlyLow)} - ${formatMoney(monthlyHigh)} 元`;
-    note.textContent = '美容師以一台為計量單位（時薪）　小費約每 3 小時 10000 到 15000 元';
+    note.textContent = '美容師以台費加小費試算　小費約每 3 小時 10000 到 15000 元';
     return;
   }
   const sectionsPerDay = hours * 6;
@@ -151,6 +151,12 @@ function calculateIncome() {
 
 function initIncomeTool() {
   if (!document.getElementById('income-monthly')) return;
+  ['income-days', 'income-hours', 'income-rate'].forEach(id => {
+    const input = document.getElementById(id);
+    if (!input) return;
+    input.addEventListener('input', calculateIncome);
+    input.addEventListener('change', calculateIncome);
+  });
   calculateIncome();
 }
 
