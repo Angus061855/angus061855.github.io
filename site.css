@@ -109,7 +109,7 @@ nav {
   height: 2px;
   width: 24px;
   background: #d7c08a;
-  margin: 6px auto;
+  margin: 3px 0;
   border-radius: 2px;
   transition: transform .2s ease, opacity .2s ease;
 }

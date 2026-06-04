@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="logo.png" type="image/png"/>
+  <link rel="icon" href="logo.png?v=20260604-logo2" type="image/png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AS娛樂｜八大最誠實經紀 大頭</title>
   <meta name="author" content="AS娛樂 大頭"/>
@@ -84,7 +84,21 @@
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
     .nav-links a.active { color: var(--accent2); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 40px;
+      flex: 0 0 44px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0;
+      background: rgba(200,169,110,0.08);
+      border: 1px solid rgba(200,169,110,0.32);
+      border-radius: 4px;
+    }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -441,7 +455,7 @@
     .blog-card-cover { width: 100%; height: 160px; object-fit: cover; }
     .blog-card-cover-placeholder { width: 100%; height: 160px; position: relative; background: linear-gradient(180deg, rgba(10,8,6,0.9) 0%, rgba(14,11,8,0.95) 100%); display: flex; align-items: center; justify-content: center; }
     .blog-card-cover-placeholder::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(0deg, rgba(200,169,110,0.06) 0%, transparent 100%); }
-    .blog-card-cover-placeholder::after { content: ''; width: 120px; height: 120px; background: url('logo.png') center/contain no-repeat; opacity: 0.18; }
+    .blog-card-cover-placeholder::after { content: ''; width: 120px; height: 120px; background: url('logo.png?v=20260604-logo2') center/contain no-repeat; opacity: 0.18; }
     .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; min-height: 178px; }
     .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .blog-card-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
@@ -461,7 +475,7 @@
     }
     .blog-fallback-card:hover { border-color: rgba(200,169,110,0.45); transform: translateY(-4px); }
     .blog-fallback-thumb { width: 100%; height: 160px; background: linear-gradient(160deg, rgba(20,16,10,0.9), rgba(10,8,6,0.95)); display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; }
-    .blog-fallback-thumb::after { content: ''; width: 120px; height: 120px; background: url('logo.png') center/contain no-repeat; opacity: 0.18; }
+    .blog-fallback-thumb::after { content: ''; width: 120px; height: 120px; background: url('logo.png?v=20260604-logo2') center/contain no-repeat; opacity: 0.18; }
     .blog-fallback-body { padding: 18px; }
     .blog-fallback-date { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; }
     .blog-fallback-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.55; color: var(--text); }
@@ -829,82 +843,23 @@
 
   <canvas id="velvet-bg"></canvas>
 
-  <div class="consult-widget" id="consultWidget">
-    <div class="consult-panel" id="consultPanel">
-      <div class="consult-panel-head">
-        <div>
-          <div class="consult-panel-title">立即了解工作</div>
-          <div class="consult-panel-sub">可以直接加 LINE 詢問<br>也可以先做 30 秒適合測驗</div>
-        </div>
-        <button class="consult-close" type="button" onclick="toggleConsult(false)" aria-label="關閉">×</button>
-      </div>
-      <div class="consult-actions">
-        <a class="consult-action line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接加 LINE</a>
-        <button class="consult-action" type="button" onclick="openConsultQuiz()">先做適合測驗</button>
-      </div>
-      <div class="consult-quiz" id="consultQuiz">
-        <div class="quiz-progress" id="quizProgress">
-          <div class="quiz-progress-dot" id="qd0"></div>
-          <div class="quiz-progress-dot" id="qd1"></div>
-          <div class="quiz-progress-dot" id="qd2"></div>
-        </div>
-        <div class="quiz-step active" id="qs0">
-          <p class="quiz-q">你現在最主要的考量是什麼？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(0,0)">1. 需要快速增加收入</button>
-            <button class="quiz-opt" onclick="quizNext(0,1)">2. 想要時間更彈性自由</button>
-            <button class="quiz-opt" onclick="quizNext(0,2)">3. 只是好奇想了解看看</button>
-            <button class="quiz-opt" onclick="quizNext(0,3)">4. 其他</button>
-          </div>
-        </div>
-        <div class="quiz-step" id="qs1">
-          <p class="quiz-q">你對八大行業最擔心的是什麼？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(1,0)">1. 隱私問題　怕被認識的人知道</button>
-            <button class="quiz-opt" onclick="quizNext(1,1)">2. 合約問題　怕被綁住走不了</button>
-            <button class="quiz-opt" onclick="quizNext(1,2)">3. 完全不了解　不知道從哪裡問起</button>
-            <button class="quiz-opt" onclick="quizNext(1,3)">4. 其他</button>
-          </div>
-        </div>
-        <div class="quiz-step" id="qs2">
-          <p class="quiz-q">你希望怎麼開始？</p>
-          <div class="quiz-options">
-            <button class="quiz-opt" onclick="quizNext(2,0)">1. 先問問題　了解清楚再說</button>
-            <button class="quiz-opt" onclick="quizNext(2,1)">2. 先看看資訊　自己研究一下</button>
-            <button class="quiz-opt" onclick="quizNext(2,2)">3. 直接了解　有興趣就快速行動</button>
-            <button class="quiz-opt" onclick="quizNext(2,3)">4. 其他</button>
-          </div>
-        </div>
-        <div class="quiz-step" id="qs-result">
-          <div class="quiz-result" id="quizResultBox">
-            <div class="quiz-result-title" id="quizTitle"></div>
-            <div class="quiz-result-desc" id="quizDesc"></div>
-            <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;margin:0 auto;">加 LINE 問大頭</a>
-            <br/>
-            <button class="quiz-restart" onclick="quizRestart()">重新測驗</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="consult-toggle" type="button" onclick="toggleConsult()" aria-expanded="false" aria-controls="consultPanel">
+  <div class="consult-widget line-only" id="consultWidget">
+    <a class="consult-toggle" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" aria-label="立即用 LINE 詢問">
       <span class="consult-toggle-dot"></span>
       <span>立即詢問</span>
-    </button>
+    </a>
   </div>
 
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
 
   <nav id="mainNav">
     <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
-      <img src="logo.png" alt="AS娛樂" style="height:56px;"/>
+      <img src="logo.png?v=20260604-logo2" alt="AS娛樂" style="height:56px;"/>
     </div>
     <div class="nav-links">
       <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">首頁</a>
-      <a href="#about">關於我</a>
-      <a href="#features">為什麼選我</a>
       <a href="jobs.html">職缺介紹</a>
       <a href="knowledge.html">八大知識+</a>
-      <a href="#faq">常見問題</a>
       <a href="blog.html">部落格</a>
       <a href="contact.html">聯絡我</a>
     </div>
@@ -915,11 +870,8 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});closeMenu();return false;">首頁</a>
-    <a href="#about" onclick="closeMenu()">關於我</a>
-    <a href="#features" onclick="closeMenu()">為什麼選我</a>
     <a href="jobs.html" onclick="closeMenu()">職缺介紹</a>
     <a href="knowledge.html" onclick="closeMenu()">八大知識+</a>
-    <a href="#faq" onclick="closeMenu()">常見問題</a>
     <a href="blog.html" onclick="closeMenu()">部落格</a>
     <a href="contact.html" onclick="closeMenu()">聯絡我</a>
   </div>
@@ -1174,7 +1126,7 @@
 
   <footer>
     <div class="footer-logo">
-      <img src="logo.png" alt="AS娛樂"/>
+      <img src="logo.png?v=20260604-logo2" alt="AS娛樂"/>
       <span style="font-size:1rem;font-weight:400;letter-spacing:0.2em;color:rgba(200,169,110,0.4);font-family:'Noto Serif TC',serif;">AS娛樂</span>
     </div>
     <p class="footer-slogan">八大最誠實經紀　大頭</p>
