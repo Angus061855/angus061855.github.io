@@ -9,7 +9,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="site.css?v=20260604-menu2" />
+  <style>
+    @media (max-width: 1100px) {
+      .nav-links { display: none !important; }
+      .mobile-menu-btn {
+        display: flex !important;
+        width: 44px !important;
+        height: 40px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        background: rgba(200,169,110,.08) !important;
+        border: 1px solid rgba(200,169,110,.32) !important;
+        border-radius: 4px !important;
+      }
+      .site-line-float {
+        display: inline-flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        right: 16px !important;
+        bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -54,6 +78,6 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
-  <script src="site.js"></script>
+  <script src="site.js?v=20260604-menu2"></script>
 </body>
 </html>
