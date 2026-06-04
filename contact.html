@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聯絡我｜AS娛樂 大頭</title>
+  <meta name="description" content="聯絡 AS娛樂大頭。可直接加 LINE 找本人，或加入官方 LINE。問問題不代表你要來做，免費諮詢，有問必答。" />
+  <meta name="keywords" content="酒店經紀,八大經紀,酒店諮詢,LINE諮詢,八大職缺" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="logo.png" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>聯絡我</span></span></a>
+    <div class="nav-links"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="income.html">收入試算</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a class="active" href="contact.html">聯絡我</a></div>
+    <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單">☰</button>
+  </nav>
+  <div class="mobile-menu"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="income.html">收入試算</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+
+  <main>
+    <section class="hero compact">
+      <div class="container">
+        <div class="hero-badges"><span class="hero-badge">本人回覆</span><span class="hero-badge">不是 AI 客服</span><span class="hero-badge">問了不代表要做</span></div>
+        <h1 class="hero-title">問問題<br>不代表你要來做</h1>
+        <p class="hero-lead">先聊聊，了解清楚再決定就好。你可以問薪資、隱私、職缺、試做、合約、請假、離職，任何你不好意思問的都可以。</p>
+        <div class="contact-row">
+          <a class="contact-method primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer"><strong>直接 LINE</strong><span>找大頭本人 · 私下詢問最快</span></a>
+          <a class="contact-method" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer"><strong>官方 LINE</strong><span>AS娛樂官方帳號 · 點擊加入</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wide-container">
+        <span class="section-label">你可以直接問</span>
+        <h2 class="section-title">不知道怎麼開口，就複製這些問題</h2>
+        <div class="grid-3">
+          <div class="card"><h3>我沒有經驗可以嗎？</h3><p>想先了解新人流程、面試準備和適不適合自己。</p></div>
+          <div class="card"><h3>薪水怎麼算？</h3><p>想知道節薪、節數、發薪、扣款和現領能不能安排。</p></div>
+          <div class="card"><h3>隱私會不會被知道？</h3><p>想確認資料、照片、工作地點、家人男友會不會知道。</p></div>
+          <div class="card"><h3>真的不用簽合約嗎？</h3><p>想確認有沒有違約金、最低天數、壓證件或壓薪水。</p></div>
+          <div class="card"><h3>可以只做短期嗎？</h3><p>想知道兼職、短期、每週少天數是否可以安排。</p></div>
+          <div class="card"><h3>我適合哪種職缺？</h3><p>想請我依你的時間、條件、顧慮，先幫你判斷方向。</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>直接 LINE 找本人最快；官方 LINE 可作為正式入口。</p></footer>
+  <a class="mobile-line-bar" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費詢問</a>
+  <div class="ai-widget"><div class="ai-panel"><div class="ai-title">AI 簡易諮詢</div><div class="ai-sub">不敢直接問真人，可以先匿名問 AI。</div><div class="ai-options"><button onclick="askAi('newbie')">我不知道怎麼開始</button><button onclick="askAi('salary')">想先問收入</button><button onclick="askAi('privacy')">想先問隱私</button></div><div class="ai-answer"></div></div><button class="ai-toggle" onclick="toggleAiConsult()">AI 匿名問</button></div>
+  <script src="site.js"></script>
+</body>
+</html>

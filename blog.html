@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>部落格｜AS娛樂 大頭</title>
+  <meta name="description" content="AS娛樂部落格：酒店上班、酒店兼職、酒店薪水、八大經紀、試做、隱私與新人求職文章。" />
+  <meta name="keywords" content="酒店上班,酒店兼職,酒店薪水,酒店試做,八大經紀,八大行業是什麼" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="logo.png" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>部落格</span></span></a>
+    <div class="nav-links"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="income.html">收入試算</a><a href="knowledge.html">八大知識+</a><a class="active" href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+    <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單">☰</button>
+  </nav>
+  <div class="mobile-menu"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="income.html">收入試算</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+
+  <main>
+    <section class="hero compact">
+      <div class="container">
+        <div class="hero-badges"><span class="hero-badge">七年觀察</span><span class="hero-badge">新人必看</span><span class="hero-badge">真話整理</span></div>
+        <h1 class="hero-title">熱門文章</h1>
+        <p class="hero-lead">寫給每一個正在考慮的你。先看懂，再決定要不要問我。</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wide-container">
+        <div class="grid-3">
+          <a class="card article-card" href="post.html?slug=post-1"><div class="article-meta">薪資篇 · 2026-03-15</div><h3>酒店公關一天真的能賺多少？老實說給你聽</h3><p>很多人問我這個問題，我決定直接把數字告訴你，不誇大也不縮小。</p><span class="mini-link">閱讀文章 →</span></a>
+          <a class="card article-card" href="post.html?slug=post-2"><div class="article-meta">隱私篇 · 2026-03-22</div><h3>做酒店會被認識的人發現嗎？隱私問題完整解答</h3><p>這是我被問最多次的問題，今天一次說清楚。</p><span class="mini-link">閱讀文章 →</span></a>
+          <a class="card article-card" href="post.html?slug=post-3"><div class="article-meta">經紀篇 · 2026-04-01</div><h3>為什麼我不要求簽合約？一個經紀人的真心話</h3><p>合約對誰有利？我來告訴你背後的邏輯。</p><span class="mini-link">閱讀文章 →</span></a>
+          <a class="card article-card" href="post.html?slug=agency-choice"><div class="article-meta">面試前必看</div><h3>經紀公司都一樣嗎？分辨好壞其實很簡單</h3><p>看對方願不願意講清楚風險，而不是只聽漂亮話。</p><span class="mini-link">閱讀文章 →</span></a>
+          <a class="card article-card" href="post.html?slug=section-rate"><div class="article-meta">薪資篇</div><h3>酒店節薪怎麼算？10 分鐘一節代表什麼</h3><p>節薪、節數、上檯率和扣款，全部都要放在一起看。</p><span class="mini-link">閱讀文章 →</span></a>
+          <a class="card article-card" href="post.html?slug=privacy"><div class="article-meta">安全與隱私篇</div><h3>怎麼保護隱私？怕被家人男友知道要先問什麼</h3><p>越敏感的問題，越應該在面試前問清楚。</p><span class="mini-link">閱讀文章 →</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>更多文章會陸續新增，包含節薪、試做、術語與安全隱私。</p></footer>
+  <a class="mobile-line-bar" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費詢問</a>
+  <div class="ai-widget"><div class="ai-panel"><div class="ai-title">AI 簡易諮詢</div><div class="ai-sub">文章看不懂也可以先問 AI。</div><div class="ai-options"><button onclick="askAi('salary')">薪水文章怎麼看？</button><button onclick="askAi('privacy')">隱私要注意什麼？</button><button onclick="askAi('trial')">試做前要問什麼？</button></div><div class="ai-answer"></div></div><button class="ai-toggle" onclick="toggleAiConsult()">AI 匿名問</button></div>
+  <script src="site.js"></script>
+</body>
+</html>
