@@ -26,7 +26,7 @@
       <div class="container">
         <div class="hero-badges"><span class="hero-badge">四種工作類型</span><span class="hero-badge">不懂的都可以再詢問</span></div>
         <h1 class="hero-title">職缺介紹</h1>
-        <p class="hero-lead">每種工作適合的人不一樣。<br>先看內容、薪資範圍、排班方式和注意事項。</p>
+        <p class="hero-lead">每種工作適合的人不一樣。先看內容、薪資範圍、排班方式和注意事項。</p>
         <div class="hero-cta"><a class="btn-primary" href="contact.html">立即詢問</a><a class="btn-outline" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">瞭解更多</a></div>
       </div>
     </section>
@@ -39,7 +39,7 @@
           <article class="card">
             <span class="tag">熱門</span>
             <h3>酒店公關</h3>
-            <p>主要在包廂與客人聊天互動、炒熱氣氛<br>適合想彈性排班、短期增加收入的人。</p>
+            <p>主要在包廂與客人聊天互動、炒熱氣氛，適合想彈性排班、短期增加收入的人。</p>
             <ul>
               <li>適合：願意溝通、不怕生、可接受夜間環境</li>
               <li>薪資：節薪約 230 到 290 元起，依店型不同</li>
@@ -49,7 +49,7 @@
           <article class="card">
             <span class="tag">高薪</span>
             <h3>紓壓會館美容師</h3>
-            <p>美容、紓壓相關工作，適合不想走酒店公關路線<br>想了解不同時段與工作型態的人。</p>
+            <p>美容、紓壓相關工作，適合不想走酒店公關路線、想了解不同時段與工作型態的人。</p>
             <ul>
               <li>適合：想了解下午班、短時段、無應酬類型</li>
               <li>薪資：時薪約 1400 - 2000 元</li>
@@ -69,7 +69,7 @@
           <article class="card">
             <span class="tag">飯局</span>
             <h3>飯局（傳播）</h3>
-            <p>以飯局、聚會、場合互動為主<br>適合想了解短時段、臨時性安排的人。</p>
+            <p>以飯局、聚會、場合互動為主，適合想了解短時段、臨時性安排的人。</p>
             <ul>
               <li>適合：外型談吐自然、可接受社交場合</li>
               <li>薪資：依局型、時段、地點、條件與規則不同</li>
@@ -79,17 +79,35 @@
         </div>
         <div class="warning-card">
           <h3>其餘都是騙人的</h3>
-          <p>果汁女孩、外拍、模特、展場、<br>美式俱樂部、商務會所、藝人招待所、<br>鋼琴酒吧。</p>
-          <p>「我們不是酒店，上班不用喝酒」<br>到現在還是一堆經紀用這種爛話術。</p>
-          <p>講白一點，名稱包裝得再漂亮<br>最後還是要看<br>實際工作內容、薪資算法、環境安全、要不要喝酒、有沒有合約、<br>會不會壓薪水。<br>這些不敢講清楚的，就不要去。</p>
+          <p>果汁女孩、外拍、模特、展場、美式俱樂部、商務會所、藝人招待所、鋼琴酒吧。</p>
+          <p>「我們不是酒店，上班不用喝酒」到現在還是一堆經紀用這種爛話術。</p>
+          <p>講白一點，名稱包裝得再漂亮，最後還是要看實際工作內容、薪資算法、環境安全、要不要喝酒、有沒有合約、會不會壓薪水。這些不敢講清楚的，就不要去。</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>職缺內容為概略介紹<br>實際依地區、店型、時段與個人條件確認。</p></footer>
-  <a class="mobile-line-bar" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費詢問</a>
-  <div class="ai-widget"><div class="ai-panel"><div class="ai-title">AI 簡易諮詢</div><div class="ai-sub">先問基本問題，最後仍建議真人確認。</div><div class="ai-options"><button onclick="askAi('salary')">薪水怎麼看？</button><button onclick="askAi('privacy')">隱私怎麼保護？</button><button onclick="askAi('newbie')">新人可以嗎？</button></div><div class="ai-answer"></div></div><button class="ai-toggle" onclick="toggleAiConsult()">AI 匿名問</button></div>
+  <footer><p class="footer-slogan">八大最誠實經紀　大頭</p><p>職缺內容為概略介紹，實際依地區、店型、時段與個人條件確認。</p></footer>
+
+  <div class="consult-widget">
+    <div class="consult-panel">
+      <div class="consult-panel-head">
+        <div>
+          <div class="consult-panel-title">立即了解工作</div>
+          <div class="consult-panel-sub">有問題可以直接加 LINE，我會親自回覆。</div>
+        </div>
+        <button class="consult-close" type="button" onclick="toggleConsult(false)" aria-label="關閉">×</button>
+      </div>
+      <div class="consult-actions">
+        <a class="consult-action line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接加 LINE</a>
+        <a class="consult-action" href="contact.html">聯絡方式</a>
+      </div>
+    </div>
+    <button class="consult-toggle" type="button" onclick="toggleConsult()" aria-expanded="false">
+      <span class="consult-toggle-dot"></span>
+      <span>立即詢問</span>
+    </button>
+  </div>
   <script src="site.js"></script>
 </body>
 </html>
