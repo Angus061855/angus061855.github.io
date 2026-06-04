@@ -54,6 +54,24 @@ section[id] { scroll-margin-top: 88px; }
 .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
 .wide-container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 .visually-hidden { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.hero-lead,
+.section-desc,
+.card p,
+.card li,
+.topic-item strong,
+.topic-item span,
+.contact-method span,
+.warning-card p,
+footer p {
+  text-wrap: pretty;
+  line-break: loose;
+}
+.section-title,
+.hero-title,
+.card h3,
+.topic-item strong {
+  text-wrap: balance;
+}
 
 nav {
   position: sticky;

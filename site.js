@@ -55,7 +55,7 @@ function initContactForm() {
       `想問方向：${data.get('topic') || '未填'}`,
       `想說的話：${data.get('message') || '未填'}`
     ].join('\n');
-    output.textContent = `${text}\n\n你可以複製這段訊息，點 LINE 傳給我。`;
+    output.textContent = `${text}\n\n你可以複製這段訊息　點 LINE 傳給我`;
     output.classList.add('show');
     if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
   });

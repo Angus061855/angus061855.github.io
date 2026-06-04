@@ -182,6 +182,13 @@
     { slug: 'salary-and-risk', title: '薪資、風險與保護：面試前你一定要知道', summary: '談薪水之前，先知道哪些資訊一定要問清楚。', date: '2026-01-26', cover: '' },
     { slug: 'part-time-and-privacy', title: '兼職與隱私：如何安全安排你的時間', summary: '給有正職、學生或有門禁需求的你，實際可行的建議。', date: '2026-02-08', cover: '' }
   ];
+  function cleanDisplayText(text) {
+    return String(text || '')
+      .replace(/[，、。]/g, '　')
+      .replace(/　{2,}/g, '　')
+      .replace(/　([？?！!])/g, '$1')
+      .trim();
+  }
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
@@ -190,11 +197,11 @@
     const grid = document.getElementById('blog-grid');
     grid.innerHTML = posts.map(post => `
       <a class="blog-card" href="post.html?slug=${post.slug}">
-        ${post.cover ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
+        ${post.cover ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
         <div class="blog-card-body">
           <div class="blog-card-meta"><div class="blog-card-date">${post.date}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
-          <div class="blog-card-title">${post.title}</div>
-          <div class="blog-card-summary">${post.summary || ''}</div>
+          <div class="blog-card-title">${cleanDisplayText(post.title)}</div>
+          <div class="blog-card-summary">${cleanDisplayText(post.summary)}</div>
         </div>
       </a>
     `).join('');

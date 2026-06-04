@@ -934,7 +934,7 @@
           <p class="section-label" style="font-size:1.6rem;font-weight:700;color:var(--accent);text-align:center;letter-spacing:0.06em;">關於我</p>
           <h2 style="text-align:center;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;line-height:1.4;margin-bottom:20px;letter-spacing:0.06em;font-family:'Noto Serif TC',serif;">大頭<br/>八大最誠實經紀人</h2>
           <!-- 7. 人味文案 -->
-          <p>入行第一年　我看到太多女孩被話術騙進去<br/>薪水被壓、合約被綁、被騙上床 等等<br/>我覺得　<strong>這樣不對</strong></p>
+          <p>入行第一年　我看到太多女孩被話術騙進去<br/>薪水被壓　合約被綁　被騙上床 等等<br/>我覺得　<strong>這樣不對</strong></p>
           <p>所以我只做一件事　<strong>誠實的把真實的情況告訴你</strong><br/>讓你在完全了解後再做決定</p>
           <p>七年了　我自己個人面試超過 3000 位女孩<br/>我沒有一次後悔選擇誠實這條路</p>
           <p>想找我可以 <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">直接點擊詢問</a></p>
@@ -954,8 +954,8 @@
       <div class="features-grid">
         <div class="feature-card fade-up" style="transition-delay:0.0s"><div class="feature-icon">不簽合約</div><h3>想來就來想走就走</h3><p>不靠簽約綁住人<br>只靠真誠留住你</p></div>
         <div class="feature-card fade-up" style="transition-delay:0.05s"><div class="feature-icon">不壓薪水</div><h3>每週六固定發薪</h3><p>固定時間入帳<br>想現領也可以</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.1s"><div class="feature-icon">時間彈性</div><h3>配合你的行程</h3><p>可短期、兼職<br>不綁定任何合約</p></div>
-        <div class="feature-card fade-up" style="transition-delay:0.15s"><div class="feature-icon">隱私保護</div><h3>個資嚴格保密</h3><p>不必告知家人、男友<br>這是對你的承諾</p></div>
+        <div class="feature-card fade-up" style="transition-delay:0.1s"><div class="feature-icon">時間彈性</div><h3>配合你的行程</h3><p>可短期　兼職<br>不綁定任何合約</p></div>
+        <div class="feature-card fade-up" style="transition-delay:0.15s"><div class="feature-icon">隱私保護</div><h3>個資嚴格保密</h3><p>不必告知家人　男友<br>這是對你的承諾</p></div>
         <div class="feature-card fade-up" style="transition-delay:0.2s"><div class="feature-icon">安全第一</div><h3>你的底線你決定</h3><p>任何超出範圍的要求<br>都可以直接拒絕</p></div>
         <div class="feature-card fade-up" style="transition-delay:0.25s"><div class="feature-icon">薪資透明</div><h3>上班前說清楚</h3><p>完整說明計算方式<br>不會有事後扣款</p></div>
         <div class="feature-card fade-up" style="transition-delay:0.3s"><div class="feature-icon">一對一服務</div><h3>量身規劃方向</h3><p>每個人狀況不同<br>我會給出最適合的建議</p></div>
@@ -996,7 +996,7 @@
             <li>以各種理由壓薪水拖延發放</li>
             <li>上班後才發現有不合理扣款項目</li>
             <li>助理或群組統一回覆</li>
-            <li>個資可能流向你的家人、朋友、男友</li>
+            <li>個資可能流向你的家人　朋友　男友</li>
             <li>用話術製造緊迫感催你決定</li>
             <li>與你發生感情關係 非常失職的行為</li>
           </ul>
@@ -1043,7 +1043,7 @@
     <div class="container">
       <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;">真實心得</p>
       <h2 class="section-title fade-up" style="transition-delay:0.05s">她們說的話</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">全部匿名　不像其他經紀<br/>會拍小姐照片、個資上傳</p>
+      <p class="section-desc fade-up" style="transition-delay:0.1s">全部匿名　不像其他經紀<br/>會拍小姐照片　個資上傳</p>
       <div class="reviews-grid fade-up" style="transition-delay:0.15s" id="reviews-grid"></div>
 
     </div>
@@ -1262,6 +1262,13 @@
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
+  function cleanDisplayText(text) {
+    return String(text || '')
+      .replace(/[，、。]/g, '　')
+      .replace(/　{2,}/g, '　')
+      .replace(/　([？?！!])/g, '$1')
+      .trim();
+  }
 
   /* ── 8. 部落格（含 fallback 靜態卡片）── */
   const FALLBACK_POSTS = [
@@ -1284,12 +1291,12 @@
       grid.innerHTML = shown.map(post => `
         <a class="blog-card" href="post.html?slug=${post.slug}">
           ${post.cover
-            ? `<img class="blog-card-cover" src="${post.cover}" alt="${post.title}" loading="lazy" decoding="async"/>`
+            ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" loading="lazy" decoding="async"/>`
             : `<div class="blog-card-cover-placeholder"></div>`}
           <div class="blog-card-body">
             <div class="blog-card-meta"><div class="blog-card-date">${post.date}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
-            <div class="blog-card-title">${post.title}</div>
-            <div class="blog-card-summary">${post.summary || ''}</div>
+            <div class="blog-card-title">${cleanDisplayText(post.title)}</div>
+            <div class="blog-card-summary">${cleanDisplayText(post.summary)}</div>
           </div>
         </a>
       `).join('');
@@ -1303,8 +1310,8 @@
           <div class="blog-fallback-thumb">${p.emoji}</div>
           <div class="blog-fallback-body">
             <div class="blog-fallback-date">${p.date}</div>
-            <div class="blog-fallback-title">${p.title}</div>
-            <div class="blog-fallback-summary">${p.summary}</div>
+            <div class="blog-fallback-title">${cleanDisplayText(p.title)}</div>
+            <div class="blog-fallback-summary">${cleanDisplayText(p.summary)}</div>
           </div>
         </a>
       `).join('');

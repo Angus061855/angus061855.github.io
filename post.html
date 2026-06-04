@@ -201,7 +201,7 @@
     <img class="cover" id="cover" alt="封面"/>
     <div class="body" id="body"></div>
     <div class="post-cta">
-      <p>看完有問題嗎？或是想進一步了解？<br/>直接加我 LINE，我都會親自回覆。</p>
+      <p>看完有問題嗎？或是想進一步了解？<br/>直接加我 LINE　我都會親自回覆</p>
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 免費諮詢</a>
     </div>
   </div>
@@ -361,6 +361,14 @@
       .replace(/'/g, '&#039;');
   }
 
+  function cleanDisplayText(text) {
+    return String(text || '')
+      .replace(/[，、。]/g, '　')
+      .replace(/　{2,}/g, '　')
+      .replace(/　([？?！!])/g, '$1')
+      .trim();
+  }
+
   function linkifyText(text) {
     const trimmed = text.trim();
     const normalized = trimmed.replace(/[：:]\s*$/, '');
@@ -376,33 +384,33 @@
       return `<a class="related-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
     }
 
-    return escapeHtml(text).replace(/https?:\/\/[^\s，。)）]+/g, (url) => {
+    return escapeHtml(cleanDisplayText(text)).replace(/https?:\/\/[^\s，。)）]+/g, (url) => {
       return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
     });
   }
 
   function renderLocalPost(post, slug) {
-    document.title = `${post.title}｜AS娛樂 大頭`;
+    document.title = `${cleanDisplayText(post.title)}｜AS娛樂 大頭`;
     const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
 
-    document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
+    document.querySelector('meta[name="description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
     document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
-    document.querySelector('meta[property="og:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
-    document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary || post.title);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
     document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
-    document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
-    document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary || post.title);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
 
     document.getElementById('meta').textContent = post.date;
     document.getElementById('views').textContent = calcViews(slug, post.date);
-    document.getElementById('title').textContent = post.title;
-    document.getElementById('summary').textContent = post.summary || '';
+    document.getElementById('title').textContent = cleanDisplayText(post.title);
+    document.getElementById('summary').textContent = cleanDisplayText(post.summary || '');
 
     const bodyEl = document.getElementById('body');
     const lines = (post.body || '').split('\n');
     let html = '';
     for (const line of lines) {
-      const t = line.trim();
+      const t = cleanDisplayText(line.trim());
       if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
       const linked = linkifyText(t);
       if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
@@ -426,7 +434,7 @@
       if (!res.ok) throw new Error();
       const post = await res.json();
 
-      document.title = `${post.title}｜AS娛樂 大頭`;
+      document.title = `${cleanDisplayText(post.title)}｜AS娛樂 大頭`;
       const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
 
       const schema = document.createElement('script');
@@ -453,24 +461,24 @@
       });
       document.head.appendChild(breadcrumb);
 
-      document.querySelector('meta[name="description"]').setAttribute('content', post.summary || post.title);
+      document.querySelector('meta[name="description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
       document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
-      document.querySelector('meta[property="og:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary || post.title);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
       document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
-      document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${post.title}｜AS娛樂 大頭`);
-      document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary || post.title);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
 
       document.getElementById('meta').textContent = post.date;
       document.getElementById('views').textContent = calcViews(slug, post.date);
-      document.getElementById('title').textContent = post.title;
-      document.getElementById('summary').textContent = post.summary || '';
+      document.getElementById('title').textContent = cleanDisplayText(post.title);
+      document.getElementById('summary').textContent = cleanDisplayText(post.summary || '');
 
       const bodyEl = document.getElementById('body');
       const lines = (post.body || '').split('\n');
       let html = '';
       for (const line of lines) {
-        const t = line.trim();
+        const t = cleanDisplayText(line.trim());
         if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
         const linked = linkifyText(t);
         if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
