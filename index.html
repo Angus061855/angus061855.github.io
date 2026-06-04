@@ -813,7 +813,20 @@
       }
       .back-to-top.visible { transform: translateY(0); }
       .stay-toast { bottom: 76px; right: 16px; max-width: calc(100vw - 32px); }
-      .hero-pills { max-width: 300px; }
+      .hero-pills {
+        display:grid;
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:6px;
+        width:100%;
+        max-width:360px;
+      }
+      .hero-pill {
+        width:100%;
+        padding:6px 4px;
+        font-size:0.66rem;
+        letter-spacing:0.04em;
+        white-space:nowrap;
+      }
       .hero-badges { max-width: 320px; }
       .hero-badges .hero-badge:nth-child(n+3) { display: none; }
       .hero-social-proof { margin-bottom: 14px; }
@@ -916,12 +929,6 @@
       <br/>
       <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
     </p>
-    <div class="hero-pills fade-up" style="transition-delay:0.2s">
-      <span class="hero-pill">不簽合約</span>
-      <span class="hero-pill">不壓薪水</span>
-      <span class="hero-pill">自由排班</span>
-      <span class="hero-pill">隱私安全</span>
-    </div>
     <div class="hero-stats fade-up" style="transition-delay:0.3s">
       <div class="stat">
         <div class="stat-num" id="counter-years">0</div>
@@ -931,6 +938,12 @@
         <div class="stat-num"><span id="counter-interviews">0</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
+    </div>
+    <div class="hero-pills fade-up" style="transition-delay:0.2s">
+      <span class="hero-pill">不簽合約</span>
+      <span class="hero-pill">不壓薪水</span>
+      <span class="hero-pill">自由排班</span>
+      <span class="hero-pill">隱私安全</span>
     </div>
     <div class="hero-cta fade-up" style="transition-delay:0.4s">
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
