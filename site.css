@@ -77,6 +77,29 @@ footer p {
   text-wrap: balance;
 }
 
+.reveal-soft {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .45s ease, transform .45s ease;
+  will-change: opacity, transform;
+}
+.reveal-soft.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-soft {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-title {
+    animation: none;
+  }
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -514,11 +537,11 @@ nav {
   background:linear-gradient(90deg, transparent, rgba(200,169,110,.72), transparent);
 }
 .compare-card.them {
-  border-color:rgba(155,150,140,.28);
-  background:linear-gradient(160deg, rgba(26,24,21,.82), rgba(10,8,6,.88));
+  border-color:rgba(220,70,70,.34);
+  background:linear-gradient(160deg, rgba(42,5,5,.68), rgba(10,8,6,.9));
 }
 .compare-card.them::before {
-  background:linear-gradient(90deg, transparent, rgba(155,150,140,.5), transparent);
+  background:linear-gradient(90deg, transparent, rgba(220,70,70,.58), transparent);
 }
 .compare-tag {
   display:inline-block;
@@ -535,9 +558,9 @@ nav {
   background:rgba(200,169,110,.1);
 }
 .compare-card.them .compare-tag {
-  color:#d8d4cc;
-  border:1px solid rgba(155,150,140,.28);
-  background:rgba(160,154,142,.08);
+  color:#ffb0aa;
+  border:1px solid rgba(220,70,70,.36);
+  background:rgba(180,30,30,.13);
 }
 .compare-title {
   margin-bottom:20px;
@@ -547,7 +570,7 @@ nav {
   line-height:1.5;
 }
 .compare-card.us .compare-title { color:var(--accent2); }
-.compare-card.them .compare-title { color:#d8d4cc; }
+.compare-card.them .compare-title { color:#ff8d86; }
 .compare-list { list-style:none; padding:0!important; margin:0!important; display:grid; gap:10px; }
 .compare-list li {
   display:flex;
@@ -566,19 +589,29 @@ nav {
 .compare-card.them .compare-list li::before {
   content:"✕";
   flex:0 0 auto;
-  color:#aaa;
+  color:#ff6b63;
   font-family:Arial,sans-serif;
+}
+.compare-card.them .compare-list li {
+  color:#e9b3ad;
+}
+.about-intro-section .section-title,
+.about-years-section .section-title {
+  margin-bottom:42px;
+}
+.about-years-section .grid-4 {
+  margin-top:10px;
 }
 .review-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
 .review-text { color:#c0b8a8; line-height:2; font-size:.9rem; margin-bottom:16px; }
 .review-name { color:var(--accent2); font-size:.82rem; letter-spacing:.1em; }
 .warning-card {
   margin-top: 28px;
-  border: 1px solid rgba(200,169,110,.32);
+  border: 1px solid rgba(220, 45, 45, .42);
   border-radius: var(--radius-card);
-  background: linear-gradient(160deg, rgba(42, 34, 18, .28), rgba(10, 8, 6, .9));
+  background: linear-gradient(160deg, rgba(42, 5, 5, .86), rgba(10, 8, 6, .9));
   padding: 26px 24px;
-  box-shadow: 0 0 26px rgba(200,169,110,.08), inset 0 1px 0 rgba(255,255,255,.04);
+  box-shadow: 0 0 26px rgba(180, 30, 30, .08), inset 0 1px 0 rgba(255,255,255,.04);
 }
 .job-tool-panel {
   margin:54px auto 48px;
@@ -618,20 +651,20 @@ nav {
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
 .warning-card h3 {
-  color: var(--accent2);
+  color: #ff6b63;
   font-family: 'Noto Serif TC', serif;
   font-size: clamp(1.45rem, 4vw, 2rem);
   letter-spacing: .08em;
   margin-bottom: 12px;
 }
 .warning-card p {
-  color: var(--muted);
+  color: #e9b3ad;
   line-height: 2;
   letter-spacing: .04em;
   margin-bottom: 8px;
 }
 .warning-card p:first-of-type {
-  color: var(--accent);
+  color: #ff8d86;
   font-weight: 800;
 }
 .fake-job-list {
@@ -648,10 +681,10 @@ nav {
   justify-content:center;
   min-height:36px;
   padding:7px 14px;
-  border:1px solid rgba(200,169,110,.3);
+  border:1px solid rgba(255,119,119,.34);
   border-radius:var(--radius-pill);
-  color:var(--accent2);
-  background:rgba(200,169,110,.07);
+  color:#ffd1d1;
+  background:rgba(220,70,70,.07);
   font-weight:800;
   letter-spacing:.04em;
   white-space:nowrap;
@@ -1057,10 +1090,10 @@ footer {
   margin-top:8px;
 }
 .income-warning-note {
-  border:1px solid rgba(200,169,110,.34);
+  border:1px solid rgba(220,70,70,.34);
   border-radius:var(--radius-btn);
-  background:rgba(200,169,110,.08);
-  color:var(--accent)!important;
+  background:rgba(100,10,10,.12);
+  color:#ff6b63!important;
   padding:12px 14px;
   font-weight:900;
 }

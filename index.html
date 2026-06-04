@@ -64,9 +64,26 @@
     }
     .fade-up {
       opacity: 0;
-      transition: opacity 0.7s ease;
+      transform: translateY(14px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
     }
-    .fade-up.visible { opacity: 1; }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-title,
+      .hero-sub-shine {
+        animation: none;
+      }
+    }
 
     /* NAV */
     nav {
@@ -395,28 +412,28 @@
   box-shadow: 0 4px 32px rgba(200,169,110,0.08);
 }
 .compare-card.them {
-  background: linear-gradient(160deg, rgba(26,24,21,0.95), rgba(12,10,8,0.92));
-  border-color: rgba(155,150,140,0.28);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  background: linear-gradient(160deg, rgba(42,5,5,0.86), rgba(12,10,8,0.92));
+  border-color: rgba(220,70,70,0.34);
+  box-shadow: 0 4px 32px rgba(180,30,30,0.08);
 }
 .compare-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
 }
 .compare-card.us::before { background: linear-gradient(90deg, transparent, rgba(200,169,110,0.7), transparent); }
-.compare-card.them::before { background: linear-gradient(90deg, transparent, rgba(155,150,140,0.5), transparent); }
+.compare-card.them::before { background: linear-gradient(90deg, transparent, rgba(220,70,70,0.58), transparent); }
 .compare-tag { font-size: 0.72rem; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 16px; display: inline-block; padding: 4px 12px; border-radius: var(--radius-pill); }
 .compare-card.us .compare-tag { background: rgba(200,169,110,0.12); color: var(--accent2); border: 1px solid rgba(200,169,110,0.3); }
-.compare-card.them .compare-tag { background: rgba(160,154,142,0.08); color: #d8d4cc; border: 1px solid rgba(155,150,140,0.28); }
+.compare-card.them .compare-tag { background: rgba(180,30,30,0.13); color: #ffb0aa; border: 1px solid rgba(220,70,70,0.36); }
 .compare-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; font-family: 'Noto Serif TC', serif; }
 .compare-card.us .compare-title { color: var(--accent2); }
-.compare-card.them .compare-title { color: #d8d4cc; }
+.compare-card.them .compare-title { color: #ff8d86; }
 .compare-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; line-height: 1.7; letter-spacing: 0.04em; font-family: 'Noto Sans TC', sans-serif; }
 .compare-card.us .compare-list li { color: #d0c8b8; }
-.compare-card.them .compare-list li { color: #aaa; }
+.compare-card.them .compare-list li { color: #e9b3ad; }
 .compare-list li span:first-child { display: inline-block; width: 1.2em; flex-shrink: 0; }
 .compare-card.us .compare-list li::before { content: '✓'; color: var(--accent); font-family: sans-serif; flex-shrink: 0; }
-.compare-card.them .compare-list li::before { content: '✗'; color: #aaa; font-family: sans-serif; flex-shrink: 0; }
+.compare-card.them .compare-list li::before { content: '✗'; color: #ff6b63; font-family: sans-serif; flex-shrink: 0; }
 @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
 
 
@@ -437,12 +454,12 @@
     @media (max-width: 480px) { .reviews-grid { grid-template-columns: 1fr; } }
 
     /* FAQ */
-    .faq-line-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.04)); border: 1px solid rgba(200,169,110,0.3); border-radius: var(--radius-card); padding: 18px 22px; margin-top: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; }
-    .faq-line-banner:hover { border-color: rgba(200,169,110,0.5); background: linear-gradient(135deg, rgba(200,169,110,0.13), rgba(200,169,110,0.07)); }
-    .faq-line-icon { width: 42px; height: 42px; background: linear-gradient(135deg, #c8a96e, #e0c080); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: #0a0a0a; letter-spacing: 0.06em; flex-shrink: 0; box-shadow: 0 2px 10px rgba(200,169,110,0.22); }
+    .faq-line-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, rgba(52,168,112,0.08), rgba(26,107,69,0.04)); border: 1px solid rgba(52,168,112,0.4); border-radius: var(--radius-card); padding: 18px 22px; margin-top: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; }
+    .faq-line-banner:hover { border-color: rgba(80,210,135,0.62); background: linear-gradient(135deg, rgba(52,168,112,0.13), rgba(26,107,69,0.07)); }
+    .faq-line-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--line-green), var(--line-green-light)); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: #fff; letter-spacing: 0.06em; flex-shrink: 0; box-shadow: 0 2px 10px rgba(26,107,69,0.3); }
     .faq-line-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: 0.05em; }
     .faq-line-text span { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.04em; }
-    .faq-arrow { margin-left: auto; font-size: 1.1rem; color: rgba(200,169,110,0.6); }
+    .faq-arrow { margin-left: auto; font-size: 1.1rem; color: rgba(80,210,135,0.66); }
     .faq-list { display: flex; flex-direction: column; gap: 8px; }
     .faq-item { background: linear-gradient(135deg, rgba(14,11,8,0.9), rgba(10,8,6,0.85)); border-radius: var(--radius-card); border: 1px solid rgba(200,169,110,0.12); overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
     .faq-item:hover { border-color: rgba(200,169,110,0.22); }
@@ -560,6 +577,13 @@
       margin:0 auto;
     }
     .home-contact-actions .contact-cta-btn { width:100%; }
+    .home-contact-actions .contact-cta-btn {
+      min-height:48px;
+      padding:13px 30px;
+      font-size:.95rem;
+      letter-spacing:.1em;
+      margin-top:0;
+    }
     .contact-sub { font-size: clamp(1rem,2.5vw,1.2rem); font-weight:400; color:#888; letter-spacing:0.12em; line-height:2.2; text-align:center; margin-bottom:0; }
     .contact-note { font-size: 0.8rem; color: #555; letter-spacing: 0.06em; margin-top: 12px; }
 
@@ -850,6 +874,12 @@
         gap:10px;
         width:100%;
         max-width:360px;
+      }
+      .home-contact-actions .contact-cta-btn {
+        min-height:46px;
+        padding:12px 18px;
+        font-size:.9rem;
+        letter-spacing:.06em;
       }
       .faq-question { font-size: 0.9rem; padding: 18px 18px; min-height: 60px; line-height: 1.55; }
       .faq-question span:first-child { max-width: calc(100% - 32px); }
