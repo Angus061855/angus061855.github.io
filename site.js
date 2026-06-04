@@ -125,18 +125,14 @@ function calculateIncome() {
   const monthlyDays = days * 4;
   if (incomeMode === 'beauty') {
     const dailyBase = hours * rate;
-    const dailyTipLow = (hours / 3) * 10000;
-    const dailyTipHigh = (hours / 3) * 15000;
-    const dailyLow = dailyBase + dailyTipLow;
-    const dailyHigh = dailyBase + dailyTipHigh;
-    const weeklyLow = dailyLow * days;
-    const weeklyHigh = dailyHigh * days;
-    const monthlyLow = weeklyLow * 4;
-    const monthlyHigh = weeklyHigh * 4;
-    dailyEl.textContent = `約 ${formatMoney(dailyLow)} - ${formatMoney(dailyHigh)} 元`;
-    weeklyEl.textContent = `約 ${formatMoney(weeklyLow)} - ${formatMoney(weeklyHigh)} 元`;
-    monthlyEl.textContent = `約 ${formatMoney(monthlyLow)} - ${formatMoney(monthlyHigh)} 元`;
-    note.textContent = '美容師以台費加小費試算　小費約每 3 小時 10000 到 15000 元';
+    const dailyTip = (hours / 3) * 13000;
+    const daily = dailyBase + dailyTip;
+    const weekly = daily * days;
+    const monthly = weekly * 4;
+    dailyEl.textContent = `約 ${formatMoney(daily)} 元`;
+    weeklyEl.textContent = `約 ${formatMoney(weekly)} 元`;
+    monthlyEl.textContent = `約 ${formatMoney(monthly)} 元`;
+    note.textContent = '美容師以台費加小費試算　小費抓每 3 小時 13000 元';
     return;
   }
   const sectionsPerDay = hours * 6;
