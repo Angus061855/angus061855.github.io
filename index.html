@@ -395,28 +395,28 @@
   box-shadow: 0 4px 32px rgba(200,169,110,0.08);
 }
 .compare-card.them {
-  background: linear-gradient(160deg, rgba(28,6,6,0.95), rgba(18,4,4,0.92));
-  border-color: rgba(180,50,50,0.35);
-  box-shadow: 0 4px 32px rgba(180,50,50,0.08);
+  background: linear-gradient(160deg, rgba(26,24,21,0.95), rgba(12,10,8,0.92));
+  border-color: rgba(155,150,140,0.28);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
 }
 .compare-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
 }
 .compare-card.us::before { background: linear-gradient(90deg, transparent, rgba(200,169,110,0.7), transparent); }
-.compare-card.them::before { background: linear-gradient(90deg, transparent, rgba(180,50,50,0.6), transparent); }
+.compare-card.them::before { background: linear-gradient(90deg, transparent, rgba(155,150,140,0.5), transparent); }
 .compare-tag { font-size: 0.72rem; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 16px; display: inline-block; padding: 4px 12px; border-radius: var(--radius-pill); }
 .compare-card.us .compare-tag { background: rgba(200,169,110,0.12); color: var(--accent2); border: 1px solid rgba(200,169,110,0.3); }
-.compare-card.them .compare-tag { background: rgba(180,50,50,0.15); color: #e07070; border: 1px solid rgba(180,50,50,0.4); }
+.compare-card.them .compare-tag { background: rgba(160,154,142,0.08); color: #d8d4cc; border: 1px solid rgba(155,150,140,0.28); }
 .compare-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; font-family: 'Noto Serif TC', serif; }
 .compare-card.us .compare-title { color: var(--accent2); }
-.compare-card.them .compare-title { color: #e07070; }
+.compare-card.them .compare-title { color: #d8d4cc; }
 .compare-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; line-height: 1.7; letter-spacing: 0.04em; font-family: 'Noto Sans TC', sans-serif; }
 .compare-card.us .compare-list li { color: #d0c8b8; }
-.compare-card.them .compare-list li { color: #c09090; }
+.compare-card.them .compare-list li { color: #aaa; }
 .compare-list li span:first-child { display: inline-block; width: 1.2em; flex-shrink: 0; }
 .compare-card.us .compare-list li::before { content: '✓'; color: var(--accent); font-family: sans-serif; flex-shrink: 0; }
-.compare-card.them .compare-list li::before { content: '✗'; color: #c04040; font-family: sans-serif; flex-shrink: 0; }
+.compare-card.them .compare-list li::before { content: '✗'; color: #aaa; font-family: sans-serif; flex-shrink: 0; }
 @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
 
 
@@ -437,12 +437,12 @@
     @media (max-width: 480px) { .reviews-grid { grid-template-columns: 1fr; } }
 
     /* FAQ */
-    .faq-line-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, rgba(26,107,69,0.08), rgba(26,107,69,0.04)); border: 1px solid rgba(26,107,69,0.3); border-radius: var(--radius-card); padding: 18px 22px; margin-top: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; }
-    .faq-line-banner:hover { border-color: rgba(34,136,90,0.5); background: linear-gradient(135deg, rgba(26,107,69,0.13), rgba(26,107,69,0.07)); }
-    .faq-line-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--line-green), var(--line-green-light)); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: #fff; letter-spacing: 0.06em; flex-shrink: 0; box-shadow: 0 2px 10px rgba(26,107,69,0.3); }
+    .faq-line-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.04)); border: 1px solid rgba(200,169,110,0.3); border-radius: var(--radius-card); padding: 18px 22px; margin-top: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; }
+    .faq-line-banner:hover { border-color: rgba(200,169,110,0.5); background: linear-gradient(135deg, rgba(200,169,110,0.13), rgba(200,169,110,0.07)); }
+    .faq-line-icon { width: 42px; height: 42px; background: linear-gradient(135deg, #c8a96e, #e0c080); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: #0a0a0a; letter-spacing: 0.06em; flex-shrink: 0; box-shadow: 0 2px 10px rgba(200,169,110,0.22); }
     .faq-line-text strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: 0.05em; }
     .faq-line-text span { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.04em; }
-    .faq-arrow { margin-left: auto; font-size: 1.1rem; color: rgba(34,136,90,0.6); }
+    .faq-arrow { margin-left: auto; font-size: 1.1rem; color: rgba(200,169,110,0.6); }
     .faq-list { display: flex; flex-direction: column; gap: 8px; }
     .faq-item { background: linear-gradient(135deg, rgba(14,11,8,0.9), rgba(10,8,6,0.85)); border-radius: var(--radius-card); border: 1px solid rgba(200,169,110,0.12); overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
     .faq-item:hover { border-color: rgba(200,169,110,0.22); }
@@ -502,7 +502,7 @@
     .job-badge { font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); letter-spacing: 0.06em; }
     .badge-pr    { background: rgba(200,169,110,0.15); color: var(--accent2); border: 1px solid rgba(200,169,110,0.4); box-shadow: 0 0 8px rgba(200,169,110,0.1); }
     .badge-agent { background: rgba(240,240,240,0.05); color: #b8b0a0; border: 1px solid rgba(240,240,240,0.12); }
-    .badge-beauty{ background: rgba(220,60,60,0.1); color: #e88080; border: 1px solid rgba(200,60,60,0.35); }
+    .badge-beauty{ background: rgba(200,169,110,0.1); color: var(--accent2); border: 1px solid rgba(200,169,110,0.32); }
     .job-card-desc { font-size: 0.88rem; color: var(--muted); line-height: 2; letter-spacing: 0.04em; }
     .job-card-perks { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
     .job-card-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ccc8c0; letter-spacing: 0.04em; }
@@ -552,6 +552,14 @@
       box-shadow:inset 0 1px 0 rgba(111,220,158,0.12),0 0 28px rgba(52,168,112,0.06);
     }
     .contact-cta-btn.official-home-line::after { background:linear-gradient(90deg,transparent,rgba(190,255,210,0.18),transparent); }
+    .home-contact-actions {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      width:min(100%,460px);
+      margin:0 auto;
+    }
+    .home-contact-actions .contact-cta-btn { width:100%; }
     .contact-sub { font-size: clamp(1rem,2.5vw,1.2rem); font-weight:400; color:#888; letter-spacing:0.12em; line-height:2.2; text-align:center; margin-bottom:0; }
     .contact-note { font-size: 0.8rem; color: #555; letter-spacing: 0.06em; margin-top: 12px; }
 
@@ -564,9 +572,9 @@
     footer span { color: var(--accent); }
 
     /* 浮動 LINE */
-    .float-line { position: fixed; bottom: 28px; right: 24px; z-index: 200; display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--line-green), var(--line-green-light)); color: rgba(255,255,255,0.92); font-weight: 700; font-size: 0.85rem; padding: 10px 20px; border-radius: var(--radius-btn); text-decoration: none; letter-spacing: 0.08em; border: 1px solid rgba(34,136,90,0.35); box-shadow: 0 4px 20px rgba(26,107,69,0.3), inset 0 1px 0 rgba(255,255,255,0.08); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; max-width: 160px; }
-    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,107,69,0.45); }
-    .float-line-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; flex-shrink: 0; }
+    .float-line { position: fixed; bottom: 28px; right: 24px; z-index: 200; display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #c8a96e, #e0c080); color: #0a0a0a; font-weight: 900; font-size: 0.85rem; padding: 10px 20px; border-radius: var(--radius-btn); text-decoration: none; letter-spacing: 0.08em; border: 1px solid rgba(200,169,110,0.35); box-shadow: 0 4px 20px rgba(200,169,110,0.24), inset 0 1px 0 rgba(255,255,255,0.16); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; max-width: 160px; }
+    .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(200,169,110,0.34); }
+    .float-line-dot { width: 6px; height: 6px; background: rgba(10,10,10,0.6); border-radius: 50%; flex-shrink: 0; }
 
     /* 右下角諮詢入口 */
     .consult-widget {
@@ -660,9 +668,9 @@
       transform: translateY(-1px);
     }
     .consult-action.line {
-      background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
-      border-color: rgba(34,136,90,0.45);
-      color: #fff;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      border-color: rgba(200,169,110,0.45);
+      color: #0a0a0a;
     }
     .consult-quiz {
       display: none;
@@ -729,11 +737,11 @@
     @media (max-width: 640px) {
       .mobile-line-bar {
         display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
-        background: linear-gradient(135deg, var(--line-green), var(--line-green-light));
+        background: linear-gradient(135deg, #c8a96e, #e0c080);
         padding: 14px 24px; align-items: center; justify-content: center; gap: 10px;
-        text-decoration: none; color: #fff; font-weight: 900; font-size: 1rem;
+        text-decoration: none; color: #0a0a0a; font-weight: 900; font-size: 1rem;
         letter-spacing: 0.1em; border-top: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 -4px 20px rgba(26,107,69,0.3);
+        box-shadow: 0 -4px 20px rgba(200,169,110,0.25);
         opacity: 0; transform: translateY(100%);
         pointer-events: none;
         transition: opacity 0.28s ease, transform 0.28s ease;
@@ -781,12 +789,12 @@
     /* 11. 夜間限定文案 banner */
     .night-banner {
       display: none;
-      background: linear-gradient(135deg, rgba(10,8,20,0.95), rgba(8,6,16,0.9));
-      border-bottom: 1px solid rgba(120,100,200,0.2);
+      background: linear-gradient(135deg, rgba(18,14,10,0.95), rgba(8,8,8,0.9));
+      border-bottom: 1px solid rgba(200,169,110,0.16);
       padding: 10px 24px; text-align: center;
-      font-size: 0.82rem; color: rgba(180,160,240,0.8); letter-spacing: 0.1em;
+      font-size: 0.82rem; color: rgba(200,169,110,0.72); letter-spacing: 0.1em;
     }
-    .night-banner strong { color: rgba(200,180,255,0.95); }
+    .night-banner strong { color: var(--accent2); }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -834,6 +842,15 @@
       .hero-pills { margin-bottom: 28px; }
       .hero-stats { margin-bottom: 28px; }
       .hero-cta { margin-bottom: 28px; }
+      #contact h2 {
+        font-size:clamp(1.85rem,9vw,2.45rem)!important;
+        line-height:1.28!important;
+      }
+      .home-contact-actions {
+        gap:10px;
+        width:100%;
+        max-width:360px;
+      }
       .faq-question { font-size: 0.9rem; padding: 18px 18px; min-height: 60px; line-height: 1.55; }
       .faq-question span:first-child { max-width: calc(100% - 32px); }
       .faq-answer { font-size: 0.88rem; line-height: 2.15; }
@@ -1088,7 +1105,7 @@
       <p class="contact-sub">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
       <h2 style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;">八大行業<br/>到底長什麼樣子</h2>
       <p style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;">不管你問什麼　我都有問必答</p>
-      <div class="contact-row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <div class="contact-row home-contact-actions">
         <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn">立即詢問</a>
         <a href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer" class="contact-cta-btn official-home-line">官方 LINE</a>
       </div>
