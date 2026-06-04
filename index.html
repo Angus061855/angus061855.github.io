@@ -173,8 +173,9 @@
     @media (max-width: 768px) { .hero-sub-shine { font-size: 2.4rem !important; } }
     .hero-sub-shine span {
       display: inline-block; color: transparent;
-      background: linear-gradient(90deg, #777 0%, #ffffff 38%, #c8a96e 58%, #777 100%);
-      background-size: 300% auto; -webkit-background-clip: text; background-clip: text;
+      background: linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);
+      background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
+      text-shadow: 0 0 28px rgba(200,169,110,0.12);
       animation: shine 7s linear infinite;
     }
     .hero-sub-shine span:nth-child(1)  { animation-delay: 0.00s; }
@@ -538,6 +539,13 @@
     .contact-cta-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
     .contact-cta-btn:hover::after { left: 160%; }
     .contact-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(200,169,110,0.42); filter: brightness(1.06); }
+    .contact-cta-btn.official-home-line {
+      color:#bdf2cf;
+      background:linear-gradient(135deg,rgba(52,168,112,0.13),rgba(16,20,14,0.76));
+      border:1px solid rgba(52,168,112,0.58);
+      box-shadow:inset 0 1px 0 rgba(111,220,158,0.12),0 0 28px rgba(52,168,112,0.06);
+    }
+    .contact-cta-btn.official-home-line::after { background:linear-gradient(90deg,transparent,rgba(190,255,210,0.18),transparent); }
     .contact-sub { font-size: clamp(1rem,2.5vw,1.2rem); font-weight:400; color:#888; letter-spacing:0.12em; line-height:2.2; text-align:center; margin-bottom:0; }
     .contact-note { font-size: 0.8rem; color: #555; letter-spacing: 0.06em; margin-top: 12px; }
 
@@ -920,7 +928,7 @@
     </div>
     <div class="hero-cta fade-up" style="transition-delay:0.4s">
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-outline">了解更多</a>
+      <a href="about.html" class="btn-outline">關於我</a>
     </div>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
@@ -1039,7 +1047,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:36px;" class="fade-up">
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">加 LINE 詢問職缺</a>
+      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">立即詢問</a>
     </div>
   </section>
 
@@ -1119,11 +1127,14 @@
   <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <p class="section-label fade-up" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
-      <p class="contact-sub fade-up" style="transition-delay:0.05s;">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
-      <h2 class="fade-up" style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;transition-delay:0.1s;">八大行業<br/>到底長什麼樣子</h2>
-      <p class="fade-up" style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;transition-delay:0.15s;">不管你問什麼　我都有問必答</p>
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn fade-up" style="transition-delay:0.2s;">點我詢問工作</a>
+      <p class="section-label" style="font-size:1rem;font-weight:700;letter-spacing:0.35em;">有　問　必　答</p>
+      <p class="contact-sub">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
+      <h2 style="font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;text-align:center;background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 24px;font-family:'Noto Serif TC',serif;">八大行業<br/>到底長什麼樣子</h2>
+      <p style="font-size:clamp(0.9rem,2vw,1rem);font-weight:400;color:#666;letter-spacing:0.15em;line-height:2;text-align:center;margin-bottom:32px;">不管你問什麼　我都有問必答</p>
+      <div class="contact-row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="contact-cta-btn">立即詢問</a>
+        <a href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer" class="contact-cta-btn official-home-line">官方 LINE</a>
+      </div>
       <p class="contact-note fade-up" style="transition-delay:0.25s;">我會親自回覆　不是 AI 回覆</p>
     </div>
   </div>

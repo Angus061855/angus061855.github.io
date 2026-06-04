@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260604-preview1" />
+  <link rel="stylesheet" href="site.css?v=20260605-finalcta1" />
   <style>
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
@@ -61,10 +61,7 @@
         <div class="hero-badges"><span class="hero-badge">本人回覆</span><span class="hero-badge">不是 AI 客服</span><span class="hero-badge">問了不代表要做</span></div>
         <h1 class="hero-title">問問題<br>不代表你要來做</h1>
         <p class="hero-lead">先聊聊　了解清楚再決定就好<br>薪資　隱私　職缺　試做<br>合約　請假　離職<br>任何你不好意思問的都可以</p>
-        <div class="contact-row">
-          <a class="contact-method primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer"><strong>直接 LINE</strong><span>找大頭本人 · 私下詢問最快</span></a>
-          <a class="contact-method official-line" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer"><strong>官方 LINE</strong><span>AS娛樂官方帳號 · 點擊加入</span></a>
-        </div>
+        <div class="contact-row"><a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a></div>
       </div>
     </section>
 
@@ -109,50 +106,57 @@
     <section class="section">
       <div class="container">
         <span class="section-label">適合測驗</span>
-        <h2 class="section-title">回答三個問題<br>我幫你抓方向</h2>
+        <h2 class="section-title">先做 30 秒測驗<br>再決定要不要問我</h2>
         <div class="tool-panel quiz-panel">
           <div class="quiz-step active" data-contact-quiz-step="0">
-            <h3>你目前比較接近哪一種狀況？</h3>
+            <h3>你現在最主要的考量是什麼？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">第一次了解</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">想換經紀</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">急需收入</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0,0)">需要快速增加收入</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0,1)">想要時間更彈性自由</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0,2)">只是好奇想了解看看</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0,3)">其他</button>
             </div>
           </div>
           <div class="quiz-step" data-contact-quiz-step="1">
-            <h3>你最在意的是什麼？</h3>
+            <h3>你對八大行業最擔心的是什麼？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">薪水透明</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">隱私安全</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">不要被強迫</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1,0)">隱私問題　怕被認識的人知道</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1,1)">合約問題　怕被綁住走不了</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1,2)">完全不了解　不知道從哪裡問起</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1,3)">其他</button>
             </div>
           </div>
           <div class="quiz-step" data-contact-quiz-step="2">
             <h3>你希望怎麼開始？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先問薪水</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先看職缺</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先匿名聊聊</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2,0)">先問問題　了解清楚再說</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2,1)">先看看資訊　自己研究一下</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2,2)">直接了解　有興趣就快速行動</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2,3)">其他</button>
             </div>
           </div>
           <div class="quiz-result-box" id="contact-quiz-result">
-            <h3>你的狀況可以直接問我</h3>
-            <p>不用先整理得很完整<br>你把時間　顧慮　想問的方向傳給我<br>我會直接幫你判斷比較適合哪一種</p>
-            <div class="contact-row"><a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 詢問</a></div>
+            <h3 id="contact-quiz-title">你很適合先了解看看</h3>
+            <p id="contact-quiz-desc">你現在最需要的是資訊<br>不是馬上做決定</p>
+            <div class="contact-row"><a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a></div>
+            <button class="quiz-restart" type="button" onclick="restartContactQuiz()">重新測驗</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wide-container">
-        <span class="section-label">有問必答</span>
-        <h2 class="section-title">問清楚<br>再決定就好</h2>
-        <p class="section-desc">不簽合約　不壓薪水　自由排班<br>隱私保護　本人回覆　免費諮詢</p>
-        <div class="grid-3">
-          <div class="card"><h3>本人回覆</h3><p>所有訊息我都親自看<br>不交給別人處理</p></div>
-          <div class="card"><h3>不話術</h3><p>不灌水　不畫大餅<br>說的都是真話</p></div>
-          <div class="card"><h3>不強迫</h3><p>你有自由決定的權利<br>不會強迫你來或做決定</p></div>
+    <section class="final-contact-section">
+      <div class="container">
+        <div class="final-contact-inner">
+          <p class="section-label">有　問　必　答</p>
+          <p class="final-contact-sub">問問題 不代表你要來做<br>但如果你不問我<br>你永遠不會知道</p>
+          <h2>八大行業<br>到底長什麼樣子</h2>
+          <p class="final-contact-note">不管你問什麼　我都有問必答</p>
+          <div class="final-contact-actions">
+            <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
+            <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+          </div>
+          <p class="final-contact-small">我會親自回覆　不是 AI 回覆</p>
         </div>
       </div>
     </section>
@@ -170,6 +174,6 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
-  <script src="site.js?v=20260604-preview1"></script>
+  <script src="site.js?v=20260605-finalcta1"></script>
 </body>
 </html>

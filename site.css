@@ -336,6 +336,12 @@ nav {
   line-height:2.1;
   letter-spacing:.05em;
 }
+.section-title + .copy-grid,
+.section-title + .knowledge-category-grid,
+.section-desc + .copy-grid,
+.section-desc + .knowledge-category-grid {
+  margin-top: 34px;
+}
 .grid-2, .grid-3, .grid-4 { display:grid; gap:18px; }
 .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
@@ -571,6 +577,75 @@ input[type="range"] { width:100%; accent-color:var(--accent); }
 .form-field textarea { min-height:116px; resize:vertical; }
 .form-output { display:none; margin-top:18px; padding:18px; border:1px solid rgba(200,169,110,.2); border-radius:var(--radius-card); color:var(--soft); background:rgba(200,169,110,.05); white-space:pre-line; }
 .form-output.show { display:block; }
+
+.final-contact-section {
+  min-height: 72vh;
+  display:flex;
+  align-items:center;
+  border-top:1px solid rgba(200,169,110,.12);
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(200,169,110,.08), transparent 52%),
+    linear-gradient(115deg, transparent 0 24%, rgba(255,255,255,.045) 24.05%, transparent 24.35% 100%);
+}
+.final-contact-inner {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  text-align:center;
+}
+.final-contact-inner .section-label {
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:.35em;
+  margin-bottom:18px;
+}
+.final-contact-sub {
+  color:#888;
+  font-size:clamp(1rem,2.5vw,1.2rem);
+  letter-spacing:.12em;
+  line-height:2.2;
+}
+.final-contact-inner h2 {
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(2.35rem,6vw,4rem);
+  font-weight:900;
+  line-height:1.2;
+  letter-spacing:.04em;
+  color:transparent;
+  background:linear-gradient(135deg,#c8a96e 0%,#f0d898 45%,#c8a96e 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  margin:8px 0 18px;
+}
+.final-contact-note {
+  color:#666;
+  font-size:clamp(.9rem,2vw,1rem);
+  letter-spacing:.15em;
+  line-height:2;
+}
+.final-contact-actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:18px;
+}
+.official-line-outline {
+  border-color:rgba(52,168,112,.58);
+  color:#bdf2cf;
+  background:linear-gradient(135deg,rgba(52,168,112,.13),rgba(16,20,14,.28));
+}
+.official-line-outline:hover {
+  border-color:rgba(80,210,135,.78);
+  color:#d8ffe3;
+}
+.final-contact-small {
+  color:#555;
+  font-size:.8rem;
+  letter-spacing:.06em;
+  margin-top:12px;
+}
 
 footer {
   border-top:1px solid rgba(200,169,110,.12);
@@ -948,6 +1023,7 @@ footer {
 
 @media (max-width: 900px) {
   .grid-2, .grid-3, .grid-4, .hero-stats, .compare-grid, .review-grid, .form-grid { grid-template-columns:1fr; }
+  .knowledge-category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .form-field.full { grid-column:auto; }
   .hero { padding:64px 0 44px; min-height:auto; }
   .hero-title { font-size:clamp(2.15rem, 10vw, 3.35rem); line-height:1.28; letter-spacing:.04em; }
@@ -1013,6 +1089,12 @@ footer {
     letter-spacing:.025em;
     margin-bottom:28px;
   }
+  .section-title + .copy-grid,
+  .section-title + .knowledge-category-grid,
+  .section-desc + .copy-grid,
+  .section-desc + .knowledge-category-grid {
+    margin-top: 26px;
+  }
   .section-label { text-align:center; display:block; }
   .tool-panel { padding:20px 18px; }
   .tool-fields { grid-template-columns:1fr; }
@@ -1044,6 +1126,27 @@ footer {
     line-height:1.9;
   }
   .grid-2, .grid-3, .grid-4 { gap:14px; }
+  .knowledge-category-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .knowledge-category-grid .card {
+    padding:16px 12px;
+  }
+  .knowledge-category-grid .card h3 {
+    font-size:.92rem;
+    line-height:1.45;
+  }
+  .knowledge-category-grid .card p {
+    display:none;
+  }
+  .knowledge-category-grid .article-meta {
+    font-size:.68rem;
+    margin-bottom:7px;
+  }
+  .knowledge-category-grid .mini-link {
+    font-size:.72rem;
+  }
   .card {
     padding:20px 18px;
     border-radius:8px;
@@ -1084,4 +1187,24 @@ footer {
     letter-spacing:.06em;
   }
   footer { padding:34px 20px 90px; }
+  .final-contact-section {
+    min-height:76vh;
+    padding:64px 0 124px;
+  }
+  .final-contact-inner .section-label {
+    letter-spacing:.28em;
+    margin-bottom:12px;
+  }
+  .final-contact-sub { line-height:2; }
+  .final-contact-inner h2 {
+    font-size:clamp(2.3rem,12vw,3.2rem);
+  }
+  .final-contact-actions {
+    width:100%;
+    margin-bottom:42px;
+  }
+  .final-contact-actions .btn-primary,
+  .final-contact-actions .btn-outline {
+    width:min(100%, 280px);
+  }
 }

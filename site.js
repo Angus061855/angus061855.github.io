@@ -140,7 +140,16 @@ function initIncomeTool() {
   calculateIncome();
 }
 
-function nextContactQuiz(step) {
+const contactQuizResults = [
+  { title:'你很適合先了解看看', desc:'你現在最需要的是資訊<br>不是決定<br>什麼都可以問　有問必答<br>了解清楚之後再做決定　沒有任何壓力' },
+  { title:'你的顧慮都可以解決', desc:'隱私和合約問題<br>是我被問最多的兩件事<br>這兩件事我都有完整的答案<br>加我說清楚給你聽' },
+  { title:'你已經準備好了', desc:'你知道自己要什麼<br>也願意行動<br>現在只差一個問題<br>加我詢問工作吧' },
+  { title:'還在思考也沒關係', desc:'不確定很正常<br>很多人一開始也是這樣<br>問了才知道適不適合自己' }
+];
+const contactQuizAnswers = [];
+
+function nextContactQuiz(step, ans = 0) {
+  contactQuizAnswers[step] = ans;
   const current = document.querySelector(`[data-contact-quiz-step="${step}"]`);
   const next = document.querySelector(`[data-contact-quiz-step="${step + 1}"]`);
   if (current) current.classList.remove('active');
@@ -149,7 +158,21 @@ function nextContactQuiz(step) {
     return;
   }
   const result = document.getElementById('contact-quiz-result');
+  const title = document.getElementById('contact-quiz-title');
+  const desc = document.getElementById('contact-quiz-desc');
+  const copy = contactQuizResults[ans] || contactQuizResults[0];
+  if (title) title.textContent = copy.title;
+  if (desc) desc.innerHTML = copy.desc;
   if (result) result.classList.add('show');
+}
+
+function restartContactQuiz() {
+  contactQuizAnswers.length = 0;
+  document.querySelectorAll('[data-contact-quiz-step]').forEach(step => step.classList.remove('active'));
+  const first = document.querySelector('[data-contact-quiz-step="0"]');
+  if (first) first.classList.add('active');
+  const result = document.getElementById('contact-quiz-result');
+  if (result) result.classList.remove('show');
 }
 
 function initTotalViews() {
