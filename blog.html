@@ -45,8 +45,23 @@
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
     .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
-    .back-btn { color: var(--muted); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; transition: color 0.2s; }
-    .back-btn:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
+    .mobile-menu-btn {
+      display: none; width: 44px; height: 40px; flex: 0 0 44px;
+      align-items: center; justify-content: center; flex-direction: column;
+      background: rgba(200,169,110,0.06); border: 1px solid rgba(200,169,110,0.24);
+      border-radius: var(--radius-btn); cursor: pointer;
+    }
+    .mobile-menu-btn span { display: block; width: 24px; height: 2px; margin: 3px 0; background: #d7c08a; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 69px; left: 0; right: 0; z-index: 99; background: rgba(6,6,6,0.985); border-bottom: 1px solid var(--gold-border); padding: 10px 22px 18px; }
+    .mobile-menu.open { display: grid; gap: 4px; }
+    .mobile-menu a { color: var(--muted); text-decoration: none; padding: 13px 0; border-bottom: 1px solid rgba(200,169,110,0.12); letter-spacing: 0.05em; }
+    .mobile-menu a:last-child { border-bottom: 0; }
 
     .wrap { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
     .page-title {
@@ -108,6 +123,10 @@
       .wrap { padding: 100px 20px 60px; }
       .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
     }
+    @media (max-width: 1100px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -122,8 +141,22 @@
   <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="AS娛樂" style="height:56px;"/>
   </a>
-  <a href="index.html" class="back-btn">← 返回主頁</a>
+  <div class="nav-links">
+    <a href="index.html">首頁</a>
+    <a href="jobs.html">職缺介紹</a>
+    <a href="knowledge.html">八大知識+</a>
+    <a class="active" href="blog.html">部落格</a>
+    <a href="contact.html">聯絡我</a>
+  </div>
+  <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu">
+  <a href="index.html">首頁</a>
+  <a href="jobs.html">職缺介紹</a>
+  <a href="knowledge.html">八大知識+</a>
+  <a href="blog.html">部落格</a>
+  <a href="contact.html">聯絡我</a>
+</div>
 
 <div class="wrap">
   <h1 class="page-title">所有文章</h1>
@@ -137,6 +170,13 @@
 
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
+  function toggleMobileMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
   const FALLBACK_POSTS = [
     { slug: 'hotel-pr-job-guide', title: '酒店公關是什麼？新手入門完整指南', summary: '從工作內容、排班方式到常見誤解，一次帶你看懂。', date: '2026-01-12', cover: '' },
     { slug: 'salary-and-risk', title: '薪資、風險與保護：面試前你一定要知道', summary: '談薪水之前，先知道哪些資訊一定要問清楚。', date: '2026-01-26', cover: '' },
