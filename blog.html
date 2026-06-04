@@ -115,7 +115,14 @@
     .float-line:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(200,169,110,0.18); }
     .float-line-dot { width: 8px; height: 8px; background: #4caf7d; box-shadow: 0 0 10px rgba(76,175,125,0.65); border-radius: 50%; }
 
-    footer { border-top: 1px solid rgba(200,169,110,0.1); padding: 28px 24px; text-align: center; color: #555; font-size: 0.82rem; background: rgba(6,6,6,0.6); }
+    footer { border-top: 1px solid rgba(200,169,110,0.1); padding: 40px 24px 32px; text-align: center; color: #555; font-size: 0.82rem; background: rgba(6,6,6,0.6); letter-spacing: 0.06em; }
+    .footer-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:16px; }
+    .footer-logo img { height:32px; width:auto; opacity:.55; }
+    .footer-logo span { color:rgba(200,169,110,.42); font-family:'Noto Serif TC',serif; font-size:1rem; letter-spacing:.2em; }
+    .footer-slogan { color:rgba(200,169,110,.42); font-family:'Noto Serif TC',serif; letter-spacing:.18em; margin-bottom:12px; }
+    .footer-divider { width:60px; height:1px; margin:0 auto 20px; background:linear-gradient(90deg,transparent,rgba(200,169,110,.3),transparent); }
+    .footer-views { font-size:.75rem; color:#3a3a3a; letter-spacing:.08em; }
+    .footer-views span { color:var(--accent); font-weight:700; }
     footer span { color: var(--accent); }
 
     @media (max-width: 640px) {
@@ -166,7 +173,13 @@
   </div>
 </div>
 
-<footer><p>© 2026 <span>AS娛樂</span>　八大最誠實經紀 大頭</p></footer>
+<footer>
+  <div class="footer-logo"><img src="logo.png?v=20260604-logo2" alt="AS娛樂"><span>AS娛樂</span></div>
+  <p class="footer-slogan">八大最誠實經紀　大頭</p>
+  <div class="footer-divider"></div>
+  <p>© 2026 <span>AS娛樂</span>　版權所有</p>
+  <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
+</footer>
 
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
@@ -192,6 +205,16 @@
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
+  function setTotalViews() {
+    const startDate = new Date('2026-03-01');
+    const startCount = 28547;
+    const today = new Date();
+    const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    let total = startCount;
+    for (let i = 0; i < days; i++) total += 543 + (((i * 7919) + 3571) % 701);
+    document.querySelectorAll('[data-total-views]').forEach(el => { el.textContent = total.toLocaleString(); });
+  }
+  setTotalViews();
 
   const renderPosts = (posts) => {
     const grid = document.getElementById('blog-grid');
