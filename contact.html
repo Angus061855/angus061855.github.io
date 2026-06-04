@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260604-contact3" />
+  <link rel="stylesheet" href="site.css?v=20260604-preview1" />
   <style>
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
@@ -50,10 +50,10 @@
 <body>
   <nav>
     <a class="nav-logo" href="index.html"><img src="logo.png?v=20260604-logo2" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>聯絡我</span></span></a>
-    <div class="nav-links"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a class="active" href="contact.html">聯絡我</a></div>
+    <div class="nav-links"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a class="active" href="contact.html">聯絡我</a></div>
     <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
-  <div class="mobile-menu"><a href="index.html">首頁</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
+  <div class="mobile-menu"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
 
   <main>
     <section class="hero compact">
@@ -63,7 +63,7 @@
         <p class="hero-lead">先聊聊　了解清楚再決定就好<br>薪資　隱私　職缺　試做<br>合約　請假　離職<br>任何你不好意思問的都可以</p>
         <div class="contact-row">
           <a class="contact-method primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer"><strong>直接 LINE</strong><span>找大頭本人 · 私下詢問最快</span></a>
-          <a class="contact-method" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer"><strong>官方 LINE</strong><span>AS娛樂官方帳號 · 點擊加入</span></a>
+          <a class="contact-method official-line" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer"><strong>官方 LINE</strong><span>AS娛樂官方帳號 · 點擊加入</span></a>
         </div>
       </div>
     </section>
@@ -73,12 +73,12 @@
         <span class="section-label">你可以直接問</span>
         <h2 class="section-title">不知道怎麼開口<br>就複製這些問題</h2>
         <div class="grid-3 copy-grid">
-          <div class="card copy-card"><h3>我沒有經驗可以嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
-          <div class="card copy-card"><h3>薪水怎麼算？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
-          <div class="card copy-card"><h3>隱私會不會被知道？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
-          <div class="card copy-card"><h3>真的不用簽合約嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
-          <div class="card copy-card"><h3>可以只做短期嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
-          <div class="card copy-card"><h3>我適合哪種職缺？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">按一下複製</button></div>
+          <div class="card copy-card accent-card"><h3>我沒有經驗可以嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
+          <div class="card copy-card success-card"><h3>薪水怎麼算？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
+          <div class="card copy-card blue-card"><h3>隱私會不會被知道？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
+          <div class="card copy-card accent-card"><h3>真的不用簽合約嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
+          <div class="card copy-card success-card"><h3>可以只做短期嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
+          <div class="card copy-card blue-card"><h3>我適合哪種職缺？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
         </div>
       </div>
     </section>
@@ -86,21 +86,21 @@
     <section class="section">
       <div class="container">
         <span class="section-label">薪資試算</span>
-        <h2 class="section-title">先算一個大概<br>實際還是要看現場</h2>
-        <p class="section-desc">這只是粗估<br>不保證收入<br>實際會依店型　時段　個人狀態　發薪規則而不同</p>
+        <h2 class="section-title">先算一個大概<br>再決定要不要詢問</h2>
+        <p class="section-desc">這只是試算<br>不保證收入<br>先讓你抓大概方向</p>
         <div class="tool-panel">
           <div class="tool-tabs">
             <button class="tool-tab active" type="button" data-income-mode="club" onclick="setIncomeMode('club')">酒店公關</button>
             <button class="tool-tab" type="button" data-income-mode="beauty" onclick="setIncomeMode('beauty')">美容師</button>
           </div>
-          <div class="tool-fields">
-            <div class="tool-field"><label for="income-days">每週天數</label><input id="income-days" type="number" min="1" max="7" value="3" oninput="calculateIncome()"></div>
-            <div class="tool-field"><label for="income-hours">每天時數</label><input id="income-hours" type="number" min="1" max="12" value="6" oninput="calculateIncome()"></div>
-            <div class="tool-field"><label for="income-rate" id="income-rate-label">節薪 / 時薪</label><input id="income-rate" type="number" min="1" value="260" oninput="calculateIncome()"></div>
+          <div class="tool-fields range-fields">
+            <div class="tool-field range-field"><label for="income-days">每週天數 <output id="income-days-value">3 天</output></label><input id="income-days" type="range" min="1" max="7" step="1" value="3" oninput="calculateIncome()"></div>
+            <div class="tool-field range-field"><label for="income-hours">每天時數 <output id="income-hours-value">6 小時</output></label><input id="income-hours" type="range" min="1" max="12" step="1" value="6" oninput="calculateIncome()"></div>
+            <div class="tool-field range-field"><label for="income-rate" id="income-rate-label">節薪 <output id="income-rate-value">260 元</output></label><input id="income-rate" type="range" min="230" max="290" step="10" value="260" oninput="calculateIncome()"></div>
           </div>
           <div class="income-result">
             <strong id="income-result">約 0 元</strong>
-            <span id="income-note">酒店以 10 分鐘一節粗估　實際依上檯率和店規不同</span>
+            <span id="income-note">酒店以 10 分鐘一節計算　節薪依你選擇的數字試算</span>
           </div>
         </div>
       </div>
@@ -108,36 +108,36 @@
 
     <section class="section">
       <div class="container">
-        <span class="section-label">快速判斷</span>
-        <h2 class="section-title">先回答三個問題<br>再決定要不要問我</h2>
-        <div class="tool-panel">
+        <span class="section-label">適合測驗</span>
+        <h2 class="section-title">回答三個問題<br>我幫你抓方向</h2>
+        <div class="tool-panel quiz-panel">
           <div class="quiz-step active" data-contact-quiz-step="0">
-            <h3>你現在最主要想了解什麼？</h3>
+            <h3>你目前比較接近哪一種狀況？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">收入和薪水</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">隱私和安全</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">適合哪種職缺</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">第一次了解</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">想換經紀</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(0)">急需收入</button>
             </div>
           </div>
           <div class="quiz-step" data-contact-quiz-step="1">
-            <h3>你比較想要哪種安排？</h3>
+            <h3>你最在意的是什麼？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">短期應急</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">兼職彈性</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">先了解看看</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">薪水透明</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">隱私安全</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(1)">不要被強迫</button>
             </div>
           </div>
           <div class="quiz-step" data-contact-quiz-step="2">
-            <h3>你最在意哪一點？</h3>
+            <h3>你希望怎麼開始？</h3>
             <div class="quiz-options">
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">不用簽合約</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">薪水透明</button>
-              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">本人回覆</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先問薪水</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先看職缺</button>
+              <button class="quiz-choice" type="button" onclick="nextContactQuiz(2)">先匿名聊聊</button>
             </div>
           </div>
           <div class="quiz-result-box" id="contact-quiz-result">
-            <h3>可以直接問我</h3>
-            <p>你不用先想好怎麼說<br>把你的狀況丟給我<br>我會直接幫你判斷方向</p>
+            <h3>你的狀況可以直接問我</h3>
+            <p>不用先整理得很完整<br>你把時間　顧慮　想問的方向傳給我<br>我會直接幫你判斷比較適合哪一種</p>
             <div class="contact-row"><a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">加 LINE 詢問</a></div>
           </div>
         </div>
@@ -170,6 +170,6 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
-  <script src="site.js?v=20260604-contact3"></script>
+  <script src="site.js?v=20260604-preview1"></script>
 </body>
 </html>

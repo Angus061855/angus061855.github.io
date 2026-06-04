@@ -674,7 +674,12 @@
       font-weight: 900;
       letter-spacing: 0.1em;
       font-family: 'Noto Sans TC', sans-serif;
+      text-decoration: none;
     }
+    .consult-toggle,
+    .consult-toggle:hover,
+    .consult-toggle:focus,
+    .consult-toggle span { text-decoration: none !important; }
     .consult-toggle-dot {
       width: 8px;
       height: 8px;
@@ -858,6 +863,7 @@
     </div>
     <div class="nav-links">
       <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">首頁</a>
+      <a href="about.html">關於我</a>
       <a href="jobs.html">職缺介紹</a>
       <a href="knowledge.html">八大知識+</a>
       <a href="blog.html">部落格</a>
@@ -870,6 +876,7 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});closeMenu();return false;">首頁</a>
+    <a href="about.html" onclick="closeMenu()">關於我</a>
     <a href="jobs.html" onclick="closeMenu()">職缺介紹</a>
     <a href="knowledge.html" onclick="closeMenu()">八大知識+</a>
     <a href="blog.html" onclick="closeMenu()">部落格</a>

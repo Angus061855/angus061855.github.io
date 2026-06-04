@@ -70,7 +70,7 @@ function copyQuestion(btn) {
     btn.textContent = '已複製';
     btn.classList.add('copied');
     setTimeout(() => {
-      btn.textContent = '按一下複製';
+      btn.textContent = '點我複製';
       btn.classList.remove('copied');
     }, 1200);
   };
@@ -89,10 +89,17 @@ function setIncomeMode(mode) {
   });
   const rate = document.getElementById('income-rate');
   const hours = document.getElementById('income-hours');
+  const days = document.getElementById('income-days');
   const label = document.getElementById('income-rate-label');
-  if (rate) rate.value = mode === 'beauty' ? 1600 : 260;
+  if (rate) {
+    rate.min = mode === 'beauty' ? 1400 : 230;
+    rate.max = mode === 'beauty' ? 2000 : 290;
+    rate.step = mode === 'beauty' ? 100 : 10;
+    rate.value = mode === 'beauty' ? 1600 : 260;
+  }
   if (hours) hours.value = mode === 'beauty' ? 4 : 6;
-  if (label) label.textContent = mode === 'beauty' ? '一台（時薪）' : '節薪 / 時薪';
+  if (days) days.value = 3;
+  if (label) label.firstChild.textContent = mode === 'beauty' ? '一台（時薪） ' : '節薪 ';
   calculateIncome();
 }
 
@@ -107,19 +114,25 @@ function calculateIncome() {
   const result = document.getElementById('income-result');
   const note = document.getElementById('income-note');
   if (!result || !note) return;
+  const daysValue = document.getElementById('income-days-value');
+  const hoursValue = document.getElementById('income-hours-value');
+  const rateValue = document.getElementById('income-rate-value');
+  if (daysValue) daysValue.textContent = `${days} 天`;
+  if (hoursValue) hoursValue.textContent = `${hours} 小時`;
+  if (rateValue) rateValue.textContent = `${rate} 元`;
   const monthlyDays = days * 4;
   if (incomeMode === 'beauty') {
     const base = monthlyDays * hours * rate;
     const tipLow = monthlyDays * (hours / 3) * 10000;
     const tipHigh = monthlyDays * (hours / 3) * 15000;
     result.textContent = `約 ${formatMoney(base + tipLow)} - ${formatMoney(base + tipHigh)} 元`;
-    note.textContent = '美容師以一台時薪粗估　常見約 1400 到 2000 元　小費約每 3 小時 10000 到 15000 元　實際依店型與客人狀況不同';
+    note.textContent = '美容師以一台為計量單位（時薪）　小費約每 3 小時 10000 到 15000 元';
     return;
   }
   const sectionsPerDay = hours * 6;
   const monthly = monthlyDays * sectionsPerDay * rate;
   result.textContent = `約 ${formatMoney(monthly)} 元`;
-  note.textContent = '酒店以 10 分鐘一節粗估　實際依上檯率　店型　時段與發薪規則不同';
+  note.textContent = '酒店以 10 分鐘一節計算　節薪依你選擇的數字試算';
 }
 
 function initIncomeTool() {
