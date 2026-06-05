@@ -132,7 +132,7 @@ function calculateIncome() {
     dailyEl.textContent = `約 ${formatMoney(daily)} 元`;
     weeklyEl.textContent = `約 ${formatMoney(weekly)} 元`;
     monthlyEl.textContent = `約 ${formatMoney(monthly)} 元`;
-    note.textContent = '美容師以台費加小費試算　小費抓每 3 小時 13000 元';
+    note.innerHTML = '美容師以台費加小費試算<br>小費抓每 3 小時 13000 元';
     return;
   }
   const sectionsPerDay = hours * 6;
@@ -142,7 +142,7 @@ function calculateIncome() {
   dailyEl.textContent = `約 ${formatMoney(daily)} 元`;
   weeklyEl.textContent = `約 ${formatMoney(weekly)} 元`;
   monthlyEl.textContent = `約 ${formatMoney(monthly)} 元`;
-  note.textContent = '酒店以 10 分鐘一節計算　節薪依你選擇的數字試算';
+  note.innerHTML = '酒店以 10 分鐘一節計算<br>節薪依你選擇的數字試算';
 }
 
 function initIncomeTool() {
