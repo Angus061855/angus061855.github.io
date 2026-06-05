@@ -933,7 +933,12 @@ footer {
 .footer-views { font-size:.75rem; color:#3a3a3a; letter-spacing:.08em; }
 .footer-views span { color:var(--accent); font-weight:700; }
 
-.copy-grid { align-items:stretch; }
+.copy-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  align-items:stretch;
+}
 .copy-card {
   position:relative;
   min-height:156px;
@@ -1490,12 +1495,24 @@ footer {
   }
   .copy-card {
     min-height:118px;
-    padding-right:104px;
+    padding:18px 12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:14px;
+  }
+  .copy-card h3 {
+    font-size:.88rem;
+    line-height:1.65;
+  }
+  .copy-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
   }
   .copy-btn {
-    top:18px;
-    right:14px;
-    min-width:78px;
+    position:static;
+    width:100%;
+    min-width:0;
     font-size:.72rem;
   }
   .range-field label {

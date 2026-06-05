@@ -65,7 +65,7 @@ function copyQuestion(btn) {
   const card = btn.closest('.copy-card');
   const question = card ? card.querySelector('h3')?.textContent.trim() : '';
   if (!question) return;
-  const text = `我想問：${question}`;
+  const text = question;
   const done = () => {
     btn.textContent = '已複製';
     btn.classList.add('copied');
