@@ -11,6 +11,309 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css?v=20260605-fix12" />
   <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-sub-shine {
+        animation: none;
+      }
+    }
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      line-height: 1.7;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(200,169,110,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(200,169,110,0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    #hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #hero .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    #hero .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(200,169,110,0.06), rgba(200,169,110,0.02));
+      border: 1px solid var(--gold-border);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      padding: 6px 18px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 0 12px rgba(200,169,110,0.05), inset 0 1px 0 rgba(200,169,110,0.1);
+      transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    #hero .hero-social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,169,110,0.06);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      color: #c8c0b0;
+      letter-spacing: 0.08em;
+    }
+    #hero .hero-social-proof-dot {
+      width: 7px;
+      height: 7px;
+      background: #4caf7d;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(76,175,125,0.6);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.7; }
+    }
+    #hero .hero-social-proof strong { color: var(--accent2); }
+    .hero-sub-shine {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 3.5rem !important;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      margin: 0 auto 40px;
+      letter-spacing: 0.06em;
+      color: transparent;
+      background: linear-gradient(105deg, #c8a96e 0%, #f0d898 34%, #f5f5f5 52%, #8f8f8f 74%, #c8a96e 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 34px rgba(200,169,110,0.14);
+      animation: shine 8s linear infinite;
+    }
+    .hero-sub-shine span {
+      display: inline-block;
+      color: inherit;
+      background: none;
+      animation: none;
+    }
+    @keyframes shine {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    #hero .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 0 auto 48px;
+      max-width: 480px;
+    }
+    #hero .hero-pill {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: #c8c0b0;
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(200,169,110,0.25);
+      background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.02));
+      box-shadow: 0 0 12px rgba(200,169,110,0.06), inset 0 1px 0 rgba(200,169,110,0.12);
+      position: relative;
+    }
+    #hero .hero-pill::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, rgba(200,169,110,0.6), transparent);
+      border-radius: 2px;
+    }
+    #hero .hero-stats {
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 0 48px;
+    }
+    #hero .stat {
+      text-align: center;
+      padding: 20px 32px;
+      border: 1px solid rgba(200,169,110,0.18);
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, rgba(20,16,10,0.65), rgba(12,10,8,0.45));
+      box-shadow: 0 0 30px rgba(200,169,110,0.05), inset 0 1px 0 rgba(200,169,110,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero .stat::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.55), transparent);
+    }
+    #hero .stat::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,0.2), transparent);
+    }
+    #hero .stat-num {
+      font-size: 3.4rem;
+      font-weight: 900;
+      color: transparent;
+      background: linear-gradient(135deg, #c8a96e 0%, #f0d898 50%, #c8a96e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+    #hero .stat-label {
+      font-size: 0.75rem;
+      color: #666;
+      letter-spacing: 0.18em;
+      margin-top: 8px;
+    }
+    #hero .hero-cta {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    #hero .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #c8a96e, #e0c080);
+      color: #0a0a0a;
+      font-weight: 900;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 24px rgba(200,169,110,0.25), 0 1px 0 rgba(255,255,255,0.2) inset;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+      position: relative;
+      overflow: hidden;
+      width: auto;
+      min-height: 0;
+    }
+    #hero .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+    #hero .btn-primary:hover::after { left: 160%; }
+    #hero .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200,169,110,0.4);
+      filter: brightness(1.06);
+    }
+    #hero .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #aaaaaa;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 13px 36px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(200,169,110,0.2);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      width: auto;
+      min-height: 0;
+    }
+    #hero .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      transform: translateY(-2px);
+    }
+    #hero .hero-scroll-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(200,169,110,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    #hero .hero-scroll-arrow:hover { color: rgba(200,169,110,0.8); }
+    #hero .hero-scroll-arrow svg { animation: bounceArrow 2s ease-in-out infinite; }
+    @keyframes bounceArrow {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
       .mobile-menu-btn {
@@ -45,6 +348,64 @@
         bottom: calc(18px + env(safe-area-inset-bottom)) !important;
       }
     }
+    nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      padding: 14px 40px;
+      background: rgba(8,8,8,0.7);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(200,169,110,0.08);
+    }
+    .nav-logo-text { display: none; }
+    .nav-logo img { height: 56px; }
+    @media (max-width: 768px) {
+      .hero-sub-shine { font-size: 2.4rem !important; }
+    }
+    @media (max-width: 640px) {
+      #hero { min-height: auto; padding: 100px 18px 54px; }
+      #hero .hero-stats { gap: 10px; width: 100%; max-width: 340px; }
+      #hero .stat-num { font-size: 2rem; white-space: nowrap; }
+      #hero .stat { padding: 13px 10px; flex: 1 1 0; min-width: 0; max-width: none; }
+      #hero .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; }
+      #hero .hero-pills {
+        display: grid;
+        grid-template-columns: repeat(4,minmax(0,1fr));
+        gap: 6px;
+        width: 100%;
+        max-width: 360px;
+      }
+      #hero .hero-pill {
+        width: 100%;
+        padding: 6px 4px;
+        font-size: 0.66rem;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      #hero .hero-badges { max-width: 320px; }
+      #hero .hero-badges .hero-badge:nth-child(n+3) { display: none; }
+      #hero .hero-social-proof { margin-bottom: 14px; }
+      #hero .hero-sub-shine { margin-bottom: 22px; }
+      #hero .hero-pills { margin-bottom: 28px; }
+      #hero .hero-stats { margin-bottom: 28px; }
+      #hero .hero-cta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: auto;
+        max-width: none;
+        margin-bottom: 28px;
+      }
+      #hero .hero-cta .btn-primary,
+      #hero .hero-cta .btn-outline {
+        width: auto;
+        min-height: 0;
+        padding: 14px 36px;
+        font-size: 0.95rem;
+        letter-spacing: 0.12em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -56,39 +417,52 @@
   <div class="mobile-menu"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-badges">
-          <span class="hero-badge">AS娛樂</span>
-          <span class="hero-badge">八大最誠實經紀</span>
-          <span class="hero-badge">本人回覆</span>
-          <span class="hero-badge">有問必答</span>
+    <section id="hero">
+      <h1 class="visually-hidden">AS娛樂 台北酒店公關招募｜八大最誠實經紀 大頭</h1>
+      <div class="hero-badges fade-up">
+        <span class="hero-badge">全台最多人詢問</span>
+        <span class="hero-badge">八大最誠實經紀</span>
+        <span class="hero-badge">七年個人面試3000+</span>
+        <span class="hero-badge">有問必答</span>
+      </div>
+      <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
+        <span class="hero-social-proof-dot"></span>
+        本週已有 <strong id="weekly-count">--</strong> 人詢問
+      </div>
+      <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
+        <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
+        <br/>
+        <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
+      </p>
+      <div class="hero-stats fade-up" style="transition-delay:0.3s">
+        <div class="stat">
+          <div class="stat-num" id="counter-years">0</div>
+          <div class="stat-label">從業年資</div>
         </div>
-        <div class="hero-social-proof">
-          <span class="hero-social-proof-dot"></span>
-          問問題不代表你要來做
+        <div class="stat">
+          <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+          <div class="stat-label">個人面試人數</div>
         </div>
-        <h1 class="hero-title">不要讓未來的你<br>討厭現在的自己</h1>
-        <p class="hero-lead">大頭　八大最誠實經紀人<br>先把薪資　隱私　職缺　試做講清楚<br>你了解完再自己決定就好</p>
-        <div class="hero-pills">
-          <span class="hero-pill">不簽合約</span>
-          <span class="hero-pill">不壓薪水</span>
-          <span class="hero-pill">自由排班</span>
-          <span class="hero-pill">隱私安全</span>
-        </div>
-        <div class="hero-cta">
-          <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
-          <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-card"><strong>7年</strong><span>從業經驗</span></div>
-          <div class="stat-card"><strong>3000+</strong><span>個人面試</span></div>
-          <div class="stat-card"><strong>透明</strong><span>先講清楚</span></div>
-        </div>
+      </div>
+      <div class="hero-pills fade-up" style="transition-delay:0.2s">
+        <span class="hero-pill">不簽合約</span>
+        <span class="hero-pill">不壓薪水</span>
+        <span class="hero-pill">自由排班</span>
+        <span class="hero-pill">隱私安全</span>
+      </div>
+      <div class="hero-cta fade-up" style="transition-delay:0.4s">
+        <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
+        <a href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer" class="btn-outline official-line-outline">官方 LINE</a>
+      </div>
+      <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('contact-questions').scrollIntoView({behavior:'smooth'})">
+        <span>向下探索更多內容</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="contact-questions">
       <div class="wide-container">
         <span class="section-label">你可以直接問</span>
         <h2 class="section-title">不知道怎麼開口<br>就複製這些問題</h2>
@@ -209,6 +583,67 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('#hero .fade-up').forEach(el => {
+        if (reduceMotion) {
+          el.classList.add('visible');
+          return;
+        }
+        requestAnimationFrame(() => el.classList.add('visible'));
+      });
+
+      function animateCounter(el, target, duration, suffix) {
+        if (!el) return;
+        if (reduceMotion) {
+          el.textContent = target + (suffix || '');
+          return;
+        }
+        const start = Date.now();
+        const update = () => {
+          const p = Math.min((Date.now() - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * target) + (suffix || '');
+          if (p < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+      }
+
+      function getInterviewCount() {
+        const startDate = new Date('2026-03-01');
+        const startCount = 3000;
+        const today = new Date();
+        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        let total = startCount;
+        for (let i = 0; i < days; i++) {
+          const d = new Date(startDate);
+          d.setDate(d.getDate() + i);
+          const seed = d.toISOString().slice(0, 10);
+          total += (seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1;
+        }
+        return total;
+      }
+
+      const heroSection = document.getElementById('hero');
+      const startCounters = () => {
+        animateCounter(document.getElementById('counter-years'), 7, 1200, '年');
+        animateCounter(document.getElementById('counter-interviews'), getInterviewCount(), 1800);
+      };
+      if (!('IntersectionObserver' in window) || !heroSection) {
+        startCounters();
+        return;
+      }
+      const counterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          startCounters();
+          counterObserver.disconnect();
+        });
+      }, { threshold: 0.3 });
+      counterObserver.observe(heroSection);
+    });
+  </script>
   <script src="site.js?v=20260605-fix12"></script>
 </body>
 </html>
