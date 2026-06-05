@@ -570,11 +570,13 @@
     }
     .contact-cta-btn.official-home-line::after { background:linear-gradient(90deg,transparent,rgba(190,255,210,0.18),transparent); }
     .home-contact-actions {
-      display:grid;
+      display:grid!important;
       grid-template-columns:repeat(2,minmax(0,1fr));
       gap:12px;
       width:min(100%,460px);
-      margin:0 auto;
+      margin:16px auto 0;
+      justify-content:center;
+      align-items:center;
     }
     .home-contact-actions .contact-cta-btn { width:100%; }
     .home-contact-actions .contact-cta-btn {
@@ -874,6 +876,8 @@
         gap:10px;
         width:100%;
         max-width:360px;
+        margin-left:auto;
+        margin-right:auto;
       }
       .home-contact-actions .contact-cta-btn {
         min-height:46px;
