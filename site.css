@@ -271,6 +271,30 @@ nav {
 .btn-primary:hover,
 .contact-cta-btn:hover { box-shadow: 0 8px 32px rgba(200,169,110,.4); filter: brightness(1.05); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
+.line-alert-note {
+  max-width: 680px;
+  margin: 10px auto 0;
+  color: #ff6b6b;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.9;
+  letter-spacing: .04em;
+  text-align: center;
+}
+.line-alert-card {
+  border-color: rgba(255,96,96,.48);
+  background: linear-gradient(160deg, rgba(90,20,20,.22), rgba(10,8,6,.9));
+}
+.line-alert-card h3 {
+  color: #ff8a8a;
+}
+.line-alert-card p {
+  color: #b8b0a4;
+}
+.line-alert-card .line-alert-note {
+  margin-top: 18px;
+  color: #ff7a7a;
+}
 
 .hero {
   min-height: calc(100vh - 69px);
