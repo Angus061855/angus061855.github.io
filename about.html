@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260606-fix16" />
+  <link rel="stylesheet" href="site.css?v=20260606-fix20" />
   <style>
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
@@ -56,17 +56,48 @@
   <div class="mobile-menu"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
 
   <main>
-    <section class="hero compact">
-      <div class="container">
-        <div class="hero-badges"><span class="hero-badge">七年經驗</span><span class="hero-badge">3000+ 個人面試</span><span class="hero-badge">本人回覆</span></div>
-        <h1 class="hero-title">大頭<br>八大最誠實經紀人</h1>
-        <p class="hero-lead">我不是靠話術留人<br>我只把真實情況講清楚<br>讓你自己決定要不要走下一步</p>
-        <div class="hero-cta"><a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a><a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a></div>
-        <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+    <section class="home-copy-hero" id="about-hero">
+      <h1 class="visually-hidden">大頭 八大最誠實經紀人</h1>
+      <div class="hero-badges">
+        <span class="hero-badge">全台最多人詢問</span>
+        <span class="hero-badge">八大最誠實經紀</span>
+        <span class="hero-badge">七年個人面試3000+</span>
+        <span class="hero-badge">有問必答</span>
+      </div>
+      <div class="hero-social-proof">
+        <span class="hero-social-proof-dot"></span>
+        本週已有 <strong id="weekly-count">--</strong> 人詢問
+      </div>
+      <p class="hero-sub-shine" aria-hidden="true">大頭<br><span class="hero-title-line">八大最誠實經紀人</span></p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" id="counter-years">0</div>
+          <div class="stat-label">從業年資</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+          <div class="stat-label">個人面試人數</div>
+        </div>
+      </div>
+      <div class="hero-pills">
+        <span class="hero-pill">不簽合約</span>
+        <span class="hero-pill">不壓薪水</span>
+        <span class="hero-pill">自由排班</span>
+        <span class="hero-pill">隱私安全</span>
+      </div>
+      <div class="hero-cta cta-three">
+        <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
+        <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+        <a class="btn-outline video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
+      </div>
+      <p class="line-alert-note hero-line-alert">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+      <div class="hero-scroll-arrow" onclick="document.getElementById('about-intro').scrollIntoView({behavior:'smooth'})">
+        <span>向下探索更多內容</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </section>
 
-    <section class="section about-intro-section">
+    <section class="section about-intro-section" id="about-intro">
       <div class="container">
         <span class="section-label">關於我</span>
         <h2 class="section-title">為什麼我選擇誠實</h2>
@@ -87,8 +118,9 @@
           <p class="section-desc">因同行長期眼紅檢舉我<br>所以目前 IG 帳號會不定期更換<br>想更快找到我可以直接加 LINE</p>
           <p>畢竟我把很多行業秘辛講出來<br>也把薪資　合約　扣款　話術這些事情攤開講清楚</p>
           <p>有些人少賺很多錢<br>影響到他們利益<br>自然就會想辦法檢舉我</p>
-          <div class="social-link-row">
-            <a class="social-link-btn" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">觀看 TikTok 八大影片</a>
+          <div class="hero-cta ig-contact-actions">
+            <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
+            <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
           </div>
           <p class="line-alert-note">如果你怕找不到我<br>直接加 LINE 是最快也最穩的方式</p>
         </article>
@@ -163,6 +195,7 @@
         <div class="final-contact-actions">
           <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
           <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+          <a class="btn-outline video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
         </div>
         <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
         <p class="final-contact-small">我會親自回覆　不是 AI 回覆</p>
@@ -182,6 +215,40 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function animateCounter(el, target, duration, suffix) {
+        if (!el) return;
+        if (reduceMotion) {
+          el.textContent = target + (suffix || '');
+          return;
+        }
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target) + (suffix || '');
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }
+      function getInterviewCount() {
+        const startDate = new Date('2026-03-01');
+        const days = Math.max(0, Math.floor((new Date() - startDate) / 86400000));
+        let total = 3000;
+        for (let i = 0; i < days; i++) {
+          const date = new Date(startDate);
+          date.setDate(date.getDate() + i);
+          const seed = date.toISOString().slice(0, 10);
+          total += (seed.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) % 5) + 1;
+        }
+        return total;
+      }
+      animateCounter(document.getElementById('counter-years'), 7, 1200, '年');
+      animateCounter(document.getElementById('counter-interviews'), getInterviewCount(), 1800);
+    });
+  </script>
   <script src="site.js?v=20260606-fix14"></script>
 </body>
 </html>

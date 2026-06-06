@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260606-fix16" />
+  <link rel="stylesheet" href="site.css?v=20260606-fix20" />
   <style>
     .fade-up {
       opacity: 0;
@@ -239,6 +239,16 @@
       flex-wrap: wrap;
       margin-bottom: 48px;
     }
+    #hero .hero-cta.cta-three {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      width:min(100%,690px);
+    }
+    #hero .hero-cta.cta-three .btn-primary,
+    #hero .hero-cta.cta-three .btn-outline {
+      width:100%;
+      justify-content:center;
+    }
     #hero .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -415,6 +425,19 @@
         font-size: 0.95rem;
         letter-spacing: 0.12em;
       }
+      #hero .hero-cta.cta-three {
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        width:100%;
+        max-width:390px;
+      }
+      #hero .hero-cta.cta-three .btn-primary,
+      #hero .hero-cta.cta-three .btn-outline {
+        width:100%;
+        padding:12px 8px;
+        font-size:.82rem;
+        letter-spacing:.04em;
+      }
     }
   </style>
 </head>
@@ -460,9 +483,10 @@
         <span class="hero-pill">自由排班</span>
         <span class="hero-pill">隱私安全</span>
       </div>
-      <div class="hero-cta fade-up" style="transition-delay:0.4s">
+      <div class="hero-cta cta-three fade-up" style="transition-delay:0.4s">
         <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
         <a href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer" class="btn-outline official-line-outline">官方 LINE</a>
+        <a href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer" class="btn-outline video-outline">八大影片</a>
       </div>
       <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
       <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('contact-questions').scrollIntoView({behavior:'smooth'})">
@@ -576,6 +600,7 @@
           <div class="final-contact-actions">
             <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
             <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+            <a class="btn-outline video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
           </div>
           <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
           <p class="final-contact-small">我會親自回覆　不是 AI 回覆</p>
