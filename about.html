@@ -9,8 +9,173 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260606-fix22" />
+  <link rel="stylesheet" href="site.css?v=20260606-fix23" />
   <style>
+    .fade-up {
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity .45s ease,transform .45s ease;
+    }
+    .fade-up.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+    #hero {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 24px 80px;
+      position:relative;
+      overflow:hidden;
+      background:transparent;
+      line-height:1.7;
+    }
+    #hero > * { position:relative; z-index:1; }
+    #hero .hero-badges {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-bottom:36px;
+    }
+    #hero .hero-badge {
+      display:inline-block;
+      padding:6px 18px;
+      border:1px solid var(--gold-border);
+      border-radius:var(--radius-pill);
+      color:var(--accent);
+      background:linear-gradient(135deg,rgba(200,169,110,.06),rgba(200,169,110,.02));
+      box-shadow:0 0 12px rgba(200,169,110,.05),inset 0 1px 0 rgba(200,169,110,.1);
+      font-size:.78rem;
+      letter-spacing:.14em;
+    }
+    #hero .hero-social-proof {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:20px;
+      padding:6px 16px;
+      border:1px solid rgba(200,169,110,.2);
+      border-radius:var(--radius-pill);
+      color:#c8c0b0;
+      background:rgba(200,169,110,.06);
+      font-size:.82rem;
+      letter-spacing:.08em;
+    }
+    #hero .hero-social-proof-dot {
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#4caf7d;
+      box-shadow:0 0 6px rgba(76,175,125,.6);
+    }
+    #hero .hero-social-proof strong { color:var(--accent2); }
+    #hero .hero-sub-shine {
+      margin:0 auto 40px;
+      font-family:'Noto Serif TC',serif;
+      font-size:3.5rem!important;
+      font-weight:700;
+      line-height:1.5;
+      letter-spacing:.06em;
+      color:transparent;
+      background:linear-gradient(105deg,#c8a96e 0%,#f0d898 34%,#f5f5f5 52%,#8f8f8f 74%,#c8a96e 100%);
+      background-size:300% auto;
+      -webkit-background-clip:text;
+      background-clip:text;
+      text-shadow:0 0 34px rgba(200,169,110,.14);
+      animation:shine 8s linear infinite;
+    }
+    #hero .hero-stats {
+      display:flex;
+      flex-direction:row;
+      gap:48px;
+      justify-content:center;
+      align-items:flex-start;
+      margin:0 0 48px;
+    }
+    #hero .stat {
+      min-width:0;
+      padding:20px 32px;
+      border:1px solid rgba(200,169,110,.18);
+      border-radius:var(--radius-card);
+      background:linear-gradient(135deg,rgba(20,16,10,.65),rgba(12,10,8,.45));
+      box-shadow:0 0 30px rgba(200,169,110,.05),inset 0 1px 0 rgba(200,169,110,.1);
+      text-align:center;
+    }
+    #hero .stat-num {
+      font-size:3.4rem;
+      font-weight:900;
+      line-height:1.1;
+      letter-spacing:.04em;
+      color:transparent;
+      background:linear-gradient(135deg,#c8a96e,#f0d898,#c8a96e);
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    #hero .stat-label {
+      margin-top:8px;
+      color:#666;
+      font-size:.75rem;
+      letter-spacing:.18em;
+    }
+    #hero .hero-pills {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      max-width:480px;
+      margin:0 auto 48px;
+    }
+    #hero .hero-pill {
+      padding:7px 18px;
+      border:1px solid rgba(200,169,110,.25);
+      border-radius:var(--radius-pill);
+      color:#c8c0b0;
+      background:linear-gradient(135deg,rgba(200,169,110,.08),rgba(200,169,110,.02));
+      font-size:.78rem;
+      letter-spacing:.14em;
+      white-space:nowrap;
+    }
+    #hero .hero-cta {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      width:min(100%,690px);
+      margin:0 auto 48px;
+    }
+    #hero .hero-cta a {
+      width:100%;
+      justify-content:center;
+    }
+    #hero .hero-scroll-arrow {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      color:rgba(200,169,110,.4);
+      font-size:.72rem;
+      letter-spacing:.2em;
+      cursor:pointer;
+    }
+    nav {
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      padding:14px 40px;
+      background:rgba(8,8,8,.7);
+      backdrop-filter:blur(24px);
+      border-bottom:1px solid rgba(200,169,110,.08);
+    }
+    .nav-logo-text { display:none; }
+    .nav-logo img { height:56px; }
+    @media (prefers-reduced-motion:reduce) {
+      .fade-up { opacity:1; transform:none; transition:none; }
+      #hero .hero-sub-shine { animation:none; }
+    }
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
       .mobile-menu-btn {
@@ -45,6 +210,62 @@
         bottom: calc(18px + env(safe-area-inset-bottom)) !important;
       }
     }
+    @media (max-width:640px) {
+      #hero {
+        min-height:auto;
+        padding:100px 18px 54px;
+      }
+      #hero .hero-badges { max-width:320px; }
+      #hero .hero-badges .hero-badge:nth-child(n+3) { display:none; }
+      #hero .hero-social-proof { margin-bottom:14px; }
+      #hero .hero-sub-shine {
+        margin-bottom:22px;
+        font-size:2.4rem!important;
+      }
+      #hero .hero-stats {
+        width:100%;
+        max-width:340px;
+        gap:10px;
+        margin-bottom:28px;
+      }
+      #hero .stat {
+        flex:1 1 0;
+        padding:13px 10px;
+      }
+      #hero .stat-num {
+        font-size:2rem;
+        white-space:nowrap;
+      }
+      #hero .stat-label {
+        font-size:.68rem;
+        letter-spacing:.14em;
+      }
+      #hero .hero-pills {
+        display:grid;
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        width:100%;
+        max-width:360px;
+        gap:6px;
+        margin-bottom:28px;
+      }
+      #hero .hero-pill {
+        width:100%;
+        padding:6px 4px;
+        font-size:.66rem;
+        letter-spacing:.04em;
+      }
+      #hero .hero-cta {
+        width:100%;
+        max-width:390px;
+        margin-bottom:28px;
+      }
+      #hero .hero-cta .btn-primary,
+      #hero .hero-cta .btn-outline {
+        padding:12px 8px;
+        font-size:.82rem;
+        letter-spacing:.04em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -56,20 +277,20 @@
   <div class="mobile-menu"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a href="contact.html">聯絡我</a></div>
 
   <main>
-    <section class="home-copy-hero" id="about-hero">
+    <section id="hero">
       <h1 class="visually-hidden">大頭 八大最誠實經紀人</h1>
-      <div class="hero-badges">
+      <div class="hero-badges fade-up">
         <span class="hero-badge">全台最多人詢問</span>
         <span class="hero-badge">八大最誠實經紀</span>
         <span class="hero-badge">七年個人面試3000+</span>
         <span class="hero-badge">有問必答</span>
       </div>
-      <div class="hero-social-proof">
+      <div class="hero-social-proof fade-up" style="transition-delay:.05s">
         <span class="hero-social-proof-dot"></span>
         本週已有 <strong id="weekly-count">--</strong> 人詢問
       </div>
-      <p class="hero-sub-shine" aria-hidden="true">大頭<br><span class="hero-title-line">八大最誠實經紀人</span></p>
-      <div class="hero-stats">
+      <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:.1s">大頭<br>八大最誠實經紀人</p>
+      <div class="hero-stats fade-up" style="transition-delay:.3s">
         <div class="stat">
           <div class="stat-num" id="counter-years">0</div>
           <div class="stat-label">從業年資</div>
@@ -79,19 +300,19 @@
           <div class="stat-label">個人面試人數</div>
         </div>
       </div>
-      <div class="hero-pills">
+      <div class="hero-pills fade-up" style="transition-delay:.2s">
         <span class="hero-pill">不簽合約</span>
         <span class="hero-pill">不壓薪水</span>
         <span class="hero-pill">自由排班</span>
         <span class="hero-pill">隱私安全</span>
       </div>
-      <div class="hero-cta cta-three">
+      <div class="hero-cta cta-three fade-up" style="transition-delay:.4s">
         <a class="btn-primary" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
         <a class="btn-outline official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
         <a class="btn-outline video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
       </div>
-      <p class="line-alert-note hero-line-alert">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
-      <div class="hero-scroll-arrow" onclick="document.getElementById('about-intro').scrollIntoView({behavior:'smooth'})">
+      <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:.45s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+      <div class="hero-scroll-arrow fade-up" style="transition-delay:.5s" onclick="document.getElementById('about-intro').scrollIntoView({behavior:'smooth'})">
         <span>向下探索更多內容</span>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
@@ -218,6 +439,15 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('#hero .fade-up').forEach(function (element) {
+        if (reduceMotion) {
+          element.classList.add('visible');
+          return;
+        }
+        requestAnimationFrame(function () {
+          element.classList.add('visible');
+        });
+      });
       function animateCounter(el, target, duration, suffix) {
         if (!el) return;
         if (reduceMotion) {

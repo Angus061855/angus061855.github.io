@@ -325,6 +325,25 @@ nav {
   margin-top: 18px;
   color: #ff7a7a;
 }
+.line-alert-card > p:not(.section-desc):not(.line-alert-note) {
+  margin-top:18px;
+  line-height:2;
+}
+.line-alert-card .ig-contact-actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,220px));
+  justify-content:center;
+  gap:20px;
+  width:100%;
+  max-width:none;
+  margin:42px auto 32px;
+}
+.line-alert-card .ig-contact-actions .btn-primary,
+.line-alert-card .ig-contact-actions .btn-outline {
+  width:100%;
+  min-height:52px;
+  justify-content:center;
+}
 .social-link-row {
   display: flex;
   justify-content: center;
@@ -1688,6 +1707,11 @@ footer {
   .hero-line-alert {
     margin-top: -14px;
     margin-bottom: 36px;
+  }
+  .line-alert-card .ig-contact-actions {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin:34px auto 28px;
   }
   .hero-badges { gap:8px; margin-bottom:20px; }
   .hero-badge, .hero-pill {
