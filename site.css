@@ -288,13 +288,22 @@ nav {
 .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
 .line-alert-note {
   max-width: 680px;
-  margin: 10px auto 0;
-  color: #ff6b6b;
-  font-size: .78rem;
+  margin: 28px auto 0;
+  color: #d97b75;
+  font-size: .76rem;
   font-weight: 700;
-  line-height: 1.9;
-  letter-spacing: .04em;
+  line-height: 2;
+  letter-spacing: .08em;
   text-align: center;
+  text-shadow: 0 0 18px rgba(176,58,54,.16);
+}
+.line-alert-note:not(.hero-line-alert)::before {
+  content:'';
+  display:block;
+  width:44px;
+  height:1px;
+  margin:0 auto 15px;
+  background:linear-gradient(90deg,transparent,rgba(217,123,117,.55),transparent);
 }
 .hero-line-alert {
   margin-top: -24px;
@@ -322,8 +331,9 @@ nav {
   text-align: center;
 }
 .line-alert-card .line-alert-note {
-  margin-top: 18px;
-  color: #ff7a7a;
+  margin-top: 32px;
+  color: #d97b75;
+  font-size:.76rem;
 }
 .line-alert-card > p:not(.section-desc):not(.line-alert-note) {
   margin-top:18px;
@@ -1432,6 +1442,12 @@ footer {
   line-height:2;
   margin-bottom:20px;
   text-align:center;
+}
+.quiz-result-box .line-alert-note {
+  color:#d97b75;
+  font-size:.76rem;
+  letter-spacing:.08em;
+  text-shadow:0 0 18px rgba(176,58,54,.16);
 }
 .quiz-result-box .contact-row {
   margin-top:0;

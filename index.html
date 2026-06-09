@@ -289,13 +289,22 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
     .line-alert-note {
       max-width:680px;
-      margin:10px auto 0;
-      color:#ff6b6b;
-      font-size:.78rem;
+      margin:28px auto 0;
+      color:#d97b75;
+      font-size:.76rem;
       font-weight:700;
-      line-height:1.9;
-      letter-spacing:.04em;
+      line-height:2;
+      letter-spacing:.08em;
       text-align:center;
+      text-shadow:0 0 18px rgba(176,58,54,.16);
+    }
+    .line-alert-note:not(.hero-line-alert)::before {
+      content:'';
+      display:block;
+      width:44px;
+      height:1px;
+      margin:0 auto 15px;
+      background:linear-gradient(90deg,transparent,rgba(217,123,117,.55),transparent);
     }
     .hero-line-alert {
       margin-top:-24px;
