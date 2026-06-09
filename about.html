@@ -144,11 +144,23 @@
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
       width:min(100%,690px);
-      margin:0 auto 48px;
+      margin:0 auto;
     }
     #hero .hero-cta a {
       width:100%;
       justify-content:center;
+    }
+    #hero .hero-line-alert {
+      margin-top:42px;
+    }
+    #hero .hero-line-alert::before {
+      content:'';
+      display:block;
+      width:44px;
+      height:1px;
+      margin:0 auto 15px;
+      background:linear-gradient(90deg,transparent,rgba(217,123,117,.55),transparent);
+      box-shadow:0 0 10px rgba(217,123,117,.18);
     }
     #hero .hero-scroll-arrow {
       display:flex;
@@ -257,7 +269,7 @@
       #hero .hero-cta {
         width:100%;
         max-width:390px;
-        margin-bottom:28px;
+        margin-bottom:0;
       }
       #hero .hero-cta .btn-primary,
       #hero .hero-cta .btn-outline {

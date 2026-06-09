@@ -304,6 +304,7 @@ nav {
   height:1px;
   margin:0 auto 15px;
   background:linear-gradient(90deg,transparent,rgba(217,123,117,.55),transparent);
+  box-shadow:0 0 10px rgba(217,123,117,.18);
 }
 .hero-line-alert {
   margin-top: -24px;
