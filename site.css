@@ -887,9 +887,8 @@ nav {
   font-weight: 800;
 }
 .fake-job-list {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
   gap:10px;
   margin:18px auto 22px;
   max-width:880px;
@@ -2229,6 +2228,8 @@ footer {
     line-height:1.5;
   }
   .fake-job-list {
+    display:flex;
+    flex-wrap:wrap;
     justify-content:flex-start;
     gap:8px;
   }
