@@ -1407,6 +1407,30 @@ footer {
   color:#77736d;
   font-size:.72rem;
 }
+.job-landing-income + .job-tool-actions + .warning-text {
+  position:relative;
+  max-width:680px;
+  margin:42px auto 0 !important;
+  padding-top:18px;
+  color:#e9827b;
+  font-size:.9rem;
+  font-weight:800;
+  line-height:1.9;
+  letter-spacing:.04em;
+  text-align:center;
+  text-shadow:0 0 16px rgba(217,123,117,.18);
+}
+.job-landing-income + .job-tool-actions + .warning-text::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:54px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d97b75,transparent);
+  box-shadow:0 0 10px rgba(217,123,117,.3);
+  transform:translateX(-50%);
+}
 .job-landing-honesty {
   max-width:940px;
   margin:0 auto;
