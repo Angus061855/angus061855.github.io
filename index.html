@@ -571,6 +571,30 @@
     .job-card-perks { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
     .job-card-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ccc8c0; letter-spacing: 0.04em; }
     .job-card-perks li::before { content: '—'; color: rgba(200,169,110,0.5); font-weight: 700; flex-shrink: 0; }
+    .job-card-link,
+    .job-card-link:visited {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      align-self:center;
+      margin-top:auto;
+      padding:10px 20px;
+      border:1px solid rgba(200,169,110,.32);
+      border-radius:var(--radius-btn);
+      color:var(--accent2);
+      background:rgba(200,169,110,.045);
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-decoration:none;
+      transition:border-color .2s,color .2s,background .2s,transform .2s;
+    }
+    .job-card-link:hover {
+      transform:translateY(-2px);
+      border-color:var(--accent);
+      color:#fff1c5;
+      background:rgba(200,169,110,.09);
+    }
 
     /* 10. 互動測驗 */
     #quiz { text-align: center; }
