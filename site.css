@@ -1175,11 +1175,11 @@ footer {
 
 /* Dedicated job landing pages */
 .job-landing-hero {
-  min-height:100vh;
+  min-height:auto;
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:120px 24px 80px;
+  justify-content:flex-start;
+  padding:45px 24px 72px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -1517,7 +1517,7 @@ footer {
 @media (max-width: 700px) {
   .job-landing-hero {
     min-height:auto;
-    padding:106px 17px 58px;
+    padding:17px 17px 44px;
   }
   .job-landing-hero::before { width:760px; }
   .job-landing-title {
