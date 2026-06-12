@@ -2,14 +2,16 @@
 <html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#060606" />
+  <meta name="color-scheme" content="dark" />
   <title>聯絡我｜AS娛樂 大頭</title>
   <meta name="description" content="聯絡 AS娛樂大頭。可直接加 LINE 找本人，或加入官方 LINE。問問題不代表你要來做，免費諮詢，有問必答。" />
   <meta name="keywords" content="酒店經紀,八大經紀,酒店諮詢,LINE諮詢,八大職缺" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260612-hero2" />
+  <link rel="stylesheet" href="site.css?v=20260613-home1" />
   <style>
     .fade-up {
       opacity: 0;
@@ -369,8 +371,8 @@
       backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(200,169,110,0.08);
     }
-    .nav-logo-text { display: none; }
-    .nav-logo img { height: 56px; }
+    .nav-logo-text { display: block; }
+    .nav-logo img { height: 38px; }
     @media (max-width: 768px) {
       .hero-sub-shine { font-size: 2.4rem !important; }
     }
@@ -435,7 +437,7 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html"><img src="logo.png?v=20260604-logo2" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span>聯絡我</span></span></a>
+    <a class="nav-logo" href="index.html" aria-label="回到 AS娛樂首頁"><img src="logo.png?v=20260604-logo2" alt="AS娛樂" /><span class="nav-logo-text"><strong>AS娛樂</strong><span class="nav-home-hint">返回首頁</span></span></a>
     <div class="nav-links"><a href="index.html">首頁</a><a href="about.html">關於我</a><a href="jobs.html">職缺介紹</a><a href="knowledge.html">八大知識+</a><a href="blog.html">部落格</a><a class="active" href="contact.html">聯絡我</a></div>
     <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
@@ -602,6 +604,7 @@
   </main>
 
   <footer>
+    <a class="footer-home-link" href="index.html">← 回到 AS娛樂首頁</a>
     <div class="footer-logo"><img src="logo.png?v=20260604-logo2" alt="AS娛樂"><span>AS娛樂</span></div>
     <p class="footer-slogan">八大最誠實經紀　大頭</p>
     <div class="footer-divider"></div>

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="logo.png?v=20260604-logo2" type="image/png"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>酒店公關文章｜AS娛樂 大頭</title>
   <meta name="author" content="AS娛樂 大頭"/>
-  <meta name="theme-color" content="#0a0a0a"/>
+  <meta name="theme-color" content="#060606"/>
+  <meta name="color-scheme" content="dark"/>
   <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北酒店公關招募諮詢完全免費。"/>
   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
   <meta name="robots" content="index, follow"/>
@@ -34,7 +35,8 @@
       --line-green: #1a6b45; --line-green-light: #22885a;
       --radius-btn: 4px; --radius-card: 6px;
     }
-    body { background: transparent; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
+    html { min-height:100%; background:#060606; color-scheme:dark; }
+    body { min-height:100vh; min-height:100dvh; background:#060606; color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -44,7 +46,9 @@
     }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .nav-logo img { height: 40px; width: auto; display: block; }
-    .nav-logo span { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.18em; color: #ffffff; font-family: 'Noto Serif TC', serif; }
+    .nav-logo-text strong { display:block; color:var(--accent2); font-size:.9rem; line-height:1.25; letter-spacing:.12em; }
+    .nav-logo-text span { display:block; color:rgba(200,169,110,.5); font-size:.72rem; letter-spacing:.12em; transition:color .2s; }
+    .nav-logo:hover .nav-logo-text span { color:var(--accent2); }
     .nav-links { display: flex; align-items: center; gap: 22px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; transition: color 0.2s; white-space: nowrap; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent2); }
@@ -175,6 +179,7 @@
     .footer-views { font-size:.75rem; color:#3a3a3a; letter-spacing:.08em; }
     .footer-views span { color:var(--accent); font-weight:700; }
     footer span { color: var(--accent); }
+    .footer-home-link { display:inline-flex; align-items:center; justify-content:center; min-height:44px; margin:0 auto 20px; padding:8px 12px; color:rgba(200,169,110,.68); font-family:'Noto Serif TC',serif; font-size:.84rem; font-weight:700; letter-spacing:.1em; text-decoration:none; }
     .line-alert-note { max-width:680px; margin:28px auto 0; color:#d97b75; font-size:.76rem; font-weight:700; line-height:2; letter-spacing:.08em; text-align:center; text-shadow:0 0 18px rgba(176,58,54,.16); }
     .line-alert-note::before { content:''; display:block; width:44px; height:1px; margin:0 auto 15px; background:linear-gradient(90deg,transparent,rgba(217,123,117,.55),transparent); }
     .post-cta .line-alert-note { color:#d97b75; font-size:.76rem; margin-top:28px; margin-bottom:0; letter-spacing:.08em; line-height:2; }
@@ -200,6 +205,7 @@
         pointer-events:auto;
         transform:translateY(0);
       }
+      footer { padding-bottom:calc(118px + env(safe-area-inset-bottom)); background:#060606; }
       .post-cta-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
       .post-cta a { font-size:.86rem; padding:10px 12px; }
     }
@@ -218,8 +224,9 @@
 </a>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png?v=20260604-logo2" alt="AS娛樂" style="height:56px;"/>
+  <a href="index.html" class="nav-logo" aria-label="回到 AS娛樂首頁">
+    <img src="logo.png?v=20260604-logo2" alt="AS娛樂" style="height:40px;"/>
+    <span class="nav-logo-text"><strong>AS娛樂</strong><span>返回首頁</span></span>
   </a>
   <div class="nav-links">
     <a href="index.html">首頁</a>
@@ -268,6 +275,7 @@
 </div>
 
 <footer>
+  <a class="footer-home-link" href="index.html">← 回到 AS娛樂首頁</a>
   <div class="footer-logo"><img src="logo.png?v=20260604-logo2" alt="AS娛樂"><span>AS娛樂</span></div>
   <p class="footer-slogan">八大最誠實經紀　大頭</p>
   <div class="footer-divider"></div>
