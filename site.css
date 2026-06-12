@@ -1518,6 +1518,9 @@ footer {
     font-size:clamp(2.2rem,10vw,3rem);
     line-height:1.3;
   }
+  .job-landing-title-compact {
+    font-size:clamp(1.8rem,7.2vw,2.3rem);
+  }
   .job-landing-lead {
     font-size:.88rem;
     line-height:1.95;
