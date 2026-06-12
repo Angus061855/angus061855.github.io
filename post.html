@@ -187,9 +187,11 @@
     .post-cta .line-alert-note { color:#d97b75; font-size:.76rem; margin-top:28px; margin-bottom:0; letter-spacing:.08em; line-height:2; }
 
     @media (max-width: 640px) {
-      nav { padding: 14px 20px; }
+      nav { min-height:64px; padding:12px 18px; }
       .wrap { padding: 100px 20px 60px; }
       .nav-logo img { height:38px!important; }
+      .nav-logo-text strong { font-size:.82rem; letter-spacing:.08em; }
+      .nav-logo-text span { font-size:.66rem; letter-spacing:.1em; }
       .float-line {
         bottom:calc(18px + env(safe-area-inset-bottom));
         right:16px;
@@ -212,6 +214,7 @@
       .post-cta a { font-size:.86rem; padding:10px 12px; }
     }
     @media (max-width: 1100px) {
+      nav { padding:12px 18px; }
       .nav-links { display: none; }
       .mobile-menu-btn { display: flex; }
     }

@@ -151,9 +151,11 @@
     .footer-home-link { display:inline-flex; align-items:center; justify-content:center; min-height:44px; margin:0 auto 20px; padding:8px 12px; color:rgba(200,169,110,.68); font-family:'Noto Serif TC',serif; font-size:.84rem; font-weight:700; letter-spacing:.1em; text-decoration:none; }
 
     @media (max-width: 640px) {
-      nav { padding: 14px 20px; }
+      nav { min-height:64px; padding:12px 18px; }
       .wrap { padding: 100px 20px 60px; }
       .nav-logo img { height:38px!important; }
+      .nav-logo-text strong { font-size:.82rem; letter-spacing:.08em; }
+      .nav-logo-text span { font-size:.66rem; letter-spacing:.1em; }
       .float-line {
         bottom:calc(18px + env(safe-area-inset-bottom));
         right:16px;
@@ -177,6 +179,7 @@
       footer { padding-bottom:calc(118px + env(safe-area-inset-bottom)); background:#060606; }
     }
     @media (max-width: 1100px) {
+      nav { padding:12px 18px; }
       .nav-links { display: none; }
       .mobile-menu-btn { display: flex; }
     }
