@@ -219,6 +219,7 @@
       .mobile-menu-btn { display: flex; }
     }
   </style>
+  <script src="velvet-background.js?v=20260613-bg1" defer></script>
 </head>
 <body>
 <canvas id="velvet-bg"></canvas>
@@ -628,6 +629,7 @@
 
   function startVelvetBackground() {
     const canvas = document.getElementById('velvet-bg');
+    if (canvas.dataset.velvetReady === 'true') return;
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
