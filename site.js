@@ -40,6 +40,15 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
+function toggleMoreFaq(btn) {
+  const section = btn.closest('.section');
+  const more = section && section.querySelector('.faq-more');
+  if (!more) return;
+  const isOpen = more.classList.toggle('open');
+  btn.textContent = isOpen ? '收起部分問題 ↑' : '觀看更多問題 ↓';
+  btn.setAttribute('aria-expanded', String(isOpen));
+}
+
 function initContactForm() {
   const form = document.querySelector('[data-contact-form]');
   if (!form) return;
