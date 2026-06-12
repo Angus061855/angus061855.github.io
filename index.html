@@ -911,11 +911,6 @@
       .consult-toggle { height: 44px; min-width: 108px; padding: 0 18px; }
     }
 
-    /* 回到頂部 */
-    .back-to-top { position: fixed; bottom: 28px; left: 24px; z-index: 200; width: 40px; height: 40px; border-radius: var(--radius-btn); background: rgba(20,16,10,0.9); border: 1px solid rgba(200,169,110,0.25); color: var(--accent); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.4); opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, background 0.2s; pointer-events: none; }
-    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .back-to-top:hover { border-color: rgba(200,169,110,0.5); background: rgba(30,24,14,0.95); }
-
     /* 12. 停留彈出提示 */
     .stay-toast {
       position: fixed; bottom: 90px; right: 24px; z-index: 500;
@@ -963,14 +958,6 @@
       .stat { padding: 13px 10px; flex: 1 1 0; min-width: 0; max-width: none; }
       .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .back-to-top {
-        bottom: 18px;
-        left: 16px;
-        width: 44px;
-        height: 44px;
-        transform: translateY(0);
-      }
-      .back-to-top.visible { transform: translateY(0); }
       .stay-toast { bottom: 76px; right: 16px; max-width: calc(100vw - 32px); }
       .hero-pills {
         display:grid;
@@ -1087,8 +1074,6 @@
       <span>立即詢問</span>
     </a>
   </div>
-
-  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
 
   <nav id="mainNav">
     <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
@@ -1330,7 +1315,6 @@
 <script>
   /* ── Nav + scroll ── */
   const mainNav = document.getElementById('mainNav');
-  const backToTop = document.getElementById('backToTop');
   const mobileLineBar = document.querySelector('.mobile-line-bar');
   const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu a[href^="#"]'));
   const navSectionIds = ['about', 'jobs', 'faq', 'reviews', 'contact'];
@@ -1348,7 +1332,6 @@
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     mainNav.classList.toggle('scrolled', y > 60);
-    backToTop.classList.toggle('visible', y > 400);
     if (mobileLineBar) mobileLineBar.classList.toggle('visible', y > Math.min(520, window.innerHeight * 0.65));
     updateActiveNav();
   });

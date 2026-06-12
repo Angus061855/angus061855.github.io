@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260613-home1" />
+  <link rel="stylesheet" href="site.css?v=20260613-nav2" />
   <style>
     .fade-up {
       opacity: 0;
@@ -337,6 +337,7 @@
       50% { transform: translateY(8px); }
     }
     @media (max-width: 1100px) {
+      body > nav + .mobile-menu + main { padding-top: 0; }
       nav { padding: 12px 18px; }
       .nav-links { display: none !important; }
       .mobile-menu-btn {

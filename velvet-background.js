@@ -8,6 +8,10 @@
   canvas.dataset.velvetReady = 'true';
   canvas.setAttribute('aria-hidden', 'true');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+  document.documentElement.style.background = '#060606';
+  document.body.classList.add('velvet-background');
+  document.body.style.background = 'transparent';
+  document.body.style.isolation = 'isolate';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let width = 0;
