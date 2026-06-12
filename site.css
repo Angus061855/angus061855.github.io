@@ -17,7 +17,11 @@
   --radius-card: 6px;
   --radius-pill: 4px;
 }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+  overflow-x: hidden;
+}
 body {
   background: #080808;
   color: var(--text);
@@ -26,7 +30,9 @@ body {
   position: relative;
   isolation: isolate;
   min-height: 100vh;
+  overflow-x: hidden;
 }
+img, video, canvas { max-width:100%; }
 body.velvet-background {
   background: transparent;
 }
@@ -2070,7 +2076,24 @@ footer {
   .hero { padding:64px 0 44px; min-height:auto; }
   .hero-title { font-size:clamp(2.15rem, 10vw, 3.35rem); line-height:1.28; letter-spacing:.04em; }
   .section { padding:58px 0; }
-  .site-line-float { right:16px; bottom:18px; height:44px; min-width:108px; padding:0 18px; }
+  .site-line-float {
+    right:16px;
+    bottom:calc(18px + env(safe-area-inset-bottom));
+    height:44px;
+    min-width:108px;
+    padding:0 18px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(12px);
+    transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+  }
+  .site-line-float.mobile-visible {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
   .consult-widget { right:16px; bottom:18px; }
   .consult-panel { width:calc(100vw - 32px); padding:14px; }
   .consult-actions { grid-template-columns:1fr; }
@@ -2080,6 +2103,7 @@ footer {
 @media (max-width: 640px) {
   body { line-height:1.68; }
   .container, .wide-container { padding:0 18px; }
+  .section { padding:48px 0; }
   nav { min-height:64px; }
   .nav-logo { gap:8px; }
   .nav-logo img { height:38px; }
@@ -2095,7 +2119,7 @@ footer {
     font-size:.95rem;
     letter-spacing:.04em;
   }
-  .hero.compact { padding:54px 0 36px; }
+  .hero.compact { padding:42px 0 30px; }
   .home-copy-hero {
     min-height:auto;
     padding:100px 18px 54px;
@@ -2145,8 +2169,8 @@ footer {
     white-space:nowrap;
   }
   .hero-line-alert {
-    margin-top: -14px;
-    margin-bottom: 36px;
+    margin-top:24px;
+    margin-bottom:0;
   }
   .line-alert-card .ig-contact-actions {
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -2223,6 +2247,7 @@ footer {
     position:static;
     width:100%;
     min-width:0;
+    min-height:40px;
     font-size:.72rem;
   }
   .range-field label {
@@ -2231,14 +2256,15 @@ footer {
     line-height:1.5;
   }
   .fake-job-list {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-start;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:8px;
   }
   .fake-job-list span {
+    width:100%;
     font-size:.84rem;
-    padding:7px 11px;
+    padding:8px 6px;
+    text-align:center;
   }
   .warning-phrases p {
     text-align:left;
@@ -2358,7 +2384,8 @@ footer {
   }
   .hero-cta.cta-three {
     grid-template-columns:repeat(3,minmax(0,1fr));
-    max-width:390px;
+    max-width:360px;
+    gap:6px;
   }
   .btn-primary, .btn-outline, .contact-cta-btn {
     width:100%;
@@ -2369,8 +2396,8 @@ footer {
   }
   footer { padding:34px 20px 90px; }
   .final-contact-section {
-    min-height:76vh;
-    padding:64px 0 124px;
+    min-height:auto;
+    padding:58px 0 calc(92px + env(safe-area-inset-bottom));
   }
   .final-contact-inner .section-label {
     letter-spacing:.28em;
@@ -2386,12 +2413,16 @@ footer {
     margin-bottom:42px;
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:10px;
-    max-width:390px;
+    gap:6px;
+    max-width:360px;
   }
   .final-contact-actions .btn-primary,
   .final-contact-actions .btn-outline {
     width:100%;
+    padding-left:5px;
+    padding-right:5px;
+    font-size:.78rem;
+    letter-spacing:.02em;
   }
 }
 .tag.green {

@@ -887,7 +887,21 @@
       /* 手機版底部留空，不被通欄蓋住 */
       body { padding-bottom: 0; }
       .float-line { display: none; }
-      .consult-widget { right: 16px; bottom: 18px; }
+      .consult-widget {
+        right:16px;
+        bottom:calc(18px + env(safe-area-inset-bottom));
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transform:translateY(12px);
+        transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+      }
+      .consult-widget.mobile-visible {
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
       .consult-panel {
         width: calc(100vw - 32px);
         max-height: calc(100vh - 92px);
@@ -938,7 +952,11 @@
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      #hero { min-height: auto; padding: 100px 18px 54px; }
+      html, body { overflow-x:hidden; }
+      #hero {
+        min-height:auto;
+        padding:82px 18px 26px;
+      }
       .about-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 10px; width: 100%; max-width: 340px; }
       .stat-num { font-size: 2rem; white-space: nowrap; }
@@ -970,20 +988,21 @@
       }
       .hero-badges {
         max-width: 320px;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
       }
       .hero-badges .hero-badge:nth-child(n+3) { display: none; }
-      .hero-social-proof { margin-bottom: 14px; }
-      .hero-sub-shine { margin-bottom: 22px; }
-      .hero-pills { margin-bottom: 28px; }
-      .hero-stats { margin-bottom: 28px; }
-      .hero-cta { margin-bottom: 28px; }
+      .hero-social-proof { margin-bottom: 12px; }
+      .hero-sub-shine { margin-bottom: 16px; }
+      .hero-pills { margin-bottom: 18px; }
+      .hero-stats { margin-bottom: 18px; }
+      .hero-cta { margin-bottom: 18px; }
       #hero .hero-cta { margin-bottom: 0; }
       .hero-cta.cta-three {
         display:grid;
         grid-template-columns:repeat(3,minmax(0,1fr));
         width:100%;
-        max-width:390px;
+        max-width:360px;
+        gap:6px;
       }
       .hero-cta.cta-three .btn-primary,
       .hero-cta.cta-three .btn-outline {
@@ -991,7 +1010,11 @@
         font-size:.82rem;
         letter-spacing:.04em;
       }
-      .hero-line-alert { margin-top: 42px; margin-bottom: 36px; }
+      .hero-line-alert { margin-top:26px; margin-bottom:14px; }
+      .hero-scroll-arrow {
+        margin-top:0;
+        padding-bottom:calc(4px + env(safe-area-inset-bottom));
+      }
       #contact h2 {
         font-size:clamp(1.85rem,9vw,2.45rem)!important;
         line-height:1.28!important;
@@ -1335,6 +1358,14 @@
   const consultWidget = document.getElementById('consultWidget');
   const consultToggle = document.querySelector('.consult-toggle');
   const consultQuiz = document.getElementById('consultQuiz');
+  function updateConsultVisibility() {
+    const show = window.innerWidth > 640 || window.scrollY > Math.min(460, window.innerHeight * .62);
+    consultWidget.classList.toggle('mobile-visible', show);
+  }
+  updateConsultVisibility();
+  window.addEventListener('scroll', updateConsultVisibility, { passive:true });
+  window.addEventListener('resize', updateConsultVisibility, { passive:true });
+
   function toggleConsult(force) {
     const isOpen = typeof force === 'boolean' ? force : !consultWidget.classList.contains('open');
     consultWidget.classList.toggle('open', isOpen);

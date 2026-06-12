@@ -243,6 +243,18 @@ function initRevealAnimations() {
   items.forEach(el => observer.observe(el));
 }
 
+function initMobileFloatingContact() {
+  const floats = document.querySelectorAll('.site-line-float');
+  if (!floats.length) return;
+  const update = () => {
+    const show = window.innerWidth > 900 || window.scrollY > Math.min(460, window.innerHeight * .62);
+    floats.forEach(item => item.classList.toggle('mobile-visible', show));
+  };
+  update();
+  window.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update, { passive:true });
+}
+
 function initVelvetBackground() {
   if (document.getElementById('velvet-bg')) return;
   const canvas = document.createElement('canvas');
@@ -364,4 +376,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initIncomeTool();
   initTotalViews();
   initRevealAnimations();
+  initMobileFloatingContact();
 });

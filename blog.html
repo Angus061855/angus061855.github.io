@@ -146,10 +146,27 @@
     @media (max-width: 640px) {
       nav { padding: 14px 20px; }
       .wrap { padding: 100px 20px 60px; }
-      .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
-      .final-contact-section { min-height:76vh; padding:64px 0 124px; }
-      .final-contact-actions { width:100%; max-width:390px; margin-bottom:42px; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-      .final-contact-actions .btn-primary, .final-contact-actions .btn-outline { width:100%; min-height:46px; padding:12px 18px; font-size:0.9rem; letter-spacing:0.06em; }
+      .nav-logo img { height:38px!important; }
+      .float-line {
+        bottom:calc(18px + env(safe-area-inset-bottom));
+        right:16px;
+        min-height:42px;
+        font-size:0.8rem;
+        padding:9px 16px;
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transform:translateY(12px);
+      }
+      .float-line.mobile-visible {
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .final-contact-section { min-height:auto; padding:58px 0 calc(92px + env(safe-area-inset-bottom)); }
+      .final-contact-actions { width:100%; max-width:360px; margin-bottom:42px; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+      .final-contact-actions .btn-primary, .final-contact-actions .btn-outline { width:100%; min-height:46px; padding:12px 5px; font-size:0.78rem; letter-spacing:0.02em; }
     }
     @media (max-width: 1100px) {
       .nav-links { display: none; }
@@ -231,6 +248,15 @@
     btn.classList.toggle('open', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
   }
+  const floatingLine = document.querySelector('.float-line');
+  function updateFloatingLine() {
+    const show = window.innerWidth > 640 || window.scrollY > Math.min(460, window.innerHeight * .62);
+    floatingLine.classList.toggle('mobile-visible', show);
+  }
+  updateFloatingLine();
+  window.addEventListener('scroll', updateFloatingLine, { passive:true });
+  window.addEventListener('resize', updateFloatingLine, { passive:true });
+
   const FALLBACK_POSTS = [
     { slug: 'hotel-pr-job-guide', title: '酒店公關是什麼？新手入門完整指南', summary: '從工作內容、排班方式到常見誤解，一次帶你看懂。', date: '2026-01-12', cover: '' },
     { slug: 'salary-and-risk', title: '薪資、風險與保護：面試前你一定要知道', summary: '談薪水之前，先知道哪些資訊一定要問清楚。', date: '2026-01-26', cover: '' },

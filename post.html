@@ -182,7 +182,24 @@
     @media (max-width: 640px) {
       nav { padding: 14px 20px; }
       .wrap { padding: 100px 20px 60px; }
-      .float-line { bottom: 20px; right: 16px; font-size: 0.8rem; padding: 9px 16px; }
+      .nav-logo img { height:38px!important; }
+      .float-line {
+        bottom:calc(18px + env(safe-area-inset-bottom));
+        right:16px;
+        min-height:42px;
+        font-size:0.8rem;
+        padding:9px 16px;
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transform:translateY(12px);
+      }
+      .float-line.mobile-visible {
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
       .post-cta-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
       .post-cta a { font-size:.86rem; padding:10px 12px; }
     }
@@ -267,6 +284,15 @@
     btn.classList.toggle('open', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
   }
+  const floatingLine = document.querySelector('.float-line');
+  function updateFloatingLine() {
+    const show = window.innerWidth > 640 || window.scrollY > Math.min(460, window.innerHeight * .62);
+    floatingLine.classList.toggle('mobile-visible', show);
+  }
+  updateFloatingLine();
+  window.addEventListener('scroll', updateFloatingLine, { passive:true });
+  window.addEventListener('resize', updateFloatingLine, { passive:true });
+
   const LOCAL_POSTS = {
     'agency-choice': {
       title: '經紀公司都一樣嗎？分辨好壞其實很簡單',
