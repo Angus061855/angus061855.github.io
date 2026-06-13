@@ -290,6 +290,7 @@
 </footer>
 
 <script src="featured-posts.js?v=20260613-speed1"></script>
+<script src="voice-posts.js?v=20260613-voice1"></script>
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
   const POST_CACHE_PREFIX = 'as-blog-post-v1:';
@@ -430,7 +431,7 @@
 先了解，再決定；只有你說了算。`
     }
   };
-  Object.assign(LOCAL_POSTS, window.AS_FEATURED_POSTS || {});
+  Object.assign(LOCAL_POSTS, window.AS_FEATURED_POSTS || {}, window.AS_VOICE_POSTS || {});
 
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
@@ -514,14 +515,33 @@
     const bodyEl = document.getElementById('body');
     const lines = (post.body || '').split('\n');
     let html = '';
+    let paragraphLines = [];
+    const flushParagraph = () => {
+      if (!paragraphLines.length) return;
+      html += `<p>${paragraphLines.join('<br>')}</p>`;
+      paragraphLines = [];
+    };
     for (const line of lines) {
-      const t = cleanDisplayText(line.trim());
-      if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
+      const raw = line.trim();
+      const isHeading = raw.startsWith('## ');
+      const t = cleanDisplayText(isHeading ? raw.slice(3) : raw);
+      if (!t) {
+        flushParagraph();
+        html += '<div style="height:0.5em"></div>';
+        continue;
+      }
       const linked = linkifyText(t);
-      if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
-      else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${linked}</h2>`; }
-      else { html += `<p>${linked}</p>`; }
+      if (isHeading) {
+        flushParagraph();
+        html += `<h2>${linked}</h2>`;
+      } else if (t.match(/^\d+\./)) {
+        flushParagraph();
+        html += `<p class="list-item">${linked}</p>`;
+      } else {
+        paragraphLines.push(linked);
+      }
     }
+    flushParagraph();
     bodyEl.innerHTML = html;
 
     document.getElementById('loading').style.display = 'none';
@@ -533,13 +553,14 @@
     if (!slug) { showError(); return; }
     const cached = readPostCache(slug);
     let hasRendered = false;
-    if (cached?.data) {
-      renderLocalPost(cached.data, slug);
-      hasRendered = true;
-    } else if (LOCAL_POSTS[slug]) {
+    if (LOCAL_POSTS[slug]) {
       renderLocalPost(LOCAL_POSTS[slug], slug);
       hasRendered = true;
+    } else if (cached?.data) {
+      renderLocalPost(cached.data, slug);
+      hasRendered = true;
     }
+    if (window.AS_VOICE_POSTS?.[slug]) return;
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), hasRendered ? 2500 : 3500);
