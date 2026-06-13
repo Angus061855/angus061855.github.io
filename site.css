@@ -1227,6 +1227,80 @@ input[type="range"] { width:100%; accent-color:var(--accent); }
   margin-top:12px;
 }
 
+.business-contact-section {
+  padding:72px 0;
+  border-top:1px solid rgba(200,169,110,.11);
+  background:linear-gradient(180deg,rgba(200,169,110,.025),transparent 70%);
+}
+.business-contact-card {
+  max-width:760px;
+  margin:0 auto;
+  padding:44px 40px;
+  border:1px solid rgba(200,169,110,.25);
+  border-radius:var(--radius-card);
+  background:linear-gradient(145deg,rgba(18,15,10,.78),rgba(8,8,8,.9));
+  box-shadow:0 14px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(200,169,110,.07);
+  text-align:center;
+}
+.business-contact-card .section-label { display:block; }
+.business-contact-card h2 {
+  margin:14px 0 12px;
+  color:var(--text);
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  line-height:1.4;
+  letter-spacing:.08em;
+}
+.business-contact-card > p {
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:2;
+  letter-spacing:.08em;
+}
+.business-services {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:28px auto 0;
+}
+.business-service {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:58px;
+  padding:12px 14px;
+  border:1px solid rgba(200,169,110,.18);
+  border-radius:var(--radius-btn);
+  color:#c8c0b0;
+  background:rgba(200,169,110,.025);
+  font-size:.84rem;
+  font-weight:700;
+  line-height:1.65;
+  letter-spacing:.05em;
+  text-align:center;
+}
+.business-contact-actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  width:min(100%,520px);
+  margin:28px auto 0;
+}
+.business-contact-actions .btn-primary,
+.business-contact-actions .btn-outline {
+  width:100%;
+  min-height:50px;
+}
+.business-email {
+  color:var(--accent2);
+  border-color:rgba(200,169,110,.34);
+  background:rgba(200,169,110,.035);
+}
+.business-email:hover {
+  color:#fff1c5;
+  background:rgba(200,169,110,.08);
+}
+
 footer {
   border-top:1px solid rgba(200,169,110,.12);
   padding:42px 24px 96px;
@@ -2538,6 +2612,22 @@ footer {
     padding-right:5px;
     font-size:.78rem;
     letter-spacing:.02em;
+  }
+  .business-contact-section { padding:48px 0; }
+  .business-contact-card { padding:34px 20px; }
+  .business-services { gap:8px; }
+  .business-service {
+    min-height:68px;
+    padding:10px 8px;
+    font-size:.76rem;
+    letter-spacing:.02em;
+  }
+  .business-contact-actions { gap:8px; }
+  .business-contact-actions .btn-primary,
+  .business-contact-actions .btn-outline {
+    padding:12px 8px;
+    font-size:.84rem;
+    letter-spacing:.05em;
   }
 }
 .tag.green {
