@@ -80,7 +80,8 @@
         transition: none;
       }
       .hero-title,
-      .hero-sub-shine {
+      .hero-sub-shine,
+      .badge-beauty {
         animation: none;
       }
     }
@@ -566,7 +567,17 @@
     .job-badge { font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); letter-spacing: 0.06em; }
     .badge-pr    { background: rgba(200,169,110,0.15); color: var(--accent2); border: 1px solid rgba(200,169,110,0.4); box-shadow: 0 0 8px rgba(200,169,110,0.1); }
     .badge-agent { background: rgba(52,168,112,0.1); color: #6ee8a8; border: 1px solid rgba(52,168,112,0.4); }
-    .badge-beauty{ background: rgba(220,60,60,0.1); color: #e88080; border: 1px solid rgba(200,60,60,0.35); }
+    .badge-beauty {
+      background: rgba(188,48,48,0.14);
+      color: #f09a95;
+      border: 1px solid rgba(224,88,78,0.52);
+      box-shadow: 0 0 10px rgba(224,76,66,0.2), inset 0 0 8px rgba(255,120,108,0.06);
+      animation: salaryBadgeGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes salaryBadgeGlow {
+      0%, 100% { box-shadow: 0 0 8px rgba(224,76,66,0.16), inset 0 0 8px rgba(255,120,108,0.05); }
+      50% { box-shadow: 0 0 18px rgba(224,76,66,0.38), 0 0 4px rgba(255,190,160,0.22), inset 0 0 10px rgba(255,120,108,0.09); }
+    }
     .job-card-desc { font-size: 0.88rem; color: var(--muted); line-height: 2; letter-spacing: 0.04em; }
     .job-card-perks { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
     .job-card-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ccc8c0; letter-spacing: 0.04em; }
@@ -1186,16 +1197,16 @@
           <a class="job-card-link" href="hotel.html">了解酒店公關</a>
         </div>
         <div class="job-card fade-up" style="transition-delay:0.1s">
+          <div class="job-card-header"><div class="job-card-title">紓壓按摩美容師</div><span class="job-badge badge-beauty">薪資最高</span></div>
+          <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
+          <ul class="job-card-perks"><li>不用喝酒熬夜</li><li>日薪平均可達三萬起</li><li>環境安全隱私</li><li>只上 4 小時也可以</li></ul>
+          <a class="job-card-link" href="beauty.html">了解美容師職缺</a>
+        </div>
+        <div class="job-card fade-up" style="transition-delay:0.2s">
           <div class="job-card-header"><div class="job-card-title">經紀人</div><span class="job-badge badge-agent">菁英</span></div>
           <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
           <ul class="job-card-perks"><li>高額獎金制度</li><li>團隊分潤機制</li><li>完整培訓系統</li><li>有無經驗皆可</li></ul>
           <a class="job-card-link" href="jobs.html#agent-job">了解經紀人職缺</a>
-        </div>
-        <div class="job-card fade-up" style="transition-delay:0.2s">
-          <div class="job-card-header"><div class="job-card-title">紓壓按摩</div><span class="job-badge badge-beauty">薪資最高</span></div>
-          <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
-          <ul class="job-card-perks"><li>不用喝酒熬夜</li><li>日薪平均可達三萬起</li><li>環境安全隱私</li><li>只上 4 小時也可以</li></ul>
-          <a class="job-card-link" href="beauty.html">了解美容師職缺</a>
         </div>
       </div>
     </div>
