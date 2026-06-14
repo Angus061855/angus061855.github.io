@@ -23,8 +23,6 @@
   <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preconnect" href="https://polished-truth-9fc2.angus061855.workers.dev" crossorigin/>
-  <link rel="dns-prefetch" href="//polished-truth-9fc2.angus061855.workers.dev"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"AS娛樂｜大頭的部落格","description":"七年八大行業經驗，分享最真實的酒店公關入行知識","url":"https://as-ent-tw.com/blog.html","author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"}]}</script>
@@ -78,6 +76,37 @@
     }
     .page-desc { text-align: center; color: var(--muted); font-size: 0.92rem; margin-bottom: 48px; letter-spacing: 0.05em; line-height: 2; }
 
+    .blog-tools { margin:0 auto 30px; }
+    .blog-search-wrap { position:relative; max-width:560px; margin:0 auto 18px; }
+    .blog-search {
+      width:100%; min-height:50px; padding:12px 48px 12px 18px;
+      color:var(--text); background:rgba(12,10,8,.88);
+      border:1px solid rgba(200,169,110,.28); border-radius:var(--radius-btn);
+      font:400 .92rem/1.5 'Noto Sans TC',sans-serif; letter-spacing:.04em;
+      outline:none; transition:border-color .2s, box-shadow .2s;
+    }
+    .blog-search::placeholder { color:#666; }
+    .blog-search:focus { border-color:rgba(200,169,110,.62); box-shadow:0 0 0 3px rgba(200,169,110,.08); }
+    .blog-search-icon {
+      position:absolute; top:50%; right:17px; width:17px; height:17px;
+      border:1.5px solid rgba(224,192,128,.72); border-radius:50%;
+      transform:translateY(-58%); pointer-events:none;
+    }
+    .blog-search-icon::after {
+      content:''; position:absolute; width:7px; height:1.5px; right:-5px; bottom:-3px;
+      background:rgba(224,192,128,.72); transform:rotate(45deg); transform-origin:left center;
+    }
+    .blog-categories { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+    .blog-category {
+      min-height:40px; padding:9px 15px; color:#999;
+      background:rgba(12,10,8,.78); border:1px solid rgba(200,169,110,.2);
+      border-radius:var(--radius-btn); font:700 .78rem/1.4 'Noto Sans TC',sans-serif;
+      letter-spacing:.04em; cursor:pointer; transition:color .2s, border-color .2s, background .2s;
+    }
+    .blog-category:hover { color:var(--accent2); border-color:rgba(200,169,110,.42); }
+    .blog-category.active { color:#0a0a0a; border-color:var(--accent2); background:linear-gradient(135deg,#c8a96e,#e0c080); }
+    .blog-results { margin-top:15px; color:#666; font-size:.76rem; text-align:center; letter-spacing:.06em; }
+
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
     .blog-card {
       background: linear-gradient(160deg, rgba(16,13,8,0.9), rgba(10,8,6,0.85));
@@ -101,12 +130,27 @@
     }
     @keyframes shimmerBg { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     .blog-card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-category {
+      align-self:flex-start; margin-bottom:10px; padding:4px 8px;
+      color:var(--accent); background:rgba(200,169,110,.07);
+      border:1px solid rgba(200,169,110,.18); border-radius:3px;
+      font-size:.66rem; font-weight:700; letter-spacing:.06em;
+    }
     .blog-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .blog-card-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
     .blog-card-views { font-size: 0.7rem; color: rgba(200,169,110,0.4); letter-spacing: 0.04em; }
     .blog-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.55; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .blog-card-summary { font-size: 0.82rem; color: var(--muted); line-height: 1.85; word-break: break-all; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .blog-loading { color: var(--muted); text-align: center; padding: 40px; grid-column: 1/-1; }
+    .blog-load-more {
+      display:block; min-width:220px; margin:38px auto 0; padding:14px 24px;
+      color:var(--accent2); background:rgba(14,11,8,.88);
+      border:1px solid rgba(200,169,110,.32); border-radius:var(--radius-btn);
+      font:700 .9rem/1.4 'Noto Sans TC',sans-serif; letter-spacing:.08em; cursor:pointer;
+      transition:border-color .2s, background .2s, transform .2s;
+    }
+    .blog-load-more:hover { border-color:rgba(200,169,110,.58); background:rgba(200,169,110,.08); transform:translateY(-2px); }
+    .blog-load-more[hidden] { display:none; }
 
     .float-line {
       position: fixed; bottom: 28px; right: 24px; z-index: 200;
@@ -177,6 +221,11 @@
       .final-contact-actions { width:100%; max-width:360px; margin-bottom:42px; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
       .final-contact-actions .btn-primary, .final-contact-actions .btn-outline { width:100%; min-height:46px; padding:12px 5px; font-size:0.78rem; letter-spacing:0.02em; }
       footer { padding-bottom:calc(118px + env(safe-area-inset-bottom)); background:#060606; }
+      .page-desc { margin-bottom:32px; }
+      .blog-tools { margin-bottom:24px; }
+      .blog-categories { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+      .blog-category { width:100%; padding:9px 6px; font-size:.74rem; }
+      .blog-category:last-child:nth-child(odd) { grid-column:1 / -1; }
     }
     @media (max-width: 1100px) {
       nav { padding:12px 18px; }
@@ -184,7 +233,7 @@
       .mobile-menu-btn { display: flex; }
     }
   </style>
-  <script src="velvet-background.js?v=20260613-bg2" defer></script>
+  <script src="velvet-background.js?v=20260614-perf1" defer></script>
 </head>
 <body>
   <canvas id="velvet-bg"></canvas>
@@ -221,9 +270,26 @@
 <div class="wrap">
   <h1 class="page-title">所有文章</h1>
   <p class="page-desc">七年的觀察與心得　寫給每一個正在考慮的你</p>
+  <div class="blog-tools">
+    <div class="blog-search-wrap">
+      <input class="blog-search" id="blog-search" type="search" inputmode="search" autocomplete="off" aria-label="搜尋文章" placeholder="搜尋文章標題或內容"/>
+      <span class="blog-search-icon" aria-hidden="true"></span>
+    </div>
+    <div class="blog-categories" id="blog-categories" aria-label="文章分類">
+      <button class="blog-category active" type="button" data-category="all">全部文章</button>
+      <button class="blog-category" type="button" data-category="interview">面試前必看</button>
+      <button class="blog-category" type="button" data-category="salary">薪資篇</button>
+      <button class="blog-category" type="button" data-category="newcomer">新人篇</button>
+      <button class="blog-category" type="button" data-category="terms">術語篇</button>
+      <button class="blog-category" type="button" data-category="safety">安全與隱私</button>
+      <button class="blog-category" type="button" data-category="agency">經紀公司</button>
+    </div>
+    <p class="blog-results" id="blog-results" aria-live="polite"></p>
+  </div>
   <div class="blog-grid" id="blog-grid">
     <p class="blog-loading">載入中...</p>
   </div>
+  <button class="blog-load-more" id="blog-load-more" type="button" hidden>載入更多文章</button>
 </div>
 
 <section class="final-contact-section">
@@ -253,7 +319,6 @@
   <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
 </footer>
 
-<script src="featured-posts.js?v=20260613-speed1"></script>
 <script src="voice-posts.js?v=20260613-voice1"></script>
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
@@ -275,10 +340,7 @@
   window.addEventListener('scroll', updateFloatingLine, { passive:true });
   window.addEventListener('resize', updateFloatingLine, { passive:true });
 
-  const FALLBACK_POSTS = Object.values({
-    ...(window.AS_FEATURED_POSTS || {}),
-    ...(window.AS_VOICE_POSTS || {})
-  })
+  const FALLBACK_POSTS = Object.values(window.AS_VOICE_POSTS || {})
     .sort((a, b) => String(b.date).localeCompare(String(a.date)) || String(b.slug).localeCompare(String(a.slug)));
   function readCache(key) {
     try {
@@ -310,6 +372,98 @@
   }
   setTotalViews();
 
+  const PAGE_SIZE = 18;
+  const CATEGORY_LABELS = {
+    all:'全部文章',
+    interview:'面試前必看',
+    salary:'薪資篇',
+    newcomer:'新人篇',
+    terms:'術語篇',
+    safety:'安全與隱私',
+    agency:'經紀公司'
+  };
+  const CATEGORY_KEYWORDS = {
+    interview:['面試','選店','店型','制服店','禮服店','便服店','工作內容','試做','試上'],
+    salary:['薪水','薪資','節薪','台費','扣款','收入','現領','週領','發薪','上檯率'],
+    newcomer:['新人','第一次','準備','入行','門禁','試做','試上','無經驗'],
+    terms:['術語','看台','空檯','點台','框','檯','控台','少爺','幹部'],
+    safety:['隱私','安全','熟人','保護','拒絕','底線','照片','個資'],
+    agency:['經紀','合約','抽成','公司','話術','違約金','壓薪水']
+  };
+  const CATEGORY_PRIORITY = ['salary','terms','safety','agency','newcomer','interview'];
+  const initialParams = new URLSearchParams(window.location.search);
+  let allPosts = [];
+  let displayPosts = [];
+  let activeCategory = CATEGORY_LABELS[initialParams.get('category')] ? initialParams.get('category') : 'all';
+  let searchQuery = initialParams.get('q') || '';
+  let visiblePostCount = PAGE_SIZE;
+
+  function escapeHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+  function getSearchText(post) {
+    return `${post.title || ''} ${post.summary || ''} ${post.body || ''}`.toLowerCase().replace(/\s+/g, '');
+  }
+  function postMatchesCategory(post, category) {
+    if (category === 'all') return true;
+    const text = getSearchText(post);
+    return (CATEGORY_KEYWORDS[category] || []).some(keyword => text.includes(keyword.toLowerCase()));
+  }
+  function getPrimaryCategory(post) {
+    const titleAndSummary = `${post.title || ''} ${post.summary || ''}`.toLowerCase().replace(/\s+/g, '');
+    return CATEGORY_PRIORITY.find(category => {
+      return CATEGORY_KEYWORDS[category].some(keyword => titleAndSummary.includes(keyword.toLowerCase()));
+    }) || 'newcomer';
+  }
+  function updateFilterUrl() {
+    const url = new URL(window.location.href);
+    searchQuery ? url.searchParams.set('q', searchQuery) : url.searchParams.delete('q');
+    activeCategory !== 'all' ? url.searchParams.set('category', activeCategory) : url.searchParams.delete('category');
+    history.replaceState(null, '', `${url.pathname}${url.search}`);
+  }
+  function applyFilters(options = {}) {
+    const normalizedQuery = searchQuery.toLowerCase().replace(/\s+/g, '');
+    displayPosts = allPosts.filter(post => {
+      const matchesSearch = !normalizedQuery || getSearchText(post).includes(normalizedQuery);
+      return matchesSearch && postMatchesCategory(post, activeCategory);
+    });
+    if (options.resetCount !== false) visiblePostCount = PAGE_SIZE;
+    document.querySelectorAll('.blog-category').forEach(button => {
+      const isActive = button.dataset.category === activeCategory;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+    document.getElementById('blog-results').textContent = `找到 ${displayPosts.length} 篇文章`;
+    updateFilterUrl();
+    paintPosts();
+  }
+
+  function paintPosts() {
+    const grid = document.getElementById('blog-grid');
+    if (!displayPosts.length) {
+      grid.innerHTML = '<p class="blog-loading">沒有找到符合的文章<br>可以換一個關鍵字或分類</p>';
+      document.getElementById('blog-load-more').hidden = true;
+      return;
+    }
+    grid.innerHTML = displayPosts.slice(0, visiblePostCount).map(post => `
+      <a class="blog-card" href="post.html?slug=${encodeURIComponent(post.slug)}" data-post-slug="${escapeHtml(post.slug)}">
+        ${post.cover ? `<img class="blog-card-cover" src="${escapeHtml(post.cover)}" alt="${escapeHtml(cleanDisplayText(post.title))}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
+        <div class="blog-card-body">
+          <span class="blog-card-category">${CATEGORY_LABELS[getPrimaryCategory(post)]}</span>
+          <div class="blog-card-meta"><div class="blog-card-date">${escapeHtml(post.date)}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
+          <div class="blog-card-title">${escapeHtml(cleanDisplayText(post.title))}</div>
+          <div class="blog-card-summary">${escapeHtml(cleanDisplayText(post.summary))}</div>
+        </div>
+      </a>
+    `).join('');
+    document.getElementById('blog-load-more').hidden = visiblePostCount >= displayPosts.length;
+  }
+
   const renderPosts = (posts) => {
     const overrides = window.AS_VOICE_POSTS || {};
     const mergedPosts = posts.map(post => overrides[post.slug] || post);
@@ -318,21 +472,12 @@
       if (!knownSlugs.has(post.slug)) mergedPosts.push(post);
     });
     mergedPosts.sort((a, b) => String(b.date).localeCompare(String(a.date)) || String(b.slug).localeCompare(String(a.slug)));
-    const grid = document.getElementById('blog-grid');
-    grid.innerHTML = mergedPosts.map(post => `
-      <a class="blog-card" href="post.html?slug=${post.slug}" data-post-slug="${post.slug}">
-        ${post.cover ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
-        <div class="blog-card-body">
-          <div class="blog-card-meta"><div class="blog-card-date">${post.date}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
-          <div class="blog-card-title">${cleanDisplayText(post.title)}</div>
-          <div class="blog-card-summary">${cleanDisplayText(post.summary)}</div>
-        </div>
-      </a>
-    `).join('');
+    allPosts = mergedPosts;
+    applyFilters();
   };
 
   async function prefetchPost(slug) {
-    if (!slug || window.AS_FEATURED_POSTS?.[slug] || readCache(POST_CACHE_PREFIX + slug)) return;
+    if (!slug || window.AS_VOICE_POSTS?.[slug] || readCache(POST_CACHE_PREFIX + slug)) return;
     try {
       const res = await fetch(`${WORKER}/posts/${slug}`, { cache:'force-cache' });
       if (!res.ok) return;
@@ -340,7 +485,21 @@
     } catch {}
   }
 
-  async function loadBlog() {
+  async function refreshBlog() {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 1500);
+      const res = await fetch(`${WORKER}/posts`, { signal: controller.signal, cache:'force-cache' });
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error();
+      const posts = await res.json();
+      if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
+      writeCache(BLOG_CACHE_KEY, posts);
+      renderPosts(posts);
+    } catch {}
+  }
+
+  function loadBlog() {
     const cached = readCache(BLOG_CACHE_KEY);
     const initialPosts = cached?.data?.length ? cached.data : FALLBACK_POSTS;
     renderPosts(initialPosts);
@@ -352,19 +511,33 @@
     if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout:1200 });
     else setTimeout(warm, 500);
 
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 3000);
-      const res = await fetch(`${WORKER}/posts`, { signal: controller.signal, cache:'force-cache' });
-      clearTimeout(timeout);
-      if (!res.ok) throw new Error();
-      const posts = await res.json();
-      if (!Array.isArray(posts) || !posts.length) throw new Error('empty');
-      writeCache(BLOG_CACHE_KEY, posts);
-      renderPosts(posts);
-    } catch {}
+    const refresh = () => refreshBlog();
+    if ('requestIdleCallback' in window) requestIdleCallback(refresh, { timeout:2500 });
+    else setTimeout(refresh, 1200);
   }
   loadBlog();
+
+  const searchInput = document.getElementById('blog-search');
+  searchInput.value = searchQuery;
+  let searchTimer;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchQuery = searchInput.value.trim();
+      applyFilters();
+    }, 120);
+  });
+  document.getElementById('blog-categories').addEventListener('click', event => {
+    const button = event.target.closest('[data-category]');
+    if (!button) return;
+    activeCategory = button.dataset.category;
+    applyFilters();
+  });
+
+  document.getElementById('blog-load-more').addEventListener('click', () => {
+    visiblePostCount += PAGE_SIZE;
+    paintPosts();
+  });
 
   document.getElementById('blog-grid').addEventListener('pointerover', (event) => {
     const card = event.target.closest('[data-post-slug]');
@@ -375,55 +548,6 @@
     if (card) prefetchPost(card.dataset.postSlug);
   }, { passive:true });
 
-  function startVelvetBackground() {
-    const canvas = document.getElementById('velvet-bg');
-    if (canvas.dataset.velvetReady === 'true') return;
-    const ctx = canvas.getContext('2d');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
-    let W, H;
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-    let t = 0;
-    const folds = [{x:0.15,y:0.10,tx:0.75,ty:0.55,speed:0.00002,phase:0.0},{x:0.05,y:0.40,tx:0.60,ty:0.90,speed:0.00002,phase:1.2},{x:0.30,y:0.00,tx:0.95,ty:0.70,speed:0.00002,phase:2.4}];
-    function drawFold(f, time) {
-      const drift=Math.sin(time*f.speed*1000+f.phase)*0.06;
-      const x1=(f.x+drift)*W,y1=(f.y+drift*0.5)*H,x2=(f.tx-drift)*W,y2=(f.ty-drift*0.3)*H;
-      const len=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/len,ny=(x2-x1)/len;
-      const w=Math.max(W,H)*(0.28+Math.sin(time*f.speed*800+f.phase)*0.04);
-      const grad=ctx.createLinearGradient(x1+nx*w,y1+ny*w,x1-nx*w,y1-ny*w);
-      grad.addColorStop(0,'rgba(0,0,0,0)');grad.addColorStop(0.35,'rgba(0,0,0,0)');
-      grad.addColorStop(0.48,'rgba(72,70,68,0.08)');grad.addColorStop(0.50,'rgba(95,92,88,0.13)');
-      grad.addColorStop(0.52,'rgba(72,70,68,0.08)');grad.addColorStop(0.65,'rgba(0,0,0,0)');
-      grad.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.save();ctx.beginPath();
-      const ex=(x2-x1)/len,ey=(y2-y1)/len,ext=Math.max(W,H)*2;
-      ctx.moveTo(x1-ex*ext+nx*w,y1-ey*ext+ny*w);ctx.lineTo(x2+ex*ext+nx*w,y2+ey*ext+ny*w);
-      ctx.lineTo(x2+ex*ext-nx*w,y2+ey*ext-ny*w);ctx.lineTo(x1-ex*ext-nx*w,y1-ey*ext-ny*w);
-      ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.restore();
-    }
-    const bumps = [{x:0.55,y:0.35,r:0.42,speed:0.000002,phase:0.0},{x:0.25,y:0.65,r:0.35,speed:0.000002,phase:1.8},{x:0.75,y:0.75,r:0.30,speed:0.000002,phase:3.2}];
-    function drawBump(b, time) {
-      const drift=Math.sin(time*b.speed*1000+b.phase);
-      const cx=(b.x+drift*0.07)*W,cy=(b.y+Math.cos(time*b.speed*800+b.phase)*0.06)*H,r=b.r*Math.max(W,H);
-      const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
-      grad.addColorStop(0,'rgba(88,85,80,0.20)');grad.addColorStop(0.25,'rgba(65,62,58,0.14)');
-      grad.addColorStop(0.55,'rgba(30,28,26,0.07)');grad.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
-    }
-    function draw() {
-      t++;ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
-      if (!reduceMotion) { bumps.forEach(b=>drawBump(b,t)); folds.forEach(f=>drawFold(f,t)); }
-      const v=ctx.createRadialGradient(W*0.5,H*0.45,0,W*0.5,H*0.45,Math.max(W,H)*0.78);
-      v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(0.55,'rgba(0,0,0,0.18)');
-      v.addColorStop(0.80,'rgba(0,0,0,0.55)');v.addColorStop(1,'rgba(0,0,0,0.85)');
-      ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
-      if (!document.hidden) requestAnimationFrame(draw);
-    }
-    draw();
-  }
-  if ('requestIdleCallback' in window) requestIdleCallback(startVelvetBackground, { timeout:1200 });
-  else setTimeout(startVelvetBackground, 250);
 </script>
 </body>
 </html>

@@ -25,8 +25,6 @@
   <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/post.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preconnect" href="https://polished-truth-9fc2.angus061855.workers.dev" crossorigin/>
-  <link rel="dns-prefetch" href="//polished-truth-9fc2.angus061855.workers.dev"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -118,7 +116,26 @@
     }
 
     .state { text-align: center; padding: 4rem; color: var(--muted); font-size: 1rem; }
-    .error { color: var(--accent); }
+    .error { color:var(--text); padding:34px 0 20px; }
+    .error h1 { color:var(--accent2); font-family:'Noto Serif TC',serif; font-size:clamp(1.8rem,5vw,2.5rem); margin-bottom:14px; }
+    .error > p { color:var(--muted); line-height:2; margin-bottom:24px; }
+    .error-actions { display:flex; justify-content:center; gap:10px; margin-bottom:42px; }
+    .error-actions a {
+      display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:11px 20px;
+      color:var(--accent2); text-decoration:none; border:1px solid rgba(200,169,110,.28);
+      border-radius:var(--radius-btn); background:rgba(14,11,8,.72); font-weight:700; letter-spacing:.05em;
+    }
+    .error-recommendations-title { color:var(--accent); font-family:'Noto Serif TC',serif; font-size:1.1rem; margin-bottom:18px; }
+    .error-recommendations { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; text-align:left; }
+    .error-recommendation {
+      display:flex; flex-direction:column; min-height:150px; padding:18px;
+      color:var(--text); text-decoration:none; border:1px solid rgba(200,169,110,.2);
+      border-radius:var(--radius-card); background:linear-gradient(145deg,rgba(16,13,8,.88),rgba(8,7,6,.82));
+      transition:border-color .2s, transform .2s;
+    }
+    .error-recommendation:hover { border-color:rgba(200,169,110,.48); transform:translateY(-3px); }
+    .error-recommendation time { color:#666; font-size:.72rem; margin-bottom:10px; }
+    .error-recommendation strong { color:var(--text); font-family:'Noto Serif TC',serif; font-size:.9rem; line-height:1.65; }
 
     /* 文章底部聯絡 */
     .post-cta {
@@ -212,6 +229,10 @@
       footer { padding-bottom:calc(118px + env(safe-area-inset-bottom)); background:#060606; }
       .post-cta-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
       .post-cta a { font-size:.86rem; padding:10px 12px; }
+      .error { padding-top:12px; }
+      .error-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .error-actions a { padding:10px 8px; font-size:.82rem; }
+      .error-recommendations { grid-template-columns:1fr; }
     }
     @media (max-width: 1100px) {
       nav { padding:12px 18px; }
@@ -219,7 +240,7 @@
       .mobile-menu-btn { display: flex; }
     }
   </style>
-  <script src="velvet-background.js?v=20260613-bg2" defer></script>
+  <script src="velvet-background.js?v=20260614-perf1" defer></script>
 </head>
 <body>
 <canvas id="velvet-bg"></canvas>
@@ -275,8 +296,14 @@
     </div>
   </div>
   <div class="state error" id="error" style="display:none">
-    找不到這篇文章<br/>
-    <a href="blog.html" style="color:var(--accent);margin-top:12px;display:inline-block;">← 返回部落格</a>
+    <h1>找不到這篇文章</h1>
+    <p>文章可能已經移動或暫時下架<br>你可以先看其他實用內容</p>
+    <div class="error-actions">
+      <a href="knowledge.html">返回八大知識+</a>
+      <a href="blog.html">查看所有文章</a>
+    </div>
+    <h2 class="error-recommendations-title">推薦你先看</h2>
+    <div class="error-recommendations" id="error-recommendations"></div>
   </div>
 </div>
 
@@ -289,7 +316,6 @@
   <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
 </footer>
 
-<script src="featured-posts.js?v=20260613-speed1"></script>
 <script src="voice-posts.js?v=20260613-voice1"></script>
 <script>
   const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
@@ -351,7 +377,7 @@
 1. 一節是幾分鐘
 2. 一節多少錢
 3. 空檯有沒有錢
-4. 發薪是日領、週領還是月領
+4. 發薪是現領還是週領
 5. 有沒有清潔費、置裝費、遲到扣款或其他規則
 
 我不會亂保證收入，因為每個人的狀態、時段、店型和上檯率都會影響結果。
@@ -431,7 +457,7 @@
 先了解，再決定；只有你說了算。`
     }
   };
-  Object.assign(LOCAL_POSTS, window.AS_FEATURED_POSTS || {}, window.AS_VOICE_POSTS || {});
+  Object.assign(LOCAL_POSTS, window.AS_VOICE_POSTS || {});
 
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
@@ -475,6 +501,72 @@
       .trim();
   }
 
+  function setMetaContent(selector, content) {
+    const element = document.querySelector(selector);
+    if (element) element.setAttribute('content', content);
+  }
+  function absoluteAssetUrl(url) {
+    if (!url) return 'https://as-ent-tw.com/og-image.jpg';
+    try { return new URL(url, 'https://as-ent-tw.com/').href; }
+    catch { return 'https://as-ent-tw.com/og-image.jpg'; }
+  }
+  function updatePostSeo(post, slug) {
+    const title = cleanDisplayText(post.title);
+    const description = cleanDisplayText(post.summary || post.title);
+    const postUrl = `https://as-ent-tw.com/post/${encodeURIComponent(slug)}`;
+    const imageUrl = absoluteAssetUrl(post.cover);
+
+    document.title = `${title}｜AS娛樂 大頭`;
+    document.querySelector('meta[name="robots"]').setAttribute('content', 'index, follow');
+    document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
+    document.querySelectorAll('link[rel="alternate"]').forEach(link => link.setAttribute('href', postUrl));
+    setMetaContent('meta[name="description"]', description);
+    setMetaContent('meta[property="og:title"]', `${title}｜AS娛樂 大頭`);
+    setMetaContent('meta[property="og:description"]', description);
+    setMetaContent('meta[property="og:url"]', postUrl);
+    setMetaContent('meta[property="og:image"]', imageUrl);
+    setMetaContent('meta[name="twitter:title"]', `${title}｜AS娛樂 大頭`);
+    setMetaContent('meta[name="twitter:description"]', description);
+    setMetaContent('meta[name="twitter:image"]', imageUrl);
+
+    document.querySelectorAll('script[data-dynamic-schema]').forEach(script => script.remove());
+    const schemas = [
+      {
+        '@context':'https://schema.org',
+        '@type':'BlogPosting',
+        headline:title,
+        image:[imageUrl],
+        datePublished:post.date,
+        author:{ '@type':'Person', name:'大頭', url:'https://as-ent-tw.com/about.html' },
+        publisher:{
+          '@type':'Organization',
+          name:'AS娛樂',
+          url:'https://as-ent-tw.com/',
+          logo:{ '@type':'ImageObject', url:'https://as-ent-tw.com/logo.png' }
+        },
+        description,
+        url:postUrl,
+        mainEntityOfPage:{ '@type':'WebPage', '@id':postUrl }
+      },
+      {
+        '@context':'https://schema.org',
+        '@type':'BreadcrumbList',
+        itemListElement:[
+          { '@type':'ListItem', position:1, name:'首頁', item:'https://as-ent-tw.com/' },
+          { '@type':'ListItem', position:2, name:'部落格', item:'https://as-ent-tw.com/blog.html' },
+          { '@type':'ListItem', position:3, name:title }
+        ]
+      }
+    ];
+    schemas.forEach(data => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.dataset.dynamicSchema = 'true';
+      script.textContent = JSON.stringify(data);
+      document.head.appendChild(script);
+    });
+  }
+
   function linkifyText(text) {
     const trimmed = text.trim();
     const normalized = trimmed.replace(/[：:]\s*$/, '');
@@ -496,16 +588,7 @@
   }
 
   function renderLocalPost(post, slug) {
-    document.title = `${cleanDisplayText(post.title)}｜AS娛樂 大頭`;
-    const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
-
-    document.querySelector('meta[name="description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
-    document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
-    document.querySelector('meta[property="og:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
-    document.querySelector('meta[property="og:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
-    document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
-    document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
-    document.querySelector('meta[name="twitter:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
+    updatePostSeo(post, slug);
 
     document.getElementById('meta').textContent = post.date;
     document.getElementById('views').textContent = calcViews(slug, post.date);
@@ -544,8 +627,19 @@
     flushParagraph();
     bodyEl.innerHTML = html;
 
+    const img = document.getElementById('cover');
+    if (post.cover) {
+      img.src = post.cover;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.style.display = 'block';
+    } else {
+      img.removeAttribute('src');
+      img.style.display = 'none';
+    }
     document.getElementById('loading').style.display = 'none';
     document.getElementById('content').style.display = 'block';
+    document.getElementById('error').style.display = 'none';
   }
 
   async function loadPost() {
@@ -569,68 +663,7 @@
       if (!res.ok) throw new Error();
       const post = await res.json();
       writePostCache(slug, post);
-
-      document.title = `${cleanDisplayText(post.title)}｜AS娛樂 大頭`;
-      const postUrl = `https://as-ent-tw.com/post.html?slug=${slug}`;
-
-      const schema = document.createElement('script');
-      schema.type = 'application/ld+json';
-      schema.text = JSON.stringify({
-        "@context":"https://schema.org","@type":"Article",
-        "headline":post.title,"description":post.summary||'',
-        "datePublished":post.date,
-        "author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"},
-        "publisher":{"@type":"Organization","name":"AS娛樂","url":"https://as-ent-tw.com"},
-        "mainEntityOfPage":{"@type":"WebPage","@id":postUrl}
-      });
-      document.head.appendChild(schema);
-
-      const breadcrumb = document.createElement('script');
-      breadcrumb.type = 'application/ld+json';
-      breadcrumb.text = JSON.stringify({
-        "@context":"https://schema.org","@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},
-          {"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"},
-          {"@type":"ListItem","position":3,"name":post.title,"item":postUrl}
-        ]
-      });
-      document.head.appendChild(breadcrumb);
-
-      document.querySelector('meta[name="description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
-      document.querySelector('link[rel="canonical"]').setAttribute('href', postUrl);
-      document.querySelector('meta[property="og:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
-      document.querySelector('meta[property="og:url"]').setAttribute('content', postUrl);
-      document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${cleanDisplayText(post.title)}｜AS娛樂 大頭`);
-      document.querySelector('meta[name="twitter:description"]').setAttribute('content', cleanDisplayText(post.summary || post.title));
-
-      document.getElementById('meta').textContent = post.date;
-      document.getElementById('views').textContent = calcViews(slug, post.date);
-      document.getElementById('title').textContent = cleanDisplayText(post.title);
-      document.getElementById('summary').textContent = cleanDisplayText(post.summary || '');
-
-      const bodyEl = document.getElementById('body');
-      const lines = (post.body || '').split('\n');
-      let html = '';
-      for (const line of lines) {
-        const t = cleanDisplayText(line.trim());
-        if (!t) { html += '<div style="height:0.5em"></div>'; continue; }
-        const linked = linkifyText(t);
-        if (t.match(/^\d+\./)) { html += `<p class="list-item">${linked}</p>`; }
-        else if (INTERNAL_LINKS[t] || INTERNAL_LINKS[t.replace(/[：:]\s*$/, '')]) { html += `<p>${linked}</p>`; }
-        else if (t.length <= 25 && !t.endsWith('。') && !t.endsWith('，') && !t.endsWith('、') && !t.match(/^\d/)) { html += `<h2>${linked}</h2>`; }
-        else { html += `<p>${linked}</p>`; }
-      }
-      bodyEl.innerHTML = html;
-
-      if (post.cover) {
-        const img = document.getElementById('cover');
-        img.src = post.cover; img.loading = 'lazy'; img.decoding = 'async'; img.style.display = 'block';
-      }
-
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('content').style.display = 'block';
+      renderLocalPost(post, slug);
     } catch {
       if (hasRendered) return;
       if (LOCAL_POSTS[slug]) {
@@ -642,61 +675,28 @@
   }
 
   function showError() {
+    document.title = '找不到文章｜AS娛樂 大頭';
+    document.querySelector('meta[name="robots"]').setAttribute('content', 'noindex, follow');
+    document.querySelector('link[rel="canonical"]').setAttribute('href', 'https://as-ent-tw.com/blog.html');
+    setMetaContent('meta[name="description"]', '這篇文章可能已經移動或暫時下架，請查看其他八大求職知識與文章。');
+    document.querySelectorAll('script[data-dynamic-schema]').forEach(script => script.remove());
+    const recommendations = Object.values(LOCAL_POSTS)
+      .sort((a, b) => String(b.date).localeCompare(String(a.date)) || String(b.slug).localeCompare(String(a.slug)))
+      .filter(post => post.slug)
+      .slice(0, 3);
+    document.getElementById('error-recommendations').innerHTML = recommendations.map(post => `
+      <a class="error-recommendation" href="post.html?slug=${encodeURIComponent(post.slug)}">
+        <time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time>
+        <strong>${escapeHtml(cleanDisplayText(post.title))}</strong>
+      </a>
+    `).join('');
     document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'none';
     document.getElementById('error').style.display = 'block';
   }
 
   loadPost();
 
-  function startVelvetBackground() {
-    const canvas = document.getElementById('velvet-bg');
-    if (canvas.dataset.velvetReady === 'true') return;
-    const ctx = canvas.getContext('2d');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
-    let W, H;
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-    let t = 0;
-    const folds = [{x:0.15,y:0.10,tx:0.75,ty:0.55,speed:0.00002,phase:0.0},{x:0.05,y:0.40,tx:0.60,ty:0.90,speed:0.00002,phase:1.2},{x:0.30,y:0.00,tx:0.95,ty:0.70,speed:0.00002,phase:2.4}];
-    function drawFold(f, time) {
-      const drift=Math.sin(time*f.speed*1000+f.phase)*0.06;
-      const x1=(f.x+drift)*W,y1=(f.y+drift*0.5)*H,x2=(f.tx-drift)*W,y2=(f.ty-drift*0.3)*H;
-      const len=Math.hypot(x2-x1,y2-y1),nx=-(y2-y1)/len,ny=(x2-x1)/len;
-      const w=Math.max(W,H)*(0.28+Math.sin(time*f.speed*800+f.phase)*0.04);
-      const grad=ctx.createLinearGradient(x1+nx*w,y1+ny*w,x1-nx*w,y1-ny*w);
-      grad.addColorStop(0,'rgba(0,0,0,0)');grad.addColorStop(0.35,'rgba(0,0,0,0)');
-      grad.addColorStop(0.48,'rgba(72,70,68,0.08)');grad.addColorStop(0.50,'rgba(95,92,88,0.13)');
-      grad.addColorStop(0.52,'rgba(72,70,68,0.08)');grad.addColorStop(0.65,'rgba(0,0,0,0)');
-      grad.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.save();ctx.beginPath();
-      const ex=(x2-x1)/len,ey=(y2-y1)/len,ext=Math.max(W,H)*2;
-      ctx.moveTo(x1-ex*ext+nx*w,y1-ey*ext+ny*w);ctx.lineTo(x2+ex*ext+nx*w,y2+ey*ext+ny*w);
-      ctx.lineTo(x2+ex*ext-nx*w,y2+ey*ext-ny*w);ctx.lineTo(x1-ex*ext-nx*w,y1-ey*ext-ny*w);
-      ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.restore();
-    }
-    const bumps = [{x:0.55,y:0.35,r:0.42,speed:0.000002,phase:0.0},{x:0.25,y:0.65,r:0.35,speed:0.000002,phase:1.8},{x:0.75,y:0.75,r:0.30,speed:0.000002,phase:3.2}];
-    function drawBump(b, time) {
-      const drift=Math.sin(time*b.speed*1000+b.phase);
-      const cx=(b.x+drift*0.07)*W,cy=(b.y+Math.cos(time*b.speed*800+b.phase)*0.06)*H,r=b.r*Math.max(W,H);
-      const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
-      grad.addColorStop(0,'rgba(88,85,80,0.20)');grad.addColorStop(0.25,'rgba(65,62,58,0.14)');
-      grad.addColorStop(0.55,'rgba(30,28,26,0.07)');grad.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
-    }
-    function draw() {
-      t++;ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
-      if (!reduceMotion) { bumps.forEach(b=>drawBump(b,t)); folds.forEach(f=>drawFold(f,t)); }
-      const v=ctx.createRadialGradient(W*0.5,H*0.45,0,W*0.5,H*0.45,Math.max(W,H)*0.78);
-      v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(0.55,'rgba(0,0,0,0.18)');
-      v.addColorStop(0.80,'rgba(0,0,0,0.55)');v.addColorStop(1,'rgba(0,0,0,0.85)');
-      ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
-      if (!document.hidden) requestAnimationFrame(draw);
-    }
-    draw();
-  }
-  if ('requestIdleCallback' in window) requestIdleCallback(startVelvetBackground, { timeout:1200 });
-  else setTimeout(startVelvetBackground, 250);
 </script>
 </body>
 </html>

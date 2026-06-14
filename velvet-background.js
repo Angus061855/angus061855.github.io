@@ -17,6 +17,8 @@
   let width = 0;
   let height = 0;
   let time = 0;
+  let lastFrame = 0;
+  let animationFrame = 0;
 
   function resize() {
     width = canvas.width = window.innerWidth;
@@ -89,7 +91,12 @@
     ctx.fillRect(0, 0, width, height);
   }
 
-  function draw() {
+  function draw(timestamp = 0) {
+    if (!reduceMotion && timestamp - lastFrame < 33) {
+      animationFrame = requestAnimationFrame(draw);
+      return;
+    }
+    lastFrame = timestamp;
     time += 1;
     ctx.fillStyle = '#060606';
     ctx.fillRect(0, 0, width, height);
@@ -114,10 +121,16 @@
     ctx.fillStyle = vignette;
     ctx.fillRect(0, 0, width, height);
 
-    if (!reduceMotion && !document.hidden) requestAnimationFrame(draw);
+    if (!reduceMotion && !document.hidden) animationFrame = requestAnimationFrame(draw);
   }
 
   resize();
   window.addEventListener('resize', resize, { passive:true });
+  document.addEventListener('visibilitychange', () => {
+    if (!reduceMotion && !document.hidden) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(draw);
+    }
+  });
   draw();
 })();

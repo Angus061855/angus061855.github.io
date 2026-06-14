@@ -8,6 +8,7 @@
   <title>聯絡我｜AS娛樂 大頭</title>
   <meta name="description" content="聯絡 AS娛樂大頭。可直接加 LINE 找本人，或加入官方 LINE。問問題不代表你要來做，免費諮詢，有問必答。" />
   <meta name="keywords" content="酒店經紀,八大經紀,酒店諮詢,LINE諮詢,八大職缺" />
+  <link rel="canonical" href="https://as-ent-tw.com/contact.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -546,30 +547,11 @@
         <a href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer" class="btn-outline video-outline">八大影片</a>
       </div>
       <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
-      <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('contact-questions').scrollIntoView({behavior:'smooth'})">
+      <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('income-tool').scrollIntoView({behavior:'smooth'})">
         <span>向下探索更多內容</span>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>
-    </section>
-
-    <section class="section" id="contact-questions">
-      <div class="wide-container">
-        <span class="section-label">你可以直接問</span>
-        <h2 class="section-title">不知道怎麼開口<br>就複製這些問題</h2>
-        <div class="copy-grid">
-          <div class="card copy-card accent-card"><h3>你好 我想詢問<br>酒店</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card accent-card"><h3>你好 我想詢問<br>美容師</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card accent-card"><h3>我想先了解自己適合哪一種工作</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card accent-card"><h3>我沒有經驗可以上班嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card success-card"><h3>薪水怎麼算？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card blue-card"><h3>隱私會不會被外流？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card accent-card"><h3>你好 我想先<br>匿名了解</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card accent-card"><h3>真的不用<br>簽合約嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card success-card"><h3>可以只做短期嗎？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-          <div class="card copy-card blue-card"><h3>我適合哪種職缺？</h3><button class="copy-btn" type="button" onclick="copyQuestion(this)">點我複製</button></div>
-        </div>
       </div>
     </section>
 
@@ -589,9 +571,9 @@
             <div class="tool-field range-field"><label for="income-rate" id="income-rate-label">節薪（10分鐘） <output id="income-rate-value">260 元</output></label><input id="income-rate" type="range" min="230" max="290" step="10" value="260" oninput="calculateIncome()"></div>
           </div>
           <div class="income-result income-result-grid">
-            <div class="income-result-card"><span>日薪</span><strong id="income-daily">約 0 元</strong></div>
-            <div class="income-result-card"><span>週薪</span><strong id="income-weekly">約 0 元</strong></div>
-            <div class="income-result-card"><span>月薪</span><strong id="income-monthly">約 0 元</strong></div>
+            <div class="income-result-card"><span>預估日收入</span><strong id="income-daily">約 0 元</strong></div>
+            <div class="income-result-card"><span>預估週收入</span><strong id="income-weekly">約 0 元</strong></div>
+            <div class="income-result-card"><span>預估月收入</span><strong id="income-monthly">約 0 元</strong></div>
             <p id="income-note">酒店以 10 分鐘一節計算<br>節薪依你選擇的數字試算</p>
             <p class="income-warning-note">每家店都有清潔費稅金等東西要扣<br>各家店不同　詳細可詢問我</p>
           </div>
