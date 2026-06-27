@@ -9,13 +9,13 @@
   <meta name="theme-color" content="#060606"/>
   <meta name="color-scheme" content="dark"/>
   <meta name="description" content="AS娛樂大頭的部落格，七年八大行業經驗，分享最真實的酒店公關入行知識。"/>
-  <link rel="canonical" href="https://as-ent-tw.com/blog.html"/>
-  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/blog.html"/>
-  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/blog.html"/>
+  <link rel="canonical" href="https://as-ent-tw.com/blog"/>
+  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/blog"/>
+  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/blog"/>
   <meta property="og:title" content="酒店公關部落格｜AS娛樂 大頭"/>
   <meta property="og:description" content="七年八大行業經驗，分享最真實的酒店公關入行知識與面試建議。"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://as-ent-tw.com/blog.html"/>
+  <meta property="og:url" content="https://as-ent-tw.com/blog"/>
   <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="酒店公關部落格｜AS娛樂 大頭"/>
@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"AS娛樂｜大頭的部落格","description":"七年八大行業經驗，分享最真實的酒店公關入行知識","url":"https://as-ent-tw.com/blog.html","author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"AS娛樂｜大頭的部落格","description":"七年八大行業經驗，分享最真實的酒店公關入行知識","url":"https://as-ent-tw.com/blog","author":{"@type":"Person","name":"大頭","jobTitle":"八大行業經紀人","url":"https://as-ent-tw.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://as-ent-tw.com/"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://as-ent-tw.com/blog"}]}</script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -250,21 +250,21 @@
   </a>
   <div class="nav-links">
     <a href="/">首頁</a>
-    <a href="about.html">關於我</a>
-    <a href="jobs.html">職缺介紹</a>
-    <a href="knowledge.html">八大知識+</a>
-    <a class="active" href="blog.html">部落格</a>
-    <a href="contact.html">聯絡我</a>
+    <a href="/about">關於我</a>
+    <a href="/jobs">職缺介紹</a>
+    <a href="/knowledge">八大知識+</a>
+    <a class="active" href="/blog">部落格</a>
+    <a href="/contact">聯絡我</a>
   </div>
   <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu">
   <a href="/">首頁</a>
-  <a href="about.html">關於我</a>
-  <a href="jobs.html">職缺介紹</a>
-  <a href="knowledge.html">八大知識+</a>
-  <a href="blog.html">部落格</a>
-  <a href="contact.html">聯絡我</a>
+  <a href="/about">關於我</a>
+  <a href="/jobs">職缺介紹</a>
+  <a href="/knowledge">八大知識+</a>
+  <a href="/blog">部落格</a>
+  <a href="/contact">聯絡我</a>
 </div>
 
 <div class="wrap">
@@ -454,7 +454,7 @@
       return;
     }
     grid.innerHTML = displayPosts.slice(0, visiblePostCount).map(post => `
-      <a class="blog-card" href="post.html?slug=${encodeURIComponent(post.slug)}" data-post-slug="${escapeHtml(post.slug)}">
+      <a class="blog-card" href="${getPostUrl(post.slug)}" data-post-slug="${escapeHtml(post.slug)}">
         ${post.cover ? `<img class="blog-card-cover" src="${escapeHtml(post.cover)}" alt="${escapeHtml(cleanDisplayText(post.title))}" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder"></div>`}
         <div class="blog-card-body">
           <span class="blog-card-category">${CATEGORY_LABELS[getPrimaryCategory(post)]}</span>
@@ -465,6 +465,10 @@
       </a>
     `).join('');
     document.getElementById('blog-load-more').hidden = visiblePostCount >= displayPosts.length;
+  }
+
+  function getPostUrl(slug) {
+    return `/post/${encodeURIComponent(String(slug))}`;
   }
 
   const renderPosts = (posts) => {

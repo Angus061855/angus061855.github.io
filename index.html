@@ -1185,11 +1185,11 @@
     </div>
     <div class="nav-links">
       <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">首頁</a>
-      <a href="about.html">關於我</a>
-      <a href="jobs.html">職缺介紹</a>
-      <a href="knowledge.html">八大知識+</a>
-      <a href="blog.html">部落格</a>
-      <a href="contact.html">聯絡我</a>
+      <a href="/about">關於我</a>
+      <a href="/jobs">職缺介紹</a>
+      <a href="/knowledge">八大知識+</a>
+      <a href="/blog">部落格</a>
+      <a href="/contact">聯絡我</a>
     </div>
     <button class="hamburger mobile-menu-btn" id="hamburger" aria-label="選單" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
@@ -1198,11 +1198,11 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});closeMenu();return false;">首頁</a>
-    <a href="about.html" onclick="closeMenu()">關於我</a>
-    <a href="jobs.html" onclick="closeMenu()">職缺介紹</a>
-    <a href="knowledge.html" onclick="closeMenu()">八大知識+</a>
-    <a href="blog.html" onclick="closeMenu()">部落格</a>
-    <a href="contact.html" onclick="closeMenu()">聯絡我</a>
+    <a href="/about" onclick="closeMenu()">關於我</a>
+    <a href="/jobs" onclick="closeMenu()">職缺介紹</a>
+    <a href="/knowledge" onclick="closeMenu()">八大知識+</a>
+    <a href="/blog" onclick="closeMenu()">部落格</a>
+    <a href="/contact" onclick="closeMenu()">聯絡我</a>
   </div>
 
   <!-- HERO -->
@@ -1262,7 +1262,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-text fade-up">
-          <p class="section-label" style="font-size:1.6rem;font-weight:700;text-align:center;letter-spacing:0.06em;"><a class="section-heading-link" href="about.html">關於我</a></p>
+          <p class="section-label" style="font-size:1.6rem;font-weight:700;text-align:center;letter-spacing:0.06em;"><a class="section-heading-link" href="/about">關於我</a></p>
           <h2 style="text-align:center;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;line-height:1.4;margin-bottom:20px;letter-spacing:0.06em;font-family:'Noto Serif TC',serif;">大頭<br/>八大最誠實經紀人</h2>
           <!-- 7. 人味文案 -->
           <p>入行第一年　我看到太多女孩被話術騙進去<br/>薪水被壓　合約被綁　被騙上床 等等<br/>我覺得　<strong>這樣不對</strong></p>
@@ -1279,7 +1279,7 @@
   <!-- JOBS -->
   <section id="jobs">
     <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;"><a class="section-heading-link" href="jobs.html">職缺資訊</a></p>
+      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;"><a class="section-heading-link" href="/jobs">職缺資訊</a></p>
       <h2 class="section-title fade-up" style="transition-delay:0.05s">目前開放職缺</h2>
       <p class="section-desc fade-up" style="transition-delay:0.1s">每個職位都有簡易說明<br/>找到最適合你的方向</p>
       <div class="jobs-grid">
@@ -1368,7 +1368,7 @@
   <!-- BLOG -->
   <section id="blog">
     <div class="container">
-      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;"><a class="section-heading-link" href="blog.html">部落格</a></p>
+      <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;"><a class="section-heading-link" href="/blog">部落格</a></p>
       <h2 class="section-title fade-up" style="transition-delay:0.05s">熱門文章</h2>
       <p class="section-desc fade-up" style="transition-delay:0.1s">七年的觀察與心得<br/>寫給每一個正在考慮的你</p>
       <div class="blog-grid fade-up" style="transition-delay:0.15s" id="blog-grid">
@@ -1580,6 +1580,9 @@
     { emoji:'', title:'做酒店會被認識的人發現嗎？隱私問題完整解答', summary:'這是我被問最多次的問題　今天一次說清楚', date:'2026-03-22', slug:'post-2' },
     { emoji:'', title:'為什麼我不要求簽合約？一個經紀人的真心話', summary:'合約對誰有利？我來告訴你背後的邏輯', date:'2026-04-01', slug:'post-3' },
   ];
+  function getPostUrl(slug) {
+    return `/post/${encodeURIComponent(String(slug))}`;
+  }
   async function loadBlog() {
     const grid = document.getElementById('blog-grid');
     const FIXED_SLUGS = ['post-1', 'post-2', 'post-3'];
@@ -1593,7 +1596,7 @@
       const fixed = FIXED_SLUGS.map(slug => posts.find(p => p.slug === slug)).filter(Boolean);
       const shown = fixed.length === 3 ? fixed : posts.slice(0, 3);
       grid.innerHTML = shown.map(post => `
-        <a class="blog-card" href="post.html?slug=${post.slug}">
+        <a class="blog-card" href="${getPostUrl(post.slug)}">
           ${post.cover
             ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" loading="lazy" decoding="async"/>`
             : `<div class="blog-card-cover-placeholder"></div>`}
@@ -1605,12 +1608,12 @@
         </a>
       `).join('');
       if (posts.length > 3) {
-        grid.insertAdjacentHTML('afterend', `<div style="text-align:center;margin-top:28px;"><a href="blog.html" style="color:var(--accent);border:1px solid rgba(200,169,110,0.3);padding:11px 30px;border-radius:4px;text-decoration:none;font-size:0.9rem;letter-spacing:0.1em;">觀看更多文章 →</a></div>`);
+        grid.insertAdjacentHTML('afterend', `<div style="text-align:center;margin-top:28px;"><a href="/blog" style="color:var(--accent);border:1px solid rgba(200,169,110,0.3);padding:11px 30px;border-radius:4px;text-decoration:none;font-size:0.9rem;letter-spacing:0.1em;">觀看更多文章 →</a></div>`);
       }
     } catch(e) {
       /* fallback 靜態卡片 */
       grid.innerHTML = FALLBACK_POSTS.map(p => `
-        <a class="blog-fallback-card" href="post.html?slug=${p.slug}">
+        <a class="blog-fallback-card" href="${getPostUrl(p.slug)}">
           <div class="blog-fallback-thumb">${p.emoji}</div>
           <div class="blog-fallback-body">
             <div class="blog-fallback-date">${p.date}</div>
