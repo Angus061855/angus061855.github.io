@@ -15,11 +15,14 @@
   <meta property="og:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://as-ent-tw.com/"/>
-  <meta property="og:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <meta property="og:image" content="https://as-ent-tw.com/assets/og/home.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="AS娛樂 八大最誠實經紀人大頭"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="AS娛樂｜八大最誠實經紀 大頭"/>
   <meta name="twitter:description" content="不簽合約、不壓薪水、自由排班。七年經驗，3000位面試，最透明的經紀人。"/>
-  <meta name="twitter:image" content="https://as-ent-tw.com/og-image.jpg"/>
+  <meta name="twitter:image" content="https://as-ent-tw.com/assets/og/home.png"/>
   <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/"/>
   <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -56,6 +59,14 @@
       --radius-btn: 4px; --radius-card: 6px; --radius-pill: 4px;
     }
     html { scroll-behavior: smooth; }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid rgba(224,192,128,.85);
+      outline-offset: 3px;
+    }
     section[id] { scroll-margin-top: 88px; }
     body {
       background: #080808; color: var(--text);
@@ -1181,7 +1192,7 @@
 
   <nav id="mainNav">
     <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
-      <img src="logo.png?v=20260604-logo2" alt="AS娛樂" style="height:56px;"/>
+      <img src="logo.png?v=20260604-logo2" alt="AS娛樂" width="56" height="56" style="height:56px;"/>
     </div>
     <div class="nav-links">
       <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">首頁</a>
@@ -1335,7 +1346,7 @@
           <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>請假方便嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然　八大行業的優勢就是自由<br>婚喪喜慶　月經來　甚至是你今天不想上班<br>都可以直接跟我請假　沒有任何限制</div></div>
         </div>
         <div style="text-align:center;margin-top:14px;">
-          <button id="faq-toggle-btn" onclick="toggleMoreFaq()" style="background:transparent;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:9px 26px;border-radius:4px;font-size:0.85rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.1em;transition:background 0.2s,border-color 0.2s;">觀看更多問題 ↓</button>
+          <button id="faq-toggle-btn" onclick="toggleMoreFaq()" aria-controls="faq-more" aria-expanded="false" style="background:transparent;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:9px 26px;border-radius:4px;font-size:0.85rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.1em;transition:background 0.2s,border-color 0.2s;">觀看更多問題 ↓</button>
         </div>
       </div>
       <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="faq-line-banner fade-up" style="transition-delay:0.2s">
@@ -1424,7 +1435,7 @@
 
   <footer>
     <div class="footer-logo">
-      <img src="logo.png?v=20260604-logo2" alt="AS娛樂"/>
+      <img src="logo.png?v=20260604-logo2" alt="AS娛樂" width="32" height="32"/>
       <span style="font-size:1rem;font-weight:400;letter-spacing:0.2em;color:rgba(200,169,110,0.4);font-family:'Noto Serif TC',serif;">AS娛樂</span>
     </div>
     <p class="footer-slogan">八大最誠實經紀　大頭</p>
@@ -1598,7 +1609,7 @@
       grid.innerHTML = shown.map(post => `
         <a class="blog-card" href="${getPostUrl(post.slug)}">
           ${post.cover
-            ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" loading="lazy" decoding="async"/>`
+            ? `<img class="blog-card-cover" src="${post.cover}" alt="${cleanDisplayText(post.title)}" width="720" height="405" loading="lazy" decoding="async"/>`
             : `<div class="blog-card-cover-placeholder"></div>`}
           <div class="blog-card-body">
             <div class="blog-card-meta"><div class="blog-card-date">${post.date}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
@@ -1629,9 +1640,17 @@
   /* ── FAQ ── */
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
+    if (!item) return;
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      const question = i.querySelector('.faq-question');
+      if (question) question.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   }
   function toggleMoreFaq() {
     const more = document.getElementById('faq-more');
@@ -1642,12 +1661,25 @@
       more.style.transition = 'opacity 0.5s ease';
       requestAnimationFrame(() => { more.style.opacity = '1'; });
       btn.textContent = '收起 ↑';
+      btn.setAttribute('aria-expanded', 'true');
     } else {
       more.style.opacity = '0';
       setTimeout(() => { more.style.display = 'none'; }, 500);
       btn.textContent = '觀看更多問題 ↓';
+      btn.setAttribute('aria-expanded', 'false');
     }
   }
+
+  document.querySelectorAll('.faq-question').forEach((btn, index) => {
+    const item = btn.closest('.faq-item');
+    const answer = item && item.querySelector('.faq-answer');
+    if (!answer) return;
+    answer.id = answer.id || `faq-answer-${index + 1}`;
+    btn.setAttribute('aria-controls', answer.id);
+    btn.setAttribute('aria-expanded', 'false');
+    const icon = btn.querySelector('.faq-plus');
+    if (icon) icon.setAttribute('aria-hidden', 'true');
+  });
 
   /* ── 總瀏覽數 ── */
   function calcTotalViews() {

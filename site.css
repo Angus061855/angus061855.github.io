@@ -75,6 +75,14 @@ body::after {
   opacity: .7;
 }
 a { color: inherit; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(224,192,128,.85);
+  outline-offset: 3px;
+}
 a,
 a:hover,
 a:focus,

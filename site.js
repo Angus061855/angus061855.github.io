@@ -36,8 +36,28 @@ function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   if (!item) return;
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item').forEach(faq => {
+    faq.classList.remove('open');
+    const question = faq.querySelector('.faq-question');
+    if (question) question.setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function initFaqAccessibility() {
+  document.querySelectorAll('.faq-question').forEach((btn, index) => {
+    const item = btn.closest('.faq-item');
+    const answer = item && item.querySelector('.faq-answer');
+    if (!answer) return;
+    if (!answer.id) answer.id = `faq-answer-${index + 1}`;
+    btn.setAttribute('aria-controls', answer.id);
+    btn.setAttribute('aria-expanded', String(item.classList.contains('open')));
+    const icon = btn.querySelector('.faq-plus');
+    if (icon) icon.setAttribute('aria-hidden', 'true');
+  });
 }
 
 function toggleMoreFaq(btn) {
@@ -383,6 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWeeklyCount();
   initContactForm();
   initIncomeTool();
+  initFaqAccessibility();
   initTotalViews();
   initRevealAnimations();
   initMobileFloatingContact();
