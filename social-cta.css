@@ -1,0 +1,37 @@
+/* Shared social CTA layout. Loaded last so every page uses the same grid. */
+.home-contact-actions,
+.final-contact-actions,
+.post-cta-actions {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.instagram-outline,
+[data-official-instagram] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 46px;
+  color: #e0c080 !important;
+  background: linear-gradient(135deg, rgba(200,169,110,.06), rgba(12,12,12,.72)) !important;
+  border: 1px solid rgba(200,169,110,.42) !important;
+  border-radius: 4px;
+  text-decoration: none !important;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.instagram-outline:hover,
+[data-official-instagram]:hover {
+  color: #f0d898 !important;
+  border-color: rgba(224,192,128,.76) !important;
+}
+
+@media (max-width: 390px) {
+  .home-contact-actions,
+  .final-contact-actions,
+  .post-cta-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
