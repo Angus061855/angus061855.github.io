@@ -166,7 +166,7 @@
     .post-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.05em; line-height: 1.8; }
     .post-cta-actions {
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:12px;
       max-width:630px;
       margin:0 auto;
@@ -251,12 +251,15 @@
       }
       .footer-age { width:100%; padding:0; border:0; }
       footer { padding-bottom:calc(118px + env(safe-area-inset-bottom)); background:#060606; }
-      .post-cta-actions { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+      .post-cta-actions { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
       .post-cta a { font-size:.86rem; padding:10px 12px; }
       .error { padding-top:12px; }
       .error-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
       .error-actions a { padding:10px 8px; font-size:.82rem; }
       .error-recommendations { grid-template-columns:1fr; }
+    }
+    @media (max-width:390px) {
+      .post-cta-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media (max-width: 1100px) {
       nav { padding:12px 18px; }
@@ -266,6 +269,7 @@
   </style>
   <script src="/velvet-background.js?v=20260614-perf1" defer></script>
   <script src="/meta-pixel.js"></script>
+  <script src="/site-config.js?v=20260703-ig1"></script>
 </head>
 <body>
 <canvas id="velvet-bg"></canvas>
@@ -320,6 +324,7 @@
         <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a>
         <a class="official-line-outline" href="https://lin.ee/8COZQMn" target="_blank" rel="noopener noreferrer">官方 LINE</a>
         <a class="video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
+        <a class="instagram-outline" href="https://www.instagram.com/" data-official-instagram target="_blank" rel="noopener noreferrer">官方 IG</a>
       </div>
       <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
     </div>
