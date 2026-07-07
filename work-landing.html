@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/work-landing.css?v=20260705-1" />
+  <link rel="stylesheet" href="/work-landing.css?v=20260708-1" />
   <!-- Meta Pixel Code: dual job advertising landing page -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -85,6 +85,10 @@
         <p class="section-label">兩種工作方向</p>
         <h2>先看差別<br>再找適合妳的選擇</h2>
         <p class="section-intro">沒有哪一種一定比較好<br>重點是妳的時間　接受度和收入需求</p>
+        <div class="role-tabs" role="tablist" aria-label="選擇工作方向">
+          <button class="role-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="beauty-role" data-role-target="beauty-role">美容師</button>
+          <button class="role-tab" type="button" role="tab" aria-selected="false" aria-controls="hotel-role" data-role-target="hotel-role">酒店公關</button>
+        </div>
         <div class="role-grid">
           <article class="role-panel hotel reveal" id="hotel-role">
             <div class="role-head"><span class="role-no">01</span><div><small>需要聊天互動</small><h3>酒店公關</h3></div></div>
@@ -98,7 +102,7 @@
             <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" data-personal-line>詢問酒店公關</a>
           </article>
 
-          <article class="role-panel beauty reveal" id="beauty-role">
+          <article class="role-panel beauty is-active reveal" id="beauty-role">
             <div class="role-head"><span class="role-no">02</span><div><small>不用喝酒應酬</small><h3>紓壓按摩美容師</h3></div></div>
             <p class="role-summary">八大按摩店相關工作<br>工作內容與禁止事項會在面試前說清楚</p>
             <dl>
@@ -134,7 +138,7 @@
           <p class="section-label">不是助理　不是 AI</p>
           <h2>每一個問題<br>都是我本人回覆</h2>
           <p>我是大頭<br>AS娛樂八大最誠實經紀人</p>
-          <p>七年來個人面試超過 3000 位女孩<br>我看過太多人因為資訊不透明<br>被合約　扣款和話術綁住</p>
+          <p>七年來個人面試超過 3000 位女孩<br>看過太多人因資訊不透明<br>被合約　扣款和話術綁住</p>
           <p>所以我的原則很簡單<br>先講清楚　再讓妳自己決定</p>
         </div>
         <div class="proof-numbers reveal" aria-label="經驗數字">
@@ -231,6 +235,19 @@
     } else {
       document.querySelectorAll('.reveal').forEach(function (item) { item.classList.add('visible'); });
     }
+
+    document.querySelectorAll('.role-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.role-tab').forEach(function (item) {
+          var selected = item === tab;
+          item.classList.toggle('is-active', selected);
+          item.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+        document.querySelectorAll('.role-panel').forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.id === tab.dataset.roleTarget);
+        });
+      });
+    });
 
     var mobileLine = document.querySelector('.mobile-line');
     var hero = document.querySelector('.landing-hero');
