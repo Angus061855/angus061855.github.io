@@ -617,6 +617,12 @@
       color:#fff1c5;
       background:rgba(200,169,110,.09);
     }
+    .jobs-cta-panel { text-align: center; margin-top: 26px; }
+    .jobs-cta-title { color: var(--accent2); font-size: 1.05rem; font-weight: 800; letter-spacing: 0.08em; margin-bottom: 12px; font-family: 'Noto Serif TC', serif; }
+    .jobs-cta-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.9; margin: 0 auto 22px; max-width: 560px; letter-spacing: 0.04em; }
+    .jobs-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .jobs-cta-actions .btn-primary,
+    .jobs-cta-actions .btn-outline { min-width: 210px; justify-content: center; font-size: 0.95rem; padding: 14px 28px; }
 
     /* 10. 互動測驗 */
     #quiz { text-align: center; }
@@ -1126,6 +1132,18 @@
       .blog-card-body { min-height: 168px; }
       .blog-card-title { min-height: 3.1em; }
       .blog-card-summary { min-height: 3.7em; }
+      .jobs-cta-panel { margin-top: 34px; padding: 0 10px; }
+      .jobs-cta-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin: 0 auto;
+      }
+      .jobs-cta-actions .btn-primary,
+      .jobs-cta-actions .btn-outline {
+        width: 100%;
+        min-width: 0;
+      }
       .quiz-opt,
       .quiz-restart,
       #quiz .btn-primary {
@@ -1295,28 +1313,16 @@
   <section id="jobs">
     <div class="container">
       <p class="section-label fade-up" style="font-size:1.6rem;font-weight:700;letter-spacing:0.06em;"><a class="section-heading-link" href="/jobs">職缺資訊</a></p>
-      <h2 class="section-title fade-up" style="transition-delay:0.05s">目前開放職缺</h2>
-      <p class="section-desc fade-up" style="transition-delay:0.1s">每個職位都有簡易說明<br/>找到最適合你的方向</p>
-      <div class="jobs-grid">
-        <div class="job-card featured fade-up" style="transition-delay:0.0s">
-          <div class="job-card-header"><div class="job-card-title">酒店公關</div><span class="job-badge badge-pr">熱門</span></div>
-          <div class="job-card-desc">禮服店　便禮店　便服店<br/>依個人條件安排最適合的店型</div>
-          <ul class="job-card-perks"><li>節薪 230 到 290 元起</li><li>自由排班　彈性兼職</li><li>新人全程帶領</li><li>隱私 100% 保護</li></ul>
-        </div>
-        <div class="job-card fade-up" style="transition-delay:0.1s">
-          <div class="job-card-header"><div class="job-card-title">紓壓按摩美容師</div><span class="job-badge badge-beauty">薪資最高</span></div>
-          <div class="job-card-desc">八大按摩店　不需要喝酒<br/>適合不想應酬的人</div>
-          <ul class="job-card-perks"><li>不用喝酒熬夜</li><li>日薪平均可達三萬起</li><li>環境安全隱私</li><li>只上 4 小時也可以</li></ul>
-        </div>
-        <div class="job-card fade-up" style="transition-delay:0.2s">
-          <div class="job-card-header"><div class="job-card-title">經紀人</div><span class="job-badge badge-agent">菁英</span></div>
-          <div class="job-card-desc">管理與培訓團隊<br/>發揮領導能力與人脈經營</div>
-          <ul class="job-card-perks"><li>高額獎金制度</li><li>團隊分潤機制</li><li>完整培訓系統</li><li>有無經驗皆可</li></ul>
-        </div>
-      </div>
+      <h2 class="section-title fade-up" style="transition-delay:0.05s">不知道適合哪一種工作<br/>可以直接問我</h2>
+      <p class="section-desc fade-up" style="transition-delay:0.1s">網頁先看大方向就好<br/>細節我會依你的狀況親自說明</p>
     </div>
-    <div style="text-align:center;margin-top:36px;" class="fade-up">
-      <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:14px 48px;">立即詢問</a>
+    <div class="jobs-cta-panel fade-up">
+      <p class="jobs-cta-title">不確定就先問　不用自己猜</p>
+      <p class="jobs-cta-desc">如果你已經想問細節　直接加 LINE<br/>如果想先看完整說明　可以進職缺介紹頁</p>
+      <div class="jobs-cta-actions">
+        <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
+        <a href="/jobs" class="btn-outline">看職缺介紹</a>
+      </div>
       <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
     </div>
   </section>
