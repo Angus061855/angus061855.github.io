@@ -1,9 +1,11 @@
 /* Shared social CTA layout. Loaded last so every page uses the same grid. */
 .home-contact-actions,
 .final-contact-actions,
-.post-cta-actions {
+.post-cta-actions,
+.hero-cta.cta-three {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
 }
 
 .instagram-outline,
@@ -12,7 +14,10 @@
   align-items: center !important;
   justify-content: center !important;
   width: 100% !important;
-  min-height: 46px;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  box-sizing: border-box !important;
+  padding: 13px 18px !important;
   color: #e0c080 !important;
   background: linear-gradient(135deg, rgba(200,169,110,.06), rgba(12,12,12,.72)) !important;
   border: 1px solid rgba(200,169,110,.42) !important;
@@ -20,6 +25,15 @@
   text-decoration: none !important;
   font-weight: 900;
   line-height: 1.2;
+}
+
+.hero-cta.cta-three > a,
+.home-contact-actions > a,
+.final-contact-actions > a,
+.post-cta-actions > a {
+  height: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .instagram-outline:hover,
@@ -31,7 +45,8 @@
 @media (max-width: 390px) {
   .home-contact-actions,
   .final-contact-actions,
-  .post-cta-actions {
+  .post-cta-actions,
+  .hero-cta.cta-three {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }

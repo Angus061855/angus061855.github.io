@@ -961,6 +961,18 @@ nav {
   color:var(--accent2);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
+.jobs-tools-stack {
+  display:grid;
+  gap:64px;
+  margin:72px auto 58px;
+  max-width:980px;
+}
+.jobs-tool-block {
+  scroll-margin-top:96px;
+}
+.jobs-tool-block .tool-panel {
+  margin-top:28px;
+}
 .warning-card h3 {
   color: #ff6b63;
   font-family: 'Noto Serif TC', serif;
@@ -2617,6 +2629,13 @@ footer {
   .job-tool-actions .btn-outline {
     min-width:0;
     width:100%;
+  }
+  .jobs-tools-stack {
+    gap:48px;
+    margin:52px auto 42px;
+  }
+  .jobs-tool-block {
+    scroll-margin-top:86px;
   }
   .card {
     padding:20px 18px;
