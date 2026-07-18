@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../site.css?v=20260628-legal1" />
+  <link rel="stylesheet" href="../site.css?v=20260718-tools1" />
   <style>
     .brand-page {
       color: var(--text);
@@ -69,6 +69,182 @@
       position: relative;
       z-index: 1;
     }
+    /* 首屏沿用首頁資訊層級；此頁不放聯絡按鈕。 */
+    .brand-home-badges,
+    .brand-home-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .brand-home-badges {
+      margin-bottom: 20px;
+    }
+    .brand-home-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(200,169,110,.06), rgba(200,169,110,.02));
+      box-shadow: 0 0 12px rgba(200,169,110,.05), inset 0 1px 0 rgba(200,169,110,.1);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+    .brand-home-social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 6px 16px;
+      border: 1px solid rgba(200,169,110,.2);
+      border-radius: var(--radius-pill);
+      background: rgba(200,169,110,.06);
+      color: #c8c0b0;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .brand-home-social-proof strong {
+      color: var(--accent2);
+    }
+    .brand-home-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4caf7d;
+      box-shadow: 0 0 6px rgba(76,175,125,.6);
+      animation: brandPulseDot 2s ease-in-out infinite;
+    }
+    .brand-home-title {
+      max-width: 980px;
+      margin: 0 auto 22px;
+      font-family: "Noto Serif TC", serif;
+      font-size: clamp(2.8rem, 7.4vw, 5.15rem);
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: .06em;
+      color: transparent;
+      background: linear-gradient(105deg, #c8a96e 0%, #f0d898 34%, #f5f5f5 52%, #8f8f8f 74%, #c8a96e 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 34px rgba(200,169,110,.14);
+      animation: brandShine 8s linear infinite;
+    }
+    .brand-home-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .brand-home-stat {
+      position: relative;
+      min-width: 190px;
+      overflow: hidden;
+      padding: 20px 32px;
+      border: 1px solid rgba(200,169,110,.18);
+      border-radius: var(--radius-card);
+      background: linear-gradient(135deg, rgba(20,16,10,.65), rgba(12,10,8,.45));
+      box-shadow: 0 0 30px rgba(200,169,110,.05), inset 0 1px 0 rgba(200,169,110,.1);
+    }
+    .brand-home-stat::before,
+    .brand-home-stat::after {
+      position: absolute;
+      right: 10%;
+      left: 10%;
+      height: 1px;
+      content: "";
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,.55), transparent);
+    }
+    .brand-home-stat::before { top: 0; }
+    .brand-home-stat::after { bottom: 0; opacity: .4; }
+    .brand-home-stat strong {
+      display: block;
+      color: transparent;
+      background: linear-gradient(135deg, #c8a96e 0%, #f0d898 50%, #c8a96e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-size: 3.4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: .04em;
+    }
+    .brand-home-stat span {
+      display: block;
+      margin-top: 8px;
+      color: #666;
+      font-size: .75rem;
+      letter-spacing: .18em;
+    }
+    .brand-home-pills {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .brand-home-pill {
+      position: relative;
+      padding: 7px 18px;
+      overflow: hidden;
+      border: 1px solid rgba(200,169,110,.25);
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(200,169,110,.08), rgba(200,169,110,.02));
+      box-shadow: 0 0 12px rgba(200,169,110,.06), inset 0 1px 0 rgba(200,169,110,.12);
+      color: #c8c0b0;
+      font-size: .78rem;
+      letter-spacing: .14em;
+    }
+    .brand-home-pill::before {
+      position: absolute;
+      top: 20%;
+      bottom: 20%;
+      left: 0;
+      width: 2px;
+      border-radius: 2px;
+      content: "";
+      background: linear-gradient(180deg, transparent, rgba(200,169,110,.6), transparent);
+    }
+    .brand-home-alert {
+      max-width: 680px;
+      margin: 32px auto 0;
+      color: #d97b75;
+      font-size: .76rem;
+      font-weight: 700;
+      line-height: 2;
+      letter-spacing: .08em;
+      text-shadow: 0 0 18px rgba(176,58,54,.16);
+    }
+    .brand-home-alert::before {
+      display: block;
+      width: 44px;
+      height: 1px;
+      margin: 0 auto 15px;
+      content: "";
+      background: linear-gradient(90deg, transparent, rgba(217,123,117,.55), transparent);
+      box-shadow: 0 0 10px rgba(217,123,117,.18);
+    }
+    .brand-home-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 42px;
+      color: rgba(200,169,110,.4);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .brand-home-scroll:hover {
+      color: rgba(200,169,110,.8);
+    }
+    .brand-home-scroll svg {
+      animation: brandBounceArrow 2s ease-in-out infinite;
+    }
+    @keyframes brandShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+    @keyframes brandPulseDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: .7; } }
+    @keyframes brandBounceArrow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
     .brand-badges,
     .brand-pills,
     .brand-hero-actions {
@@ -190,7 +366,7 @@
       margin: 0 auto 28px;
     }
     .brand-hero-actions {
-      margin-top: 8px;
+      margin-top: 42px;
     }
     .brand-hero-actions .btn-outline {
       min-width: 220px;
@@ -319,6 +495,7 @@
       background: linear-gradient(160deg, rgba(16,13,8,.72), rgba(8,8,8,.82));
       box-shadow: 0 20px 60px rgba(0,0,0,.26), inset 0 1px 0 rgba(200,169,110,.06);
       padding: clamp(30px, 5vw, 54px);
+      text-align: center;
     }
     .brand-editorial p {
       color: #9a948a;
@@ -395,58 +572,90 @@
       gap: 12px;
     }
     .brand-principle {
-      display: grid;
-      grid-template-columns: 38px 1fr;
-      gap: 16px;
-      align-items: start;
+      position: relative;
+      display: block;
       padding: 18px 20px;
       border: 1px solid rgba(200,169,110,.16);
       border-radius: var(--radius-card);
       background: rgba(200,169,110,.025);
     }
     .brand-principle-num {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
       color: var(--accent);
       font-family: "Noto Serif TC", serif;
       font-weight: 700;
       letter-spacing: .08em;
     }
     .brand-principle p {
+      margin: 0;
       color: #b8b0a4;
       font-weight: 700;
       letter-spacing: .06em;
       line-height: 1.8;
-    }
-    .brand-guide-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 38px;
-    }
-    .brand-guide-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 230px;
-      text-decoration: none;
-      transition: transform .18s ease, border-color .18s ease;
-    }
-    .brand-guide-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(224,192,128,.46);
-    }
-    .brand-guide-card .mini-link {
-      margin-top: auto;
-    }
-    .brand-statement {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 26px 30px;
-      border-top: 1px solid rgba(200,169,110,.2);
-      border-bottom: 1px solid rgba(200,169,110,.14);
-      color: #8b857c;
-      font-size: .86rem;
-      line-height: 2.05;
-      letter-spacing: .055em;
       text-align: center;
+    }
+    .brand-contact-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,.08), transparent 52%);
+      pointer-events: none;
+    }
+    .brand-contact-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(32px, 6vw, 58px);
+      border: 1px solid rgba(200,169,110,.24);
+      border-radius: var(--radius-card);
+      background: linear-gradient(145deg, rgba(20,16,10,.78), rgba(6,6,6,.88));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 24px 66px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    .brand-contact-shell h2 {
+      margin: 10px 0 14px;
+      color: #f3f1ed;
+      font-family: "Noto Serif TC", serif;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      letter-spacing: .08em;
+      line-height: 1.35;
+    }
+    .brand-contact-shell > p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #aaa298;
+      line-height: 2;
+      letter-spacing: .055em;
+    }
+    .brand-contact-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 560px;
+      margin: 30px auto 0;
+    }
+    .brand-contact-actions .btn-primary,
+    .brand-contact-actions .btn-outline {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-contact-actions .btn-outline {
+      color: var(--accent2);
+    }
+    .brand-contact-hint {
+      margin-top: 18px !important;
+      color: #756e65 !important;
+      font-size: .82rem;
     }
     .brand-footer-copy {
       color: rgba(200,169,110,.46);
@@ -455,14 +664,31 @@
       line-height: 2;
       margin-bottom: 16px;
     }
+    .brand-footer-statement {
+      max-width: 720px;
+      margin: 34px auto 0;
+      color: #827b72;
+      font-size: .75rem;
+      line-height: 2;
+      letter-spacing: .055em;
+      text-align: center;
+    }
+    .brand-footer-statement span {
+      color: var(--accent);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+    .brand-footer-statement p {
+      margin: 11px 0 0;
+    }
     @media (prefers-reduced-motion: reduce) {
       .brand-title {
         animation: none;
       }
     }
     @media (max-width: 900px) {
-      .brand-card-grid,
-      .brand-guide-grid {
+      .brand-card-grid {
         grid-template-columns: 1fr;
       }
       .brand-card {
@@ -477,6 +703,69 @@
       .brand-hero::before {
         inset: 16% -30% auto;
         height: 58%;
+      }
+      .brand-home-badges {
+        max-width: 320px;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .brand-home-badge:nth-child(n+3) {
+        display: none;
+      }
+      .brand-home-badge {
+        padding: 5px 12px;
+        font-size: .72rem;
+        letter-spacing: .12em;
+      }
+      .brand-home-social-proof {
+        margin-bottom: 12px;
+        font-size: .78rem;
+      }
+      .brand-home-title {
+        margin-bottom: 16px;
+        font-size: clamp(2.25rem, 10.8vw, 3.05rem);
+        line-height: 1.45;
+        letter-spacing: .035em;
+      }
+      .brand-home-stats {
+        width: 100%;
+        max-width: 340px;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .brand-home-stat {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 13px 10px;
+      }
+      .brand-home-stat strong {
+        font-size: 2rem;
+        white-space: nowrap;
+      }
+      .brand-home-stat span {
+        font-size: .68rem;
+        letter-spacing: .14em;
+      }
+      .brand-home-pills {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100%;
+        max-width: 360px;
+        gap: 6px;
+      }
+      .brand-home-pill {
+        width: 100%;
+        padding: 6px 4px;
+        font-size: .66rem;
+        letter-spacing: .04em;
+        white-space: nowrap;
+      }
+      .brand-home-alert {
+        margin-top: 26px;
+        font-size: .7rem;
+      }
+      .brand-home-scroll {
+        margin-top: 28px;
       }
       .brand-badges {
         gap: 8px;
@@ -535,6 +824,9 @@
         width: min(240px, 100%);
         min-width: 0;
       }
+      .brand-hero-actions {
+        margin-top: 28px;
+      }
       .brand-contact-modal {
         align-items: end;
         padding: 16px;
@@ -567,13 +859,16 @@
         min-height: 138px;
       }
       .brand-principle {
-        grid-template-columns: 1fr;
-        gap: 6px;
-        text-align: center;
+        padding: 16px 18px;
       }
-      .brand-statement {
-        padding: 22px 18px;
-        font-size: .8rem;
+      .brand-principle-num {
+        left: 18px;
+      }
+      .brand-contact-shell {
+        padding: 32px 18px;
+      }
+      .brand-contact-actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -604,7 +899,7 @@
       <a href="#belief">品牌理念</a>
       <a href="/blog">文章</a>
       <a href="#statement">常見問題</a>
-      <a href="#brand-contact-form" data-brand-contact>聯絡方式</a>
+      <a href="#brand-contact-form" data-brand-contact>聯絡我</a>
     </div>
     <button class="mobile-menu-btn" type="button" onclick="toggleMobileMenu()" aria-label="開啟選單" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
@@ -613,45 +908,48 @@
     <a href="#belief">品牌理念</a>
     <a href="/blog">文章</a>
     <a href="#statement">常見問題</a>
-    <a href="#brand-contact-form" data-brand-contact>聯絡方式</a>
+    <a href="#brand-contact-form" data-brand-contact>聯絡我</a>
   </div>
 
   <main>
     <section class="brand-hero" aria-labelledby="brand-title">
       <div class="brand-hero-inner">
-        <div class="brand-badges">
-          <span class="brand-badge">AS 品牌介紹</span>
-          <span class="brand-badge">資訊整理</span>
-          <span class="brand-badge">透明原則</span>
-          <span class="brand-badge">自主判斷</span>
+        <div class="brand-home-badges">
+          <span class="brand-home-badge">全台最多人詢問</span>
+          <span class="brand-home-badge">八大最誠實經紀</span>
+          <span class="brand-home-badge">七年個人面試 3000+</span>
+          <span class="brand-home-badge">有問必答</span>
         </div>
-        <div class="brand-social-proof">
-          <span class="brand-social-proof-dot"></span>
-          <span>七年累積　<strong>3375+</strong>　次面談與諮詢</span>
+        <div class="brand-home-social-proof">
+          <span class="brand-home-dot"></span>
+          <span>本週已有 <strong id="brand-weekly-count">--</strong> 人詢問</span>
         </div>
-        <h1 id="brand-title" class="brand-title">不要讓未來的你<br>討厭現在的自己</h1>
-        <p class="brand-subtitle">在做出重要決定以前<br>先把資訊了解清楚</p>
-        <div class="brand-hero-stats" aria-label="AS 累積數據">
-          <div class="brand-hero-stat">
-            <strong>7 年</strong>
-            <span>經驗</span>
+        <h1 id="brand-title" class="brand-home-title">不要讓未來的你<br>討厭現在的自己</h1>
+        <div class="brand-home-stats" aria-label="AS 累積數據">
+          <div class="brand-home-stat">
+            <strong>7年</strong>
+            <span>從業年資</span>
           </div>
-          <div class="brand-hero-stat">
-            <strong>3375+</strong>
-            <span>面談與諮詢經驗</span>
+          <div class="brand-home-stat">
+            <strong id="brand-interview-count">3375+</strong>
+            <span>個人面試人數</span>
           </div>
         </div>
-        <div class="brand-pills" aria-label="AS 重視的原則">
-          <span class="brand-pill">資訊透明</span>
-          <span class="brand-pill">自主選擇</span>
-          <span class="brand-pill">先理解</span>
-          <span class="brand-pill">不催促</span>
+        <div class="brand-home-pills" aria-label="AS 重視的原則">
+          <span class="brand-home-pill">不簽合約</span>
+          <span class="brand-home-pill">不壓薪水</span>
+          <span class="brand-home-pill">自由排班</span>
+          <span class="brand-home-pill">隱私安全</span>
         </div>
-        <p class="brand-hero-copy">AS 希望透過清楚整理的資訊<br>減少資訊落差<br>讓每個人都能依照自己的情況做出選擇</p>
+        <p class="brand-home-alert">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
         <div class="brand-hero-actions">
-          <a class="btn-outline" href="#belief">了解 AS</a>
-          <a class="btn-outline" href="#brand-contact-form" data-brand-contact>聯繫 AS</a>
+          <a class="btn-outline" href="/">回到首頁</a>
+          <a class="btn-outline" href="#brand-contact-form" data-brand-contact>聯絡我</a>
         </div>
+        <a class="brand-home-scroll" href="#belief" aria-label="前往品牌理念">
+          <span>向下探索更多內容</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </section>
 
@@ -680,7 +978,7 @@
           </div>
           <div class="brand-stat">
             <div>
-              <strong>3375+</strong>
+              <strong id="brand-trust-interview-count">3375+</strong>
               <span>面談與諮詢經驗</span>
             </div>
           </div>
@@ -739,46 +1037,17 @@
       </div>
     </section>
 
-    <section id="guide" class="brand-section">
-      <div class="wide-container">
-        <span class="section-label">網站導覽</span>
-        <h2 class="section-title">從了解開始</h2>
-        <div class="brand-guide-grid">
-          <a class="card brand-guide-card" href="#belief">
-            <div>
-              <span class="tag">認識 AS</span>
-              <h3>了解品牌成立背景與核心理念</h3>
-              <p>先知道 AS 為什麼存在<br>以及我們如何看待資訊整理。</p>
-            </div>
-            <span class="mini-link">前往閱讀 →</span>
-          </a>
-          <a class="card brand-guide-card" href="/blog">
-            <div>
-              <span class="tag">精選文章</span>
-              <h3>查看不同主題的資訊整理與經驗分享</h3>
-              <p>從文章慢慢看<br>把分散的問題先整理清楚。</p>
-            </div>
-            <span class="mini-link">前往閱讀 →</span>
-          </a>
-          <a class="card brand-guide-card" href="#statement">
-            <div>
-              <span class="tag">常見問題</span>
-              <h3>先確認自己最在意的問題</h3>
-              <p>若目前沒有明確方向<br>可以先從原則與聲明開始理解。</p>
-            </div>
-            <span class="mini-link">往下查看 →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="statement" class="brand-section">
+    <section id="contact" class="brand-section brand-contact-section" aria-labelledby="brand-contact-section-title">
       <div class="brand-narrow">
-        <span class="section-label">品牌聲明</span>
-        <div class="brand-statement">
-          本網站內容以資訊整理與經驗分享為目的。<br>
-          不同情況可能有不同結果，訪客應依照自身需求審慎判斷。<br>
-          AS 不提供任何收入保證、結果保證或強迫性安排。
+        <div class="brand-contact-shell">
+          <span class="section-label">聯絡 AS</span>
+          <h2 id="brand-contact-section-title">先留下基本資訊<br>再開始聊</h2>
+          <p>姓名、年齡與性別只用於這次聯繫前的基本了解<br>填寫後會開啟 LINE，由本人親自回覆</p>
+          <div class="brand-contact-actions">
+            <a class="btn-primary" href="#brand-contact-form" data-brand-contact>填寫聯絡資訊</a>
+            <a class="btn-outline" href="mailto:angus061855@gmail.com?subject=AS%20%E8%81%AF%E7%B5%A1%E6%B4%BD%E8%A9%A2">Email 聯絡</a>
+          </div>
+          <p class="brand-contact-hint">不需要在這裡做任何決定　先了解就好</p>
         </div>
       </div>
     </section>
@@ -788,8 +1057,12 @@
     <a class="footer-home-link" href="/">← 回到 AS 首頁</a>
     <div class="footer-logo"><img src="../logo.png?v=20260604-logo2" alt="AS" width="32" height="32"><span>AS</span></div>
     <p class="brand-footer-copy">讓資訊更清楚<br>讓選擇回到自己手上</p>
+    <div id="statement" class="brand-footer-statement">
+      <span>品牌聲明</span>
+      <p>本網站內容以資訊整理與經驗分享為目的。<br>不同情況可能有不同結果，訪客應依照自身需求審慎判斷。<br>AS 不提供任何收入保證、結果保證或強迫性安排。</p>
+    </div>
     <div class="footer-divider"></div>
-    <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">使用條款</a><a href="#brand-contact-form" data-brand-contact>聯絡方式</a><span class="footer-age">品牌基本資訊</span></div>
+    <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">使用條款</a><a href="#brand-contact-form" data-brand-contact>聯絡我</a><span class="footer-age">品牌基本資訊</span></div>
     <p>© 2026 <span>AS</span>　版權所有</p>
     <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
   </footer>
@@ -836,8 +1109,40 @@
       const lineUrl = 'https://line.me/ti/p/tTUQTPHKrE';
       let lastFocus = null;
 
+      const now = new Date();
+      const dayIndex = now.getDay() === 0 ? 6 : now.getDay() - 1;
+      const weeklyBase = [0, 15, 32, 49, 66, 83, 100];
+      const weeklyCount = document.getElementById('brand-weekly-count');
+      if (weeklyCount) weeklyCount.textContent = weeklyBase[dayIndex] + Math.floor(now.getHours() * .7);
+
+      function getInterviewCount() {
+        const startDate = new Date('2026-03-01');
+        const days = Math.max(0, Math.floor((now - startDate) / 86400000));
+        let total = 3000;
+        for (let index = 0; index < days; index += 1) {
+          const date = new Date(startDate);
+          date.setDate(date.getDate() + index);
+          const seed = date.toISOString().slice(0, 10);
+          total += (seed.split('').reduce((sum, character) => sum + character.charCodeAt(0), 0) % 5) + 1;
+        }
+        return total;
+      }
+
+      const interviewTotal = getInterviewCount();
+      const interviewCount = document.getElementById('brand-interview-count');
+      const trustInterviewCount = document.getElementById('brand-trust-interview-count');
+      if (interviewCount) interviewCount.textContent = `${interviewTotal}+`;
+      if (trustInterviewCount) trustInterviewCount.textContent = `${interviewTotal}+`;
+
       function openContactForm(event) {
         if (event) event.preventDefault();
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuButton = document.querySelector('.mobile-menu-btn');
+        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (mobileMenuButton) {
+          mobileMenuButton.classList.remove('open');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
         lastFocus = document.activeElement;
         modal.hidden = false;
         document.body.style.overflow = 'hidden';
