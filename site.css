@@ -705,6 +705,16 @@ nav {
   align-items:center;
   justify-content:center;
   text-align:center;
+  min-height:300px;
+  padding:clamp(32px, 5vw, 48px) clamp(24px, 5vw, 54px);
+}
+.jobs-list .card h3 {
+  font-size:clamp(1.55rem, 3.2vw, 2.1rem);
+  line-height:1.45;
+  word-break:keep-all;
+}
+.jobs-list .card > p:not(.livestream-eyebrow) {
+  font-size:clamp(.94rem, 1.6vw, 1.02rem);
 }
 .jobs-list .card p,
 .jobs-list .card ul {
@@ -719,6 +729,107 @@ nav {
 }
 .jobs-list .card li {
   text-align:center;
+}
+.livestream-job-card .livestream-eyebrow {
+  width:auto;
+  margin:0 auto 8px;
+  color:var(--accent2);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.28em;
+}
+.livestream-job-card h3 {
+  margin-bottom:16px;
+  color:var(--text);
+  line-height:1.45;
+  word-break:keep-all;
+}
+.livestream-job-card .livestream-lead {
+  max-width:760px;
+  font-size:clamp(.94rem, 1.8vw, 1.05rem);
+  line-height:2;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.livestream-job-card .livestream-highlights {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:0;
+  max-width:840px;
+  margin:28px auto 0;
+  padding:0;
+  list-style:none;
+  border-top:1px solid rgba(200,169,110,.24);
+  border-bottom:1px solid rgba(200,169,110,.24);
+}
+.livestream-job-card .livestream-highlights li {
+  display:flex;
+  min-width:0;
+  padding:22px 18px;
+  flex-direction:column;
+  gap:7px;
+}
+.livestream-job-card .livestream-highlights li + li {
+  border-left:1px solid rgba(200,169,110,.18);
+}
+.livestream-highlights strong,
+.job-resource-list strong {
+  color:var(--accent2);
+  font-size:.96rem;
+  line-height:1.55;
+  word-break:keep-all;
+}
+.livestream-highlights span,
+.job-resource-list span {
+  display:block;
+  color:var(--muted);
+  font-size:.84rem;
+  line-height:1.8;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.job-resources {
+  width:100%;
+  max-width:840px;
+  margin:38px auto 0;
+}
+.job-resources h4 {
+  margin-bottom:14px;
+  color:var(--text);
+  font-family:'Noto Serif TC', serif;
+  font-size:1.2rem;
+  letter-spacing:.08em;
+}
+.job-resource-list {
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  column-gap:34px;
+  width:100%;
+  margin:0;
+  padding:0;
+  list-style:none;
+  counter-reset:livestream-resource;
+}
+.job-resource-list li {
+  position:relative;
+  display:grid;
+  min-width:0;
+  min-height:106px;
+  padding:20px 10px 20px 46px;
+  align-content:center;
+  gap:6px;
+  border-top:1px solid rgba(200,169,110,.16);
+  text-align:left !important;
+  counter-increment:livestream-resource;
+}
+.job-resource-list li::before {
+  content:counter(livestream-resource, decimal-leading-zero);
+  position:absolute;
+  top:23px;
+  left:4px;
+  color:rgba(200,169,110,.58);
+  font-family:'Noto Serif TC', serif;
+  font-size:.78rem;
 }
 .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
 .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
@@ -2665,6 +2776,34 @@ footer {
     margin:0 auto 70px;
   }
   .jobs-list { margin-bottom:64px; }
+  .livestream-job-card .livestream-eyebrow {
+    letter-spacing:.2em;
+  }
+  .livestream-job-card .livestream-lead br {
+    display:none;
+  }
+  .livestream-job-card .livestream-highlights,
+  .job-resource-list {
+    grid-template-columns:1fr;
+  }
+  .livestream-job-card .livestream-highlights li {
+    padding:18px 10px;
+  }
+  .livestream-job-card .livestream-highlights li + li {
+    border-top:1px solid rgba(200,169,110,.16);
+    border-left:0;
+  }
+  .job-resources {
+    margin-top:30px;
+  }
+  .job-resource-list li {
+    min-height:94px;
+    padding:17px 4px 17px 42px;
+  }
+  .job-resource-list li::before {
+    top:20px;
+    left:2px;
+  }
   .jobs-tool-block {
     scroll-margin-top:86px;
   }
@@ -2682,6 +2821,13 @@ footer {
     font-size:.9rem;
     line-height:1.85;
     letter-spacing:.02em;
+  }
+  .jobs-list .card {
+    min-height:0;
+    padding:26px 20px;
+  }
+  .jobs-list .card h3 {
+    font-size:clamp(1.35rem, 6.2vw, 1.7rem);
   }
   .topic-list { margin-top:8px; gap:0; }
   .topic-item {
