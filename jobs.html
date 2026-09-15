@@ -46,7 +46,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css?v=20260916-livestream1" />
+  <link rel="stylesheet" href="site.css?v=20260916-resources2" />
   <style>
     @media (max-width: 1100px) {
       .nav-links { display: none !important; }
@@ -115,8 +115,8 @@
               <li>排班：午場晚場都有 可以兼職與短期</li>
             </ul>
             <div class="job-resources">
-              <h4>我們提供的資源</h4>
-              <ol class="job-resource-list">
+              <button class="job-resources-toggle" type="button" aria-expanded="false" aria-controls="hotel-resources" onclick="toggleJobResources(this)"><span>我們提供的資源</span><span class="job-resources-toggle-icon" aria-hidden="true">＋</span></button>
+              <ol class="job-resource-list" id="hotel-resources" hidden>
                 <li><strong>工作內容先說清楚</strong><span>包廂互動　桌面服務與現場規則</span></li>
                 <li><strong>店家與時段比較</strong><span>午場　晚場與不同店型先了解</span></li>
                 <li><strong>薪資扣款說明</strong><span>節薪　發薪與店家扣款逐項確認</span></li>
@@ -136,8 +136,8 @@
               <li>排班：午場晚場都有 可以兼職與短期</li>
             </ul>
             <div class="job-resources">
-              <h4>我們提供的資源</h4>
-              <ol class="job-resource-list">
+              <button class="job-resources-toggle" type="button" aria-expanded="false" aria-controls="beauty-resources" onclick="toggleJobResources(this)"><span>我們提供的資源</span><span class="job-resources-toggle-icon" aria-hidden="true">＋</span></button>
+              <ol class="job-resource-list" id="beauty-resources" hidden>
                 <li><strong>工作內容與禁忌</strong><span>面試前把實際範圍完整說清楚</span></li>
                 <li><strong>店家環境比較</strong><span>先了解場地與實際工作方式</span></li>
                 <li><strong>薪資小費說明</strong><span>時薪　小費與店家扣款逐項確認</span></li>
@@ -157,8 +157,8 @@
               <li>排班：彈性但需要即時回覆與跟進</li>
             </ul>
             <div class="job-resources">
-              <h4>我們提供的資源</h4>
-              <ol class="job-resource-list">
+              <button class="job-resources-toggle" type="button" aria-expanded="false" aria-controls="agent-resources" onclick="toggleJobResources(this)"><span>我們提供的資源</span><span class="job-resources-toggle-icon" aria-hidden="true">＋</span></button>
+              <ol class="job-resource-list" id="agent-resources" hidden>
                 <li><strong>入門工作說明</strong><span>先了解聯絡　跟進與陪伴方式</span></li>
                 <li><strong>溝通方式整理</strong><span>把工作內容與規則清楚說明</span></li>
                 <li><strong>職缺資訊整理</strong><span>薪資　排班與注意事項方便確認</span></li>
@@ -179,8 +179,8 @@
               <li><strong>有才藝更加分</strong><span>唱歌　聊天　才藝展示都可以</span></li>
             </ul>
             <div class="job-resources">
-              <h4>我們提供的資源</h4>
-              <ol class="job-resource-list">
+              <button class="job-resources-toggle" type="button" aria-expanded="false" aria-controls="livestream-resources" onclick="toggleJobResources(this)"><span>我們提供的資源</span><span class="job-resources-toggle-icon" aria-hidden="true">＋</span></button>
+              <ol class="job-resource-list" id="livestream-resources" hidden>
                 <li><strong>免費提供獨立專業直播間</strong><span>高端燈光　攝影　收音　全套設備</span></li>
                 <li><strong>專業妝造團隊</strong><span>全程形象設計　妝容造型　風格定位</span></li>
                 <li><strong>專屬編導定制</strong><span>個人人設　直播內容　發展路線與爆款選題</span></li>
@@ -204,8 +204,8 @@
               <li>方式：先詢問清楚　再由你自己決定</li>
             </ul>
             <div class="job-resources">
-              <h4>我們提供的資源</h4>
-              <ol class="job-resource-list">
+              <button class="job-resources-toggle" type="button" aria-expanded="false" aria-controls="other-resources" onclick="toggleJobResources(this)"><span>我們提供的資源</span><span class="job-resources-toggle-icon" aria-hidden="true">＋</span></button>
+              <ol class="job-resource-list" id="other-resources" hidden>
                 <li><strong>條件與顧慮整理</strong><span>先把時間　需求與不能接受的事情說清楚</span></li>
                 <li><strong>工作方向比較</strong><span>依目前條件整理適合了解的選擇</span></li>
                 <li><strong>實際內容確認</strong><span>名稱之外更要確認真正的工作範圍</span></li>
@@ -338,6 +338,19 @@
     <span class="site-line-dot"></span>
     <span>立即詢問</span>
   </a>
+  <script>
+    function toggleJobResources(button) {
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      if (!panel) return;
+
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      panel.hidden = isExpanded;
+
+      const icon = button.querySelector('.job-resources-toggle-icon');
+      if (icon) icon.textContent = isExpanded ? '＋' : '－';
+    }
+  </script>
   <script src="site.js?v=20260612-mobile1"></script>
 </body>
 </html>
