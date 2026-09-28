@@ -1,5 +1,5 @@
 window.AS_SITE_CONFIG = Object.freeze({
-  officialInstagram: 'https://www.instagram.com/angus.no23/'
+  officialInstagram: 'https://www.instagram.com/angus.no28/'
 });
 
 document.addEventListener('DOMContentLoaded', function () {
