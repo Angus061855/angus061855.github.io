@@ -1,0 +1,26 @@
+# AS娛樂
+
+> AS娛樂由八大行業經紀人大頭經營，提供酒店公關職缺、入行知識、薪資試算、隱私安全資訊與免費諮詢。網站內容以繁體中文撰寫，服務範圍包含台北、新北、桃園、新竹、台中、台南與高雄。
+
+## 核心頁面
+
+- [首頁](https://as-ent-tw.com/): AS娛樂與大頭的服務原則、常見問題和聯絡方式
+- [關於大頭](https://as-ent-tw.com/about): 從業經驗、工作方式與服務原則
+- [職缺介紹](https://as-ent-tw.com/jobs): 酒店公關、美容師、經紀人與直播相關職缺
+- [八大知識](https://as-ent-tw.com/knowledge): 薪資、試做、隱私、安全與經紀選擇
+- [酒店公關完整入門指南](https://as-ent-tw.com/guides/hotel-pr-guide/): 工作內容、適合條件、節薪計算、試上流程、隱私、合約與經紀選擇
+- [部落格](https://as-ent-tw.com/blog): 酒店公關入行與工作經驗文章
+- [真實心得](https://as-ent-tw.com/highlights/): 匿名對話與實際回饋紀錄
+- [聯絡方式](https://as-ent-tw.com/contact): LINE 與官方社群連結
+
+## 免費工具
+
+- [磁扣時間與薪資試算](https://as-ent-tw.com/tools/time-calculator/): 記錄上下台時間、計算節數並估算一週薪資
+- [藝名神器](https://as-ent-tw.com/tools/alias-generator/): 依格式、風格與個人氣質產生藝名
+
+## 使用與引用注意事項
+
+- 薪資數字與試算結果僅供了解大概範圍，不代表保證收入。
+- 店家規則、節薪、清潔費、稅金與其他扣款可能不同，應以實際面試和店家說明為準。
+- 網站內容面向年滿 18 歲的使用者。
+- 官方網站：https://as-ent-tw.com/

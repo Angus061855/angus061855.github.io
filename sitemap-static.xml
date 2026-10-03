@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://as-ent-tw.com/</loc></url>
-  <url><loc>https://as-ent-tw.com/contact</loc></url>
-  <url><loc>https://as-ent-tw.com/landing-b/</loc></url>
-  <url><loc>https://as-ent-tw.com/about</loc></url>
-  <url><loc>https://as-ent-tw.com/jobs</loc></url>
-  <url><loc>https://as-ent-tw.com/knowledge</loc></url>
-  <url><loc>https://as-ent-tw.com/blog</loc></url>
-  <url><loc>https://as-ent-tw.com/highlights/</loc></url>
-  <url><loc>https://as-ent-tw.com/privacy</loc></url>
-  <url><loc>https://as-ent-tw.com/disclaimer</loc></url>
+  <url><loc>https://as-ent-tw.com/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/contact</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/about</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/jobs</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/knowledge</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/guides/hotel-pr-guide/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/blog</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/highlights/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/tools/alias-generator/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/tools/time-calculator/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/privacy</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://as-ent-tw.com/disclaimer</loc><lastmod>2026-10-03</lastmod></url>
 </urlset>
