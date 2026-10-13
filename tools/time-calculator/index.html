@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090909"><link rel="icon" href="/logo.webp?v=20260604-logo2" type="image/webp"><title>磁扣時間與薪資試算｜AS娛樂</title>
-  <meta name="description" content="把上下台時間、節數與扣除項目整理清楚，再估算一週大概能拿多少。">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090909"><link rel="icon" href="/logo.webp?v=20260604-logo2" type="image/webp"><title>磁扣時間與薪資試算｜酒店公關節數薪水計算｜AS娛樂</title>
+  <meta name="description" content="酒店公關薪資試算工具：輸入上下台時間、節數與扣除項目，換算磁扣時間並估算一週大約收入。結果只是參考，實際以店家規定為準。">
   <meta name="author" content="AS娛樂 大頭">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://as-ent-tw.com/tools/time-calculator/">
-  <meta property="og:title" content="磁扣時間與薪資試算｜AS娛樂">
-  <meta property="og:description" content="把上下台時間、節數與扣除項目整理清楚，再估算一週大概能拿多少。">
+  <meta property="og:title" content="磁扣時間與薪資試算｜酒店公關節數薪水計算｜AS娛樂">
+  <meta property="og:description" content="酒店公關薪資試算工具：輸入上下台時間、節數與扣除項目，換算磁扣時間並估算一週大約收入。結果只是參考，實際以店家規定為準。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://as-ent-tw.com/tools/time-calculator/">
   <meta property="og:image" content="https://as-ent-tw.com/assets/og/time-20260912.png?v=20260912-fabric2">
@@ -15,8 +15,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AS娛樂 磁扣時間與薪資試算">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="磁扣時間與薪資試算｜AS娛樂">
-  <meta name="twitter:description" content="把上下台時間、節數與扣除項目整理清楚，再估算一週大概能拿多少。">
+  <meta name="twitter:title" content="磁扣時間與薪資試算｜酒店公關節數薪水計算｜AS娛樂">
+  <meta name="twitter:description" content="酒店公關薪資試算工具：輸入上下台時間、節數與扣除項目，換算磁扣時間並估算一週大約收入。結果只是參考，實際以店家規定為準。">
   <meta name="twitter:image" content="https://as-ent-tw.com/assets/og/time-20260912.png?v=20260912-fabric2">
   <script type="application/ld+json">
   {
@@ -49,7 +49,7 @@
     .timer-actions{grid-template-columns:1fr}.timer-actions .button{min-height:72px;margin-top:10px;font-size:20px}.timer-actions .start{background:linear-gradient(135deg,#d5ae63,#efd28f);border-color:#efd28f;color:#171108}.timer-actions .pause{background:linear-gradient(135deg,#155c3d,#2fa56f);border-color:#45c98a;color:#e6fff0}.timer-actions .end{background:linear-gradient(135deg,#762b2b,#b9514d);border-color:#df8178;color:#fff1ef}.uncertain{border:1px solid rgba(211,174,99,.45);border-radius:5px;color:var(--gold);background:rgba(211,174,99,.08);padding:12px 18px}
   </style>
 </head>
-<body><main class="wrap"><nav class="top"><a class="brand" href="../../index.html"><img src="../../logo.webp" alt="AS娛樂"><span>AS娛樂</span></a><a class="back" href="../../index.html">回到首頁</a></nav><header class="hero"><div class="kicker">WORK & INCOME</div><h1>磁扣時間與薪資試算</h1><p>把上下台時間、節數與扣除項目整理清楚，再估算一週大概能拿多少。</p></header><section class="panel"><div class="tabs"><button class="tab active" data-tab="time">上下台時間</button><button class="tab" data-tab="income">一週薪資</button></div>
+<body><main class="wrap"><nav class="top"><a class="brand" href="../../index.html"><img src="../../logo.webp" alt="AS娛樂"><span>AS娛樂</span></a><a class="back" href="../../index.html">回到首頁</a></nav><header class="hero"><div class="kicker">WORK & INCOME</div><h1>磁扣時間與薪資試算</h1><p>酒店公關薪資試算工具：輸入上下台時間、節數與扣除項目，換算磁扣時間並估算一週大約收入。結果只是參考，實際以店家規定為準。</p></header><section class="panel"><div class="tabs"><button class="tab active" data-tab="time">上下台時間</button><button class="tab" data-tab="income">一週薪資</button></div>
   <div class="view" id="time"><h2 class="subhead">今天上班多久？</h2><div class="timer-card"><div class="timer-display" id="timerDisplay">00:00:00</div><div class="timer-status" id="timerStatus">尚未開始</div><div class="timer-actions"><button class="button start" id="startTimer">上台</button><button class="button pause" id="pauseTimer" disabled>下台</button><button class="button end" id="endTimer" disabled>結束計時</button></div><button class="uncertain" id="uncertainTimer">不確定今天的時間</button></div><div class="summary" id="timeResult"><div class="metric"><span>累計工作時間</span><strong>0 分鐘</strong></div><div class="metric"><span>約幾節</span><strong>0 節</strong></div><div class="metric"><span>計算方式</span><strong>10 分鐘／節</strong></div></div><p class="note" id="timerNote">按下「上台」開始，按「下台」暫停，最後按「結束計時」。</p></div>
   <div class="view" id="income" hidden><h2 class="subhead">一週大概實拿多少？</h2><div class="grid week-grid"><div class="field"><label for="mon">週一節數</label><input class="day-sections" id="mon" type="number" min="0" value="0"></div><div class="field"><label for="tue">週二節數</label><input class="day-sections" id="tue" type="number" min="0" value="0"></div><div class="field"><label for="wed">週三節數</label><input class="day-sections" id="wed" type="number" min="0" value="0"></div><div class="field"><label for="thu">週四節數</label><input class="day-sections" id="thu" type="number" min="0" value="0"></div><div class="field"><label for="fri">週五節數</label><input class="day-sections" id="fri" type="number" min="0" value="0"></div><div class="field"><label for="sat">週六節數</label><input class="day-sections" id="sat" type="number" min="0" value="0"></div><div class="field"><label for="sun">週日節數</label><input class="day-sections" id="sun" type="number" min="0" value="48"></div><div class="field"><label for="rate">每節薪資（自己填）</label><input id="rate" type="number" min="0" value="250"></div><div class="field"><label for="cleaning">清潔費</label><input id="cleaning" type="number" min="0" value="0"></div><div class="field"><label for="tax">稅金</label><input id="tax" type="number" min="0" value="0"></div><div class="field"><label for="other">其他費用（髮妝、櫃子等）</label><input id="other" type="number" min="0" value="0"></div></div><button class="button" id="calcIncome">試算一週收入</button><div class="income" id="incomeResult"><div class="income-row"><span>一週總節數</span><strong>48 節</strong></div><div class="income-row"><span>原始收入</span><strong>12,000 元</strong></div><div class="income-row"><span>預估扣除</span><strong>0 元</strong></div><div class="income-row total"><span>預估實拿</span><strong>12,000 元</strong></div></div></div><p class="note">這是自行輸入的估算工具，實際薪資依店家、班別與當週狀況為準。想確認適合自己的安排，可以直接<a class="line" href="../../contact.html">來問我</a>。</p></section></main>
   <script>
