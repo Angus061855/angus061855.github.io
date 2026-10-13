@@ -487,12 +487,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://as-ent-tw.com/post/post-20260801-130535</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://as-ent-tw.com/post/post-20260731-115307</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -525,6 +519,18 @@
   <url>
     <loc>https://as-ent-tw.com/post/post-20260729-135519</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://as-ent-tw.com/post/post-20260728-195127</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://as-ent-tw.com/post/post-20260726-111450</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
