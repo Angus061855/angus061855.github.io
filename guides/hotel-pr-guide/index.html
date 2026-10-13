@@ -28,6 +28,28 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Person",
+          "@id": "https://as-ent-tw.com/#person",
+          "name": "大頭",
+          "url": "https://as-ent-tw.com/about",
+          "worksFor": { "@id": "https://as-ent-tw.com/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://as-ent-tw.com/#organization",
+          "name": "AS娛樂",
+          "url": "https://as-ent-tw.com/",
+          "logo": { "@type": "ImageObject", "url": "https://as-ent-tw.com/logo.webp" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://as-ent-tw.com/#website",
+          "name": "AS娛樂",
+          "url": "https://as-ent-tw.com/",
+          "inLanguage": "zh-Hant-TW",
+          "publisher": { "@id": "https://as-ent-tw.com/#organization" }
+        },
+        {
           "@type": "Article",
           "@id": "https://as-ent-tw.com/guides/hotel-pr-guide/#article",
           "headline": "酒店公關是什麼？工作內容、薪水、條件與入行流程",

@@ -8,6 +8,7 @@ let response;
 for (let attempt = 0; attempt < 4; attempt += 1) {
   try {
     response = await fetch(sourceUrl, {
+      signal: AbortSignal.timeout(20000),
       headers: { Accept: 'application/xml,text/xml;q=0.9,*/*;q=0.8' }
     });
     if (response.ok) break;
@@ -47,6 +48,7 @@ async function verifyEntry() {
     for (let attempt = 0; attempt < 3; attempt += 1) {
       try {
         const articleResponse = await fetch(entry.loc, {
+          signal: AbortSignal.timeout(15000),
           headers: { Accept: 'text/html' },
           redirect: 'manual'
         });
@@ -65,8 +67,21 @@ async function verifyEntry() {
   }
 }
 
-await Promise.all(Array.from({ length: 4 }, verifyEntry));
+// Keep origin load low: parallel live checks produced intermittent 404/500s.
+await verifyEntry();
 verifiedEntries.sort((a, b) => b.lastmod.localeCompare(a.lastmod) || a.loc.localeCompare(b.loc));
+
+// Live checks have returned 404 for source-listed articles that later returned 200.
+// A source-listed 404 is therefore uncertain on this site, not proof of removal.
+// Only an explicit permanent redirect or Gone response can remove an entry here.
+// Temporary redirects and 304 (Not Modified) must not silently drop URLs either.
+const uncertainEntries = invalidEntries.filter(({ status }) =>
+  ![301, 308, 410].includes(status)
+);
+if (uncertainEntries.length) {
+  throw new Error(`Unable to verify ${uncertainEntries.length} article URLs; preserving the existing sitemap.\n` +
+    uncertainEntries.map(({ loc, status }) => `${status || 'network error'}: ${loc}`).join('\n'));
+}
 
 if (verifiedEntries.length < 50) {
   throw new Error(`Only ${verifiedEntries.length} article URLs passed verification; refusing to replace sitemap.`);
