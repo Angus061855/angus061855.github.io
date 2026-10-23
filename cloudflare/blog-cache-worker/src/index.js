@@ -135,6 +135,8 @@ async function slugIsListed(env, cache, origin, slug) {
   try {
     const posts = await res.json();
     if (!Array.isArray(posts) || posts.length === 0) return null;
-    return posts.some(p => p && p.slug === slug);
+    if (posts.some(p => p && p.slug === slug)) return true;
+    // API 一次最多回 100 篇，清單滿了就無法確認較舊文章是否存在
+    return posts.length >= 100 ? null : false;
   } catch { return null; }
 }
