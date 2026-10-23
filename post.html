@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/logo.webp?v=20260604-logo2" type="image/webp"/>
@@ -355,7 +355,7 @@
 
 <script src="/voice-posts.js?v=20260613-voice1"></script>
 <script>
-  const WORKER = 'https://polished-truth-9fc2.angus061855.workers.dev';
+  const WORKER = 'https://as-blog-cache.angus061855.workers.dev'; // 有快取與重試的代理；原始來源 polished-truth-9fc2
   const POST_CACHE_PREFIX = 'as-blog-post-v1:';
   function readPostCache(slug) {
     try {
@@ -571,6 +571,8 @@
         headline:title,
         image:[imageUrl],
         datePublished:post.date,
+        dateModified:post.updated || post.last_edited_time || post.date,
+        inLanguage:'zh-Hant-TW',
         author:{ '@type':'Person', name:'大頭', url:'https://as-ent-tw.com/about' },
         publisher:{
           '@type':'Organization',
