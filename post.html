@@ -11,11 +11,11 @@
   <meta name="description" content="AS娛樂經紀人大頭的酒店公關入行文章：節薪計算、扣款、試上、隱私與經紀選擇。限年滿 18 歲，台北酒店公關免費 LINE 諮詢。"/>
   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,酒店打工,兼職,酒店經紀人推薦"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://as-ent-tw.com/post"/>
+  <link rel="canonical" href="https://as-ent-tw.com/blog"/>
   <meta property="og:title" content="酒店公關文章｜AS娛樂 大頭"/>
   <meta property="og:description" content="酒店公關入行知識、薪資、面試流程與工作建議。"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:url" content="https://as-ent-tw.com/post"/>
+  <meta property="og:url" content="https://as-ent-tw.com/blog"/>
   <meta property="og:image" content="https://as-ent-tw.com/assets/og/blog-20260912.png?v=20260912-fabric2"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
@@ -24,8 +24,40 @@
   <meta name="twitter:title" content="酒店公關文章｜AS娛樂 大頭"/>
   <meta name="twitter:description" content="酒店公關入行知識、薪資、面試流程與工作建議。"/>
   <meta name="twitter:image" content="https://as-ent-tw.com/assets/og/blog-20260912.png?v=20260912-fabric2"/>
-  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/post"/>
-  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/post"/>
+  <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/blog"/>
+  <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/blog"/>
+  <script>
+    function legacyShellDecision(pathname, search) {
+      const path = String(pathname || '/').replace(/\/+$/, '') || '/';
+      if (path !== '/post' && path !== '/post.html') return null;
+      const raw = new URLSearchParams(search || '').get('slug');
+      let slug = raw == null ? '' : String(raw).trim();
+      if (/^\d{8}-\d{6}$/.test(slug)) slug = 'post-' + slug;
+      if (!slug) return { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' };
+      if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,120}$/.test(slug)) {
+        return { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' };
+      }
+      const pathUrl = '/post/' + encodeURIComponent(slug);
+      return { canonical: 'https://as-ent-tw.com' + pathUrl, replace: null, slug: slug, pathUrl: pathUrl };
+    }
+    function legacyShellAfterLookup(decision, exists) {
+      if (!decision || !decision.slug) return decision;
+      if (exists === false) return { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' };
+      return { canonical: decision.canonical, replace: decision.pathUrl };
+    }
+    (function () {
+      const decision = legacyShellDecision(location.pathname, location.search);
+      if (!decision) return;
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.setAttribute('href', decision.canonical);
+      document.querySelectorAll('link[rel="alternate"]').forEach(function (link) {
+        link.setAttribute('href', decision.canonical);
+      });
+      const og = document.querySelector('meta[property="og:url"]');
+      if (og) og.setAttribute('content', decision.canonical);
+      if (decision.replace) location.replace(decision.replace);
+    })();
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="32x32"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -691,7 +723,33 @@
     document.getElementById('error').style.display = 'none';
   }
 
+  function applyShellCanonical(url) {
+    const canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute('href', url);
+    document.querySelectorAll('link[rel="alternate"]').forEach(link => link.setAttribute('href', url));
+    setMetaContent('meta[property="og:url"]', url);
+  }
+  async function slugExists(slug) {
+    if (LOCAL_POSTS[slug] || readPostCache(slug)?.data) return true;
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3500);
+      const res = await fetch(`${WORKER}/posts/${encodeURIComponent(slug)}`, { signal: controller.signal, cache:'force-cache' });
+      clearTimeout(timeout);
+      if (res.status === 404) return false;
+      return res.ok ? true : null;
+    } catch {
+      return null;
+    }
+  }
   async function loadPost() {
+    const shell = legacyShellDecision(window.location.pathname, window.location.search);
+    if (shell) {
+      const next = shell.slug ? legacyShellAfterLookup(shell, await slugExists(shell.slug)) : shell;
+      applyShellCanonical(next.canonical);
+      window.location.replace(next.replace);
+      return;
+    }
     const pathMatch = window.location.pathname.match(/^\/post\/([^/]+)\/?$/);
     const requestedSlug = new URLSearchParams(window.location.search).get('slug')
       || (pathMatch ? decodeURIComponent(pathMatch[1]) : '');
