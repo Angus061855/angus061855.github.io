@@ -116,6 +116,9 @@ test('empty post shell and legacy slug URLs leave the noindex shell', async () =
   assert.equal(legacyShellDecision('/post/post-1', ''), null);
   assert.match(html, /<link rel="canonical" href="https:\/\/as-ent-tw.com\/blog"\/>/);
   assert.match(html, /location\.replace\(decision\.replace\)/);
+  assert.match(html, /function canonicalPostExists\(pathUrl\)/);
+  assert.match(html, /method: 'HEAD', redirect: 'manual'/);
+  assert.match(html, /await canonicalPostExists\(shell\.pathUrl\)/);
 });
 
 test('brand noindex page canonical points at itself', async () => {

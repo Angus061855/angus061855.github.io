@@ -729,15 +729,16 @@
     document.querySelectorAll('link[rel="alternate"]').forEach(link => link.setAttribute('href', url));
     setMetaContent('meta[property="og:url"]', url);
   }
-  async function slugExists(slug) {
-    if (LOCAL_POSTS[slug] || readPostCache(slug)?.data) return true;
+  async function canonicalPostExists(pathUrl) {
+    // 文章頁 Worker 才是 /post/<slug> 是否存在的依據。JSON API 會把仍會 301 的舊 slug 回成 404。
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 3500);
-      const res = await fetch(`${WORKER}/posts/${encodeURIComponent(slug)}`, { signal: controller.signal, cache:'force-cache' });
+      const res = await fetch(pathUrl, { method: 'HEAD', redirect: 'manual', signal: controller.signal });
       clearTimeout(timeout);
       if (res.status === 404) return false;
-      return res.ok ? true : null;
+      if (res.ok || res.type === 'opaqueredirect' || res.status === 301 || res.status === 302 || res.status === 307 || res.status === 308) return true;
+      return null;
     } catch {
       return null;
     }
@@ -745,7 +746,7 @@
   async function loadPost() {
     const shell = legacyShellDecision(window.location.pathname, window.location.search);
     if (shell) {
-      const next = shell.slug ? legacyShellAfterLookup(shell, await slugExists(shell.slug)) : shell;
+      const next = shell.slug ? legacyShellAfterLookup(shell, await canonicalPostExists(shell.pathUrl)) : shell;
       applyShellCanonical(next.canonical);
       window.location.replace(next.replace);
       return;
