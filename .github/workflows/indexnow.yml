@@ -1,0 +1,32 @@
+name: IndexNow
+
+# 變更進到 main 之後，把有改動的頁面網址與 sitemap 提交給 IndexNow。
+# api.indexnow.org 回錯或連不上時，腳本會以結束碼 0 離開，不讓這個工作流程失敗。
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Submit changed URLs to IndexNow
+        env:
+          INDEXNOW_BEFORE: ${{ github.event.before }}
+          INDEXNOW_SHA: ${{ github.sha }}
+        run: node scripts/indexnow.mjs

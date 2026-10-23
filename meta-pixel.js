@@ -15,14 +15,17 @@
   fbq.version = '2.0';
   fbq.queue = [];
 
-  var script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://connect.facebook.net/en_US/fbevents.js';
-  var firstScript = document.getElementsByTagName('script')[0];
-  firstScript.parentNode.insertBefore(script, firstScript);
-
   fbq('init', '1576529224516912');
   fbq('track', 'PageView');
+
+  function loadFacebookPixel() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(script);
+  }
+  if (window.requestIdleCallback) requestIdleCallback(loadFacebookPixel, { timeout: 2000 });
+  else window.addEventListener('load', loadFacebookPixel, { once: true });
 
   document.addEventListener('click', function (event) {
     var link = event.target.closest('a[href]');

@@ -1,4 +1,80 @@
+# AS娛樂 as-ent-tw.com
+# 公開頁面歡迎搜尋引擎、AI 搜尋／答案引擎，以及 AI 訓練爬蟲。
+# 404 頁不收錄。沒有另外的管理後台路徑。
+
 User-agent: *
 Allow: /
+Disallow: /404.html
+
+# --- 搜尋引擎 ---
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /404.html
+
+User-agent: Applebot
+Allow: /
+Disallow: /404.html
+
+# --- AI 搜尋與答案引擎 ---
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /404.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /404.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /404.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Claude-User
+Allow: /
+Disallow: /404.html
+
+# --- AI 訓練爬蟲（公開頁面允許） ---
+User-agent: GPTBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /404.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /404.html
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /404.html
+
+User-agent: CCBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /404.html
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /404.html
+
+User-agent: Bytespider
+Allow: /
+Disallow: /404.html
 
 Sitemap: https://as-ent-tw.com/sitemap.xml

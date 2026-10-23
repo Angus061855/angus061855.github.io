@@ -2,26 +2,27 @@
 <html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32"/>
   <link rel="icon" href="logo.webp?v=20260604-logo2" type="image/webp"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>台北酒店公關招募｜AS娛樂・八大最誠實經紀大頭</title>
+  <title>台北酒店公關招募與入行諮詢｜AS娛樂 大頭</title>
   <meta name="author" content="AS娛樂 大頭"/>
   <meta name="theme-color" content="#080808"/>
-  <meta name="description" content="大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北、新北、桃園、台中、高雄酒店公關招募諮詢完全免費。"/>
+  <meta name="description" content="AS娛樂經紀人大頭，說明酒店公關工作內容、節薪計算、店家扣款與試上流程，入行前先把細節說清楚。限年滿 18 歲，台北、新北、桃園、台中、高雄免費 LINE 諮詢。"/>
   <meta name="keywords" content="酒店經紀,八大經紀,台北酒店公關,新北酒店,桃園酒店,台中酒店,高雄酒店,台南酒店,酒店打工,兼職,酒店經紀人推薦"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://as-ent-tw.com/"/>
-  <meta property="og:title" content="台北酒店公關招募｜AS娛樂・大頭"/>
-  <meta property="og:description" content="先把資訊與擔心的事了解清楚，再決定下一步要不要聊。"/>
+  <meta property="og:title" content="台北酒店公關招募與入行諮詢｜AS娛樂 大頭"/>
+  <meta property="og:description" content="AS娛樂經紀人大頭，說明酒店公關工作內容、節薪計算、店家扣款與試上流程，入行前先把細節說清楚。限年滿 18 歲，台北、新北、桃園、台中、高雄免費 LINE 諮詢。"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://as-ent-tw.com/"/>
   <meta property="og:image" content="https://as-ent-tw.com/assets/og/home-20260912.png?v=20260912-fabric2"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-  <meta property="og:image:alt" content="AS娛樂 大頭 八大最誠實經紀人 不要讓未來的你討厭現在的自己"/>
+  <meta property="og:image:alt" content="AS娛樂 大頭 酒店公關招募 不要讓未來的你討厭現在的自己"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="台北酒店公關招募｜AS娛樂・大頭"/>
-  <meta name="twitter:description" content="先把資訊與擔心的事了解清楚，再決定下一步要不要聊。"/>
+  <meta name="twitter:title" content="台北酒店公關招募與入行諮詢｜AS娛樂 大頭"/>
+  <meta name="twitter:description" content="AS娛樂經紀人大頭，說明酒店公關工作內容、節薪計算、店家扣款與試上流程，入行前先把細節說清楚。限年滿 18 歲，台北、新北、桃園、台中、高雄免費 LINE 諮詢。"/>
   <meta name="twitter:image" content="https://as-ent-tw.com/assets/og/home-20260912.png?v=20260912-fabric2"/>
   <link rel="alternate" hreflang="zh-TW" href="https://as-ent-tw.com/"/>
   <link rel="alternate" hreflang="x-default" href="https://as-ent-tw.com/"/>
@@ -32,12 +33,19 @@
 
   <!-- 14. Google Analytics — 換成你的 G-XXXXXXXX -->
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q2RL2ENRW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3Q2RL2ENRW');
+  function loadGoogleAnalytics() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3Q2RL2ENRW';
+    document.head.appendChild(script);
+  }
+  if (window.requestIdleCallback) requestIdleCallback(loadGoogleAnalytics, { timeout: 2000 });
+  else window.addEventListener('load', loadGoogleAnalytics, { once: true });
 </script>
 
   <!-- 14. Microsoft Clarity — 換成你的 ID -->
@@ -48,12 +56,22 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "EmploymentAgency"],
         "@id": "https://as-ent-tw.com/#organization",
         "name": "AS娛樂",
+        "alternateName": "AS娛樂 大頭",
+        "description": "由經紀人大頭經營的八大行業求職資訊與酒店公關職缺諮詢服務，只服務年滿 18 歲的成年人。",
         "url": "https://as-ent-tw.com/",
+        "image": "https://as-ent-tw.com/og-image.jpg",
+        "founder": { "@id": "https://as-ent-tw.com/#person" },
+        "areaServed": ["台北市", "新北市", "桃園市", "新竹市", "台中市", "台南市", "高雄市"],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "求職諮詢", "url": "https://lin.ee/8COZQMn", "availableLanguage": ["zh-Hant"] },
         "logo": { "@type": "ImageObject", "url": "https://as-ent-tw.com/logo.webp" },
         "sameAs": [
+          "https://as-ent-tw.com/",
+          "https://portaly.cc/angus061855",
+          "https://lin.ee/8COZQMn",
+          "https://line.me/ti/p/tTUQTPHKrE",
           "https://www.instagram.com/angus.no28/",
           "https://www.tiktok.com/@angus061855"
         ]
@@ -63,7 +81,7 @@
         "@id": "https://as-ent-tw.com/#person",
         "name": "大頭",
         "jobTitle": "八大行業經紀人",
-        "description": "七年八大行業從業經驗，個人面試超過3000位，台北最誠實的酒店公關經紀人",
+        "description": "AS娛樂經紀人，八大行業經驗七年，提供酒店公關入行說明與職缺諮詢。",
         "url": "https://as-ent-tw.com/about",
         "worksFor": { "@id": "https://as-ent-tw.com/#organization" },
         "sameAs": ["https://www.instagram.com/angus.no28/"]
@@ -80,8 +98,8 @@
         "@type": "WebPage",
         "@id": "https://as-ent-tw.com/#webpage",
         "url": "https://as-ent-tw.com/",
-        "name": "台北酒店公關招募｜AS娛樂・八大最誠實經紀大頭",
-        "description": "大頭，八大最誠實經紀人，七年經驗3000位面試。不簽合約、不壓薪水、自由排班。台北、新北、桃園、台中、高雄酒店公關招募諮詢完全免費。",
+        "name": "台北酒店公關招募與入行諮詢｜AS娛樂 大頭",
+        "description": "AS娛樂經紀人大頭，說明酒店公關工作內容、節薪計算、店家扣款與試上流程，入行前先把細節說清楚。限年滿 18 歲，台北、新北、桃園、台中、高雄免費 LINE 諮詢。",
         "inLanguage": "zh-Hant-TW",
         "isPartOf": { "@id": "https://as-ent-tw.com/#website" },
         "about": { "@id": "https://as-ent-tw.com/#person" }
@@ -93,12 +111,12 @@
         "serviceType": "酒店公關招募與職涯諮詢",
         "provider": { "@id": "https://as-ent-tw.com/#organization" },
         "areaServed": ["台北市", "新北市", "桃園市", "新竹市", "台中市", "台南市", "高雄市"],
-        "availableLanguage": ["zh-TW", "zh-Hant"]
+        "availableLanguage": ["zh-Hant"]
       }
     ]
   }
   </script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"酒店公關需要簽合約嗎？","acceptedAnswer":{"@type":"Answer","text":"完全不需要。不靠合約綁住任何人，想來就來想走就走，沒有任何違約金或限制。"}},{"@type":"Question","name":"酒店薪水會被壓著嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。每週六固定發薪，想現領也可以，不靠壓薪水留人，只靠誠實留住你。"}},{"@type":"Question","name":"台北酒店薪水怎麼計算？","acceptedAnswer":{"@type":"Answer","text":"以節計算，每10分鐘一節，台北禮服店節薪約230到290元，詳細數字依店家不同，面試前會完整說明。"}},{"@type":"Question","name":"酒店公關沒有經驗可以做嗎？","acceptedAnswer":{"@type":"Answer","text":"完全可以。我會從頭帶你了解整個流程，新人反而更好，因為沒有壞習慣需要改正。"}},{"@type":"Question","name":"酒店打工可以只做短期嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。很多人只做幾個月應急，時間和天數都可以自己安排，沒有最低上班要求。"}},{"@type":"Question","name":"酒店公關工作會被強迫做不想做的事嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。任何超出範圍的要求都可以直接拒絕，這是你的底線，沒有人可以強迫你。"}},{"@type":"Question","name":"酒店一定要喝酒嗎？","acceptedAnswer":{"@type":"Answer","text":"在酒店上班一定會喝到酒，但喝不下可以直接跟客人說，客人最多把你換掉，他真的喜歡你也會留下你。"}},{"@type":"Question","name":"酒店公關白天有工作或有門禁怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"不用擔心，配合的店家有各種類型，有午場也有晚場，正職或兼職時間都能彈性安排。"}},{"@type":"Question","name":"酒店打工有規定一週要上幾天班嗎？","acceptedAnswer":{"@type":"Answer","text":"沒有規定，能上班就來上，只想一個月上2到3天賺零用錢也可以。"}},{"@type":"Question","name":"做酒店公關上班要穿什麼？","acceptedAnswer":{"@type":"Answer","text":"都是以禮服高跟鞋為主，會幫你準備新的一套送給你，髮妝也有專門的髮妝師幫你處理。"}},{"@type":"Question","name":"台北酒店營業時間是幾點？","acceptedAnswer":{"@type":"Answer","text":"有午場也有晚場，最早下午1點營業，任選6小時起就可以上班。"}},{"@type":"Question","name":"酒店公關一天收入大概多少？","acceptedAnswer":{"@type":"Answer","text":"正常情況下大概6000到8000元，上的比較好一天破萬都可以。"}},{"@type":"Question","name":"第一次去酒店要做什麼準備？","acceptedAnswer":{"@type":"Answer","text":"帶雙證件來即可，不會壓著你的證件不給你，只需要證明你有年滿18歲並且有台灣國民身份。"}},{"@type":"Question","name":"酒店打工請假方便嗎？","acceptedAnswer":{"@type":"Answer","text":"當然，八大行業的優勢就是自由，婚喪喜慶、月經來、甚至是今天不想上班，都可以直接請假，沒有任何限制。"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"需要簽合約嗎？","acceptedAnswer":{"@type":"Answer","text":"我這邊不要求簽合約，也不收違約金，但各店家可能有自己的規定，簽任何文件前我會陪你先看清楚，看不懂就不要簽。"}},{"@type":"Question","name":"薪水會被壓著嗎？","acceptedAnswer":{"@type":"Answer","text":"我這邊每週六固定發薪，也可以現領，發薪方式和日期會在試上前說清楚，有任何不清楚的地方，隨時問我。"}},{"@type":"Question","name":"酒店薪水怎麼計算？","acceptedAnswer":{"@type":"Answer","text":"以節計算，每 10 分鐘一節，台北禮服店節薪約 230 到 290 元，依店家不同，清潔費，稅金等各店扣款項目，我會在試上前逐項說明。"}},{"@type":"Question","name":"沒有經驗可以做嗎？","acceptedAnswer":{"@type":"Answer","text":"完全可以，我會從頭帶你了解整個流程，新人反而更好，因為沒有壞習慣需要改正。"}},{"@type":"Question","name":"可以只做短期嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，很多人只做幾個月應急，完全沒問題，時間，天數都可以自己安排，沒有最低上班要求。"}},{"@type":"Question","name":"工作會不會被強迫做不想做的事？","acceptedAnswer":{"@type":"Answer","text":"不會，任何超出工作範圍的要求，你都可以直接拒絕，遇到被強迫或被威脅，可以先找我，也可以直接撥 110。"}},{"@type":"Question","name":"試做後覺得不適合　可以離開嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，我這邊不收違約金，各店家的離職規定，我會在試上前先跟你說明。"}},{"@type":"Question","name":"酒店一定要喝酒嗎？","acceptedAnswer":{"@type":"Answer","text":"在酒店上班一定會喝到酒的，但喝不下可以直接跟客人說喝不下了，客人最多把你換掉，他真的喜歡你也會留下你。"}},{"@type":"Question","name":"我只是想了解　不想做可以嗎？","acceptedAnswer":{"@type":"Answer","text":"完全沒問題，問了不代表一定要來做，我不會強迫任何人，讓你在完全了解後自己做決定。"}},{"@type":"Question","name":"白天有工作或有門禁怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"不用擔心，我配合的店家有各種類型，有午場也有晚場，不管是正職或兼職時間都能彈性安排。"}},{"@type":"Question","name":"有規定一週要上幾天班嗎？","acceptedAnswer":{"@type":"Answer","text":"我這邊沒有規定，能上班就來上，只想一個月上 2 到 3 天賺零用錢，都可以。"}},{"@type":"Question","name":"上班要穿什麼？我不會打扮怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"都是以禮服高跟鞋為主，我會幫你準備新的一套送給你，髮妝也有專門的髮妝師幫你處理。"}},{"@type":"Question","name":"家人男友朋友會知道嗎？","acceptedAnswer":{"@type":"Answer","text":"我不會透露你的個人資料，工作地點和薪資，上班可以用藝名，但沒有人能保證完全不會遇到認識的人，這點要先想清楚。"}},{"@type":"Question","name":"營業時間是幾點？","acceptedAnswer":{"@type":"Answer","text":"有午場也有晚場，最早下午 1:00 營業，任選 6 小時起就可以上班，白天有其他工作或安排，也可以討論時段。"}},{"@type":"Question","name":"一天收入大概多少？","acceptedAnswer":{"@type":"Answer","text":"收入要看店家，節薪，實際上台節數和扣款，每個人差很多，沒有人能保證固定收入，試上前我會用你能上的時段，幫你把算法說清楚。"}},{"@type":"Question","name":"第一次去要做什麼準備？","acceptedAnswer":{"@type":"Answer","text":"帶身分證件確認你年滿 18 歲，並具備合法工作身分，證件看完就還你，任何人要扣留你的證件都不合理，可以直接拒絕。"}},{"@type":"Question","name":"請假方便嗎？","acceptedAnswer":{"@type":"Answer","text":"可以，直接跟我說就好，各店家的請假規則，我會在試上前先說明。"}}]}</script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -137,12 +155,24 @@
     }
     #hero .fade-up {
       opacity: 1;
+      transform: translateY(12px);
+      transition: transform 0.45s ease;
+    }
+    #hero .fade-up.visible {
+      transform: translateY(0);
+    }
+    #hero .hero-sub-shine {
+      opacity: 1;
+      visibility: visible;
       transform: none;
+      transition: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .fade-up {
+      .fade-up,
+      #hero .fade-up,
+      #hero .hero-sub-shine {
         opacity: 1;
         transform: none;
         transition: none;
@@ -1201,7 +1231,7 @@
 <link rel="preload" as="style" href="/social-cta.css?v=20260718-cta2" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="/social-cta.css?v=20260718-cta2" /></noscript>
 <!-- Meta Pixel Code -->
-<script defer src="/meta-pixel.js?v=20260718-pixel1"></script>
+<script defer src="/meta-pixel.js?v=20261023-idle1"></script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1576529224516912&ev=PageView&noscript=1"
 /></noscript>
@@ -1250,36 +1280,36 @@
   <main>
   <!-- HERO -->
   <section id="hero">
-    <h1 class="visually-hidden">AS娛樂 台北酒店公關招募｜八大最誠實經紀 大頭</h1>
+    <h1 class="visually-hidden">AS娛樂 台北酒店公關招募與入行諮詢｜經紀人大頭</h1>
     <div class="hero-badges fade-up">
-      <span class="hero-badge">全台最多人詢問</span>
-      <span class="hero-badge">八大最誠實經紀</span>
-      <span class="hero-badge">七年個人面試3000+</span>
+      <span class="hero-badge">先說清楚再決定</span>
+      <span class="hero-badge">七年八大經驗</span>
+      <span class="hero-badge">本人回覆</span>
       <span class="hero-badge">有問必答</span>
     </div>
     <!-- 2. 本週詢問人數 -->
     <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
       <span class="hero-social-proof-dot"></span>
-      本週已有 <strong id="weekly-count">--</strong> 人詢問
+      本週已有 <strong id="weekly-count">15</strong> 人詢問
     </div>
-    <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
+    <p class="hero-sub-shine">
       <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
       <br/>
       <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
     </p>
     <div class="hero-stats fade-up" style="transition-delay:0.3s">
       <div class="stat">
-        <div class="stat-num" id="counter-years">0</div>
+        <div class="stat-num" id="counter-years">7年</div>
         <div class="stat-label">從業年資</div>
       </div>
       <div class="stat">
-        <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+        <div class="stat-num"><span id="counter-interviews">3000</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
     </div>
     <div class="hero-pills fade-up" style="transition-delay:0.2s">
-      <span class="hero-pill">不簽合約</span>
-      <span class="hero-pill">不壓薪水</span>
+      <span class="hero-pill">我不要求簽約</span>
+      <span class="hero-pill">薪資算法先說清楚</span>
       <span class="hero-pill">自由排班</span>
       <span class="hero-pill">隱私安全</span>
     </div>
@@ -1289,7 +1319,7 @@
       <a href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer" class="btn-outline video-outline">八大影片</a>
       <a href="https://www.instagram.com/angus.no28/" data-official-instagram target="_blank" rel="noopener noreferrer" class="btn-outline instagram-outline">官方 IG</a>
     </div>
-    <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+    <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">IG 帳號有時會更換<br>想更快找到我可以直接加 LINE</p>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
       <span>向下探索更多內容</span>
@@ -1307,7 +1337,7 @@
       <div class="about-grid">
         <div class="about-text fade-up">
           <p class="about-kicker">關於我</p>
-          <h2 class="about-title">大頭 <span>/</span><br class="about-title-mobile-break"><span class="about-title-main">八大最誠實經紀人</span></h2>
+          <h2 class="about-title">大頭 <span>/</span><br class="about-title-mobile-break"><span class="about-title-main">把實話先說清楚的經紀人</span></h2>
           <p class="about-quote">「我只做一件事，<br>把真實的情況先告訴你。」</p>
           <p class="about-story">入行第一年，我看到太多女孩被話術騙進去<br>薪水被壓、合約被綁，甚至被騙上床。<br>我覺得 <strong>這樣不對</strong><br>所以我選擇把工作內容、薪資和可能遇到的問題先說清楚，讓你了解後再自己決定。</p>
           <div class="about-stats">
@@ -1343,7 +1373,7 @@
         <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="btn-primary">立即詢問</a>
         <a href="/jobs" class="btn-outline">看職缺介紹</a>
       </div>
-      <p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+      <p class="line-alert-note">IG 帳號有時會更換<br>想更快找到我可以直接加 LINE</p>
     </div>
   </section>
 
@@ -1356,24 +1386,24 @@
       <h2 class="section-title fade-up" style="transition-delay:0.05s">你可能想問的事</h2>
       <p class="section-desc fade-up" style="transition-delay:0.1s">有任何問題都可以直接問我<br/>這裡先回答最常見的幾個問題</p>
       <div class="faq-list fade-up" style="transition-delay:0.15s">
-        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>需要簽合約嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全不需要　我不靠合約綁住任何人　<br>想來就來　想走就走　<br>沒有任何違約金或限制</div></div>
-        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>薪水會被壓著嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　每週六固定發薪　想現領也可以　<br>我不靠壓薪水留人　只靠誠實留住你</div></div>
-        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>酒店薪水怎麼計算？</span><span class="faq-plus">+</span></button><div class="faq-answer">以節計算　每 10 分鐘一節　<br>台北禮服店節薪約 230 到 290 元　<br>詳細數字依店家不同　<br>我會在面試前完整說明　不會有任何隱藏費用</div></div>
+        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>需要簽合約嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊不要求簽合約　也不收違約金<br>但各店家可能有自己的規定<br>簽任何文件前我會陪你先看清楚　看不懂就不要簽</div></div>
+        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>薪水會被壓著嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊每週六固定發薪　也可以現領<br>發薪方式和日期會在試上前說清楚<br>有任何不清楚的地方　隨時問我</div></div>
+        <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>酒店薪水怎麼計算？</span><span class="faq-plus">+</span></button><div class="faq-answer">以節計算　每 10 分鐘一節<br>台北禮服店節薪約 230 到 290 元　依店家不同<br>清潔費　稅金等各店扣款項目　我會在試上前逐項說明</div></div>
         <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>沒有經驗可以做嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全可以　我會從頭帶你了解整個流程　<br>新人反而更好　因為沒有壞習慣需要改正</div></div>
         <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>可以只做短期嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　很多人只做幾個月應急　完全沒問題　<br>時間　天數都可以自己安排　<br>沒有最低上班要求</div></div>
         <div id="faq-more" style="display:none;flex-direction:column;gap:8px;">
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>工作會不會被強迫做不想做的事？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　任何超出範圍的要求你都可以直接拒絕　<br>這是你的底線　沒有人可以強迫你</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>試做後覺得不適合　可以離開嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然可以　想來就來　想走就走　<br>沒有違約金也沒有任何限制</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>工作會不會被強迫做不想做的事？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　任何超出工作範圍的要求　你都可以直接拒絕<br>遇到被強迫或被威脅　可以先找我　也可以直接撥 110</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>試做後覺得不適合　可以離開嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　我這邊不收違約金<br>各店家的離職規定　我會在試上前先跟你說明</div></div>
           <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>酒店一定要喝酒嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">在酒店上班一定會喝到酒的　<br>但喝不下可以直接跟客人說喝不下了　<br>客人最多把你換掉　他真的喜歡你也會留下你</div></div>
           <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>我只是想了解　不想做可以嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">完全沒問題　問了不代表一定要來做　<br>我不會強迫任何人　<br>讓你在完全了解後自己做決定</div></div>
           <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>白天有工作或有門禁怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">不用擔心　我配合的店家有各種類型<br>有午場也有晚場<br>不管是正職或兼職時間都能彈性安排</div></div>
           <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>有規定一週要上幾天班嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我這邊沒有規定　能上班就來上<br>只想一個月上 2 到 3 天賺零用錢　都可以</div></div>
           <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>上班要穿什麼？我不會打扮怎麼辦？</span><span class="faq-plus">+</span></button><div class="faq-answer">都是以禮服高跟鞋為主<br>我會幫你準備新的一套送給你<br>髮妝也有專門的髮妝師幫你處理</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">不會　個人資料嚴格保密　工作地點　薪資　<br>一切資訊都不會外流　<br>這是我對每一位女孩的承諾</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>營業時間是幾點？</span><span class="faq-plus">+</span></button><div class="faq-answer">有午場也有晚場　最早下午 1:00 營業<br>任選 6 小時起就可以上班<br>不管是上午有課還是白天有正職　都可以安排</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>一天收入大概多少？</span><span class="faq-plus">+</span></button><div class="faq-answer">正常情況下大概 6,000 到 8,000 元<br>上的比較好一天破萬都可以<br>收入完全看你的時間投入和狀態</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>第一次去要做什麼準備？</span><span class="faq-plus">+</span></button><div class="faq-answer">帶雙證件來即可<br>不會壓著你的證件不給你<br>只需要證明你有年滿 18 歲並且有台灣國民身份</div></div>
-          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>請假方便嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">當然　八大行業的優勢就是自由<br>婚喪喜慶　月經來　甚至是你今天不想上班<br>都可以直接跟我請假　沒有任何限制</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>家人男友朋友會知道嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">我不會透露你的個人資料　工作地點和薪資<br>上班可以用藝名<br>但沒有人能保證完全不會遇到認識的人　這點要先想清楚</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>營業時間是幾點？</span><span class="faq-plus">+</span></button><div class="faq-answer">有午場也有晚場　最早下午 1:00 營業<br>任選 6 小時起就可以上班<br>白天有其他工作或安排　也可以討論時段</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>一天收入大概多少？</span><span class="faq-plus">+</span></button><div class="faq-answer">收入要看店家　節薪　實際上台節數和扣款　每個人差很多<br>沒有人能保證固定收入<br>試上前我會用你能上的時段　幫你把算法說清楚</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>第一次去要做什麼準備？</span><span class="faq-plus">+</span></button><div class="faq-answer">帶身分證件確認你年滿 18 歲　並具備合法工作身分<br>證件看完就還你<br>任何人要扣留你的證件都不合理　可以直接拒絕</div></div>
+          <div class="faq-item"><button type="button" class="faq-question" onclick="toggleFaq(this)"><span>請假方便嗎？</span><span class="faq-plus">+</span></button><div class="faq-answer">可以　直接跟我說就好<br>各店家的請假規則　我會在試上前先說明</div></div>
         </div>
         <div style="text-align:center;margin-top:14px;">
           <button type="button" id="faq-toggle-btn" onclick="toggleMoreFaq()" aria-controls="faq-more" aria-expanded="false" style="background:transparent;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:9px 26px;border-radius:4px;font-size:0.85rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.1em;transition:background 0.2s,border-color 0.2s;">觀看更多問題 ↓</button>
@@ -1387,7 +1417,7 @@
         </div>
         <div class="faq-arrow">→</div>
       </a>
-      <p class="line-alert-note fade-up" style="transition-delay:0.25s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+      <p class="line-alert-note fade-up" style="transition-delay:0.25s">IG 帳號有時會更換<br>想更快找到我可以直接加 LINE</p>
     </div>
   </section>
 
@@ -1404,9 +1434,9 @@
           </div>
         </div>
         <div class="highlights-preview-grid">
-          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 1 張"><img src="assets/highlights/story-085.jpeg" alt="AS 精選紀錄" width="1080" height="1920" loading="lazy"></a>
-          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 2 張"><img src="assets/highlights/story-089.png" alt="AS 精選紀錄" width="1080" height="1920" loading="lazy"></a>
-          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 3 張"><img src="assets/highlights/story-086.png" alt="AS 精選紀錄" width="1080" height="1920" loading="lazy"></a>
+          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 1 張"><img src="assets/highlights/story-085.webp" alt="AS娛樂匿名對話紀錄截圖 第 1 張" width="1080" height="1920" loading="lazy"></a>
+          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 2 張"><img src="assets/highlights/story-089.webp" alt="AS娛樂匿名對話紀錄截圖 第 2 張" width="1080" height="1920" loading="lazy"></a>
+          <a class="highlights-preview-card" href="/highlights/" aria-label="查看精選紀錄第 3 張"><img src="assets/highlights/story-086.webp" alt="AS娛樂匿名對話紀錄截圖 第 3 張" width="1080" height="1920" loading="lazy"></a>
         </div>
         <a class="highlights-preview-link" href="/highlights/">觀看更多</a>
       </div>
@@ -1423,7 +1453,32 @@
       <h2 class="section-title fade-up" style="transition-delay:0.05s">熱門文章</h2>
       <p class="section-desc fade-up" style="transition-delay:0.1s">七年的觀察與心得<br/>寫給每一個正在考慮的你</p>
       <div class="blog-grid fade-up" style="transition-delay:0.15s" id="blog-grid">
-        <p class="blog-loading">載入中...</p>
+<!-- HOME-POSTS:START (generated by scripts/sync-home-posts.mjs) -->
+        <a class="blog-card" href="/post/post-20260911-135755">
+          <div class="blog-card-cover-placeholder"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><div class="blog-card-date">2026-09-11</div></div>
+            <div class="blog-card-title">在酒店當公關不要簽合約？入行前你該知道的風險與保障</div>
+            <div class="blog-card-summary">這篇文章會告訴你　在八大行業工作為什麼不建議簽合約　讀者看完會了解如何保護自己　並找到最適合的入行方式</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/post/post-20260910-154044">
+          <div class="blog-card-cover-placeholder"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><div class="blog-card-date">2026-09-10</div></div>
+            <div class="blog-card-title">酒店公關想入行？經紀人談喝酒能力與適合度的真實案例</div>
+            <div class="blog-card-summary">這篇文章從真實案例談酒店公關的喝酒問題　看完你會了解入行門檻　並知道如何評估自己</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/post/post-20260910-135907">
+          <div class="blog-card-cover-placeholder"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta"><div class="blog-card-date">2026-09-10</div></div>
+            <div class="blog-card-title">酒店經紀人為何不鼓勵公關介紹朋友？保護隱私遠比業績重要</div>
+            <div class="blog-card-summary">這篇談經紀人為何不請酒店公關介紹朋友　你會知道保護隱私對入行多重要　以及實際考量</div>
+          </div>
+        </a>
+<!-- HOME-POSTS:END -->
       </div>
     </div>
   </section>
@@ -1444,7 +1499,7 @@
         <a class="home-contact-btn video-outline" href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer">八大影片</a>
         <a class="home-contact-btn instagram-outline" href="https://www.instagram.com/angus.no28/" data-official-instagram target="_blank" rel="noopener noreferrer">官方 IG</a>
       </div>
-<p class="line-alert-note">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
+<p class="line-alert-note">IG 帳號有時會更換<br>想更快找到我可以直接加 LINE</p>
 <p class="contact-note fade-up" style="transition-delay:0.25s;">我會親自回覆　不是 AI 回覆</p>
     </div>
   </div>
@@ -1458,7 +1513,7 @@
       <img src="logo.webp?v=20260604-logo2" alt="AS娛樂" width="32" height="32"/>
       <span style="font-size:1rem;font-weight:400;letter-spacing:0.2em;color:rgba(224,192,128,0.78);font-family:'Noto Serif TC',serif;">AS娛樂</span>
     </div>
-    <p class="footer-slogan">八大最誠實經紀　大頭</p>
+    <p class="footer-slogan">AS娛樂　大頭</p>
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">網站聲明</a><span class="footer-age">限年滿 18 歲</span></div>
     <p style="margin-bottom:8px;">© 2026 <span>AS娛樂</span>　版權所有</p>
@@ -1598,6 +1653,7 @@
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
+
   function cleanDisplayText(text) {
     return String(text || '')
       .replace(/[，、。]/g, '　')
@@ -1606,22 +1662,17 @@
       .trim();
   }
 
-  /* ── 8. 部落格（含 fallback 靜態卡片）── */
-  const FALLBACK_POSTS = [
-    { emoji:'', title:'酒店公關一天真的能賺多少？老實說給你聽', summary:'很多人問我這個問題　我決定直接把數字告訴你　不誇大也不縮小', date:'2026-03-15', slug:'post-1' },
-    { emoji:'', title:'做酒店會被認識的人發現嗎？隱私問題完整解答', summary:'這是我被問最多次的問題　今天一次說清楚', date:'2026-03-22', slug:'post-2' },
-    { emoji:'', title:'為什麼我不要求簽合約？一個經紀人的真心話', summary:'合約對誰有利？我來告訴你背後的邏輯', date:'2026-04-01', slug:'post-3' },
-  ];
+  /* ── 8. 部落格：卡片已在 HTML 靜態產生（scripts/sync-home-posts.mjs），這裡只在 API 成功時更新 ── */
   function getPostUrl(slug) {
     return `/post/${encodeURIComponent(String(slug))}`;
   }
   async function loadBlog() {
     const grid = document.getElementById('blog-grid');
-    const FIXED_SLUGS = ['post-1', 'post-2', 'post-3'];
+    const FIXED_SLUGS = [];
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 4500);
-      const res = await fetch('https://polished-truth-9fc2.angus061855.workers.dev/posts', { signal: controller.signal });
+      const res = await fetch('https://as-blog-cache.angus061855.workers.dev/posts', { signal: controller.signal });
       clearTimeout(timeout);
       const posts = await res.json();
       if (!posts.length) throw new Error('empty');
@@ -1643,17 +1694,7 @@
         grid.insertAdjacentHTML('afterend', `<div style="text-align:center;margin-top:28px;"><a href="/blog" style="color:var(--accent);border:1px solid rgba(200,169,110,0.3);padding:11px 30px;border-radius:4px;text-decoration:none;font-size:0.9rem;letter-spacing:0.1em;">觀看更多文章 →</a></div>`);
       }
     } catch(e) {
-      /* fallback 靜態卡片 */
-      grid.innerHTML = FALLBACK_POSTS.map(p => `
-        <a class="blog-fallback-card" href="${getPostUrl(p.slug)}">
-          <div class="blog-fallback-thumb">${p.emoji}</div>
-          <div class="blog-fallback-body">
-            <div class="blog-fallback-date">${p.date}</div>
-            <div class="blog-fallback-title">${cleanDisplayText(p.title)}</div>
-            <div class="blog-fallback-summary">${cleanDisplayText(p.summary)}</div>
-          </div>
-        </a>
-      `).join('');
+      /* API 失敗時保留 HTML 內已靜態產生的文章卡片，不做任何事 */
     }
   }
   const scheduleBlogLoad = window.requestIdleCallback
