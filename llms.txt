@@ -14,7 +14,7 @@
 
 - [首頁](https://as-ent-tw.com/): 服務原則、常見問題與聯絡方式
 - [關於大頭](https://as-ent-tw.com/about): 經紀人背景、工作方式與服務原則
-- [職缺介紹](https://as-ent-tw.com/jobs): 各職缺的工作內容、適合對象、薪資計算方式與注意事項
+- [職缺介紹](https://as-ent-tw.com/jobs): 酒店公關、美容師、經紀人與直播相關職缺。各職缺的工作內容、適合對象、薪資計算方式與注意事項
 - [酒店公關完整入門指南](https://as-ent-tw.com/guides/hotel-pr-guide/): 工作內容、條件、節薪計算、試上流程、隱私、合約與經紀選擇
 - [八大知識](https://as-ent-tw.com/knowledge): 薪資、試做、隱私、安全與經紀選擇的整理
 - [部落格](https://as-ent-tw.com/blog): 入行與工作經驗文章（完整清單見 sitemap）

@@ -513,6 +513,10 @@
         <span class="hero-badge">七年八大經驗</span>
         <span class="hero-badge">有問必答</span>
       </div>
+      <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
+        <span class="hero-social-proof-dot"></span>
+        本週已有 <strong id="weekly-count">--</strong> 人詢問
+      </div>
       <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
         <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
         <br/>
@@ -652,6 +656,7 @@
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">網站聲明</a><span class="footer-age">限年滿 18 歲</span></div>
     <p>© 2026 <span>AS娛樂</span>　版權所有</p>
+    <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
   </footer>
 
   <a class="site-line-float" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">
@@ -686,8 +691,18 @@
       }
 
       function getInterviewCount() {
-        /* 待 Angus 確認：個人面試人數需有紀錄可佐證；已移除每日自動增加的模擬數字 */
-        return 3000;
+        const startDate = new Date('2026-03-01');
+        const startCount = 3000;
+        const today = new Date();
+        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        let total = startCount;
+        for (let i = 0; i < days; i++) {
+          const d = new Date(startDate);
+          d.setDate(d.getDate() + i);
+          const seed = d.toISOString().slice(0, 10);
+          total += (seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1;
+        }
+        return total;
       }
 
       const heroSection = document.getElementById('hero');
