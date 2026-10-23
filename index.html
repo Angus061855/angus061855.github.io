@@ -2,6 +2,7 @@
 <html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32"/>
   <link rel="icon" href="logo.webp?v=20260604-logo2" type="image/webp"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>台北酒店公關招募與入行諮詢｜AS娛樂 大頭</title>
@@ -32,12 +33,19 @@
 
   <!-- 14. Google Analytics — 換成你的 G-XXXXXXXX -->
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q2RL2ENRW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3Q2RL2ENRW');
+  function loadGoogleAnalytics() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3Q2RL2ENRW';
+    document.head.appendChild(script);
+  }
+  if (window.requestIdleCallback) requestIdleCallback(loadGoogleAnalytics, { timeout: 2000 });
+  else window.addEventListener('load', loadGoogleAnalytics, { once: true });
 </script>
 
   <!-- 14. Microsoft Clarity — 換成你的 ID -->
@@ -143,12 +151,24 @@
     }
     #hero .fade-up {
       opacity: 1;
+      transform: translateY(12px);
+      transition: transform 0.45s ease;
+    }
+    #hero .fade-up.visible {
+      transform: translateY(0);
+    }
+    #hero .hero-sub-shine {
+      opacity: 1;
+      visibility: visible;
       transform: none;
+      transition: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .fade-up {
+      .fade-up,
+      #hero .fade-up,
+      #hero .hero-sub-shine {
         opacity: 1;
         transform: none;
         transition: none;
@@ -1207,7 +1227,7 @@
 <link rel="preload" as="style" href="/social-cta.css?v=20260718-cta2" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="/social-cta.css?v=20260718-cta2" /></noscript>
 <!-- Meta Pixel Code -->
-<script defer src="/meta-pixel.js?v=20260718-pixel1"></script>
+<script defer src="/meta-pixel.js?v=20261023-idle1"></script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1576529224516912&ev=PageView&noscript=1"
 /></noscript>
@@ -1266,20 +1286,20 @@
     <!-- 2. 本週詢問人數 -->
     <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
       <span class="hero-social-proof-dot"></span>
-      本週已有 <strong id="weekly-count">--</strong> 人詢問
+      本週已有 <strong id="weekly-count">15</strong> 人詢問
     </div>
-    <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
+    <p class="hero-sub-shine">
       <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
       <br/>
       <span>討</span><span>厭</span><span>現</span><span>在</span><span>的</span><span>自</span><span>己</span>
     </p>
     <div class="hero-stats fade-up" style="transition-delay:0.3s">
       <div class="stat">
-        <div class="stat-num" id="counter-years">0</div>
+        <div class="stat-num" id="counter-years">7年</div>
         <div class="stat-label">從業年資</div>
       </div>
       <div class="stat">
-        <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+        <div class="stat-num"><span id="counter-interviews">3000</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
     </div>
