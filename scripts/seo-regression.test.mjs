@@ -88,6 +88,52 @@ test('guide resolves author and publisher within the same graph', async () => {
   }
 });
 
+test('empty post shell and legacy slug URLs leave the noindex shell', async () => {
+  const html = await readFile(new URL('post.html', root), 'utf8');
+  const start = html.indexOf('function legacyShellDecision');
+  const end = html.indexOf('(function () {', start);
+  const context = vm.createContext({ URLSearchParams, encodeURIComponent });
+  vm.runInContext(html.slice(start, end), context);
+  const { legacyShellDecision, legacyShellAfterLookup } = context;
+  const plain = (value) => JSON.parse(JSON.stringify(value));
+  assert.deepEqual(plain(legacyShellDecision('/post', '')), { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' });
+  assert.deepEqual(plain(legacyShellDecision('/post.html', '')), { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' });
+  assert.deepEqual(plain(legacyShellDecision('/post/', '?slug=')), { canonical: 'https://as-ent-tw.com/blog', replace: '/blog' });
+  const dated = legacyShellDecision('/post.html', '?slug=post-20260424-110057');
+  assert.equal(dated.canonical, 'https://as-ent-tw.com/post/post-20260424-110057');
+  assert.equal(dated.replace, null);
+  assert.deepEqual(plain(legacyShellAfterLookup(dated, true)), {
+    canonical: 'https://as-ent-tw.com/post/post-20260424-110057',
+    replace: '/post/post-20260424-110057'
+  });
+  assert.deepEqual(plain(legacyShellAfterLookup(legacyShellDecision('/post.html', '?slug=post-20260423-131611'), false)), {
+    canonical: 'https://as-ent-tw.com/blog',
+    replace: '/blog'
+  });
+  assert.equal(legacyShellDecision('/post.html', '?slug=20260424-110057').pathUrl, '/post/post-20260424-110057');
+  assert.equal(legacyShellAfterLookup(legacyShellDecision('/post.html', '?slug=post-1'), null).replace, '/post/post-1');
+  assert.equal(legacyShellDecision('/post.html', '?slug=../admin').replace, '/blog');
+  assert.equal(legacyShellDecision('/post/post-1', ''), null);
+  assert.match(html, /<link rel="canonical" href="https:\/\/as-ent-tw.com\/blog"\/>/);
+  assert.match(html, /location\.replace\(decision\.replace\)/);
+  assert.match(html, /function canonicalPostExists\(pathUrl\)/);
+  assert.match(html, /method: 'HEAD', redirect: 'manual'/);
+  assert.match(html, /await canonicalPostExists\(shell\.pathUrl\)/);
+});
+
+test('brand noindex page canonical points at itself', async () => {
+  const html = await readFile(new URL('brand/index.html', root), 'utf8');
+  assert.match(html, /<meta name="robots" content="noindex, follow" \/>/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/as-ent-tw.com\/brand\/" \/>/);
+  assert.equal(html.includes('<link rel="canonical" href="https://as-ent-tw.com/contact" />'), false);
+});
+
+test('privacy email stays readable and is excluded from Cloudflare rewriting', async () => {
+  const html = await readFile(new URL('privacy.html', root), 'utf8');
+  assert.match(html, /<!--email_off--><a href="mailto:angus061855@gmail.com">angus061855@gmail.com<\/a><!--email_on-->/);
+  assert.equal(html.includes('/cdn-cgi/l/email-protection'), false);
+});
+
 test('blog contains crawlable article links without JavaScript', async () => {
   const html = await readFile(new URL('blog.html', root), 'utf8');
   const initial = html.split('id="blog-grid">')[1].split('<button class="blog-load-more"')[0];
