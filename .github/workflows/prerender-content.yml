@@ -1,0 +1,41 @@
+name: Prerender posts and homepage list
+
+# 每天把文章靜態輸出成 post/<slug>.html，並更新首頁文章卡片與部落格目錄。
+# 任何抓取失敗都保留舊檔，不會刪除既有文章。
+on:
+  schedule:
+    - cron: '47 19 * * *'   # 台北時間每天 03:47
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prerender-content
+  cancel-in-progress: false
+
+jobs:
+  prerender:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Homepage latest posts (static)
+        run: node scripts/sync-home-posts.mjs || echo "首頁文章更新失敗，保留現有內容"
+      - name: Blog archive (static)
+        run: node scripts/sync-blog-fallback.mjs || echo "部落格目錄更新失敗，保留現有內容"
+      - name: Prerender article pages
+        run: node scripts/prerender-posts.mjs
+      - name: Commit changes
+        run: |
+          if [ -z "$(git status --porcelain -- index.html blog.html post/)" ]; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html blog.html post/
+          git commit -m "chore: prerender posts and homepage list"
+          git push
