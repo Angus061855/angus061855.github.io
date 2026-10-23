@@ -1009,7 +1009,6 @@
   <div class="footer-divider"></div>
   <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">網站聲明</a><span class="footer-age">限年滿 18 歲</span></div>
   <p>© 2026 <span>AS娛樂</span>　版權所有</p>
-  <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
 </footer>
 
 <script src="voice-posts.js?v=20260613-voice1"></script>
@@ -1054,16 +1053,6 @@
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
   function getDailyAdd(slug, days) { let t=0; for(let i=0;i<days;i++){let s=0,str=slug+i; for(let j=0;j<str.length;j++) s=(s*31+str.charCodeAt(j))&0xffffffff; t+=543+(Math.abs(s)%701);} return t; }
   function calcViews(slug, publishDate) { const pub=new Date(publishDate),today=new Date(),days=Math.max(0,Math.floor((today-pub)/(1000*60*60*24))); return (getBaseViews(slug)+getDailyAdd(slug,days)).toLocaleString(); }
-  function setTotalViews() {
-    const startDate = new Date('2026-03-01');
-    const startCount = 28547;
-    const today = new Date();
-    const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    let total = startCount;
-    for (let i = 0; i < days; i++) total += 543 + (((i * 7919) + 3571) % 701);
-    document.querySelectorAll('[data-total-views]').forEach(el => { el.textContent = total.toLocaleString(); });
-  }
-  setTotalViews();
 
   const PAGE_SIZE = 18;
   const CATEGORY_LABELS = {
@@ -1153,7 +1142,7 @@
         ${post.cover ? `<img class="blog-card-cover" src="${escapeHtml(post.cover)}" alt="${escapeHtml(cleanDisplayText(post.title))}" width="720" height="405" loading="lazy" decoding="async"/>` : `<div class="blog-card-cover-placeholder category-${category}"><span class="blog-cover-eyebrow">AS ENTERTAINMENT</span><strong>${CATEGORY_LABELS[category]}</strong><small>大頭的八大知識</small></div>`}
         <div class="blog-card-body">
           <span class="blog-card-category">${CATEGORY_LABELS[category]}</span>
-          <div class="blog-card-meta"><div class="blog-card-date">${escapeHtml(post.date)}</div><div class="blog-card-views">${calcViews(post.slug, post.date)} 次瀏覽</div></div>
+          <div class="blog-card-meta"><div class="blog-card-date">${escapeHtml(post.date)}</div></div>
           <div class="blog-card-title">${escapeHtml(cleanDisplayText(post.title))}</div>
           <div class="blog-card-summary">${escapeHtml(cleanDisplayText(post.summary))}</div>
           <div class="blog-card-author">大頭・AS娛樂</div>

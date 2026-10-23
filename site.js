@@ -22,14 +22,7 @@ function toggleConsult(force) {
 }
 
 function initWeeklyCount() {
-  const el = document.getElementById('weekly-count');
-  if (!el) return;
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
-  const base = [0, 15, 32, 49, 66, 83, 100];
-  const dayIndex = day === 0 ? 6 : day - 1;
-  el.textContent = base[dayIndex] + Math.floor(hour * 0.7);
+  /* 已停用：原本依星期與時段推算的「本週詢問人數」不是實際數據 */
 }
 
 function toggleFaq(btn) {
@@ -232,18 +225,7 @@ function restartContactQuiz() {
 }
 
 function initTotalViews() {
-  const els = document.querySelectorAll('[data-total-views]');
-  if (!els.length) return;
-  const startDate = new Date('2026-03-01');
-  const startCount = 28547;
-  const today = new Date();
-  const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-  let total = startCount;
-  for (let i = 0; i < days; i++) {
-    const seed = i * 7919 + 3571;
-    total += 543 + (seed % 701);
-  }
-  els.forEach(el => { el.textContent = total.toLocaleString('zh-TW'); });
+  /* 已停用：原本依日期推算的「累計瀏覽」不是實際數據 */
 }
 
 function initRevealAnimations() {

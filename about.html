@@ -357,10 +357,6 @@
         <span class="hero-badge">七年個人面試3000+</span>
         <span class="hero-badge">有問必答</span>
       </div>
-      <div class="hero-social-proof fade-up" style="transition-delay:.05s">
-        <span class="hero-social-proof-dot"></span>
-        本週已有 <strong id="weekly-count">--</strong> 人詢問
-      </div>
       <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:.1s">大頭<br>八大最誠實經紀人</p>
       <div class="hero-stats fade-up" style="transition-delay:.3s">
         <div class="stat">
@@ -488,7 +484,6 @@
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">網站聲明</a><span class="footer-age">限年滿 18 歲</span></div>
     <p>© 2026 <span>AS娛樂</span>　版權所有</p>
-    <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
   </footer>
 
   <a class="site-line-float" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">
@@ -523,16 +518,8 @@
         requestAnimationFrame(update);
       }
       function getInterviewCount() {
-        const startDate = new Date('2026-03-01');
-        const days = Math.max(0, Math.floor((new Date() - startDate) / 86400000));
-        let total = 3000;
-        for (let i = 0; i < days; i++) {
-          const date = new Date(startDate);
-          date.setDate(date.getDate() + i);
-          const seed = date.toISOString().slice(0, 10);
-          total += (seed.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) % 5) + 1;
-        }
-        return total;
+        /* 待 Angus 確認：個人面試人數需有紀錄可佐證；已移除每日自動增加的模擬數字 */
+        return 3000;
       }
       animateCounter(document.getElementById('counter-years'), 7, 1200, '年');
       animateCounter(document.getElementById('counter-interviews'), getInterviewCount(), 1800);

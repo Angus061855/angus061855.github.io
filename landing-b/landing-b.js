@@ -72,22 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const now = new Date();
   const dayIndex = now.getDay() === 0 ? 6 : now.getDay() - 1;
-  const weeklyBase = [0, 15, 32, 49, 66, 83, 100];
-  const weeklyCount = document.getElementById('landing-b-weekly-count');
-  if (weeklyCount) weeklyCount.textContent = weeklyBase[dayIndex] + Math.floor(now.getHours() * 0.7);
 
   const interviewCount = document.getElementById('landing-b-interview-count');
   if (interviewCount) {
-    const startDate = new Date('2026-03-01');
-    const days = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-    let total = 3000;
-    for (let index = 0; index < days; index += 1) {
-      const date = new Date(startDate);
-      date.setDate(date.getDate() + index);
-      const seed = date.toISOString().slice(0, 10);
-      total += (seed.split('').reduce((sum, character) => sum + character.charCodeAt(0), 0) % 5) + 1;
-    }
-    interviewCount.textContent = `${total}+`;
+    /* 待 Angus 確認：個人面試人數需有紀錄可佐證；已移除每日自動增加的模擬數字 */
+    interviewCount.textContent = '3000+';
   }
 
   document.querySelectorAll('[data-landing-event]').forEach(link => {
