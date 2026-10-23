@@ -1,4 +1,53 @@
+# AS娛樂 as-ent-tw.com
+# 歡迎搜尋引擎與 AI 搜尋／答案引擎讀取公開內容。
+# 404 頁與搜尋參數頁不需要收錄。
+
 User-agent: *
+Allow: /
+Disallow: /404.html
+
+# --- 搜尋引擎 ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# --- AI 搜尋與答案引擎（明確歡迎） ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://as-ent-tw.com/sitemap.xml
