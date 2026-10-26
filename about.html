@@ -532,16 +532,7 @@
         requestAnimationFrame(update);
       }
       function getInterviewCount() {
-        const startDate = new Date('2026-03-01');
-        const days = Math.max(0, Math.floor((new Date() - startDate) / 86400000));
-        let total = 3000;
-        for (let i = 0; i < days; i++) {
-          const date = new Date(startDate);
-          date.setDate(date.getDate() + i);
-          const seed = date.toISOString().slice(0, 10);
-          total += (seed.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) % 5) + 1;
-        }
-        return total;
+        return 3000;
       }
       animateCounter(document.getElementById('counter-years'), 7, 1200, '年');
       animateCounter(document.getElementById('counter-interviews'), getInterviewCount(), 1800);

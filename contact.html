@@ -515,7 +515,7 @@
       </div>
       <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
         <span class="hero-social-proof-dot"></span>
-        本週已有 <strong id="weekly-count">--</strong> 人詢問
+        本週已有 <strong id="weekly-count">15</strong> 人詢問
       </div>
       <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
         <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
@@ -524,11 +524,11 @@
       </p>
       <div class="hero-stats fade-up" style="transition-delay:0.3s">
         <div class="stat">
-          <div class="stat-num" id="counter-years">0</div>
+          <div class="stat-num" id="counter-years">7年</div>
           <div class="stat-label">從業年資</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span id="counter-interviews">0</span>+</div>
+          <div class="stat-num"><span id="counter-interviews">3000</span>+</div>
           <div class="stat-label">個人面試人數</div>
         </div>
       </div>
@@ -691,18 +691,7 @@
       }
 
       function getInterviewCount() {
-        const startDate = new Date('2026-03-01');
-        const startCount = 3000;
-        const today = new Date();
-        const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-        let total = startCount;
-        for (let i = 0; i < days; i++) {
-          const d = new Date(startDate);
-          d.setDate(d.getDate() + i);
-          const seed = d.toISOString().slice(0, 10);
-          total += (seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 5) + 1;
-        }
-        return total;
+        return 3000;
       }
 
       const heroSection = document.getElementById('hero');
