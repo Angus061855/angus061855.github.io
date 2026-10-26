@@ -48,7 +48,7 @@
     }
     .not-found-actions {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       width: min(680px, 100%);
       margin: 42px auto 0;
@@ -77,9 +77,11 @@
     }
   </style>
   <script defer src="/meta-pixel.js?v=20261023-idle1"></script>
+  <link rel="stylesheet" href="/ui-safety.css?v=20261027-1">
+  <script defer src="/ui-safety.js?v=20261027-1"></script>
 </head>
 <body>
-  <canvas id="velvet-bg" aria-hidden="true"></canvas>
+  <canvas id="velvet-bg" class="velvet-background-canvas" aria-hidden="true"></canvas>
 
   <nav>
     <a class="nav-logo" href="/" aria-label="回到 AS娛樂首頁"><img src="/logo.webp?v=20260604-logo2" alt="AS娛樂" width="46" height="46" /><span class="nav-logo-text"><strong>AS娛樂</strong><span class="nav-home-hint">返回首頁</span></span></a>

@@ -1,0 +1,20 @@
+/* Keep existing copy and layouts; only fix clipping and interaction bounds. */
+.guide-section, .guide-shell, .guide-cta, .post-meta { min-width: 0; overflow-wrap: anywhere; }
+.guide-cta p { text-wrap: pretty; }
+.guide-toc nav { position: static; background: transparent; backdrop-filter: none; padding: 0; border: 0; }
+.guide-toc a, .guide-breadcrumb a, .footer-legal a, .post-meta a,
+.top .back, .note a.line, .notice a.line {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 6px 4px;
+}
+.guide-breadcrumb { align-items: center; }
+.guide-toc a { max-width: 100%; }
+.blog-category { min-height: 44px; }
+.float-obscures-content { visibility: hidden !important; pointer-events: none !important; }
+html.menu-open, body.menu-open { overflow: hidden !important; }
+body .mobile-menu { background: #080808; max-height: calc(100dvh - 70px); overflow-y: auto; overscroll-behavior: contain; }
+body.menu-open .site-line-float, body.menu-open .highlights-float-line,
+body.menu-open .consult-widget, body.menu-open .float-line { visibility: hidden !important; }
+@media (max-width: 650px) {
+  .wrap .hero h1 { font-size: 36px; letter-spacing: 0; line-height: 1.35; text-wrap: balance; overflow-wrap: anywhere; }
+  .income-row { flex-wrap: wrap; }
+}
