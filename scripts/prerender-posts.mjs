@@ -97,7 +97,7 @@ export function renderPage(post) {
   <link rel="icon" href="/logo.webp" type="image/webp"/>
   <link rel="stylesheet" href="/site.css"/>
   <link rel="stylesheet" href="/typography.css?v=20261027-1"/>
-  <script defer src="/typography.js?v=20261027-1"></script>
+  <script defer src="/typography.js?v=20261027-2"></script>
   <style>
     .post-static{max-width:760px;margin:0 auto;padding:96px 22px 64px;line-height:1.9}
     .post-static h1{font-family:'Noto Serif TC',serif;font-size:clamp(1.6rem,4.6vw,2.3rem);line-height:1.4;margin-bottom:12px}
