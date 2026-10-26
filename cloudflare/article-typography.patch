@@ -1,0 +1,11 @@
+--- a/worker.js
++++ b/worker.js
+@@ -89,6 +89,8 @@
+     footer span{color:var(--accent)}
+     @media(max-width:640px){nav{padding:14px 20px}.wrap{padding:100px 20px 60px}.float-line{bottom:20px;right:16px}}
+   </style>
++  <link rel="stylesheet" href="https://as-ent-tw.com/typography.css?v=20261027-1">
++  <script defer src="https://as-ent-tw.com/typography.js?v=20261027-3"></script>
+ </head>
+ <body>
+   <a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" class="float-line">
