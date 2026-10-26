@@ -22,8 +22,11 @@ function toggleConsult(force) {
 }
 
 function initWeeklyCount() {
+  /* t107: restore visual weekly counter (formula = indicative only; NOT real inquiries).
+     GA4 Data API unavailable on this box (no service account). */
   const el = document.getElementById('weekly-count');
   if (!el) return;
+  el.setAttribute('data-proof-kind', 'indicative');
   const now = new Date();
   const day = now.getDay();
   const hour = now.getHours();
@@ -232,6 +235,7 @@ function restartContactQuiz() {
 }
 
 function initTotalViews() {
+  /* t107: restore footer total-views display; formula = indicative / 估算, NOT GA4. */
   const els = document.querySelectorAll('[data-total-views]');
   if (!els.length) return;
   const startDate = new Date('2026-03-01');
@@ -243,7 +247,12 @@ function initTotalViews() {
     const seed = i * 7919 + 3571;
     total += 543 + (seed % 701);
   }
-  els.forEach(el => { el.textContent = total.toLocaleString('zh-TW'); });
+  const label = total.toLocaleString('zh-TW');
+  els.forEach(el => {
+    el.textContent = label;
+    const wrap = el.closest('.footer-views');
+    if (wrap) wrap.setAttribute('data-views-kind', 'indicative');
+  });
 }
 
 function initRevealAnimations() {

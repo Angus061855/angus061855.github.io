@@ -386,3 +386,5 @@
 @media (prefers-reduced-motion: reduce) {
   .landing-b-feature, .landing-b-faq-question span:last-child { transition: none; }
 }
+
+.landing-b-social-proof .proof-hint{margin-left:8px;font-size:.62rem;opacity:.7;border:1px solid rgba(224,192,128,.25);padding:1px 5px;border-radius:3px;}

@@ -2961,3 +2961,29 @@ footer {
   border-color: rgba(200,60,60,0.35);
   background: rgba(220,60,60,0.1);
 }
+
+
+/* t107: social-proof / views 示意披露（非正式統計） */
+.proof-hint,
+.views-hint {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(200,169,110,0.22);
+  color: rgba(200,169,110,0.55);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.hero-social-proof .proof-hint,
+.landing-b-social-proof .proof-hint,
+.brand-home-social-proof .proof-hint {
+  margin-left: 8px;
+}
+.footer-views .views-hint {
+  margin-left: 8px;
+  border-color: rgba(148,148,148,0.35);
+  color: #7a7a7a;
+}

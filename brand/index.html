@@ -1271,11 +1271,11 @@
           <span class="brand-home-badge">七年八大經驗</span>
           <span class="brand-home-badge">有問必答</span>
         </div>
-        <p class="brand-home-social-proof"><span class="brand-home-dot"></span>本週已有 <strong id="brand-weekly-count">--</strong> 人詢問</p>
+        <p class="brand-home-social-proof" data-proof-kind="indicative"><span class="brand-home-dot"></span>本週已有 <strong id="brand-weekly-count">--</strong> 人詢問<span class="proof-hint" title="示意數據，非正式統計；非 GA4／後端真實詢問數">示意</span></p>
         <h1 id="brand-title" class="brand-home-title"><span class="brand-title-line">不要讓未來的你</span><span class="brand-title-line">討厭現在的自己</span></h1>
         <div class="brand-home-stats" aria-label="AS經驗數據">
           <div class="brand-home-stat"><strong>7年</strong><span>從業年資</span></div>
-          <div class="brand-home-stat"><strong id="brand-hero-interview-count">3451+</strong><span>個人面試人數</span></div>
+          <div class="brand-home-stat"><strong id="brand-hero-interview-count">3000+</strong><span>個人面試人數</span></div>
         </div>
         <div class="brand-home-pills" aria-label="AS服務原則"><span class="brand-home-pill">不簽合約</span><span class="brand-home-pill">不壓薪水</span><span class="brand-home-pill">自由排班</span><span class="brand-home-pill">隱私安全</span></div>
     <div class="brand-hero-actions hero-cta cta-three">
@@ -1346,7 +1346,7 @@
           </div>
           <div class="brand-stat">
             <div>
-              <strong id="brand-trust-interview-count">3375+</strong>
+              <strong id="brand-trust-interview-count">3000+</strong>
               <span>面談與諮詢經驗</span>
             </div>
           </div>
@@ -1460,7 +1460,7 @@
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">使用條款</a><a href="#brand-contact-form" data-brand-contact>聯絡我</a><span class="footer-age">品牌基本資訊</span></div>
     <p>© 2026 <span>AS</span>　版權所有</p>
-    <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
+    <p class="footer-views" data-views-kind="indicative">本站累計瀏覽　<span data-total-views>0</span>　次<span class="views-hint" title="示意／估算瀏覽數，非正式 analytics">示意</span></p>
   </footer>
 
   <div class="brand-contact-modal" id="brand-contact-modal" hidden>
@@ -1505,41 +1505,20 @@
 
       const now = new Date();
       const dayIndex = now.getDay() === 0 ? 6 : now.getDay() - 1;
-      const weeklyBase = [0, 15, 32, 49, 66, 83, 100];
       const weeklyCount = document.getElementById('brand-weekly-count');
-      if (weeklyCount) weeklyCount.textContent = weeklyBase[dayIndex] + Math.floor(now.getHours() * .7);
-
-      function animateCounter(element, target, duration, suffix) {
-        const startedAt = Date.now();
-        const update = () => {
-          const progress = Math.min((Date.now() - startedAt) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          element.textContent = `${Math.floor(eased * target)}${suffix || ''}`;
-          if (progress < 1) requestAnimationFrame(update);
-        };
-        requestAnimationFrame(update);
+      if (weeklyCount) {
+        weeklyCount.setAttribute('data-proof-kind', 'indicative');
+        const weeklyBase = [0, 15, 32, 49, 66, 83, 100];
+        weeklyCount.textContent = weeklyBase[dayIndex] + Math.floor(now.getHours() * .7);
       }
 
-      function getInterviewCount() {
-        const startDate = new Date('2026-03-01');
-        const days = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24));
-        let total = 3000;
-        for (let index = 0; index < days; index += 1) {
-          const date = new Date(startDate);
-          date.setDate(date.getDate() + index);
-          const seed = date.toISOString().slice(0, 10);
-          total += (seed.split('').reduce((sum, character) => sum + character.charCodeAt(0), 0) % 5) + 1;
-        }
-        return total;
-      }
-
-      const interviewTotal = getInterviewCount();
+      /* t107: HTML 初值就是 7年 / 3000+，不要用遞增公式或從 0 動畫蓋掉 */
       const interviewCount = document.getElementById('brand-interview-count');
       const heroInterviewCount = document.getElementById('brand-hero-interview-count');
       const trustInterviewCount = document.getElementById('brand-trust-interview-count');
-      if (interviewCount) animateCounter(interviewCount, interviewTotal, 1800, '+');
-      if (heroInterviewCount) animateCounter(heroInterviewCount, interviewTotal, 1800, '+');
-      if (trustInterviewCount) animateCounter(trustInterviewCount, interviewTotal, 1800, '+');
+      [heroInterviewCount, trustInterviewCount, interviewCount].forEach(el => {
+        if (el) el.textContent = '3000+';
+      });
 
       function trackBrandEvent(eventName) {
         if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName);

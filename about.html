@@ -359,7 +359,7 @@
       </div>
       <div class="hero-social-proof fade-up" style="transition-delay:.05s">
         <span class="hero-social-proof-dot"></span>
-        本週已有 <strong id="weekly-count">15</strong> 人詢問
+        本週已有 <strong id="weekly-count" data-proof-kind="indicative">15</strong> 人詢問<span class="proof-hint" title="示意數據，非正式統計；非 GA4／後端真實詢問數">示意</span>
       </div>
       <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:.1s">大頭<br>把實話先說清楚</p>
       <div class="hero-stats fade-up" style="transition-delay:.3s">
@@ -497,7 +497,7 @@
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">網站聲明</a><span class="footer-age">限年滿 18 歲</span></div>
     <p>© 2026 <span>AS娛樂</span>　版權所有</p>
-    <p class="footer-views">本站累計瀏覽　<span data-total-views>0</span>　次</p>
+    <p class="footer-views" data-views-kind="indicative">本站累計瀏覽　<span data-total-views>0</span>　次<span class="views-hint" title="示意／估算瀏覽數，非正式 analytics">示意</span></p>
   </footer>
 
   <a class="site-line-float" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">
@@ -518,18 +518,7 @@
       });
       function animateCounter(el, target, duration, suffix) {
         if (!el) return;
-        if (reduceMotion) {
-          el.textContent = target + (suffix || '');
-          return;
-        }
-        const start = performance.now();
-        function update(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target) + (suffix || '');
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
+        el.textContent = target + (suffix || ''); // t107: HTML 初值即最終值，不從 0 爬
       }
       function getInterviewCount() {
         return 3000;
