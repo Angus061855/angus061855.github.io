@@ -1,4 +1,7 @@
 /* Keep existing copy and layouts; only fix clipping and interaction bounds. */
+.semantic-intro .thought { display: inline-block; max-width: 100%; }
+.semantic-intro .phrase { display: inline-block; }
+.wrap .results[hidden] { display: none; }
 .guide-section, .guide-shell, .guide-cta, .post-meta { min-width: 0; overflow-wrap: anywhere; }
 .guide-cta p { text-wrap: pretty; }
 .guide-toc nav { position: static; background: transparent; backdrop-filter: none; padding: 0; border: 0; }
@@ -15,6 +18,11 @@ body .mobile-menu { background: #080808; max-height: calc(100dvh - 70px); overfl
 body.menu-open .site-line-float, body.menu-open .highlights-float-line,
 body.menu-open .consult-widget, body.menu-open .float-line { visibility: hidden !important; }
 @media (max-width: 650px) {
+  .semantic-intro .thought { display: block; }
+  .wrap .section-head { flex-wrap: wrap; gap: 8px; }
+  .wrap .section-head h2, .wrap .section-head .hint { white-space: nowrap; }
+  .wrap .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .wrap .chip { min-height: 46px; padding: 11px 8px; white-space: nowrap; letter-spacing: 0; }
   .wrap .hero h1 { font-size: 36px; letter-spacing: 0; line-height: 1.35; text-wrap: balance; overflow-wrap: anywhere; }
   .income-row { flex-wrap: wrap; }
 }

@@ -1,0 +1,15 @@
+/* Short clauses move together; longer clauses wrap only at BudouX phrase boundaries.
+   Neutral elements avoid existing span-based brand styles. No copy is inserted. */
+.copy-run { min-width: 0; max-width: 100%; }
+.copy-clause, .copy-phrase {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: baseline;
+  text-indent: 0;
+}
+.copy-clause { white-space: normal; }
+.copy-phrase { overflow-wrap: anywhere; word-break: normal; }
+button .copy-run, summary .copy-run { pointer-events: none; }
+@media (max-width: 650px) {
+  .quiz-choice, .quiz-opt, .blog-category, summary { min-width: 0; height: auto; }
+}
