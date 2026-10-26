@@ -1,5 +1,5 @@
 import { segmentText } from './typography-segments.mjs';
-const targets = 'h1,h2,h3,h4,p,li,button,summary,dt,dd,.hero-lead,.faq-q,.faq-a';
+const targets = 'h1,h2,h3,h4,p,li,button,summary,dt,dd,.hero-lead,.faq-q,.faq-a,.blog-card-title,.quiz-result-title,.compare-title,.stat-label,.faq-line-text';
 const excluded = 'script,style,textarea,code,pre,svg,select,option,label,[contenteditable],.visually-hidden,.semantic-intro,.chip,.hero-sub-shine,.hero-title-line,.copy-run,.copy-clause,.copy-phrase,[data-total-views]';
 
 function enhance(root) {
