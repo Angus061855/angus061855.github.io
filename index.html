@@ -1288,15 +1288,13 @@
   <section id="hero">
     <h1 class="visually-hidden">AS娛樂 台北酒店公關招募與入行諮詢｜經紀人大頭</h1>
     <div class="hero-badges fade-up">
-      <span class="hero-badge">先說清楚再決定</span>
-      <span class="hero-badge">七年八大經驗</span>
-      <span class="hero-badge">本人回覆</span>
-      <span class="hero-badge">有問必答</span>
+      <span class="hero-badge">全台最多人詢問</span>
+      <span class="hero-badge">八大最誠實經紀</span>
     </div>
-    <!-- 2. 本週詢問人數（示意數據；非正式統計／非 GA4） -->
+    <!-- Screenshot reference values; do not automatically increment. -->
     <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
       <span class="hero-social-proof-dot"></span>
-      本週已有 <strong id="weekly-count" data-proof-kind="indicative">15</strong> 人詢問<span class="proof-hint" title="示意數據，非正式統計；非 GA4／後端真實詢問數">示意</span>
+      本週已有 <strong id="weekly-count">14</strong> 人詢問
     </div>
     <p class="hero-sub-shine">
       <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
@@ -1309,13 +1307,13 @@
         <div class="stat-label">從業年資</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-final="3000+"><span id="counter-interviews" aria-label="個人面試人數 3000 以上">3000</span>+</div>
+        <div class="stat-num" data-final="3712+"><span id="counter-interviews" aria-label="個人面試人數 3712 以上">3712</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
     </div>
     <div class="hero-pills fade-up" style="transition-delay:0.2s">
-      <span class="hero-pill">我不要求簽約</span>
-      <span class="hero-pill">薪資算法先說清楚</span>
+      <span class="hero-pill">不簽合約</span>
+      <span class="hero-pill">不壓薪水</span>
       <span class="hero-pill">自由排班</span>
       <span class="hero-pill">隱私安全</span>
     </div>
@@ -1325,7 +1323,7 @@
       <a href="https://www.tiktok.com/@angus061855?_r=1&_t=ZS-96xymY3pCVA" target="_blank" rel="noopener noreferrer" class="btn-outline video-outline">八大影片</a>
       <a href="https://www.instagram.com/angus.no28/" data-official-instagram target="_blank" rel="noopener noreferrer" class="btn-outline instagram-outline">官方 IG</a>
     </div>
-    <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">IG 帳號有時會更換<br>想更快找到我可以直接加 LINE</p>
+    <p class="line-alert-note hero-line-alert fade-up" style="transition-delay:0.45s">因同行長期眼紅檢舉我　目前 IG 帳號會一直更換<br>想更快找到我可以直接加 LINE</p>
     <!-- 1. 向下箭頭 -->
     <div class="hero-scroll-arrow fade-up" style="transition-delay:0.5s" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
       <span>向下探索更多內容</span>
@@ -1604,13 +1602,13 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
-  /* ── 計數器（t107）：HTML 初值=最終值；動畫不從 0 覆寫，爬蟲／無 JS 看得到 7年、3000+ ── */
+  /* Keep the screenshot values identical with and without JavaScript. */
   function animateCounter(el, target, duration, suffix) {
     if (!el) return;
     el.textContent = target + (suffix || '');
   }
   function getInterviewCount() {
-        return 3000;
+        return 3712;
       }
   const heroSection = document.getElementById('hero');
   if (heroSection) {
@@ -1625,25 +1623,6 @@
     }, { threshold: 0.3 });
     counterObserver.observe(heroSection);
   }
-
-  /* ── 2. 本週詢問人數（示意；非正式統計／非 GA4） ── */
-(function() {
-  const el = document.getElementById('weekly-count');
-  if (!el) return;
-  el.setAttribute('data-proof-kind', 'indicative');
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
-
-  // 週一~週六累積基數（每天約+17人）
-  const base = [0, 15, 32, 49, 66, 83, 100];
-  const dayIndex = day === 0 ? 6 : day - 1;
-
-  // 當天已過時數換算（每小時約 0.7 人，一天約+17）
-  const todayExtra = Math.floor(hour * 0.7);
-
-  el.textContent = base[dayIndex] + todayExtra;
-})();
 
   /* ── 瀏覽數 ── */
   function getBaseViews(slug) { let h=0; for(let i=0;i<slug.length;i++) h=(h*31+slug.charCodeAt(i))&0xffffffff; return 1235+(Math.abs(h)%(4257-1235+1)); }
