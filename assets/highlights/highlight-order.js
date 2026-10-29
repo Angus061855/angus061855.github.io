@@ -4,6 +4,7 @@
  * 刪除一行會讓該圖片不再顯示，但不會刪除原始圖片檔。
  */
 window.AS_HIGHLIGHT_STORIES = [
+  "story-096.jpeg",
   "story-095.jpeg",
   "story-093.webp",
   "story-094.webp",
