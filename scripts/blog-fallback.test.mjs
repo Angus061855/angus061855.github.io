@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { buildBlock, replaceBlock, existingCards, escapeHtml, START, END } from './sync-blog-fallback.mjs';
+import { buildBlock, replaceBlock, existingCards, escapeHtml, START, END, GUIDES } from './sync-blog-fallback.mjs';
 
 const posts = [
   { slug: 'post-20260911-135755', title: '標題 A' },
@@ -16,8 +16,10 @@ test('escapeHtml 轉義特殊字元', () => {
 
 test('區塊含指南、去重、略過不合法 slug，並轉義標題', () => {
   const block = buildBlock(posts);
-  assert.equal((block.match(/class="blog-card"/g) || []).length, 3);
+  // 5 篇指南 + 1 篇有效文章（post-20260911-135755 已整併進指南、正式站 301，不列出）
+  assert.equal((block.match(/class="blog-card"/g) || []).length, GUIDES.length + 1);
   assert.ok(block.includes('href="/guides/hotel-pr-guide/"'));
+  assert.ok(!block.includes('/post/post-20260911-135755'));
   assert.ok(block.includes('含 &lt;tag&gt; &amp; &quot;引號&quot;'));
   assert.ok(!block.includes('bad slug'));
 });
@@ -30,12 +32,19 @@ test('API 沒回傳的既有文章連結會保留', () => {
   assert.ok(second.includes('/post/post-20260910-154044'));
 });
 
+test('既有區塊裡的轉址文章在重建時會被移除', () => {
+  const block = buildBlock([], [{ href: '/post/post-20260911-135755', title: '已整併' }, { href: '/post/post-20260910-135907', title: '保留' }]);
+  assert.ok(!block.includes('/post/post-20260911-135755'));
+  assert.ok(block.includes('/post/post-20260910-135907'));
+});
+
 test('重跑結果不變，且 blog.html 目前的區塊完整', async () => {
   const html = await readFile(new URL('../blog.html', import.meta.url), 'utf8');
   assert.ok(html.includes(START) && html.includes(END));
   const s = html.indexOf(START), e = html.indexOf(END);
   const cards = existingCards(html.slice(s, e));
-  assert.ok(cards.length >= 100, `blog.html 只有 ${cards.length} 篇靜態連結`);
+  // 2026-11-17 移除 45 篇轉址文章後剩 56 篇；低於 50 代表產生流程出錯。
+  assert.ok(cards.length >= 50, `blog.html 只有 ${cards.length} 篇靜態連結`);
   const rebuilt = replaceBlock(html, buildBlock(cards.map((c) => ({ slug: c.href.replace('/post/', ''), title: c.title })), cards));
   assert.equal(rebuilt, html);
 });

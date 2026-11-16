@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { isRedirectedSlug } from './post-redirects.mjs';
 
 const sourceUrl = 'https://polished-truth-9fc2.angus061855.workers.dev/sitemap.xml';
 const siteOrigin = 'https://as-ent-tw.com';
@@ -15,7 +16,9 @@ function sleep(ms) {
 function parseEntries(xml) {
   return [...xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>[\s\S]*?<\/url>/g)]
     .map(([, loc, lastmod]) => ({ loc: loc.trim(), lastmod: lastmod.trim() }))
-    .filter(({ loc }) => loc.startsWith(`${siteOrigin}/post/`));
+    .filter(({ loc }) => loc.startsWith(`${siteOrigin}/post/`))
+    // 已整併到指南頁（正式站 301）的舊網址不列入 sitemap；指南頁本身在 sitemap-static.xml。
+    .filter(({ loc }) => !isRedirectedSlug(loc.slice(`${siteOrigin}/post/`.length)));
 }
 
 function dedupeEntries(entries) {

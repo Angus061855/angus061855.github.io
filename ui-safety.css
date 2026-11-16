@@ -26,3 +26,18 @@ body.menu-open .consult-widget, body.menu-open .float-line { visibility: hidden 
   .wrap .hero h1 { font-size: 36px; letter-spacing: 0; line-height: 1.35; text-wrap: balance; overflow-wrap: anywhere; }
   .income-row { flex-wrap: wrap; }
 }
+
+/* 320px 等極窄螢幕：hero 大標每行 7–8 字只差約 1px 就會被拆成兩行（例如「經／紀人」），依寬度縮小。 */
+@media (max-width: 360px) {
+  #hero .hero-sub-shine { font-size: 9.6vw !important; }
+}
+
+/* WCAG 2.2 AA 文字對比（≥ 4.5:1，背景約 #060606）。2026-11-17 axe-core 實測不足的元素；保留暗金色調。 */
+body .nav-logo .nav-home-hint,
+body .proof-hint, body .views-hint,
+body .hero-scroll-arrow > span,
+body .footer-logo span, body .footer-slogan,
+body .footer-legal a { color: #9a8762; }
+body .footer-views, body .footer-views .views-hint,
+body .blog-author-copy span, body .blog-results,
+body footer > p { color: #8a8a8a; }

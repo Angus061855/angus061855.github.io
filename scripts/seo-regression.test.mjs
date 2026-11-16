@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
+import { isRedirectedSlug } from './post-redirects.mjs';
 
 const root = new URL('../', import.meta.url);
 const scriptSource = await readFile(new URL('scripts/sync-post-sitemap.mjs', root), 'utf8');
@@ -34,7 +35,7 @@ async function simulateSitemap({
   let articleAttempts = 0;
   const generatedXml = sourceXml ?? xmlFor(entries(entryCount));
   const context = vm.createContext({
-    URL, AbortSignal,
+    URL, AbortSignal, isRedirectedSlug,
     console: {
       log(message) { logs.push(String(message)); },
       warn(message) { warnings.push(String(message)); }
@@ -91,6 +92,7 @@ async function simulateSitemap({
   });
   const code = scriptSource
     .replace("import { readFile, writeFile } from 'node:fs/promises';", '')
+    .replace("import { isRedirectedSlug } from './post-redirects.mjs';", '')
     .replace('import.meta.url', JSON.stringify(new URL('scripts/sync-post-sitemap.mjs', root).href));
   let error;
   try { await new vm.Script(`(async () => { ${code} })()`).runInContext(context); }
