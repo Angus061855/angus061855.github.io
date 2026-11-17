@@ -1,7 +1,17 @@
-# 安全標頭（尚未部署，需業主核准後在 Cloudflare 設定）
+# 安全標頭（尚未部署；業主 2026-11-17 原則同意，僅授權準備與非正式環境驗證）
 
 GitHub Pages 無法自訂回應標頭，必須在 Cloudflare 加 **Response Header Transform Rule**。
 2026-11-17 實測正式站回應只有 `Server`、`Content-Type`、`Cache-Control`，沒有下列任何一個。
+標頭值的唯一來源是同資料夾的 `headers.json`；本機驗證與日後 Cloudflare 設定都以它為準。
+
+## 非正式環境驗證（2026-11-17）
+
+- `SECURITY_HEADERS=1 node scripts/preview-site.mjs`：本機預覽送出 `headers.json` 全部標頭。
+- 核心流程 25 項（首頁 LINE 點擊與 GA4 事件、部落格搜尋／分類／載入更多、文章頁、7 個子頁 200 無主控台錯誤）：
+  有標頭 25/25、無標頭 25/25，結果相同。
+- `nosniff` 風險檢查：正式站 21 類自家資源（HTML、CSS、JS、webp、png、jpg、ico、xml、txt）與外部 GA4、Meta、文章 API
+  的 Content-Type 全部正確，不會被擋。
+- 未驗證：正式網域上 Cloudflare 規則本身的套用範圍與快取行為（需授權後在正式設定驗證）。
 
 ## 建議設定（Rules → Transform Rules → Modify Response Header）
 

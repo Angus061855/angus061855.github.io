@@ -88,3 +88,66 @@ test('首頁不再殘留追蹤碼佔位字串', async () => {
   const html = await read('index.html');
   assert.ok(!/XXXXXXXXXX|G-XXXXXXXX/.test(html));
 });
+
+// ── 2026-11-17 第二輪：虛構統計、單一事實來源、字型、版面位移、文章索引 ──
+const LIVE_PAGES = [...MAIN_PAGES.map(([f]) => f), 'post.html', '404.html', 'work-landing.html', 'landing-b/index.html', 'brand/index.html', 'brand-old/index.html'];
+
+test('不再有公式或寫死的「本週詢問」「瀏覽數」統計', async () => {
+  const bad = [];
+  for (const f of [...LIVE_PAGES, 'site.js', 'landing-b/landing-b.js']) {
+    const t = await read(f);
+    for (const re of [/本週已有/, /累計瀏覽/, /次瀏覽/, /calcViews|getBaseViews|getDailyAdd|calcTotalViews|setTotalViews|initWeeklyCount|initTotalViews/, /weeklyBase/]) {
+      if (re.test(t)) bad.push(`${f} ${re}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});
+
+test('面試人數全站與 site-config.js 一致', async () => {
+  const { readInterviewCount, FACT_FILES, findNumbers } = await import('./sync-site-facts.mjs');
+  const count = readInterviewCount();
+  const wrong = [];
+  for (const f of FACT_FILES) for (const n of findNumbers(await read(f))) if (n.value !== count) wrong.push(`${f}: ${n.value}`);
+  assert.deepEqual(wrong, []);
+});
+
+test('全站只用一種 Google Fonts 組合，且不阻擋繪製', async () => {
+  const urls = new Set();
+  for (const f of LIVE_PAGES) {
+    const t = await read(f);
+    for (const [, u] of t.matchAll(/(https:\/\/fonts\.googleapis\.com\/css2[^"']+)/g)) urls.add(u);
+    const blocking = t.replace(/<noscript>[\s\S]*?<\/noscript>/g, '').match(/<link[^>]+href="https:\/\/fonts\.googleapis\.com\/css2[^"]*"[^>]*rel="stylesheet"/);
+    assert.equal(blocking, null, `${f} 以 rel=stylesheet 阻擋載入 Google Fonts`);
+  }
+  assert.equal(urls.size, 1, [...urls].join('\n'));
+});
+
+test('背景 canvas 與首屏 hero 不依賴 JS 才定位／顯示（CLS、LCP）', async () => {
+  const css = await read('ui-safety.css');
+  assert.match(css, /#velvet-bg\s*\{[^}]*position:\s*fixed/);
+  assert.match(css, /#hero \.fade-up\s*\{\s*opacity:\s*1/);
+});
+
+test('post-index.json 涵蓋 sitemap 文章，部落格目錄列出索引中的全部文章', async () => {
+  const index = JSON.parse(await read('post-index.json'));
+  const slugs = [...(await read('sitemap-posts.xml')).matchAll(/\/post\/([A-Za-z0-9-]+)<\/loc>/g)].map((m) => m[1]);
+  const indexed = new Set(index.map((p) => p.slug));
+  // sitemap（台北 03:17）與索引（03:47）由兩個每日流程更新；容許最多 10 篇新文章暫時未進索引，避免空檔期誤報。
+  const missing = slugs.filter((s) => !indexed.has(s));
+  assert.ok(missing.length <= 10, `索引缺 ${missing.length} 篇：${missing.slice(0, 5).join(', ')}`);
+  assert.ok(index.every((p) => p.title && /^\d{4}-\d{2}-\d{2}$/.test(p.date) && !isRedirectedSlug(p.slug)));
+  const blog = await read('blog.html');
+  const listed = new Set([...blog.matchAll(/href="\/post\/([A-Za-z0-9-]+)"/g)].map((m) => m[1]));
+  assert.deepEqual(index.map((p) => p.slug).filter((s) => !listed.has(s)), []);
+});
+
+test('安全標頭設定稿可解析，且不含 CSP（全站有 inline script）', async () => {
+  const headers = JSON.parse(await read('cloudflare/security-headers/headers.json'));
+  assert.equal(headers['X-Content-Type-Options'], 'nosniff');
+  assert.ok(!('Content-Security-Policy' in headers));
+  assert.ok(!/includeSubDomains|preload/.test(headers['Strict-Transport-Security']));
+});
+
+test('compact hero 外框撐滿寬度，CTA 按鈕與其他頁一致', async () => {
+  assert.match(await read('ui-safety.css'), /\.hero\.compact > \.container\s*\{\s*width:\s*100%/);
+});

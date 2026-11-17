@@ -43,8 +43,26 @@ test('重跑結果不變，且 blog.html 目前的區塊完整', async () => {
   assert.ok(html.includes(START) && html.includes(END));
   const s = html.indexOf(START), e = html.indexOf(END);
   const cards = existingCards(html.slice(s, e));
-  // 2026-11-17 移除 45 篇轉址文章後剩 56 篇；低於 50 代表產生流程出錯。
-  assert.ok(cards.length >= 50, `blog.html 只有 ${cards.length} 篇靜態連結`);
+  // 2026-11-17 目錄改由 post-index.json 產生，涵蓋 223 篇；低於 200 代表產生流程出錯。
+  assert.ok(cards.length >= 200, `blog.html 只有 ${cards.length} 篇靜態連結`);
   const rebuilt = replaceBlock(html, buildBlock(cards.map((c) => ({ slug: c.href.replace('/post/', ''), title: c.title })), cards));
   assert.equal(rebuilt, html);
+});
+
+test('buildIndex：以 sitemap 為範圍，API 優先、沿用既有索引、缺的才逐篇查', async () => {
+  const { buildIndex } = await import('./sync-blog-fallback.mjs');
+  const asked = [];
+  const index = await buildIndex({
+    apiPosts: [{ slug: 'post-20260910-135907', title: 'API 新標題', date: '2026-09-10', summary: 's' }],
+    existing: [{ slug: 'post-20260701-181446', title: '舊索引', date: '2026-07-01', summary: '' }, { slug: 'post-20260910-135907', title: '過時標題', date: '2026-09-10', summary: '' }],
+    slugs: ['post-20260910-135907', 'post-20260701-181446', 'post-20260601-155123', 'post-20260602-135508'],
+    fetchPost: async (slug) => { asked.push(slug); return slug === 'post-20260601-155123' ? { title: '逐篇查到', date: '2026-06-01T00:00:00Z' } : null; },
+    sleep: async () => {}
+  });
+  assert.deepEqual(asked, ['post-20260601-155123', 'post-20260602-135508']);
+  assert.deepEqual(index.map((p) => [p.slug, p.title, p.date]), [
+    ['post-20260910-135907', 'API 新標題', '2026-09-10'],
+    ['post-20260701-181446', '舊索引', '2026-07-01'],
+    ['post-20260601-155123', '逐篇查到', '2026-06-01']
+  ]);
 });

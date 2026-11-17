@@ -6,6 +6,7 @@ import { redirectResponse } from '../cloudflare/site-redirects/src/index.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const port = Number(process.env.PORT || 4192);
+const securityHeaders = JSON.parse(await readFile(new URL('../cloudflare/security-headers/headers.json', import.meta.url), 'utf8'));
 const types = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript', '.mjs':'text/javascript', '.json':'application/json', '.xml':'application/xml', '.webp':'image/webp', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.svg':'image/svg+xml', '.ico':'image/x-icon' };
 createServer(async (req, res) => {
   try {
@@ -23,7 +24,9 @@ createServer(async (req, res) => {
     let content, status = 200;
     try { content = await readFile(file); }
     catch { file = resolve(root, '404.html'); content = await readFile(file); status = 404; }
-    res.writeHead(status, { 'Content-Type': types[extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control':'no-store' });
+    // SECURITY_HEADERS=1：模擬 cloudflare/security-headers 的正式設定，在本機驗證不會弄壞頁面
+    const security = process.env.SECURITY_HEADERS === '1' ? securityHeaders : {};
+    res.writeHead(status, { 'Content-Type': types[extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control':'no-store', ...security });
     res.end(req.method === 'HEAD' ? undefined : content);
   } catch { res.writeHead(400); res.end(); }
 }).listen(port, '127.0.0.1', () => console.log(`Local preview: http://127.0.0.1:${port}`));

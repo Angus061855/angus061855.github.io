@@ -69,6 +69,33 @@ export function replaceBlock(html, block) {
   return html.slice(0, i + anchor.length) + archive + html.slice(i + anchor.length);
 }
 
+// post-index.json：sitemap 上所有正式文章（不含轉址）的 slug／標題／日期／摘要，
+// 給 blog.html 的靜態目錄與前端搜尋、分類、分頁使用（posts API 一次只回最新 100 篇）。
+export const INDEX_PATH = new URL('../post-index.json', import.meta.url);
+const SITEMAP_PATH = new URL('../sitemap-posts.xml', import.meta.url);
+const pick = (p) => ({ slug: p.slug, title: String(p.title || '').trim(), date: String(p.date || '').slice(0, 10), summary: String(p.summary || '').trim() });
+
+export function sitemapSlugs(xml) {
+  return [...xml.matchAll(/<loc>https:\/\/as-ent-tw\.com\/post\/([A-Za-z0-9-]+)<\/loc>/g)].map((m) => m[1]).filter((s) => !isRedirectedSlug(s));
+}
+
+// 依 sitemap 決定收錄範圍；標題優先用 API 最新資料，其次沿用既有索引，最後才逐篇向 API 查（每篇間隔 400ms）。
+export async function buildIndex({ apiPosts, existing, slugs, fetchPost, sleep = (ms) => new Promise((r) => setTimeout(r, ms)) }) {
+  const known = new Map(existing.map((p) => [p.slug, p]));
+  for (const p of apiPosts) if (p?.slug && p?.title) known.set(p.slug, pick(p));
+  const out = [];
+  let fetched = 0;
+  for (const slug of slugs) {
+    let entry = known.get(slug);
+    if (!entry?.title) {
+      if (fetched++) await sleep(400);
+      try { const p = await fetchPost(slug); if (p?.title) entry = pick({ ...p, slug }); } catch {}
+    }
+    if (entry?.title) out.push(entry);
+  }
+  return out.sort((a, b) => b.date.localeCompare(a.date) || b.slug.localeCompare(a.slug));
+}
+
 async function main() {
   const worker = 'https://polished-truth-9fc2.angus061855.workers.dev';
   const path = new URL('../blog.html', import.meta.url);
@@ -76,11 +103,26 @@ async function main() {
   if (!res.ok) throw new Error(`posts API ${res.status}`);
   const posts = await res.json();
   if (!Array.isArray(posts) || posts.length < 20) throw new Error(`posts API 只回傳 ${posts?.length} 篇，保留現有清單`);
+
+  let existing = [];
+  try { existing = JSON.parse(await readFile(INDEX_PATH, 'utf8')); } catch {}
+  const slugs = sitemapSlugs(await readFile(SITEMAP_PATH, 'utf8'));
+  const index = await buildIndex({
+    apiPosts: posts, existing, slugs,
+    fetchPost: async (slug) => {
+      const r = await fetch(`${worker}/posts/${encodeURIComponent(slug)}`, { signal: AbortSignal.timeout(15000) });
+      return r.ok ? r.json() : null;
+    }
+  });
+  // 少於既有索引 90% 視為 API 異常，保留舊檔
+  if (index.length < Math.max(50, existing.length * 0.9)) throw new Error(`索引只有 ${index.length} 篇（原 ${existing.length}），保留現有內容`);
+  await writeFile(INDEX_PATH, JSON.stringify(index, null, 1) + '\n', 'utf8');
+
   const html = await readFile(path, 'utf8');
   const s = html.indexOf(START), e = html.indexOf(END);
   const previous = s !== -1 && e > s ? existingCards(html.slice(s, e)) : existingCards(html.slice(html.indexOf('id="blog-grid"')).split('blog-load-more')[0]);
-  await writeFile(path, replaceBlock(html, buildBlock(posts, previous)), 'utf8');
-  console.log(`blog.html fallback: ${posts.length} API posts`);
+  await writeFile(path, replaceBlock(html, buildBlock(index, previous)), 'utf8');
+  console.log(`blog.html fallback: ${posts.length} API posts, post-index ${index.length} 篇`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await main();
