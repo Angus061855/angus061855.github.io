@@ -1854,6 +1854,7 @@
   <script src="../velvet-background.js?v=20260614-perf1" defer></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
+  <script src="../site-config.js?v=20261117-interview-estimate"></script>
 </head>
 <body class="brand-page">
   <canvas id="velvet-bg" aria-hidden="true"></canvas>
@@ -1947,7 +1948,7 @@
     <section class="brand-section" aria-labelledby="brand-trust-title">
       <div class="brand-narrow">
         <span class="section-label">真實累積</span>
-        <h2 id="brand-trust-title" class="section-title">七年口碑 面試超過3000+人</h2>
+        <h2 id="brand-trust-title" class="section-title">七年口碑 面試超過<span data-interview-count>3000</span>+人</h2>
         <div class="brand-stats">
           <div class="brand-stat">
             <div>
@@ -1957,7 +1958,7 @@
           </div>
           <div class="brand-stat">
             <div>
-              <strong id="brand-trust-interview-count">3000+</strong>
+              <strong id="brand-trust-interview-count" data-interview-count>3000+</strong>
               <span>個人面試人數</span>
             </div>
           </div>
@@ -2141,10 +2142,8 @@
       }
 
       function getInterviewCount() {
-        // 以頁面靜態值為準（scripts/sync-site-facts.mjs 依 site-config.js 同步），不再用每日遞增公式
-        const el = document.getElementById('brand-trust-interview-count');
-        return parseInt(el ? el.textContent : '', 10) || 0;
-      }
+    return window.AS_SITE_CONFIG.getInterviewCount();
+  }
 
       const interviewTotal = getInterviewCount();
       const interviewCount = document.getElementById('brand-interview-count');
@@ -2294,7 +2293,6 @@
 	      });
 	    })();
   </script>
-  <script src="../site-config.js?v=20261117-instagram4"></script>
   <script src="../site.js?v=20260628-legal1"></script>
 </body>
 </html>

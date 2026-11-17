@@ -1238,7 +1238,7 @@
   src="https://www.facebook.com/tr?id=1576529224516912&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-  <script defer src="/site-config.js?v=20261117-instagram4"></script>
+  <script defer src="/site-config.js?v=20261117-interview-estimate"></script>
   <link rel="stylesheet" href="/ui-safety.css?v=20261117-4">
   <script defer src="/ui-safety.js?v=20261027-1"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
@@ -1302,7 +1302,7 @@
         <div class="stat-label">從業年資</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-final="3000+"><span id="counter-interviews" aria-label="個人面試人數 3000 以上">3000</span>+</div>
+        <div class="stat-num" data-final="3000+"><span id="counter-interviews" aria-label="個人面試人數 3000 以上" data-interview-count>3000</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
     </div>
@@ -1341,7 +1341,7 @@
           <p class="about-story">入行第一年，我看到太多女孩被話術騙進去<br>薪水被壓、合約被綁，甚至被騙上床。<br>我覺得 <strong>這樣不對</strong><br>所以我選擇把工作內容、薪資和可能遇到的問題先說清楚，讓你了解後再自己決定。</p>
           <div class="about-stats">
             <div class="about-stat"><strong>7 年</strong><span>八大行業經驗</span></div>
-            <div class="about-stat"><strong>3000+</strong><span>個人面試人數</span></div>
+            <div class="about-stat"><strong><span data-interview-count>3000</span>+</strong><span>個人面試人數</span></div>
           </div>
         </div>
         <div class="about-principles fade-up" style="transition-delay:.12s">
@@ -1600,7 +1600,7 @@
     if (!el) return;
     const end = Number(target) || 0;
     const tail = suffix || '';
-    // 從 0 跑到靜態值（數字本身由 site-config.js 管理，不會自行增加）；減少動態效果時直接顯示
+    // 從 0 跑到共用公式的當日估算值；減少動態效果時直接顯示
     if (!end || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = end + tail; return; }
     const start = performance.now();
     const step = (now) => {
@@ -1612,9 +1612,7 @@
     requestAnimationFrame(step);
   }
   function getInterviewCount() {
-    // 數字以頁面上的靜態值為準（由 scripts/sync-site-facts.mjs 依 site-config.js 同步）
-    const el = document.getElementById('counter-interviews');
-    return parseInt(el ? el.textContent : '', 10) || '';
+    return window.AS_SITE_CONFIG.getInterviewCount();
   }
   const heroSection = document.getElementById('hero');
   if (heroSection) {

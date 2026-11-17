@@ -1,6 +1,6 @@
 // 把 site-config.js 的 interviewCount 同步到所有靜態頁面（HTML 文字、meta、JSON-LD、llms.txt）。
 // 用法：改 site-config.js 的 interviewCount 後執行 `node scripts/sync-site-facts.mjs`；`--check` 只檢查不寫入。
-// 每日照實更新：`node scripts/sync-site-facts.mjs --set 3012`（改寫 site-config.js 並同步全站；只能填實際面試人數）。
+// 調整估算起始值：`node scripts/sync-site-facts.mjs --set 3012`（改寫 site-config.js 並同步全站；此值是公式起點，不是當日累計數字）。
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -22,6 +22,7 @@ export const FACT_FILES = [
 
 // 每條規則的第 1 個群組是數字本身。只比對「面試／面談」附近的數字，避免誤改薪資等其他數字。
 export const PATTERNS = [
+  /data-interview-count[^>]*>(\d{3,5})/dg,
   /(?:面試|面談)(?:人數)?\s*(?:超過|過)?\s*(\d{3,5})/dg,                     // 個人面試3000+、面試超過 3000、面試過 3000
   /超過\s*(\d{3,5})\s*位/dg,                                                // 超過 3000 位
   /(\d{3,5})\s*位(?:以上的?)?(?:女孩|女生)?(?:的)?\s*(?:個人)?面試/dg,        // 3000 位個人面試

@@ -1,6 +1,7 @@
 // 全站靜態品質檢查（不連網）：sitemap 與轉址一致、站內連結不指向轉址或不存在的頁面、主要頁面 metadata 完整。
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 import { readFile, access } from 'node:fs/promises';
 import { POST_REDIRECTS, isRedirectedSlug } from './post-redirects.mjs';
 
@@ -103,7 +104,7 @@ test('不再有公式或寫死的「本週詢問」「瀏覽數」統計', async
   assert.deepEqual(bad, []);
 });
 
-test('面試人數全站與 site-config.js 一致', async () => {
+test('面試人數靜態起始值全站與 site-config.js 一致', async () => {
   const { readInterviewCount, FACT_FILES, findNumbers } = await import('./sync-site-facts.mjs');
   const count = readInterviewCount();
   const wrong = [];
@@ -168,13 +169,28 @@ test('隱私權政策揭露實際使用的追蹤工具', async () => {
   assert.ok(pixelPages.length > 0);
 });
 
-test('面試人數動畫：從 0 跑到靜態值、尊重減少動態效果，且不會自行增加', async () => {
+test('面試人數動畫：使用共用估算公式並尊重減少動態效果', async () => {
   for (const f of ['index.html', 'about.html', 'contact.html']) {
     const t = await read(f);
     assert.match(t, /prefers-reduced-motion: reduce\)'\)\.matches\) \{ el\.textContent = end \+ tail; return; \}/, `${f} 未尊重減少動態效果`);
     assert.match(t, /Math\.min\(1, Math\.max\(0, \(now - start\)/, `${f} 動畫進度未限制在 0–1`);
-    assert.ok(!/new Date\([^)]*\)[\s\S]{0,200}interview/i.test(t), `${f} 不得用日期公式計算面試人數`);
+    assert.match(t, /return window\.AS_SITE_CONFIG\.getInterviewCount\(\)/, `${f} 必須使用共用估算公式`);
   }
+  const context = { window: {}, document: { addEventListener() {} } };
+  vm.runInNewContext(await read('site-config.js'), context);
+  const count = context.window.AS_SITE_CONFIG.getInterviewCount;
+  assert.equal(count(new Date('2026-02-28T00:00:00Z')), 3000);
+  assert.equal(count(new Date('2026-03-01T00:00:00Z')), 3000);
+  assert.equal(count(new Date('2026-03-02T00:00:00Z')), 3004);
+  let previous = 3000;
+  for (let day = 1; day <= 366; day++) {
+    const date = new Date(Date.UTC(2026, 2, 1 + day));
+    const value = count(date);
+    assert.ok(value - previous >= 1 && value - previous <= 5);
+    assert.equal(value, count(new Date(date.getTime() + 86399999)));
+    previous = value;
+  }
+  assert.match(await read('privacy.html'), /不是逐筆登記的實際人數/);
   assert.match(await read('ui-safety.css'), /@supports \(overflow-x: clip\)\s*\{\s*html, body \{ overflow-x: clip; \}/);
 });
 

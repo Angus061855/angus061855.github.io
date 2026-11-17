@@ -495,7 +495,7 @@
   </style>
   <link rel="stylesheet" href="/social-cta.css?v=20260718-cta2" />
   <script defer src="/meta-pixel.js?v=20261117-1"></script>
-  <script src="/site-config.js?v=20261117-instagram4"></script>
+  <script src="/site-config.js?v=20261117-interview-estimate"></script>
   <link rel="stylesheet" href="/ui-safety.css?v=20261117-4">
   <script defer src="/ui-safety.js?v=20261027-1"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
@@ -515,7 +515,7 @@
       <div class="hero-badges fade-up">
         <span class="hero-badge">全台最多人詢問</span>
         <span class="hero-badge">八大最誠實經紀</span>
-        <span class="hero-badge">七年個人面試3000+</span>
+        <span class="hero-badge">七年個人面試<span data-interview-count>3000</span>+</span>
         <span class="hero-badge">有問必答</span>
       </div>
       <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
@@ -529,7 +529,7 @@
           <div class="stat-label">從業年資</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span id="counter-interviews">3000</span>+</div>
+          <div class="stat-num"><span id="counter-interviews" data-interview-count>3000</span>+</div>
           <div class="stat-label">個人面試人數</div>
         </div>
       </div>
@@ -678,7 +678,7 @@
     if (!el) return;
     const end = Number(target) || 0;
     const tail = suffix || '';
-    // 從 0 跑到靜態值（數字本身由 site-config.js 管理，不會自行增加）；減少動態效果時直接顯示
+    // 從 0 跑到共用公式的當日估算值；減少動態效果時直接顯示
     if (!end || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = end + tail; return; }
     const start = performance.now();
     const step = (now) => {
@@ -691,9 +691,7 @@
   }
 
       function getInterviewCount() {
-    // 數字以頁面上的靜態值為準（由 scripts/sync-site-facts.mjs 依 site-config.js 同步）
-    const el = document.getElementById('counter-interviews');
-    return parseInt(el ? el.textContent : '', 10) || '';
+    return window.AS_SITE_CONFIG.getInterviewCount();
   }
 
       const heroSection = document.getElementById('hero');
