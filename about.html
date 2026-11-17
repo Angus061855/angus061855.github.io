@@ -340,7 +340,7 @@
   <link rel="stylesheet" href="/social-cta.css?v=20260718-cta2" />
   <script defer src="/meta-pixel.js?v=20261117-1"></script>
   <script src="/site-config.js?v=20261117-instagram4"></script>
-  <link rel="stylesheet" href="/ui-safety.css?v=20261117-3">
+  <link rel="stylesheet" href="/ui-safety.css?v=20261117-4">
   <script defer src="/ui-safety.js?v=20261027-1"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
@@ -517,9 +517,20 @@
         });
       });
       function animateCounter(el, target, duration, suffix) {
-        if (!el) return;
-        el.textContent = target + (suffix || ''); // t107: HTML 初值即最終值，不從 0 爬
-      }
+    if (!el) return;
+    const end = Number(target) || 0;
+    const tail = suffix || '';
+    // 從 0 跑到靜態值（數字本身由 site-config.js 管理，不會自行增加）；減少動態效果時直接顯示
+    if (!end || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = end + tail; return; }
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, Math.max(0, (now - start) / (duration || 1500)));
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(end * eased) + tail;
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
       function getInterviewCount() {
     // 數字以頁面上的靜態值為準（由 scripts/sync-site-facts.mjs 依 site-config.js 同步）
     const el = document.getElementById('counter-interviews');

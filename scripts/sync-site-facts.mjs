@@ -1,5 +1,6 @@
 // 把 site-config.js 的 interviewCount 同步到所有靜態頁面（HTML 文字、meta、JSON-LD、llms.txt）。
 // 用法：改 site-config.js 的 interviewCount 後執行 `node scripts/sync-site-facts.mjs`；`--check` 只檢查不寫入。
+// 每日照實更新：`node scripts/sync-site-facts.mjs --set 3012`（改寫 site-config.js 並同步全站；只能填實際面試人數）。
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -50,6 +51,16 @@ export function rewrite(text, count) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const setIndex = process.argv.indexOf('--set');
+  if (setIndex !== -1) {
+    const next = Number(process.argv[setIndex + 1]);
+    if (!Number.isInteger(next) || next < 1) throw new Error('--set 後面要接正整數，例如 --set 3012');
+    const current = readInterviewCount();
+    if (next < current) console.warn(`注意：新數字 ${next} 小於目前的 ${current}`);
+    const configUrl = new URL('site-config.js', root);
+    writeFileSync(configUrl, readFileSync(configUrl, 'utf8').replace(/interviewCount:\s*\d+/, `interviewCount: ${next}`));
+    console.log(`site-config.js interviewCount ${current} → ${next}`);
+  }
   const count = readInterviewCount();
   const check = process.argv.includes('--check');
   let mismatched = 0;

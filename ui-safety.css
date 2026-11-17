@@ -53,3 +53,12 @@ body footer > p { color: #8a8a8a; }
 /* 八大知識＋、職缺頁的 compact hero：外框原本依內容縮寬（知識頁僅約 475px），四顆 CTA 被擠到 99px，
    與首頁／關於／聯絡（690px、每顆 165px）不一致。讓外框撐滿可用寬度，上限仍為原本的 980px。 */
 .hero.compact > .container { width: 100%; }
+
+/* 主導覽列一直保留：html／body 的 overflow-x:hidden 會讓 body 變成捲動容器，
+   使職缺、八大知識＋、真實心得、指南頁桌機版的 sticky 導覽列被捲走。改用 clip（同樣防止橫向捲動，但不建立捲動容器）。 */
+@supports (overflow-x: clip) {
+  html, body { overflow-x: clip; }
+}
+
+/* 面試人數／年資跑數字時用等寬數字，避免位數變化造成文字跳動 */
+.stat-num { font-variant-numeric: tabular-nums; }

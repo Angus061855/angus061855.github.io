@@ -167,3 +167,13 @@ test('隱私權政策揭露實際使用的追蹤工具', async () => {
   for (const [file] of MAIN_PAGES) if ((await read(file)).includes('meta-pixel.js')) pixelPages.push(file);
   assert.ok(pixelPages.length > 0);
 });
+
+test('面試人數動畫：從 0 跑到靜態值、尊重減少動態效果，且不會自行增加', async () => {
+  for (const f of ['index.html', 'about.html', 'contact.html']) {
+    const t = await read(f);
+    assert.match(t, /prefers-reduced-motion: reduce\)'\)\.matches\) \{ el\.textContent = end \+ tail; return; \}/, `${f} 未尊重減少動態效果`);
+    assert.match(t, /Math\.min\(1, Math\.max\(0, \(now - start\)/, `${f} 動畫進度未限制在 0–1`);
+    assert.ok(!/new Date\([^)]*\)[\s\S]{0,200}interview/i.test(t), `${f} 不得用日期公式計算面試人數`);
+  }
+  assert.match(await read('ui-safety.css'), /@supports \(overflow-x: clip\)\s*\{\s*html, body \{ overflow-x: clip; \}/);
+});
