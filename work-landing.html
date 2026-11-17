@@ -23,8 +23,9 @@
   <meta name="twitter:image" content="https://as-ent-tw.com/assets/og/work-20260912.png?v=20260912-fabric2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/work-landing.css?v=20260705-1" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet"/></noscript>
+  <link rel="stylesheet" href="/work-landing.css?v=20261117-1" />
   <!-- Meta Pixel Code: dual job advertising landing page -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -41,21 +42,17 @@
   fbq('track', 'PageView');
   </script>
   <!-- End Meta Pixel Code -->
-  <script src="/site-config.js?v=20261117-instagram4"></script>
+  <script src="/site-config.js?v=20261117-interview-estimate"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
+  <link rel="stylesheet" href="/site-nav.css?v=20261117-1">
+  <script src="/site-nav.js?v=20261117-1" defer></script>
 </head>
 <body>
   <noscript><img height="1" width="1" style="display:none" alt=""
   src="https://www.facebook.com/tr?id=1817663066269089&amp;ev=PageView&amp;noscript=1"
   /></noscript>
-  <header class="landing-nav">
-    <a class="brand" href="/" aria-label="回到 AS娛樂首頁">
-      <img src="/logo.webp?v=20260604-logo2" alt="AS娛樂" width="44" height="44" />
-      <span><strong>AS娛樂</strong><small>八大最誠實經紀　大頭</small></span>
-    </a>
-    <a class="nav-line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" data-personal-line>先匿名詢問</a>
-  </header>
+  <nav class="as-sitenav" aria-label="主選單"><a class="as-sitenav-logo" href="/" aria-label="回到 AS娛樂首頁"><img src="/logo.webp?v=20260604-logo2" alt="AS娛樂" width="40" height="40"><span><strong>AS娛樂</strong><span>返回首頁</span></span></a><div class="as-sitenav-links"><a href="/">首頁</a><a href="/about">關於我</a><a href="/jobs">職缺介紹</a><a href="/knowledge">八大知識+</a><a href="/blog">部落格</a><a href="/highlights/">真實心得</a><a href="/contact">聯絡我</a></div><button class="as-sitenav-btn" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="as-sitenav-menu"><span></span><span></span><span></span></button></nav><div class="as-sitenav-menu" id="as-sitenav-menu"><a href="/">首頁</a><a href="/about">關於我</a><a href="/jobs">職缺介紹</a><a href="/knowledge">八大知識+</a><a href="/blog">部落格</a><a href="/highlights/">真實心得</a><a href="/contact">聯絡我</a></div>
 
   <main>
     <section class="landing-hero" id="top">
@@ -63,7 +60,7 @@
       <div class="hero-inner">
         <div class="proof-row reveal">
           <span>七年經驗</span>
-          <span>個人面試超過 3000 位</span>
+          <span>個人面試超過 <span data-interview-count>3000</span> 位</span>
           <span>本人親自回覆</span>
         </div>
         <p class="eyebrow reveal">酒店公關・紓壓按摩美容師</p>
@@ -147,12 +144,12 @@
           <p class="section-label">不是助理　不是 AI</p>
           <h2>每一個問題<br>都是我本人回覆</h2>
           <p>我是大頭<br>AS娛樂八大最誠實經紀人</p>
-          <p>七年來個人面試超過 3000 位女孩<br>我看過太多人因為資訊不透明<br>被合約　扣款和話術綁住</p>
+          <p>七年來個人面試超過 <span data-interview-count>3000</span> 位女孩<br>我看過太多人因為資訊不透明<br>被合約　扣款和話術綁住</p>
           <p>所以我的原則很簡單<br>先講清楚　再讓妳自己決定</p>
         </div>
         <div class="proof-numbers reveal" aria-label="經驗數字">
           <div><strong>7年</strong><span>從業經驗</span></div>
-          <div><strong>3000+</strong><span>個人面試人數</span></div>
+          <div><strong><span data-interview-count>3000</span>+</strong><span>個人面試人數</span></div>
           <div><strong>1對1</strong><span>本人親自回覆</span></div>
         </div>
       </div>

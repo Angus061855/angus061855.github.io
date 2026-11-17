@@ -171,3 +171,6 @@ footer p { margin-top: 8px; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* WCAG AA 文字對比（原 #56514a 約 2.6:1）：頁尾說明與法律連結 */
+footer p, footer a[href$="privacy"], footer a[href$="disclaimer"] { color: #8a8a8a; }

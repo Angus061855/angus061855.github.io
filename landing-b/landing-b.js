@@ -70,17 +70,7 @@ function renderLandingBFaq() {
 document.addEventListener('DOMContentLoaded', () => {
   renderLandingBFaq();
 
-  const now = new Date();
-  const dayIndex = now.getDay() === 0 ? 6 : now.getDay() - 1;
-  const weeklyBase = [0, 15, 32, 49, 66, 83, 100];
-  const weeklyCount = document.getElementById('landing-b-weekly-count');
-  if (weeklyCount) {
-    weeklyCount.setAttribute('data-proof-kind', 'indicative');
-    weeklyCount.textContent = weeklyBase[dayIndex] + Math.floor(now.getHours() * 0.7);
-  }
 
-  const interviewCount = document.getElementById('landing-b-interview-count');
-  if (interviewCount) interviewCount.textContent = '3000+'; // t107: HTML=JS=3000+; no 0/-- crawl
 
   document.querySelectorAll('[data-landing-event]').forEach(link => {
     link.addEventListener('click', () => trackLandingBEvent(link.dataset.landingEvent));

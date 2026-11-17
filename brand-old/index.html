@@ -27,7 +27,8 @@
   <link rel="icon" href="../logo.webp?v=20260604-logo2" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet"/></noscript>
   <link rel="stylesheet" href="../site.css?v=20260719-nav1" />
   <link rel="stylesheet" href="../social-cta.css?v=20260801-cta3" />
   <style>
@@ -1849,10 +1850,11 @@
       }
     }
   </script>
-  <script defer src="../meta-pixel.js?v=20261023-idle1"></script>
+  <script defer src="../meta-pixel.js?v=20261117-1"></script>
   <script src="../velvet-background.js?v=20260614-perf1" defer></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
+  <script src="../site-config.js?v=20261117-interview-estimate"></script>
 </head>
 <body class="brand-page">
   <canvas id="velvet-bg" aria-hidden="true"></canvas>
@@ -1946,7 +1948,7 @@
     <section class="brand-section" aria-labelledby="brand-trust-title">
       <div class="brand-narrow">
         <span class="section-label">真實累積</span>
-        <h2 id="brand-trust-title" class="section-title">七年口碑 面試超過3300+人</h2>
+        <h2 id="brand-trust-title" class="section-title">七年口碑 面試超過<span data-interview-count>3000</span>+人</h2>
         <div class="brand-stats">
           <div class="brand-stat">
             <div>
@@ -1956,7 +1958,7 @@
           </div>
           <div class="brand-stat">
             <div>
-              <strong id="brand-trust-interview-count">3375+</strong>
+              <strong id="brand-trust-interview-count" data-interview-count>3000+</strong>
               <span>個人面試人數</span>
             </div>
           </div>
@@ -2118,7 +2120,6 @@
     <div class="footer-divider"></div>
     <div class="footer-legal"><a href="/privacy">隱私權政策</a><a href="/disclaimer">使用條款</a><a href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">聯絡我</a><span class="footer-age">品牌基本資訊</span></div>
     <p>© 2026 <span>AS</span>　版權所有</p>
-    <p class="footer-views" data-views-kind="indicative">本站累計瀏覽　<span data-total-views>0</span>　次<span class="views-hint" title="示意／估算瀏覽數，非正式 analytics">示意</span></p>
   </footer>
 
   <a class="brand-float-line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" aria-label="立即詢問，前往個人 LINE">立即詢問</a>
@@ -2141,17 +2142,8 @@
       }
 
       function getInterviewCount() {
-        const startDate = new Date('2026-03-01');
-        const days = Math.floor((new Date() - startDate) / (1000 * 60 * 60 * 24));
-        let total = 3000;
-        for (let index = 0; index < days; index += 1) {
-          const date = new Date(startDate);
-          date.setDate(date.getDate() + index);
-          const seed = date.toISOString().slice(0, 10);
-          total += (seed.split('').reduce((sum, character) => sum + character.charCodeAt(0), 0) % 5) + 1;
-        }
-        return total;
-      }
+    return window.AS_SITE_CONFIG.getInterviewCount();
+  }
 
       const interviewTotal = getInterviewCount();
       const interviewCount = document.getElementById('brand-interview-count');
@@ -2301,7 +2293,6 @@
 	      });
 	    })();
   </script>
-  <script src="../site-config.js?v=20261117-instagram4"></script>
   <script src="../site.js?v=20260628-legal1"></script>
 </body>
 </html>

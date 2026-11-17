@@ -34,6 +34,14 @@
     var href = link.getAttribute('href') || '';
     if (href.indexOf('line.me') !== -1 || href.indexOf('lin.ee') !== -1) {
       fbq('track', 'Contact', { channel: 'LINE' });
+      // 已載入 GA4 的頁面同步記錄 LINE 點擊（只記頁面路徑與按鈕區塊，不含個人資料）
+      if (typeof window.gtag === 'function') {
+        var section = link.closest('section[id],footer,nav,[class*="float"]');
+        window.gtag('event', 'line_click', {
+          page_path: window.location.pathname,
+          link_section: section ? (section.id || section.tagName.toLowerCase() || '').slice(0, 40) : 'other'
+        });
+      }
     }
   });
 })(window, document);

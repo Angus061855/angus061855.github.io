@@ -1,0 +1,25 @@
+name: Quality gate
+
+# 每次 PR 與推到 main 前後跑一次離線檢查（不連網、約數秒）：
+# sitemap 與轉址一致、站內連結、title/description/canonical/h1、JSON-LD、既有 SEO 與 UI 回歸測試。
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Offline quality tests
+        run: node --test scripts/*.test.mjs

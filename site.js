@@ -21,19 +21,6 @@ function toggleConsult(force) {
   if (toggle) toggle.setAttribute('aria-expanded', String(open));
 }
 
-function initWeeklyCount() {
-  /* t107: restore visual weekly counter (formula = indicative only; NOT real inquiries).
-     GA4 Data API unavailable on this box (no service account). */
-  const el = document.getElementById('weekly-count');
-  if (!el) return;
-  el.setAttribute('data-proof-kind', 'indicative');
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
-  const base = [0, 15, 32, 49, 66, 83, 100];
-  const dayIndex = day === 0 ? 6 : day - 1;
-  el.textContent = base[dayIndex] + Math.floor(hour * 0.7);
-}
 
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
@@ -234,26 +221,6 @@ function restartContactQuiz() {
   if (result) result.classList.remove('show');
 }
 
-function initTotalViews() {
-  /* t107: restore footer total-views display; formula = indicative / 估算, NOT GA4. */
-  const els = document.querySelectorAll('[data-total-views]');
-  if (!els.length) return;
-  const startDate = new Date('2026-03-01');
-  const startCount = 28547;
-  const today = new Date();
-  const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-  let total = startCount;
-  for (let i = 0; i < days; i++) {
-    const seed = i * 7919 + 3571;
-    total += 543 + (seed % 701);
-  }
-  const label = total.toLocaleString('zh-TW');
-  els.forEach(el => {
-    el.textContent = label;
-    const wrap = el.closest('.footer-views');
-    if (wrap) wrap.setAttribute('data-views-kind', 'indicative');
-  });
-}
 
 function initRevealAnimations() {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -409,11 +376,9 @@ function initVelvetBackground() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initVelvetBackground();
-  initWeeklyCount();
   initContactForm();
   initIncomeTool();
   initFaqAccessibility();
-  initTotalViews();
   initRevealAnimations();
   initMobileFloatingContact();
 });

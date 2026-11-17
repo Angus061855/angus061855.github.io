@@ -44,7 +44,8 @@
   <link rel="icon" href="../logo.webp?v=20260604-logo2" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet"/></noscript>
   <link rel="stylesheet" href="../site.css?v=20260719-nav1">
   <style>
     .highlights-page { background: #070706; color: var(--text); }
@@ -232,7 +233,7 @@
   }
 </style>
   <link rel="stylesheet" href="../social-cta.css?v=20260801-cta3">
-  <link rel="stylesheet" href="/ui-safety.css?v=20261027-2">
+  <link rel="stylesheet" href="/ui-safety.css?v=20261117-4">
   <script defer src="/ui-safety.js?v=20261027-1"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
@@ -274,12 +275,8 @@
     <div class="hero-badges fade-up">
       <span class="hero-badge">全台最多人詢問</span>
       <span class="hero-badge">八大最誠實經紀</span>
-      <span class="hero-badge">七年個人面試3000+</span>
+      <span class="hero-badge">七年個人面試<span data-interview-count>3000</span>+</span>
       <span class="hero-badge">有問必答</span>
-    </div>
-    <div class="hero-social-proof fade-up" style="transition-delay:0.05s">
-      <span class="hero-social-proof-dot"></span>
-      本週已有 <strong id="weekly-count" data-proof-kind="indicative">15</strong> 人詢問<span class="proof-hint" title="示意數據，非正式統計；非 GA4／後端真實詢問數">示意</span>
     </div>
     <p class="hero-sub-shine fade-up" aria-hidden="true" style="transition-delay:0.1s">
       <span>不</span><span>要</span><span>讓</span><span>未</span><span>來</span><span>的</span><span>你</span>
@@ -292,7 +289,7 @@
         <div class="stat-label">從業年資</div>
       </div>
       <div class="stat">
-        <div class="stat-num">3000+</div>
+        <div class="stat-num"><span data-interview-count>3000</span>+</div>
         <div class="stat-label">個人面試人數</div>
       </div>
     </div>
@@ -320,7 +317,7 @@
   </footer>
   <dialog class="story-dialog" aria-label="放大瀏覽精選紀錄"><button class="story-close" type="button" aria-label="關閉">×</button><button class="story-prev" type="button" aria-label="上一張">‹</button><img src="" alt=""><button class="story-next" type="button" aria-label="下一張">›</button><div class="story-dialog-actions"><span class="story-counter" aria-live="polite"></span><a class="story-dialog-line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer">立即詢問</a></div></dialog>
   <a class="highlights-float-line" href="https://line.me/ti/p/tTUQTPHKrE" target="_blank" rel="noopener noreferrer" aria-label="立即詢問，前往個人 LINE">立即詢問</a>
-  <script src="../site-config.js?v=20261117-instagram4"></script><script src="../velvet-background.js"></script><script src="../site.js"></script>
+  <script src="../site-config.js?v=20261117-interview-estimate"></script><script src="../velvet-background.js"></script><script src="../site.js"></script>
   <script src="../assets/highlights/highlight-order.js?v=20261117-newest-10"></script>
   <script>
     (function () {

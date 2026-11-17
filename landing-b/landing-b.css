@@ -388,3 +388,10 @@
 }
 
 .landing-b-social-proof .proof-hint{margin-left:8px;font-size:.62rem;opacity:.7;border:1px solid rgba(224,192,128,.25);padding:1px 5px;border-radius:3px;}
+
+/* 導覽列捲動時保留：overflow-x:hidden 會讓 sticky 導覽列被捲走，改用 clip */
+@supports (overflow-x: clip) {
+  html, body { overflow-x: clip; }
+}
+/* WCAG AA 文字對比（原約 2.9:1） */
+body .nav-logo .nav-home-hint { color: #9a8762; }
