@@ -177,3 +177,18 @@ test('面試人數動畫：從 0 跑到靜態值、尊重減少動態效果，�
   }
   assert.match(await read('ui-safety.css'), /@supports \(overflow-x: clip\)\s*\{\s*html, body \{ overflow-x: clip; \}/);
 });
+
+test('每一頁都有主導覽列（首頁、關於我、職缺介紹、八大知識+、部落格、真實心得、聯絡我）', async () => {
+  const pages = [...MAIN_PAGES.map(([f]) => f), '404.html', 'brand/index.html', 'landing-b/index.html', 'work-landing.html', 'post.html'];
+  const missing = [];
+  for (const f of pages) {
+    const t = (await read(f)).replace(/<script[\s\S]*?<\/script>/g, '');
+    const nav = t.match(/<nav\b[^>]*>[\s\S]*?<\/nav>/g)?.find((n) => ['關於我', '職缺介紹', '部落格', '聯絡我'].every((x) => n.includes(`>${x}<`)));
+    if (!nav) missing.push(f);
+  }
+  assert.deepEqual(missing, []);
+  for (const f of ['tools/alias-generator/index.html', 'tools/time-calculator/index.html', 'work-landing.html']) {
+    const t = await read(f);
+    assert.ok(t.includes('/site-nav.css') && t.includes('/site-nav.js') && t.includes('真實心得'), `${f} 缺共用導覽列`);
+  }
+});

@@ -1,0 +1,51 @@
+/* 共用主導覽列（獨立元件）：給沒有載入 site.css 的頁面（工具頁、工作落地頁）使用。
+   外觀比照 site.css 的主導覽列；類別名稱都加 as-sitenav 前綴，不影響頁面原本的樣式。
+   捲動時固定在頂端；≤1100px 改為漢堡選單。 */
+.as-sitenav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  min-height: 69px; padding: 14px 40px; box-sizing: border-box;
+  background: rgba(8,8,8,.78); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(200,169,110,.08);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+body.has-as-sitenav { padding-top: 69px; }
+.as-sitenav-logo { display: flex; align-items: center; gap: 10px; color: #e0c080; text-decoration: none; }
+.as-sitenav-logo img { height: 40px; width: auto; display: block; }
+.as-sitenav-logo strong { display: block; font-size: .9rem; letter-spacing: .12em; line-height: 1.25; }
+.as-sitenav-logo span span { display: block; color: #9a8762; font-size: .72rem; letter-spacing: .16em; }
+.as-sitenav-links { display: flex; align-items: center; gap: 28px; }
+.as-sitenav-links a { color: #888; text-decoration: none; font-size: .9rem; letter-spacing: .06em; white-space: nowrap; transition: color .2s; }
+.as-sitenav-links a:hover, .as-sitenav-links a[aria-current="page"] { color: #e0c080; }
+.as-sitenav-btn {
+  display: none; width: 44px; height: 40px; flex: 0 0 44px; padding: 0;
+  background: rgba(200,169,110,.06); border: 1px solid rgba(200,169,110,.24); border-radius: 4px;
+  cursor: pointer; align-items: center; justify-content: center; flex-direction: column;
+}
+.as-sitenav-btn span { display: block; height: 2px; width: 24px; background: #d7c08a; margin: 3px 0; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.as-sitenav-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.as-sitenav-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.as-sitenav-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.as-sitenav-menu {
+  display: none; position: fixed; top: 69px; left: 0; right: 0; z-index: 999;
+  background: rgba(6,6,6,.985); border-bottom: 1px solid rgba(200,169,110,.22); padding: 10px 20px 18px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.as-sitenav-menu.open { display: grid; gap: 4px; }
+.as-sitenav-menu a { color: #888; text-decoration: none; padding: 13px 0; border-bottom: 1px solid #242424; letter-spacing: .04em; font-size: .95rem; }
+.as-sitenav-menu a:last-child { border-bottom: 0; }
+.as-sitenav-menu a[aria-current="page"] { color: #e0c080; }
+.as-sitenav a:focus-visible, .as-sitenav-btn:focus-visible, .as-sitenav-menu a:focus-visible { outline: 2px solid #e0c080; outline-offset: 3px; }
+@media (max-width: 1100px) {
+  .as-sitenav { padding: 12px 18px; }
+  .as-sitenav-links { display: none; }
+  .as-sitenav-btn { display: flex; }
+}
+@media (max-width: 900px) {
+  .as-sitenav { min-height: 64px; }
+  body.has-as-sitenav { padding-top: 64px; }
+  .as-sitenav-menu { top: 64px; }
+  .as-sitenav-logo img { height: 38px; }
+  .as-sitenav-logo strong { font-size: .82rem; letter-spacing: .08em; }
+  .as-sitenav-logo span span { font-size: .66rem; letter-spacing: .1em; }
+}
