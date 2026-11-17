@@ -1,5 +1,5 @@
 window.AS_SITE_CONFIG = Object.freeze({
-  officialInstagram: 'https://www.instagram.com/angus.no28/',
+  officialInstagram: 'https://www.instagram.com/asent0618/',
   // 個人面試人數（全站唯一來源；頁面顯示為「3000+」「超過 3000 位」）。
   // 2026-11-17 業主決定暫定 3000+，佐證資料待業主提供。修改後執行：node scripts/sync-site-facts.mjs
   interviewCount: 3000
