@@ -151,3 +151,19 @@ test('安全標頭設定稿可解析，且不含 CSP（全站有 inline script�
 test('compact hero 外框撐滿寬度，CTA 按鈕與其他頁一致', async () => {
   assert.match(await read('ui-safety.css'), /\.hero\.compact > \.container\s*\{\s*width:\s*100%/);
 });
+
+test('服務地區全站一致：台北、新竹、桃園（2026-11-17 業主確認）', async () => {
+  const home = await read('index.html'); const llms = await read('llms.txt');
+  for (const [, arr] of home.matchAll(/"areaServed": (\[[^\]]*\])/g)) assert.deepEqual(JSON.parse(arr), ['台北市', '新竹市', '桃園市']);
+  assert.equal((home.match(/台北、新竹、桃園免費 LINE 諮詢/g) || []).length, 4);
+  assert.match(llms, /服務地區：台北、新竹、桃園/);
+  assert.ok(!/新北|台中|台南|高雄/.test(home + llms), '首頁或 llms.txt 仍有非服務地區的城市');
+});
+
+test('隱私權政策揭露實際使用的追蹤工具', async () => {
+  const privacy = await read('privacy.html');
+  for (const tool of ['Google Analytics 4', 'Meta Pixel', 'Cloudflare Web Analytics', '_ga', '_fbp']) assert.ok(privacy.includes(tool), `隱私權政策缺 ${tool}`);
+  const pixelPages = [];
+  for (const [file] of MAIN_PAGES) if ((await read(file)).includes('meta-pixel.js')) pixelPages.push(file);
+  assert.ok(pixelPages.length > 0);
+});
