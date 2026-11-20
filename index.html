@@ -1239,7 +1239,7 @@
 /></noscript>
 <!-- End Meta Pixel Code -->
   <script defer src="/site-config.js?v=20261117-interview-estimate"></script>
-  <link rel="stylesheet" href="/ui-safety.css?v=20261117-4">
+  <link rel="stylesheet" href="/ui-safety.css?v=20261120-1">
   <script defer src="/ui-safety.js?v=20261027-1"></script>
   <link rel="stylesheet" href="/typography.css?v=20261027-1">
   <script defer src="/typography.js?v=20261027-3"></script>
@@ -1615,7 +1615,9 @@
     return window.AS_SITE_CONFIG.getInterviewCount();
   }
   const heroSection = document.getElementById('hero');
-  if (heroSection) {
+  // site-config.js 以 defer 載入；等 DOMContentLoaded（defer 腳本已執行完）才開始觀察，避免 AS_SITE_CONFIG 尚未定義
+  const startHeroCounters = () => {
+    if (!heroSection) return;
     const counterObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1626,7 +1628,9 @@
       });
     }, { threshold: 0.3 });
     counterObserver.observe(heroSection);
-  }
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startHeroCounters, { once: true });
+  else startHeroCounters();
 
 
   function cleanDisplayText(text) {

@@ -62,3 +62,11 @@ body footer > p { color: #8a8a8a; }
 
 /* 面試人數／年資跑數字時用等寬數字，避免位數變化造成文字跳動 */
 .stat-num { font-variant-numeric: tabular-nums; }
+
+/* 八大知識＋：免費工具區。欄數依工具數量自動排列（每張至少 300px），新增工具只要多放一張卡片，不會留空格 */
+.tools-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.section-desc + .tools-grid { margin-top: 34px; }
+@media (max-width: 640px) { .tools-grid { gap: 14px; } .section-desc + .tools-grid { margin-top: 26px; } }
+/* 「你正在擔心什麼」8 張：桌機 4×2、平板與手機 2×4，任何寬度都排滿 */
+@media (min-width: 1100px) { .knowledge-category-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 901px) and (max-width: 1099px) { .knowledge-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
