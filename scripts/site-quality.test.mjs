@@ -208,3 +208,19 @@ test('每一頁都有主導覽列（首頁、關於我、職缺介紹、八大�
     assert.ok(t.includes('/site-nav.css') && t.includes('/site-nav.js') && t.includes('真實心得'), `${f} 缺共用導覽列`);
   }
 });
+
+test('八大知識＋：免費工具集中在工具區，五篇主文格子補滿', async () => {
+  const t = await read('knowledge.html');
+  const tools = t.match(/<section class="section" id="tools">[\s\S]*?<\/section>/)?.[0] || '';
+  for (const href of ['/tools/time-calculator/', '/tools/alias-generator/']) assert.ok(tools.includes(`href="${href}"`), `工具區缺 ${href}`);
+  const outside = t.replace(tools, '');
+  assert.ok(!/class="card[^"]*" href="\/tools\//.test(outside), '工具卡片不應散落在工具區以外');
+  const start = t.match(/<section class="section" id="start-here">[\s\S]*?<div class="grid-3">([\s\S]*?)\n        <\/div>/)?.[1] || '';
+  assert.equal((start.match(/<a [^>]*class="card/g) || []).length % 3, 0, '五篇主文格子（三欄）最後一列不應空格');
+  assert.match(await read('ui-safety.css'), /\.tools-grid\s*\{[^}]*auto-fit/);
+});
+
+test('首頁計數器在 site-config.js（defer）載入後才啟動', async () => {
+  const t = await read('index.html');
+  assert.match(t, /addEventListener\('DOMContentLoaded', startHeroCounters/);
+});
